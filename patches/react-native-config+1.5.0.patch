@@ -1,0 +1,32 @@
+diff --git a/node_modules/react-native-config/android/dotenv.gradle b/node_modules/react-native-config/android/dotenv.gradle
+index 2225375..02c4210 100644
+--- a/node_modules/react-native-config/android/dotenv.gradle
++++ b/node_modules/react-native-config/android/dotenv.gradle
+@@ -1,6 +1,10 @@
+ import java.util.regex.Matcher
+ import java.util.regex.Pattern
+ 
++def safeExtGet(prop, fallback) {
++  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
++}
++
+ def getCurrentFlavor() {
+     Gradle gradle = getGradle()
+ 
+@@ -24,13 +28,14 @@ def getCurrentFlavor() {
+ def loadDotEnv(flavor = getCurrentFlavor()) {
+ 
+     def envFile = project.hasProperty("defaultEnvFile") ? project.defaultEnvFile : ".env"
++    def envConfigFiles = safeExtGet("envConfigFiles", null)
+     if (System.env['ENVFILE']) {
+         envFile = System.env['ENVFILE']
+     } else if (System.getProperty('ENVFILE')) {
+         envFile = System.getProperty('ENVFILE')
+-    } else if (project.hasProperty("envConfigFiles")) {
++    } else if (envConfigFiles) {
+         // use startsWith because sometimes the task is "generateDebugSources", so we want to match "debug"
+-        project.ext.envConfigFiles.any { pair ->
++        envConfigFiles.any { pair ->
+             if (flavor.startsWith(pair.key.toLowerCase())) {
+                 envFile = pair.value
+                 return true
