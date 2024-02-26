@@ -1,4 +1,4 @@
-import {ServerErrorTypes} from "~/infrastructure/dto/common/ServerErrorTypes";
+import {ServerErrorTypes} from "./ServerErrorTypes";
 
 export interface IErrorData {
   error_description?: string;

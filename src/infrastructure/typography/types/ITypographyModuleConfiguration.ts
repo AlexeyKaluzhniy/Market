@@ -1,4 +1,4 @@
-import {Modules} from "../../../infrastructure";
+import {Modules} from "../../index";
 import {LabelConfig} from "./LabelConfig";
 import {LabelSizes} from "./LabelSizes";
 import {LabelTypes} from "./LabelTypes";

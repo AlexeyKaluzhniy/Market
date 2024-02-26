@@ -7,8 +7,8 @@ import {
   StyleProp,
   ViewStyle,
 } from "react-native";
-import {Colors} from "~/core/theme/colors";
-import {isAndroid} from "~/core/theme/commonConsts";
+import {Colors} from "../../core/theme/colors";
+import {isAndroid} from "../../core/theme/commonConsts";
 
 interface IProps extends PressableProps {
   style?: StyleProp<ViewStyle>;

@@ -1,6 +1,6 @@
 import {ErrorRepresentationType, IErrorResult} from "../../types";
-import {i18next} from "~/common/localization/localization";
-import {showToast} from "~/services/navigationService/showToast";
+import {i18next} from "../localization/localization";
+import {showToast} from "../../services/navigationService/showToast";
 import {unwrapResult} from "@reduxjs/toolkit";
 import {Alert} from "react-native";
 

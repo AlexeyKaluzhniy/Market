@@ -1,7 +1,7 @@
-import {i18next} from "~/common/localization/localization";
+import {i18next} from "../common/localization/localization";
 import {Navigation} from "react-native-navigation";
-import {Colors} from "~/core/theme/colors";
-import {isAndroid} from "~/core/theme/commonConsts";
+import {Colors} from "../core/theme/colors";
+import {isAndroid} from "../core/theme/commonConsts";
 
 export function setDefaultOptions() {
   Navigation.setDefaultOptions({
@@ -66,7 +66,7 @@ export function setDefaultOptions() {
       iconColor: Colors.black,
     },
     statusBar: {
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       visible: true,
     },
   });

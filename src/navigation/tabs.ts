@@ -3,16 +3,12 @@ export const Tabs = {
     id: "MAIN_TAB",
     name: "MainTab",
   },
-  search: {
-    id: "SEARCH_TAB",
-    name: "SearchTab",
+  favorite: {
+    id: "FAVORITE_TAB",
+    name: "FavoriteTab"
   },
-  settings: {
-    id: "SETTINGS_TAB",
-    name: "SettingsTab",
-  },
-  menu: {
-    id: "MENU_TAB",
-    name: "MenuTab",
-  },
+  profile: {
+    id: "PROFILE_TAB",
+    name: "ProfileTab"
+  }
 };

@@ -9,13 +9,13 @@ import {
   Options,
 } from "react-native-navigation";
 import {gestureHandlerRootHOC} from "react-native-gesture-handler";
-import {INavigationPage} from "~/types";
-import {navigation} from "~/services";
-import {reduxProvider} from "~/core/store/store";
-import {getStackOptions} from "~/services/navigationService/getStackOptions";
-import {TFuncKeyApp} from "~/common/localization/localization";
-import {AppScreenContainer} from "~/components/AppScreenContainer";
-import {LoadingComponent} from "~/common/components/LoadingComponent";
+import {INavigationPage} from "../../types";
+import {navigation} from "../../services";
+import {reduxProvider} from "../../core/store/store";
+import {getStackOptions} from "../../services/navigationService/getStackOptions";
+import {TFuncKeyApp} from "../../common/localization/localization";
+import {AppScreenContainer} from "../../components/AppScreenContainer";
+import {LoadingComponent} from "../../common/components/LoadingComponent";
 
 export interface AppNavigationComponentProps extends NavigationComponentProps {
   itemId?: string;

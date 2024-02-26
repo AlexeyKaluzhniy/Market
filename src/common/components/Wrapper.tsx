@@ -1,8 +1,8 @@
 import React, {useMemo} from "react";
-import {StyleSheet, ViewStyle, VirtualizedListWithoutRenderItemProps} from "react-native";
+import {Constructor, StyleSheet, ViewStyle, VirtualizedListWithoutRenderItemProps} from "react-native";
 import {EmptyView} from "./EmptyView";
 import {defaultKeyIdExtractor} from "../helpers/defaultKeyIdExtractor";
-import {isAndroid} from "~/core/theme/commonConsts";
+import {isAndroid} from "../../core/theme/commonConsts";
 import {WrapperEmptyComponent} from "./WrapperEmptyComponent";
 import {useTranslation} from "react-i18next";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/dist/query/react";
@@ -25,7 +25,7 @@ export interface IWrapperProps {
 }
 
 interface IProps<T> extends IWrapperProps {
-  Component: React.ComponentType<T>;
+  Component: Constructor<React.Component<T>>;
   props: T;
   isLoading: boolean;
   tryAgain?: () => void;

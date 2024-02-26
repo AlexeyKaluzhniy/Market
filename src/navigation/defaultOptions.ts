@@ -1,10 +1,10 @@
 import {Appearance} from "react-native";
 import {Navigation} from "react-native-navigation";
-import {DarkThemeColors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
-import {ImageResources} from "~/common/ImageResources.g";
-import {i18next} from "~/common/localization/localization";
-import {Fonts} from "~/core/theme/fonts";
-import {isIos} from "~/core/theme/commonConsts";
+import {DarkThemeColors, LightThemeColors, ThemeColors} from "../core/theme/colors";
+import {ImageResources} from "../common/ImageResources.g";
+import {i18next} from "../common/localization/localization";
+import {Fonts} from "../core/theme/fonts";
+import {isIos} from "../core/theme/commonConsts";
 
 export function setDefaultOptions(colors?: ThemeColors) {
   const isLight = colors?.theme == "light";

@@ -1,7 +1,7 @@
 import {ActivityIndicator, StyleProp, View, ViewStyle} from "react-native";
 import React from "react";
-import {useThemeColors} from "~/core/theme/hooks";
-import {CommonStyles} from "~/core/theme/commonStyles";
+import {useThemeColors} from "../../core/theme/hooks";
+import {CommonStyles} from "../../core/theme/commonStyles";
 
 interface IProps {
   containerStyle?: StyleProp<ViewStyle>;

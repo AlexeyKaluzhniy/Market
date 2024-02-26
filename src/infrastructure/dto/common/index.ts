@@ -3,9 +3,9 @@ import {IIdName} from "./IIdName";
 import {IListControls} from "./IListControls";
 import {IDataControl} from "./IDataControl";
 import {IReduxParams} from "./IReduxParams";
-import {IErrorData} from "~/infrastructure/dto/common/IErrorData";
-import {IValidationError} from "~/infrastructure/dto/common/IValidationError";
-import {IItemIdName} from "~/infrastructure/dto/common/IItemIdName";
+import {IErrorData} from "./IErrorData";
+import {IValidationError} from "./IValidationError";
+import {IItemIdName} from "./IItemIdName";
 
 export type IdNameDto = IIdName;
 export type PageFilter = IPageFilter;

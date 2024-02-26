@@ -1,4 +1,4 @@
-import {Dto} from "~/infrastructure";
+import {Dto} from "../../index";
 
 export type ErrorType = {
   status: number;

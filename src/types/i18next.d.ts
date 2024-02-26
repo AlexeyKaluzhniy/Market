@@ -3,6 +3,6 @@ import "i18next";
 
 declare module "i18next" {
   export interface TFunction {
-    (...args: unknown[]): string;
+    (...args: unknown[]): unknown;
   }
 }

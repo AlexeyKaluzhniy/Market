@@ -1,11 +1,11 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
 import {Image, Keyboard, Pressable, StyleSheet, ViewStyle} from "react-native";
-import {TFuncKeyApp} from "~/common/localization/localization";
+import {TFuncKeyApp} from "../../common/localization/localization";
 import React from "react";
-import {ImageResources} from "~/common/ImageResources.g";
-import {navigation} from "~/services";
-import {useThemeColors} from "~/core/theme/hooks";
-import {CommonSizes} from "~/core/theme/commonSizes";
+import {ImageResources} from "../../common/ImageResources.g";
+import {navigation} from "../../services";
+import {useThemeColors} from "../../core/theme/hooks";
+import {CommonSizes} from "../../core/theme/commonSizes";
 
 interface IProps {
   title: TFuncKeyApp;

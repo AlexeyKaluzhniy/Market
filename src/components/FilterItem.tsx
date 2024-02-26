@@ -1,16 +1,16 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
 import {Image, ImageStyle, Pressable, StyleSheet, ViewStyle} from "react-native";
-import {ThemeColors} from "~/core/theme/colors";
-import {showActionSheet} from "~/common/helpers/dialogsHelpers";
-import {ImageResources} from "~/common/ImageResources.g";
-import {Regular} from "~/infrastructure";
-import {getLocalizedValue} from "~/common/localization/localizedTextHelper";
-import {useThemedStyles} from "~/core/theme/hooks";
-import {windowWidth} from "~/core/theme/commonConsts";
-import {CommonStyles} from "~/core/theme/commonStyles";
+import {ThemeColors} from "../core/theme/colors";
+import {showActionSheet} from "../common/helpers/dialogsHelpers";
+import {ImageResources} from "../common/ImageResources.g";
+import {Regular} from "../infrastructure";
+import {getLocalizedValue} from "../common/localization/localizedTextHelper";
+import {useThemedStyles} from "../core/theme/hooks";
+import {windowWidth} from "../core/theme/commonConsts";
+import {CommonStyles} from "../core/theme/commonStyles";
 import _ from "lodash";
-import {LocalizedTextDto} from "~/infrastructure/dto/common/LocalizedTextDto";
+import {LocalizedTextDto} from "../infrastructure/dto/common/LocalizedTextDto";
 
 export type IFilterEntry<T> = T & ({ShortName?: LocalizedTextDto; FullName?: LocalizedTextDto; Name?: string});
 

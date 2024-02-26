@@ -1,6 +1,6 @@
 import {PressableProps, StyleProp, ViewStyle} from "react-native";
 import {RehydrateAction} from "redux-persist";
-import {RootState} from "~/core/store/rootReducer";
+import {RootState} from "../core/store/rootReducer";
 import {TextInputMaskOptionProp, TextInputMaskTypeProp} from "react-native-masked-text";
 
 export interface ICalendarSpec {

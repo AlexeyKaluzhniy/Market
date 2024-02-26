@@ -1,4 +1,4 @@
-import {i18next} from "~/common/localization/localization";
+import {i18next} from "../localization/localization";
 import {emptyValidation} from "./commonValidations";
 import {validationConstants} from "./validationConstants";
 

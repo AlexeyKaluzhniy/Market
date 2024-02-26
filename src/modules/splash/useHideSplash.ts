@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 import {NativeModules} from "react-native";
-import {isIos} from "~/core/theme/commonConsts";
+import {isIos} from "../../core/theme/commonConsts";
 
 export const useHideSplash = (callback?: () => void) => {
   const cbRef = useRef(callback);

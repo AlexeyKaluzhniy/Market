@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {StyleSheet, View, ViewStyle} from "react-native";
-import {CommonSizes} from "~/core/theme/commonSizes";
+import {CommonSizes} from "../../core/theme/commonSizes";
 
 export const SpaceSeparatorHeight = CommonSizes.spacing.medium;
 

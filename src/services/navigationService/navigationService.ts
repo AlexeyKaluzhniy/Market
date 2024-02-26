@@ -1,8 +1,8 @@
 import {BottomTabSelectedEvent, Layout, LayoutRoot, Navigation, Options} from "react-native-navigation";
-import {INavigationPage} from "~/types";
-import {logger} from "~/infrastructure/logger";
-import {AppOptions, getAnimationOptions} from "~/services/navigationService/getAnimationOptions";
-import {Tabs} from "~/navigation/tabs";
+import {INavigationPage} from "../../types";
+import {logger} from "../../infrastructure/logger";
+import {AppOptions, getAnimationOptions} from "./getAnimationOptions";
+import {Tabs} from "../../navigation/tabs";
 
 type AppNavigationOptions = {params?: object; screenIdSuffix?: string} & {options?: AppOptions} & {postOptions?: Options};
 
@@ -13,9 +13,8 @@ class NavigationService {
     Navigation.events().registerBottomTabSelectedListener((event: BottomTabSelectedEvent) => {
       const tabIds = [
         Tabs.main,
-        Tabs.search,
-        Tabs.settings,
-        Tabs.menu
+        Tabs.favorite,
+        Tabs.profile
       ];
 
       this.stackId = tabIds[event.selectedTabIndex].id;

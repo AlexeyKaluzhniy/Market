@@ -1,4 +1,4 @@
-import {i18next} from "~/common/localization/localization";
+import {i18next} from "../localization/localization";
 
 export function emptyValidation(checkValue: string): string | null {
   return checkValue != null && checkValue != "" ? null : i18next.t("errors.thisFieldIsRequired");

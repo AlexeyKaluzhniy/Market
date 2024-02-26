@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import {Dimensions, PixelRatio, Platform, StatusBar, StyleSheet} from "react-native";
 import Device from "react-native-device-detection";
 import Config from "react-native-config";
-import {AppEnvironment} from "~/types/react-native-config.types";
+import {AppEnvironment} from "../../types/react-native-config.types";
 
 const windowDimensions = Dimensions.get("window");
 export const isIos = Device.isIos;

@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unassigned-import
 import "react-i18next";
-import {LanguageResource} from "~/common/localization/localization";
+import {LanguageResource} from "../common/localization/localization";
 import {i18n} from "i18next";
 import {Namespace, TFunction} from "react-i18next";
 

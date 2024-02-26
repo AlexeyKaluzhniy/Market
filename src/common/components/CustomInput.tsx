@@ -1,5 +1,5 @@
 import React, {MutableRefObject, useCallback, useMemo, useRef, useState} from "react";
-import {Regular} from "~/infrastructure";
+import {Regular} from "../../infrastructure";
 import {
   Image,
   NativeSyntheticEvent,
@@ -13,23 +13,23 @@ import {
   View,
 } from "react-native";
 import CountryPicker, {Country, DARK_THEME, DEFAULT_THEME, Flag, FlagType, getAllCountries} from "react-native-country-picker-modal";
-import {ThemeColors} from "~/core/theme/colors";
-import {useThemedStyles} from "~/core/theme/hooks";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {TFuncKeyApp} from "~/common/localization/localization";
-import {CommonStyles} from "~/core/theme/commonStyles";
+import {ThemeColors} from "../../core/theme/colors";
+import {useThemedStyles} from "../../core/theme/hooks";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {TFuncKeyApp} from "../localization/localization";
+import {CommonStyles} from "../../core/theme/commonStyles";
 import {PasswordIcon} from "./PasswordIcon";
 import {FieldError} from "react-hook-form/dist/types";
 import {InputDateIcon} from "./InputDateIcon";
 import {TextInputMask} from "react-native-masked-text";
 import {useTranslation} from "react-i18next";
 import {FlagButtonProps} from "react-native-country-picker-modal/lib/FlagButton";
-import {ImageResources} from "~/common/ImageResources.g";
-import {useMount} from "~/common/hooks/useMount";
-import {DropDownIcon} from "~/common/components/DropDownIcon";
-import {ValidationError} from "~/infrastructure/dto/common";
-import {ErrorType} from "~/infrastructure/dto/common/ErrorType";
-import {ErrorSignType} from "~/infrastructure/dto/common/ErrorSignType";
+import {ImageResources} from "../ImageResources.g";
+import {useMount} from "../hooks/useMount";
+import {DropDownIcon} from "./DropDownIcon";
+import {ValidationError} from "../../infrastructure/dto/common";
+import {ErrorType} from "../../infrastructure/dto/common/ErrorType";
+import {ErrorSignType} from "../../infrastructure/dto/common/ErrorSignType";
 
 interface IProps extends TextInputProps {
   nextInputFocusRefGetter?: () => (MutableRefObject<any> | undefined);

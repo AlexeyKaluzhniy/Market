@@ -20,7 +20,7 @@ export type ThemeColors = IThemeColors;
 
 export const LightThemeColors: IThemeColors = {
   theme: "light",
-  main: "#cc122d",
+  main: "#DF3A76",
   element: "#ffffff",
   background: "#f4f5f8",
   text: "#1f2731",

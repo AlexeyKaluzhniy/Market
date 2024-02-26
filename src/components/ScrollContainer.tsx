@@ -2,14 +2,14 @@ import React, {FC, memo, ReactNode, useCallback, useEffect, useMemo, useRef} fro
 import {Animated, SafeAreaView, StyleProp, StyleSheet, View, ViewStyle} from "react-native";
 import {ImageStyle} from "react-native-fast-image";
 import {Navigation} from "react-native-navigation";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {Tabs} from "~/navigation/tabs";
-import {Colors, ThemeColors} from "~/core/theme/colors";
-import {NavigationTopBar} from "~/common/components/NavigationTopBar";
-import {isAndroid, isIos, StatusBarHeight, StatusBarHeightIos} from "~/core/theme/commonConsts";
+import {CommonSizes} from "../core/theme/commonSizes";
+import {Tabs} from "../navigation/tabs";
+import {Colors, ThemeColors} from "../core/theme/colors";
+import {NavigationTopBar} from "../common/components/NavigationTopBar";
+import {isAndroid, isIos, StatusBarHeight, StatusBarHeightIos} from "../core/theme/commonConsts";
 import AndroidKeyboardAdjust from "react-native-android-keyboard-adjust";
-import {useMount} from "~/common/hooks/useMount";
-import {useThemedStyles} from "~/core/theme/hooks";
+import {useMount} from "../common/hooks/useMount";
+import {useThemedStyles} from "../core/theme/hooks";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 interface IProps {
@@ -27,7 +27,6 @@ interface IProps {
   radiusless?: boolean;
   alwaysShowTitle?: boolean;
   headerAppearanceDistance?: number;
-  children: React.ReactNode | React.ReactNode[];
 }
 
 const AnimatedKeyboardAwareScrollView = Animated.createAnimatedComponent(KeyboardAwareScrollView);

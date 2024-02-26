@@ -1,23 +1,7 @@
 export const Pages = {
-  storybook: {
-    id: "STORYBOOK",
-    name: "Storybook",
-  },
   splash: {
     id: "SPLASH_SCREEN",
     name: "SplashScreen",
-  },
-  onboarding: {
-    id: "ONBOARDING_SCREEN",
-    name: "OnboardingScreen",
-  },
-  toast: {
-    id: "TOAST",
-    name: "ToastOverlay",
-  },
-  datePicker: {
-    id: "DATE_PICKER",
-    name: "DatePickerOverlay",
   },
   tabs: {
     id: "BOTTOM_TABS",
@@ -27,16 +11,36 @@ export const Pages = {
     id: "MAIN_SCREEN",
     name: "MainScreen",
   },
-  search: {
-    id: "SEARCH_SCREEN",
-    name: "SearchScreen",
+  auth: {
+    id: "AUTH_SCREEN",
+    name: "AuthScreen"
   },
-  settings: {
-    id: "SETTINGS_SCREEN",
-    name: "SettingsScreen",
+  login: {
+    id: "LOGIN_SCREEN",
+    name: "LoginScreen"
   },
-  menu: {
-    id: "MENU_SCREEN",
-    name: "MenuScreen"
+  register: {
+    id: "REGISTER_SCREEN",
+    name: "RegisterScreen"
+  },
+  favorite: {
+    id: "FAVORITE_SCREEN",
+    name: "FavoriteScreen"
+  },
+  profile: {
+    id: "PROFILE_SCREEN",
+    name: "ProfileScreen"
+  },
+  forgotPassword: {
+    id: "FORGOT_PASSWORD_SCREEN",
+    name: "ForgotPasswordScreen"
+  },
+  code: {
+    id: "CODE_SCREEN",
+    name: "CodeScreen"
+  },
+  newPassword: {
+    id: "NEW_PASSWORD_SCREEN",
+    name: "NewPasswordScreen"
   }
 };

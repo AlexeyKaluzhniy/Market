@@ -1,6 +1,6 @@
-import {isAndroid, isIos} from "~/core/theme/commonConsts";
+import {isAndroid, isIos} from "../../core/theme/commonConsts";
 import {ActionSheetIOS, ActionSheetIOSOptions, Alert, AlertButton, AlertOptions} from "react-native";
-import {i18next} from "~/common/localization/localization";
+import {i18next} from "../localization/localization";
 
 export function showActionSheet(options: ActionSheetIOSOptions, onOptionSelected: (optionIndex: number) => void) {
   if (isIos) {

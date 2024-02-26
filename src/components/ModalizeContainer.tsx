@@ -1,14 +1,14 @@
 import React, {memo, useCallback, useMemo, useRef} from "react";
 import {Image, ScrollViewProps, StyleSheet, ViewStyle} from "react-native";
 import {Modalize, ModalizeProps} from "react-native-modalize";
-import {isIos} from "~/core/theme/commonConsts";
-import {Colors, ThemeColors} from "~/core/theme/colors";
-import {useThemedStyles} from "~/core/theme/hooks";
+import {isIos} from "../core/theme/commonConsts";
+import {Colors, ThemeColors} from "../core/theme/colors";
+import {useThemedStyles} from "../core/theme/hooks";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {TouchablePlatform} from "~/common/components/TouchablePlatform";
-import {useMount} from "~/common/hooks/useMount";
-import {ImageResources} from "~/common/ImageResources.g";
+import {CommonSizes} from "../core/theme/commonSizes";
+import {TouchablePlatform} from "../common/components/TouchablePlatform";
+import {useMount} from "../common/hooks/useMount";
+import {ImageResources} from "../common/ImageResources.g";
 
 interface IProps {
   getHeaderComponent?: (closeButton: React.ReactNode) => React.ReactNode;

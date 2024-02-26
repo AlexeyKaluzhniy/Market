@@ -1,4 +1,4 @@
-import {getLanguage, Languages} from "~/common/localization/localization";
+import {getLanguage, Languages} from "../../../common/localization/localization";
 import {Appearance} from "react-native";
 
 export type AppThemeType = "dark" | "light" | null;

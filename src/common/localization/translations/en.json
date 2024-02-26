@@ -70,7 +70,7 @@
     },
     "onboarding": {
       "welcomeToApp": "",
-      "firstHeader": "Welcome to Market",
+      "firstHeader": "Welcome to HelloWorld",
       "firstBody": "First body",
       "secondHeader": "Second Header",
       "secondBody": "Second Body",
@@ -80,7 +80,7 @@
       "forthBody": "Fourth body",
       "allowPush": "Allow push notification",
       "pushDeniedDialog": {
-        "title": "Turn on Market' notification",
+        "title": "Turn on HelloWorld' notification",
         "text": "Allow application to send you a push notifies at the settings",
         "cancel": "Cancel",
         "settings": "Go to the settings"
@@ -89,6 +89,8 @@
     "authentication": {
       "login": "Login",
       "register": "Register",
+      "loginTab": "Login",
+      "registerTab":  "Register",
       "authScreenTitle": "Single fan\ncabinet",
       "phoneNumber": "Phone number",
       "phoneNumberInUse": "Phone number is already in use",
@@ -96,7 +98,8 @@
       "repeatPassword": "Repeat password",
       "forgotPassword": "Forgot your password?",
       "doNotHaveAccountYet": "You don't have an account yet? ",
-      "toRegisterInPersonalCabinet": "Register in personal Cabinet",
+      "toRegisterInPersonalCabinet": "Register in personal account FC\u00A0”Spartak”",
+      "sendSms": "Send",
       "smsCodeSent": "Code sent to number",
       "emailCodeSent": "Code sent to e-mail",
       "toRegister": "Register",
@@ -132,7 +135,7 @@
       "middleName": "Middle name",
       "phoneOrEmail": "Phone or email",
       "enterEmailOrPhone": "Enter email or phone number",
-      "recoverPassword": "Recover password",
+      "recoverPassword": "Password recovering",
       "registrationUserData": {
         "birthDate": "Date of birth",
         "email": "E-mail",
@@ -141,20 +144,28 @@
         "toAcceptWith": "I agree with ",
         "toAcceptOnReceivingNews": "I agree to receive news and advertising information, ",
         "rulesAndConditions": "terms and conditions",
-        "clubName": " Hello\u00A0World",
+        "clubName": " FC\u00A0”spartak”",
         "personalDataProcessing": "personal data processing",
         "from": " from ",
         "partners": "club partners",
         "sex": "Sex",
         "male": "Male",
         "female": "Female"
-      }
+      },
+      "enterCodeText": "Enter the code, sent on +",
+      "enterCode": "Enter code",
+      "phoneRecovery": "Enter the phone number to which the password reset code will be sent.",
+      "confirm": "Confirm",
+      "newPassword": "New password",
+      "savePassword": "Save new password"
     },
     "pages": {
       "main": "Main",
       "news": "News",
       "shop": "Shopping",
       "login": "Login",
+      "favorite": "Favorite",
+      "profile":  "Profile",
       "forgotPassword": "Forgot your password?",
       "leftSideMenu": "Left Side Menu",
       "rightSideMenu": "Right Side Menu",

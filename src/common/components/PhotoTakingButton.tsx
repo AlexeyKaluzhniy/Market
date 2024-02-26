@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import {ImageResources} from "../ImageResources.g";
 import {Image as CropperImage} from "react-native-image-crop-picker";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {Colors} from "~/core/theme/colors";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {Colors} from "../../core/theme/colors";
 
 interface IProps {
   onPress?: () => void;
@@ -36,7 +36,6 @@ export const PhotoTakingButton: FC<IProps> = memo(({icon, onPress, backgroundIma
 interface IBackgroundComponentProps {
   image?: ImageURISource | null;
   style?: ImageStyle;
-  children?: React.ReactNode | React.ReactNode[];
 }
 
 const BackgroundComponent: FC<IBackgroundComponentProps> = memo(({image, children, style}) => {

@@ -1,7 +1,7 @@
 import React, {memo, useCallback} from "react";
 import {StyleProp, StyleSheet, ViewStyle} from "react-native";
 import Svg, {Defs, LinearGradient, Rect, Stop, SvgProps} from "react-native-svg";
-import {useThemeColors} from "~/core/theme/hooks/useThemeColors";
+import {useThemeColors} from "../core/theme/hooks/useThemeColors";
 
 interface IProps extends SvgProps {
   height: number;

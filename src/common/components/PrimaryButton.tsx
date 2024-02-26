@@ -9,14 +9,14 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
-import {ButtonType, TouchablePlatformProps} from "~/types";
-import {TFuncKeyApp} from "~/common/localization/localization";
-import {Colors, DarkThemeColors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {Brand} from "~/infrastructure/typography";
+import {ButtonType, TouchablePlatformProps} from "../../types";
+import {TFuncKeyApp} from "../localization/localization";
+import {Colors, DarkThemeColors, LightThemeColors, ThemeColors} from "../../core/theme/colors";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {Brand} from "../../infrastructure/typography";
 import {useTranslation} from "react-i18next";
-import {useThemeColors} from "~/core/theme/hooks";
-import {TouchablePlatform} from "~/common/components/TouchablePlatform";
+import {useThemeColors} from "../../core/theme/hooks";
+import {TouchablePlatform} from "./TouchablePlatform";
 
 interface IProps extends TouchablePlatformProps {
   text?: string;

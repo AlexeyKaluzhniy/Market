@@ -1,17 +1,17 @@
 import React, {FC, memo, useMemo} from "react";
 import {Image, ImageStyle, ImageURISource, StyleSheet, TextStyle, View, ViewStyle} from "react-native";
 import {useTranslation} from "react-i18next";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {CommonStyles} from "~/core/theme/commonStyles";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {CommonStyles} from "../../core/theme/commonStyles";
 import {ImageResources} from "../ImageResources.g";
 import {PrimaryButton} from "./PrimaryButton";
-import {ButtonType} from "~/types";
-import {Brand, Regular} from "~/infrastructure";
-import {useThemedStyles} from "~/core/theme/hooks";
-import {ThemeColors} from "~/core/theme/colors";
+import {ButtonType} from "../../types";
+import {Brand, Regular} from "../../infrastructure";
+import {useThemedStyles} from "../../core/theme/hooks";
+import {ThemeColors} from "../../core/theme/colors";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/dist/query/react";
-import {AppGradient} from "~/components/AppGradient";
-import {windowWidth} from "~/core/theme/commonConsts";
+import {AppGradient} from "../../components/AppGradient";
+import {windowWidth} from "../../core/theme/commonConsts";
 
 interface IProps {
   onPress?: () => void;

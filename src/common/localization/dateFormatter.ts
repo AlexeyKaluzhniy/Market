@@ -8,7 +8,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import utc from 'dayjs/plugin/utc';
 import relativeTime from "dayjs/plugin/relativeTime";
 import {getI18n} from "react-i18next";
-import {ICalendarSpec} from "~/types";
+import {ICalendarSpec} from "../../types";
 
 dayjs.extend(calendar);
 dayjs.extend(relativeTime);
@@ -33,6 +33,7 @@ export enum DateFormat {
   full = "YYYY-MM-DD HH:mm:ss",
   yearDateTime = "YYYY.MM.DD HH:mm",
   yearMonthDay = "YYYY.MM.DD",
+  yearMonthDaySpartak = 'YYYY-MM-DD'
 }
 
 const calendarFormat: ICalendarSpec = {

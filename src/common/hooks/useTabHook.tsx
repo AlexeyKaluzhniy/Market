@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo, useState} from "react";
 import {LayoutChangeEvent, StyleSheet, View, ViewProps} from "react-native";
-import {SliderHeight} from "~/components/TabBars";
+import {SliderHeight} from "../../components/TabBars";
 
 export const useTabHook = () => {
   const [tabIndex, setTabIndex] = useState<number>(0);

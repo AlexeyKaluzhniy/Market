@@ -1,9 +1,9 @@
 import React from "react";
 import {Image, Platform, Pressable, StyleSheet} from "react-native";
-import {useThemedStyles} from "~/core/theme/hooks";
-import {ThemeColors} from "~/core/theme/colors";
-import {ImageResources} from "~/common/ImageResources.g";
-import {CommonSizes} from "~/core/theme/commonSizes";
+import {useThemedStyles} from "../../core/theme/hooks";
+import {ThemeColors} from "../../core/theme/colors";
+import {ImageResources} from "../ImageResources.g";
+import {CommonSizes} from "../../core/theme/commonSizes";
 
 export const PasswordIcon = ({isPasswordShown, toggleEye }: {isPasswordShown: boolean; toggleEye: () => void}) => {
   const styles = useThemedStyles(stylesGetter);

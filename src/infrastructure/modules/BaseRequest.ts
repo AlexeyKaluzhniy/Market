@@ -1,5 +1,5 @@
-import i18next from "i18next";
-import {AbortHub} from "../common/helpers/abortHub";
+import {i18next} from "~/common/localization/localization";
+import {AbortHub} from "~/infrastructure/common/helpers/abortHub";
 
 export class BaseRequest {
   static handleError = async (error: Record<string, any>) => {

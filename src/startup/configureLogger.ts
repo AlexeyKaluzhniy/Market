@@ -1,7 +1,7 @@
-import {LogLevel} from "~/infrastructure/logger/types/logger";
-import {createLogger} from "~/startup/createLogger";
-import {MultiLogger} from "~/infrastructure/logger/multiLogger";
-import {LogCategories, logger} from "~/infrastructure/logger";
+import {LogLevel} from "../infrastructure/logger/types/logger";
+import {createLogger} from "./createLogger";
+import {MultiLogger} from "../infrastructure/logger/multiLogger";
+import {LogCategories, logger} from "../infrastructure/logger";
 
 const loggers: Record<LogCategories, MultiLogger> = {} as any;
 

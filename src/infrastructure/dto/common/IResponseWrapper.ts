@@ -1,4 +1,4 @@
-import {LoadState} from "~/types";
+import {LoadState} from "../../../types";
 
 
 export interface IResponseWrapper<T> {

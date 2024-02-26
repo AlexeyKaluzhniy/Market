@@ -1,9 +1,9 @@
 import Config from "react-native-config";
-import {MultiLogger} from "~/infrastructure/logger/multiLogger";
-import {LogLevel} from "~/infrastructure/logger/types/logger";
-import {AppEnvironment} from "~/types/react-native-config.types";
-import {ConsoleLogger} from "~/infrastructure/logger/consoleLogger";
-import {Colors} from "~/core/theme/colors";
+import {MultiLogger} from "../infrastructure/logger/multiLogger";
+import {LogLevel} from "../infrastructure/logger/types/logger";
+import {AppEnvironment} from "../types/react-native-config.types";
+import {ConsoleLogger} from "../infrastructure/logger/consoleLogger";
+import {Colors} from "../core/theme/colors";
 
 export function createLogger(loggerInstance: MultiLogger, overrideLogLevel?: LogLevel, category?: string) {
     let consoleLogLevel: LogLevel;
@@ -51,7 +51,7 @@ export function createLogger(loggerInstance: MultiLogger, overrideLogLevel?: Log
         //     minevel: seqLogLevel,
         //     constantlyPassingParams: {
         //         "SessionId": guid(),
-        //         "AppName": `MobileClient-com.market-${Platform.OS}`,
+        //         "AppName": `MobileClient-FC.Spartak-${Platform.OS}`,
         //         "_kubernetes_namespace_name": "mobile-client-club-dev",
         //     },
         //     onFlushError: error => console.log("seq logger flush error", error, error.stack, error.message),

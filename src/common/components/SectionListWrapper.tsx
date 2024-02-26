@@ -1,9 +1,9 @@
 import React from "react";
-import {SectionList, SectionListProps} from "react-native";
+import {Constructor, SectionList, SectionListProps} from "react-native";
 import {IWrapperProps, Wrapper} from "./Wrapper";
 
 export function SectionListWrapper<T>({isLoading, tryAgain, error, ...props}: IWrapperProps & SectionListProps<T>) {
-  const Component: React.ComponentType<SectionListProps<T>> = SectionList;
+  const Component: Constructor<React.Component<SectionListProps<T>>> = SectionList;
 
   return (
     <Wrapper

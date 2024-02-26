@@ -1,15 +1,15 @@
 import React, {FC, memo, ReactNode, useCallback, useMemo, useState} from "react";
 import {Image, ImageStyle, StyleSheet, View, ViewStyle} from "react-native";
-import {TFuncKeyApp} from "~/common/localization/localization";
-import {Colors} from "~/core/theme/colors";
-import {useThemeColors} from "~/core/theme/hooks";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {Brand, Regular} from "~/infrastructure";
-import {TouchablePlatform} from "~/common/components/TouchablePlatform";
-import {ImageResources} from "~/common/ImageResources.g";
-import {LoadingComponent} from "~/common/components/LoadingComponent";
-import {SpaceSeparator} from "~/common/components/SpaceSeparator";
+import {TFuncKeyApp} from "../common/localization/localization";
+import {Colors} from "../core/theme/colors";
+import {useThemeColors} from "../core/theme/hooks";
+import {CommonSizes} from "../core/theme/commonSizes";
+import {CommonStyles} from "../core/theme/commonStyles";
+import {Brand, Regular} from "../infrastructure";
+import {TouchablePlatform} from "../common/components/TouchablePlatform";
+import {ImageResources} from "../common/ImageResources.g";
+import {LoadingComponent} from "../common/components/LoadingComponent";
+import {SpaceSeparator} from "../common/components/SpaceSeparator";
 
 interface IProps {
   titleKey?: TFuncKeyApp;

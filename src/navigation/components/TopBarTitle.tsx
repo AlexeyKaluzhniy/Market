@@ -1,9 +1,9 @@
 import React from "react";
 import {View} from "react-native";
 import {NavigationFunctionComponent} from "react-native-navigation";
-import { Brand } from "~/infrastructure";
-import {Colors} from "~/core/theme/colors";
-import {TFuncKeyApp} from "~/common/localization/localization";
+import { Brand } from "../../infrastructure";
+import {Colors} from "../../core/theme/colors";
+import {TFuncKeyApp} from "../../common/localization/localization";
 
 interface IProps {
   title: TFuncKeyApp

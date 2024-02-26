@@ -2,9 +2,9 @@ import React, {FC, FunctionComponent, memo, useCallback, useMemo} from "react";
 import {StyleSheet, TextStyle, ViewStyle} from "react-native";
 import {RadioIcon} from "./RadioIcon";
 import {TouchablePlatform} from "./TouchablePlatform";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {Colors} from "~/core/theme/colors";
-import {Brand} from "~/infrastructure/typography";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {Colors} from "../../core/theme/colors";
+import {Brand} from "../../infrastructure/typography";
 
 interface IIconComponentProps {
   isSelected: boolean;

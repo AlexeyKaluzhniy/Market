@@ -1,8 +1,8 @@
 import React, {memo} from "react";
 import {ScrollView, ScrollViewProps, StyleSheet, View, ViewStyle} from "react-native";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {ThemeColors} from "~/core/theme/colors";
-import {useThemedStyles} from "~/core/theme/hooks";
+import {CommonStyles} from "../core/theme/commonStyles";
+import {ThemeColors} from "../core/theme/colors";
+import {useThemedStyles} from "../core/theme/hooks";
 
 interface IProps extends ScrollViewProps {
   Component: typeof View | typeof ScrollView;

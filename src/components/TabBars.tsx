@@ -1,11 +1,11 @@
 import {Animated, StyleSheet} from "react-native";
-import {windowWidth} from "~/core/theme/commonConsts";
+import {windowWidth} from "../core/theme/commonConsts";
 import React from "react";
-import {Colors, ThemeColors} from "~/core/theme/colors";
+import {Colors, ThemeColors} from "../core/theme/colors";
 import {CustomTabBar, CustomTabBarItem} from "./Tabs";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {Brand, Regular} from "~/infrastructure";
-import {useThemedStyles} from "~/core/theme/hooks";
+import {CommonStyles} from "../core/theme/commonStyles";
+import {Brand, Regular} from "../infrastructure";
+import {useThemedStyles} from "../core/theme/hooks";
 
 export const CupTabBar: typeof CustomTabBar = (tabBarProps) => CustomTabBar({
   ...tabBarProps,

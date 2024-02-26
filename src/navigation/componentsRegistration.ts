@@ -1,19 +1,21 @@
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {Pages} from "./pages";
-import {Main} from "~/modules/main/Main";
-import {Splash} from "~/modules/splash/Splash";
-import {ToastOverlay} from "~/common/components/ToastOverlay";
-import {DatePickerOverlay} from "~/common/components/DatePickerOverlay";
-import {Onboarding} from "~/modules/onboarding/Onboarding";
-import {Search} from "~/modules/search/Search";
-import {Settings} from "~/modules/settings/Settings";
-import {AppNavigationComponentProps, NavigationHOC, NavigationHOCProps} from "~/navigation/helpers/NavigationHOC";
-import {Menu} from "~/modules/menu/Menu";
-import {reduxProvider} from "~/core/store/store";
+import {Splash} from "../modules/splash/Splash";
+import {AppNavigationComponentProps, NavigationHOC, NavigationHOCProps} from "./helpers/NavigationHOC";
+import {reduxProvider} from "../core/store/store";
 import {gestureHandlerRootHOC} from "react-native-gesture-handler";
-import {Components} from "~/navigation/components";
-import {TopBarTitle} from "~/navigation/components/TopBarTitle";
-import {TopBarBackButton} from "~/navigation/components/TopBarBackButton";
+import {Components} from "./components";
+import {TopBarTitle} from "./components/TopBarTitle";
+import {TopBarBackButton} from "./components/TopBarBackButton";
+import {Authentication} from "../modules/authentication/Authentication";
+import {Login} from "../modules/authentication/components/Login";
+import {SignUp} from "../modules/authentication/components/SignUp";
+import {Main} from "../modules/main/Main";
+import {Favorite} from "../modules/favorite/Favorite";
+import {Profile} from "../modules/profile/Profile";
+import {ForgotPassword} from "../modules/authentication/components/ForgotPassword";
+import {EnterCode} from "../modules/authentication/components/EnterCode";
+import {NewPassword} from "../modules/authentication/components/NewPassword";
 
 function registerAppScreenComponent<P extends AppNavigationComponentProps>(props: NavigationHOCProps<P>) {
   Navigation.registerComponent(props.page.name, () => NavigationHOC(props), () => props.Component);
@@ -29,14 +31,16 @@ const registerReduxComponent = (name: string, Component: NavigationFunctionCompo
 
 export function registerComponents() {
   registerAppScreenComponent({Component: Splash, page: Pages.splash, useRedux: true});
-  registerAppScreenComponent({Component: Onboarding, page: Pages.onboarding, useRedux: true});
   registerAppScreenComponent({Component: Main, page: Pages.main, titleKey: "pages.main", useRedux: true});
-  registerAppScreenComponent({Component: Search, page: Pages.search, titleKey: "pages.search", useRedux: true});
-  registerAppScreenComponent({Component: Settings, page: Pages.settings, titleKey: "pages.settings", useRedux: true});
-  registerAppScreenComponent({Component: Menu, page: Pages.menu, titleKey: "pages.menu", useRedux: true});
-  Navigation.registerComponent(Pages.toast.name, () => ToastOverlay);
+  registerAppScreenComponent({Component: Favorite, page: Pages.favorite, titleKey: "pages.main", useRedux: true});
+  registerAppScreenComponent({Component: Profile, page: Pages.profile, titleKey: "pages.main", useRedux: true});
+  registerAppScreenComponent({Component: Authentication, page: Pages.auth, titleKey:"pages.login", useRedux: true});
+  registerAppScreenComponent({Component: Login, page: Pages.login, titleKey: "authentication.loginTab", useRedux: true});
+  registerAppScreenComponent({Component: SignUp, page: Pages.register, titleKey: "authentication.registerTab", useRedux: true});
+  registerAppScreenComponent({Component: ForgotPassword, page: Pages.forgotPassword, useRedux: true});
+  registerAppScreenComponent({Component: EnterCode, page: Pages.code, useRedux: true});
+  registerAppScreenComponent({Component: NewPassword, page: Pages.newPassword, useRedux: true});
 
   registerReduxComponent(Components.topBarTitle.name, TopBarTitle);
   registerReduxComponent(Components.topBarBackButton.name, TopBarBackButton);
-  registerReduxComponent(Pages.datePicker.name, DatePickerOverlay);
 }

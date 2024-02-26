@@ -1,4 +1,4 @@
-import {ITextInputMask} from "~/types";
+import {ITextInputMask} from "../../types";
 import {validationConstants} from "../validations/validationConstants";
 
 export class InputMask {

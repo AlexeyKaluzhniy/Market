@@ -12,13 +12,13 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import {ITextInputMask} from "~/types";
+import {ITextInputMask} from "../../types";
 import {TextInputMask} from "react-native-masked-text";
-import {Colors} from "~/core/theme/colors";
-import {isIos} from "~/core/theme/commonConsts";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {Brand} from "~/infrastructure/typography";
+import {Colors} from "../../core/theme/colors";
+import {isIos} from "../../core/theme/commonConsts";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {CommonStyles} from "../../core/theme/commonStyles";
+import {Brand} from "../../infrastructure/typography";
 
 interface IProps extends TextInputProps {
   nextInputFocusRefGetter?: () => MutableRefObject<any>;

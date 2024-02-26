@@ -1,8 +1,8 @@
-import {logger} from "~/infrastructure/logger";
-import {typography} from "~/infrastructure/typography";
-import {Fonts} from "~/core/theme/fonts";
-import {Colors} from "~/core/theme/colors";
-import {LogLevel} from "~/infrastructure/common/logger";
+import {logger} from "../infrastructure/logger";
+import {typography} from "../infrastructure/typography";
+import {Fonts} from "../core/theme/fonts";
+import {Colors} from "../core/theme/colors";
+import {LogLevel} from "../infrastructure/common/logger";
 import {TextStyle} from "react-native";
 
 export const typographyStyles = {

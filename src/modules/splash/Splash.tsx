@@ -1,9 +1,8 @@
 import React, {useEffect} from "react";
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {getTabsRootLayout, setOnboardingRoot} from "~/navigation/roots";
-import {useAppSelector} from "~/core/store/store";
-import {LoadingComponent} from "~/common/components/LoadingComponent";
-import {navigation} from "~/services";
+import {setAuthRoot} from "../../navigation/roots";
+import {useAppSelector} from "../../core/store/store";
+import {LoadingComponent} from "../../common/components/LoadingComponent";
 
 export const Splash: NavigationFunctionComponent = () => {
   const [appTheme, deviceTheme, isOnboardingVisited] = useAppSelector(state => [
@@ -13,13 +12,7 @@ export const Splash: NavigationFunctionComponent = () => {
   ]);
 
   useEffect(() => {
-    if (isOnboardingVisited) {
-      navigation.setRoot(getTabsRootLayout(appTheme || deviceTheme || "dark"));
-      // .then(async () => dynamicLink.init());
-      // (async () => dynamicLink.init())();
-    } else {
-      (async () => setOnboardingRoot())();
-    }
+    (async () => setAuthRoot())();
   }, [appTheme, deviceTheme, isOnboardingVisited]);
 
   return <LoadingComponent size={"large"} />;

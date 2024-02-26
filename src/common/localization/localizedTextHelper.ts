@@ -1,6 +1,6 @@
-import {i18next} from "~/common/localization/localization";
-import {LocalizedTextDto} from "~/infrastructure/dto/common/LocalizedTextDto";
-import {LanguageEnum} from "~/infrastructure/dto/common/LanguageEnum";
+import {i18next} from "./localization";
+import {LocalizedTextDto} from "../../infrastructure/dto/common/LocalizedTextDto";
+import {LanguageEnum} from "../../infrastructure/dto/common/LanguageEnum";
 
 export function getLocalizedValue(value?: string | number | LocalizedTextDto | null): string | undefined {
   if (!value) {

@@ -1,7 +1,7 @@
 import {setDateLocale} from "./dateFormatter";
 // eslint-disable-next-line no-restricted-imports
-import i18n, {TFuncKey} from "i18next";
-import {getI18n, initReactI18next} from "react-i18next";
+import i18n from "i18next";
+import {getI18n, initReactI18next, TFuncKey} from "react-i18next";
 import {findBestAvailableLanguage} from "react-native-localize";
 import {I18nManager} from "react-native";
 import type en from "./translations/en.json";

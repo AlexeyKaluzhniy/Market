@@ -1,13 +1,13 @@
 import React, {FC, memo, MutableRefObject, useCallback, useEffect, useMemo, useState} from "react";
-import {ImageResources} from "~/common/ImageResources.g";
+import {ImageResources} from "../ImageResources.g";
 import {Image, ImageStyle, Platform, Pressable, StyleSheet, TextStyle, ViewStyle} from "react-native";
-import {ThemeColors} from "~/core/theme/colors";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {useThemedStyles} from "~/core/theme/hooks";
+import {ThemeColors} from "../../core/theme/colors";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {useThemedStyles} from "../../core/theme/hooks";
 import dayjs from "dayjs";
-import {isIos} from "~/core/theme/commonConsts";
+import {isIos} from "../../core/theme/commonConsts";
 import {useTranslation} from "react-i18next";
-import {showDatePicker} from "~/services/navigationService/showDatePicker";
+import {showDatePicker} from "../../services/navigationService/showDatePicker";
 
 interface IProps {
   nextInputFocusRefGetter?: () => MutableRefObject<any>;

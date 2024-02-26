@@ -1,8 +1,8 @@
 import React, {FC, memo} from "react";
 import {StyleSheet, View, ViewStyle} from "react-native";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {Brand} from "~/infrastructure/typography";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {CommonStyles} from "../../core/theme/commonStyles";
+import {Brand} from "../../infrastructure/typography";
 
 interface IProps {
   title: string;

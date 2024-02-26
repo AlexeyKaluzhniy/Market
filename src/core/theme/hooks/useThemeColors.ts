@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from "react";
-import {DarkThemeColors, LightThemeColors} from "~/core/theme/colors";
-import {useAppSelector} from "~/core/store/store";
+import {DarkThemeColors, LightThemeColors} from "../colors";
+import {useAppSelector} from "../../store/store";
 
 export function useThemeColors() {
   const [appTheme, deviceTheme] = useAppSelector(state => [state.system.appTheme, state.system.deviceTheme]);

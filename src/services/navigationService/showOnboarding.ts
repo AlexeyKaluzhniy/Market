@@ -1,6 +1,6 @@
-import {Pages} from "~/navigation/pages";
+import {Pages} from "../../navigation/pages";
 import {Layout, Navigation} from "react-native-navigation";
-import {isIos} from "~/core/theme/commonConsts";
+import {isIos} from "../../core/theme/commonConsts";
 
 export function showOnboarding() {
   if (isIos) {

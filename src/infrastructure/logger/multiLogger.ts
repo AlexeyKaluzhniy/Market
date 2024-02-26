@@ -1,5 +1,5 @@
 import {Logger, LogLevel} from "./types/logger";
-import {DexLogger} from "~/infrastructure/logger/dexLogger";
+import {DexLogger} from "./dexLogger";
 
 
 // noinspection JSUnusedGlobalSymbols

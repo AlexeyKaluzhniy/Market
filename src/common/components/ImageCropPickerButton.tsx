@@ -3,7 +3,7 @@ import ImagePicker, {Image as CropperImage, Options} from "react-native-image-cr
 import {ImageStyle, ImageURISource, ViewStyle} from "react-native";
 import {ImageResources} from "../ImageResources.g";
 import {PhotoTakingButton} from "./PhotoTakingButton";
-import {i18next} from "~/common/localization/localization";
+import {i18next} from "../localization/localization";
 import {showActionSheet} from "../helpers/dialogsHelpers";
 
 interface IProps {

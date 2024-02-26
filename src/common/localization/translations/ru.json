@@ -70,7 +70,7 @@
     },
     "onboarding": {
       "welcomeToApp": "Здравствуй",
-      "firstHeader": "Добро пожаловать в Market",
+      "firstHeader": "Добро пожаловать в HelloWorld",
       "firstBody": "firstBody",
       "secondHeader": "secondHeader",
       "secondBody": "secondBody",
@@ -80,7 +80,7 @@
       "forthBody": "forthBody",
       "allowPush": "Разрешить уведомления",
       "pushDeniedDialog": {
-        "title": "Включите уведомления приложения Market",
+        "title": "Включите уведомления приложения HelloWorld",
         "text": "Разрешить приложению отправку вам уведомлений можно в настройках вашего устройства",
         "cancel": "Отменить",
         "settings": "Перейти в настройки"
@@ -89,6 +89,8 @@
     "authentication": {
       "login": "Войти",
       "register": "Зарегистрироваться",
+      "loginTab": "Вход",
+      "registerTab":  "Регистрация",
       "authScreenTitle": "Единый кабинет\nболельщика",
       "phoneNumber": "Номер телефона",
       "phoneNumberInUse": "Номер телефона уже используется.\nПопробуйте авторизоваться с этим номером телефона или сбросить пароль либо укажите другой номер",
@@ -96,7 +98,8 @@
       "repeatPassword": "Повторите пароль",
       "forgotPassword": "Забыли пароль?",
       "doNotHaveAccountYet": "У вас еще нет аккаунта? ",
-      "toRegisterInPersonalCabinet": "Зарегистрироваться в личном кабинете",
+      "toRegisterInPersonalCabinet": "Зарегистрироваться в личном кабинете ФК\u00A0«Спартак»",
+      "sendSms": "Отправить",
       "smsCodeSent": "Код отправлен по номеру",
       "emailCodeSent": "Код отправлен на e-mail",
       "toRegister": "Зарегистрируйтесь",
@@ -114,7 +117,7 @@
         "noFanCardRegistration": "у меня нет"
       },
       "withSocialNetwork": "Через социальную сеть",
-      "goToPersonalCabinet": "Войти в личный кабинет",
+      "goToPersonalCabinet": "Войти в личный кабинет ФК\u00A0«Спартак»",
       "phoneHint": "Введите номера телефона привязанного к абонементу или карте болельщика.",
       "resetPasswordTitle": "на указанный номер будет выслан новый пароль",
       "resetPasswordHint": "Если у вас уже есть абонемент или карта болельщика, то укажите привязанный номер телефона.",
@@ -132,7 +135,7 @@
       "middleName": "Отчество",
       "phoneOrEmail": "Телефон или e-mail",
       "enterEmailOrPhone": "Введите email или телефон",
-      "recoverPassword": "Восстановить пароль",
+      "recoverPassword": "Восстановление пароля",
       "registrationUserData": {
         "birthDate": "Дата рождения",
         "email": "E-mail",
@@ -140,20 +143,28 @@
         "wantToBeSteward": "Я хочу стать стюардом",
         "toAcceptWith": "Я соглашаюсь с ",
         "toAcceptOnReceivingNews": "Я соглашаюсь на получение новостей и рекламной информации, ",
-        "rulesAndConditions": "правилами и условиями",
-        "clubName": " Hello world",
+        "rulesAndConditions": "Правилами и условиями использования",
+        "clubName": " ФК\u00A0”Спартак”",
         "personalDataProcessing": "обработку персональных данных",
         "from": " от ",
         "partners": "партнеров клуба",
         "sex": "Пол",
         "male": "Мужской",
         "female": "Женский"
-      }
+      },
+      "phoneRecovery": "Введите номер телефона, на который будет отправлен код для сброса пароля",
+      "enterCode": "Введите код",
+      "enterCodeText": "Введите код, отправленный на +",
+      "confirm": "Подтвердить",
+      "newPassword": "Новый пароль",
+      "savePassword": "Сохранить новый пароль"
     },
     "pages": {
       "main": "Главная",
       "news": "Новости",
       "shop": "Покупки",
+      "favorite": "Избранное",
+      "profile":  "Профиль",
       "login": "Вход",
       "forgotPassword": "Забыли пароль",
       "leftSideMenu": "Left Side Menu",

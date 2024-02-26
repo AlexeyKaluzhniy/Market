@@ -6,7 +6,7 @@ export const CommonSizes = {
     extraSmallPlus: 12,
     small: 13,
     smallPlus: 15,
-    medium: 17,
+    medium: 16,
     mediumPlus: 20,
     large: 22,
     largePlus: 28,

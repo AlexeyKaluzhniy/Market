@@ -1,15 +1,15 @@
 import React, {FC, memo, useCallback, useState} from "react";
 import {Image, ImageStyle, ListRenderItemInfo, ScrollView, StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle} from "react-native";
-import {FlatListWrapper} from "~/common/components/FlatListWrapper";
-import {useThemedStyles} from "~/core/theme/hooks";
-import {ThemeColors} from "~/core/theme/colors";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {Regular} from "~/infrastructure";
-import {windowHeight} from "~/core/theme/commonConsts";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {ImageResources} from "~/common/ImageResources.g";
-import {CustomInput} from "~/common/components/CustomInput";
-import {ItemIdNameDto} from "~/infrastructure/dto/common";
+import {FlatListWrapper} from "../common/components/FlatListWrapper";
+import {useThemedStyles} from "../core/theme/hooks";
+import {ThemeColors} from "../core/theme/colors";
+import {CommonSizes} from "../core/theme/commonSizes";
+import {Regular} from "../infrastructure";
+import {windowHeight} from "../core/theme/commonConsts";
+import {CommonStyles} from "../core/theme/commonStyles";
+import {ImageResources} from "../common/ImageResources.g";
+import {CustomInput} from "../common/components/CustomInput";
+import {ItemIdNameDto} from "../infrastructure/dto/common";
 
 interface IProps {
   selectableItems: ItemIdNameDto[] | undefined;

@@ -4,7 +4,7 @@ import {StyleProp, StyleSheet, Text, TextProps, TextStyle} from "react-native";
 import {LabelTypes, LabelSizes, LabelWeights} from "../types";
 import {Typography} from "../typography";
 import {useTranslation} from "react-i18next";
-import {TFuncKeyApp} from "~/common/localization/localization";
+import {TFuncKeyApp} from "../../../common/localization/localization";
 
 export interface ILabelProps extends TextProps {
   size: LabelSizes;
@@ -22,13 +22,12 @@ export const Label: FC<ILabelProps> = memo((props) => {
   const {t} = useTranslation();
   const style = useMemo(
     () => {
-      let baseStyle: TextStyle | null = _.get(config, `${props.type}.${props.size}`, null);
+      const baseStyle: TextStyle = _.get(config, `${props.type}.${props.size}`, null);
 
       if (!baseStyle) {
         logger?.warn(`${props.type} style of size ${props.size} where not found`, {
           stack: new Error("debug error").stack,
         });
-        baseStyle = {} as TextStyle;
       }
 
       switch (props.weight) {

@@ -10,15 +10,14 @@ import {
   TabView,
   TabViewProps,
 } from "react-native-tab-view";
-import {windowWidth} from "~/core/theme/commonConsts";
-import {StyleProp, StyleSheet, TextStyle} from "react-native";
-import {NavigationState, SceneRendererProps} from "react-native-tab-view";
-import {Scene} from "react-native-tab-view/lib/typescript/src/types";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {ThemeColors} from "~/core/theme/colors";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {Brand} from "~/infrastructure";
-import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {windowWidth} from "../core/theme/commonConsts";
+import {StyleProp, StyleSheet, TextStyle, useWindowDimensions} from "react-native";
+import {NavigationState, Scene, SceneRendererProps} from "react-native-tab-view/lib/typescript/types";
+import {CommonStyles} from "../core/theme/commonStyles";
+import {Colors, LightThemeColors, ThemeColors} from "../core/theme/colors";
+import {CommonSizes} from "../core/theme/commonSizes";
+import {Brand} from "../infrastructure";
+import {useThemeColors, useThemedStyles} from "../core/theme/hooks";
 
 type TabRoute = Route & {isFirst: boolean; isLast: boolean};
 
@@ -28,7 +27,6 @@ interface IProps<T extends Route, B extends Route> extends Omit<TabViewProps<T>,
   onIndexChange?: (index: number) => void;
   forcedRouteIndex?: number;
 }
-
 export const TabsMargined: <T extends Route>(props: IProps<T & TabRoute, T> & {edgePadding?: number}) => ReactElement | null = memo((
   {
     edgePadding = CommonSizes.spacing.medium,
@@ -50,7 +48,7 @@ export const TabsMargined: <T extends Route>(props: IProps<T & TabRoute, T> & {e
           return CustomTabBarItem({
             ...props,
             tabContainerStyle: StyleSheet.compose(props.tabContainerStyle, customStyle),
-            activeColor: colors.text,
+            activeColor: LightThemeColors.main,
             inactiveColor: colors.text,
           });
         },
@@ -114,12 +112,12 @@ export const CustomTabBar = <T extends Route>(props: SceneRendererProps & Partia
       scrollEnabled={true}
       tabStyle={styles.tab}
       contentContainerStyle={CommonStyles.flexGrow}
-      indicatorStyle={styles.indicator}
+      indicatorStyle={{backgroundColor: LightThemeColors.main, height: 3, width: 1}}
       indicatorContainerStyle={styles.indicatorContainer}
       renderTabBarItem={CustomTabBarItem}
       renderLabel={renderCustomLabel}
       {...props}
-      style={[styles.tabBar, props.style]}
+      style={[styles.tabBar, props.style, {backgroundColor: Colors.white}]}
     />
   );
 };
@@ -129,6 +127,7 @@ export const CustomTabBarItem = <T extends Route>(props: TabBarItemProps<T> & {k
     <TabBarItem
       {...props}
       tabContainerStyle={[CommonStyles.flexGrow, CommonStyles.flex1, props.tabContainerStyle]}
+      labelStyle={{color: LightThemeColors.text}}
     />
   );
 };
@@ -139,7 +138,7 @@ export const CustomLabel = (props: Scene<Route> & {
   style?: StyleProp<TextStyle>;
 }) => {
   const styles = useThemedStyles(stylesG);
-  const Component = props.focused ? Brand.H4 : Brand.H5;
+  const Component = Brand.H5;
   const anyRoute = props.route as any;
   const componentStyle = useMemo(() => {
     return [
@@ -163,7 +162,6 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
   },
   tabBar: {
     ...CommonStyles.shadow,
-    backgroundColor: colors.background,
   },
   tab: {
     minHeight: 1,
@@ -172,16 +170,14 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     alignItems: "stretch",
   },
   indicator: {
-    backgroundColor: colors.main,
+    backgroundColor: LightThemeColors.main,
     height: 2,
   },
   label: {
     flexGrow: 1,
-    color: colors.text,
+    color: LightThemeColors.text,
     textAlign: "center",
-    textTransform: "uppercase",
-    paddingTop: 8,
-    paddingBottom: 6,
+    paddingVertical: 15,
   },
 });
 

@@ -1,8 +1,8 @@
 import React, {FC, useMemo} from "react";
 import {StyleSheet, View, ViewStyle} from "react-native";
-import {Colors} from "~/core/theme/colors";
-import {hairlineWidth} from "~/core/theme/commonConsts";
-import {CommonSizes} from "~/core/theme/commonSizes";
+import {Colors} from "../../core/theme/colors";
+import {hairlineWidth} from "../../core/theme/commonConsts";
+import {CommonSizes} from "../../core/theme/commonSizes";
 
 interface IProps {
   isFull?: boolean;

@@ -1,19 +1,19 @@
 import React, {FC, memo, useCallback} from "react";
 import {Image, ImageStyle, StyleSheet, TextStyle, View, ViewStyle} from "react-native";
 import {useTranslation} from "react-i18next";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {CommonStyles} from "~/core/theme/commonStyles";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {CommonStyles} from "../../core/theme/commonStyles";
 import {ImageResources} from "../ImageResources.g";
 import {PrimaryButton} from "./PrimaryButton";
-import {ButtonType} from "~/types";
+import {ButtonType} from "../../types";
 import {LoadingComponent} from "./LoadingComponent";
-import {Regular} from "~/infrastructure";
-import {useThemedStyles} from "~/core/theme/hooks";
-import {ThemeColors} from "~/core/theme/colors";
+import {Regular} from "../../infrastructure";
+import {useThemedStyles} from "../../core/theme/hooks";
+import {ThemeColors} from "../../core/theme/colors";
 
 import {FetchBaseQueryError} from "@reduxjs/toolkit/dist/query/react";
 import {SerializedError} from "@reduxjs/toolkit";
-import {ErrorComponent} from "~/common/components/ErrorComponent";
+import {ErrorComponent} from "./ErrorComponent";
 
 type Props = {
   onPress?: () => void;

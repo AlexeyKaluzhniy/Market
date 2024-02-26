@@ -4,15 +4,15 @@ import {Platform, SafeAreaView, StyleSheet, View, ViewStyle} from "react-native"
 import {Navigation, NavigationFunctionComponent, Options} from "react-native-navigation";
 import {useNavigationButtonPress} from "react-native-navigation-hooks";
 import {PrimaryButton} from "./PrimaryButton";
-import {isAndroid, isIos} from "~/core/theme/commonConsts";
-import {Fonts} from "~/core/theme/fonts";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {Colors} from "~/core/theme/colors";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {ButtonType} from "~/types";
+import {isAndroid, isIos} from "../../core/theme/commonConsts";
+import {Fonts} from "../../core/theme/fonts";
+import {CommonStyles} from "../../core/theme/commonStyles";
+import {Colors} from "../../core/theme/colors";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {ButtonType} from "../../types";
 import {useTranslation} from "react-i18next";
 import {i18next} from "../localization/localization";
-import {useThemeColors} from "~/core/theme/hooks";
+import {useThemeColors} from "../../core/theme/hooks";
 
 export interface IDatePickerProps {
   value: Date;

@@ -1,9 +1,9 @@
 import React, {FC, memo} from "react";
 import {StyleSheet, TouchableOpacity, View, ViewStyle} from "react-native";
-import {Colors} from "~/core/theme/colors";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {isAndroid} from "~/core/theme/commonConsts";
-import {Brand} from "~/infrastructure";
+import {Colors} from "../../../core/theme/colors";
+import {CommonSizes} from "../../../core/theme/commonSizes";
+import {isAndroid} from "../../../core/theme/commonConsts";
+import {Brand} from "../../../infrastructure";
 
 interface IProps {
   totalItems: number;

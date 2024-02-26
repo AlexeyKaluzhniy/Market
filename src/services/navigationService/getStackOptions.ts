@@ -1,8 +1,8 @@
-import {TFuncKeyApp} from "~/common/localization/localization";
+import {TFuncKeyApp} from "../../common/localization/localization";
 import {Options} from "react-native-navigation";
-import {IGetOptions, IGetOptionsOptionalButtons, INavigationPage} from "~/types";
-import {isIos} from "~/core/theme/commonConsts";
-import {Components} from "~/navigation/components";
+import {IGetOptions, IGetOptionsOptionalButtons, INavigationPage} from "../../types";
+import {isIos} from "../../core/theme/commonConsts";
+import {Components} from "../../navigation/components";
 
 function getOptions({title, screenId, optionalButtons}: IGetOptions) {
   const options: Options = {

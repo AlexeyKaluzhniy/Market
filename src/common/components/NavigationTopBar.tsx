@@ -1,13 +1,13 @@
 import React, {FC, memo, ReactNode, useMemo} from "react";
 import {Image, ImageStyle, StyleProp, StyleSheet, TextStyle, View, ViewStyle} from "react-native";
-import {ThemeColors} from "~/core/theme/colors";
-import {CommonSizes} from "~/core/theme/commonSizes";
+import {ThemeColors} from "../../core/theme/colors";
+import {CommonSizes} from "../../core/theme/commonSizes";
 import {TouchablePlatform} from "./TouchablePlatform";
 import {ImageResources} from "../ImageResources.g";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {hitSlopBig} from "~/core/theme/commonConsts";
-import {Brand} from "~/infrastructure";
-import {useThemedStyles} from "~/core/theme/hooks";
+import {CommonStyles} from "../../core/theme/commonStyles";
+import {hitSlopBig} from "../../core/theme/commonConsts";
+import {Brand} from "../../infrastructure";
+import {useThemedStyles} from "../../core/theme/hooks";
 
 interface IProps {
   style?: StyleProp<ViewStyle>;

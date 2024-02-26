@@ -11,11 +11,11 @@ import {
 } from "react-native";
 import {Navigation, NavigationConstants, NavigationFunctionComponent} from "react-native-navigation";
 import {useNavigationComponentDidAppear} from "react-native-navigation-hooks";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {Colors} from "~/core/theme/colors";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {isIos, minWindowDimension} from "~/core/theme/commonConsts";
-import {Brand} from "~/infrastructure";
+import {CommonSizes} from "../../core/theme/commonSizes";
+import {Colors} from "../../core/theme/colors";
+import {CommonStyles} from "../../core/theme/commonStyles";
+import {isIos, minWindowDimension} from "../../core/theme/commonConsts";
+import {Brand} from "../../infrastructure";
 
 export interface IToastNavProps {
   text: string;

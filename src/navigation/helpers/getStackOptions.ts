@@ -1,12 +1,12 @@
 import {Options} from "react-native-navigation/lib/dist/src/interfaces/Options";
-import {i18next, TFuncKeyApp} from "~/common/localization/localization";
+import {i18next, TFuncKeyApp} from "../../common/localization/localization";
 import {useTranslation} from "react-i18next";
 import {useEffect} from "react";
 import {Navigation} from "react-native-navigation";
 import {useNavigationButtonPress} from "react-native-navigation-hooks";
-import {INavigationPage} from "~/types";
-import {Colors} from "~/core/theme/colors";
-import {Fonts} from "~/core/theme/fonts";
+import {INavigationPage} from "../../types";
+import {Colors} from "../../core/theme/colors";
+import {Fonts} from "../../core/theme/fonts";
 
 function getOptions(i18nKey: TFuncKeyApp, optionMigrator?: (customOptions: Options) => Options) {
   const options: Options = {

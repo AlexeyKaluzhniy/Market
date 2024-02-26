@@ -6,17 +6,17 @@ import type {
   WebViewNavigationEvent,
   WebViewProgressEvent,
 } from "react-native-webview/lib/WebViewTypes";
-import {HttpUrl} from "~/common/urls/httpUrl";
-import {LoadingComponent} from "~/common/components/LoadingComponent";
+import {HttpUrl} from "../common/urls/httpUrl";
+import {LoadingComponent} from "../common/components/LoadingComponent";
 import {Image, ImageStyle, StyleSheet, View, ViewStyle} from "react-native";
-import {ThemeColors} from "~/core/theme/colors";
-import {useThemedStyles} from "~/core/theme/hooks";
-import {TryAgain} from "~/common/components/TryAgain";
+import {ThemeColors} from "../core/theme/colors";
+import {useThemedStyles} from "../core/theme/hooks";
+import {TryAgain} from "../common/components/TryAgain";
 import {useTranslation} from "react-i18next";
 import NetInfo from "@react-native-community/netinfo";
-import {TouchablePlatform} from "~/common/components/TouchablePlatform";
-import {ImageResources} from "~/common/ImageResources.g";
-import {CommonSizes} from "~/core/theme/commonSizes";
+import {TouchablePlatform} from "../common/components/TouchablePlatform";
+import {ImageResources} from "../common/ImageResources.g";
+import {CommonSizes} from "../core/theme/commonSizes";
 
 interface IProps extends WebViewProps {
   onRef?: (ref: WebView) => void;
@@ -54,7 +54,7 @@ export const AppWebView: FC<IProps> = memo((props) => {
 
   const onRequest = useCallback((event: ShouldStartLoadRequest) => {
     console.log("onRequest event", {...event});
-    if (event.url.indexOf("market.com") < 0) {
+    if (event.url.indexOf("spartak.com") < 0) {
       new HttpUrl(event.url).tryOpen();
 
       return false;

@@ -11,4 +11,5 @@ export enum ServerErrorTypes {
   emailCodeNotFound = "errors.EmailCodeNotFoundException.RegisterRequest",
   userAlreadyExist = "errors.UserAlreadyExistException.RegisterRequest",
   userNotFound = "errors.UserNotFoundException.UserDb",
+  spartakApiException = "errors.SpartakApiException",
 }

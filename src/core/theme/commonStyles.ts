@@ -1,11 +1,14 @@
 import {Platform, StyleSheet, TextStyle, ViewStyle} from "react-native";
 import {Fonts} from "./fonts";
 import {CommonSizes} from "./commonSizes";
-import {Colors} from "~/core/theme/colors";
+import {Colors} from "./colors";
 
 export const CommonStyles = StyleSheet.create({
   flex1: {
     flex: 1,
+  } as ViewStyle,
+  marginContainer: {
+    marginTop: 100
   } as ViewStyle,
   flexGrow: {
     flexGrow: 1,

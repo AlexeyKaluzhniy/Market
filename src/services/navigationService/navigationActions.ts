@@ -1,5 +1,5 @@
 import {Navigation} from "react-native-navigation";
-import {Pages} from "~/navigation/pages";
+import {Pages} from "../../navigation/pages";
 
 const MULTIPLIER = 1.9;
 const POP_MULTIPLIER = 1.0;
