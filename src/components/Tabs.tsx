@@ -1,49 +1,55 @@
 import React, {memo, ReactElement, useCallback, useEffect, useMemo, useState} from "react";
 import {
-  Route,
-  TabBar,
-  TabBarIndicator,
-  TabBarIndicatorProps,
-  TabBarItem,
-  TabBarItemProps,
-  TabBarProps,
-  TabView,
-  TabViewProps,
+    Route,
+    TabBar,
+    TabBarIndicator,
+    TabBarIndicatorProps,
+    TabBarItem,
+    TabBarItemProps,
+    TabBarProps,
+    TabView,
+    TabViewProps,
 } from "react-native-tab-view";
-import {windowWidth} from "../core/theme/commonConsts";
-import {StyleProp, StyleSheet, TextStyle, useWindowDimensions} from "react-native";
+import {windowWidth} from "~/core/theme/commonConsts";
+import {StyleProp, StyleSheet, TextStyle} from "react-native";
 import {NavigationState, Scene, SceneRendererProps} from "react-native-tab-view/lib/typescript/types";
-import {CommonStyles} from "../core/theme/commonStyles";
-import {Colors, LightThemeColors, ThemeColors} from "../core/theme/colors";
-import {CommonSizes} from "../core/theme/commonSizes";
-import {Brand} from "../infrastructure";
-import {useThemeColors, useThemedStyles} from "../core/theme/hooks";
+import {CommonStyles} from "~/core/theme/commonStyles";
+import {Colors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
+import {CommonSizes} from "~/core/theme/commonSizes";
+import {Brand} from "~/infrastructure";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
-type TabRoute = Route & {isFirst: boolean; isLast: boolean};
+type TabRoute = Route & { isFirst: boolean; isLast: boolean };
 
-interface IProps<T extends Route, B extends Route> extends Omit<TabViewProps<T>, keyof {navigationState: any; onIndexChange: any}> {
-  routes: TabViewProps<B>["navigationState"]["routes"];
-  initialRouteKey?: string;
-  onIndexChange?: (index: number) => void;
-  forcedRouteIndex?: number;
+interface IProps<T extends Route, B extends Route> extends Omit<TabViewProps<T>, keyof {
+    navigationState: any;
+    onIndexChange: any
+}> {
+    routes: TabViewProps<B>["navigationState"]["routes"];
+    initialRouteKey?: string;
+    onIndexChange?: (index: number) => void;
+    forcedRouteIndex?: number;
 }
-export const TabsMargined: <T extends Route>(props: IProps<T & TabRoute, T> & {edgePadding?: number}) => ReactElement | null = memo((
-  {
-    edgePadding = CommonSizes.spacing.medium,
-    routes,
-    renderTabBar = CustomTabBar,
-    ...tabsProps
-  },
-) => {
-  const colors = useThemeColors();
 
-  return (
-    <Tabs
-      {...tabsProps}
-      renderTabBar={(tabBarProps) => renderTabBar({
-        ...tabBarProps,
-        renderTabBarItem: (props) => {
-          const customStyle = props.route.isFirst ? {paddingLeft: edgePadding} : props.route.isLast ? {paddingRight: edgePadding} : {};
+export const TabsMargined: <T extends Route>(props: IProps<T & TabRoute, T> & {
+    edgePadding?: number
+}) => ReactElement | null = memo((
+    {
+        edgePadding = CommonSizes.spacing.medium,
+        routes,
+        renderTabBar = CustomTabBar,
+        ...tabsProps
+    },
+) => {
+    const colors = useThemeColors();
+
+    return (
+        <Tabs
+            {...tabsProps}
+            renderTabBar={(tabBarProps) => renderTabBar({
+                ...tabBarProps,
+                renderTabBarItem: (props) => {
+                    const customStyle = props.route.isFirst ? {paddingLeft: 20} : props.route.isLast ? {paddingRight: edgePadding} : {};
 
           return CustomTabBarItem({
             ...props,
@@ -71,113 +77,112 @@ export const TabsMargined: <T extends Route>(props: IProps<T & TabRoute, T> & {e
 });
 
 export const Tabs: <T extends Route>(props: IProps<T, T>) => ReactElement | null = memo((props) => {
-  const {routes, initialRouteKey, forcedRouteIndex, onIndexChange, ...tabProps} = props;
-  const initialRouteIndex = routes.findIndex(el => el.key == initialRouteKey);
-  const [index, setIndex] = useState(initialRouteIndex == -1 ? 0 : initialRouteIndex);
-  const onTabIndexChange = useCallback((newIndex: number) => {
-    setIndex(newIndex);
-    onIndexChange?.(newIndex);
-  }, [onIndexChange]);
-  useEffect(() => {
-    if (forcedRouteIndex != null && forcedRouteIndex >= 0) {
-      setIndex(forcedRouteIndex);
-    }
-  }, [forcedRouteIndex]);
+    const {routes, initialRouteKey, forcedRouteIndex, onIndexChange, ...tabProps} = props;
+    const initialRouteIndex = routes.findIndex(el => el.key == initialRouteKey);
+    const [index, setIndex] = useState(initialRouteIndex == -1 ? 0 : initialRouteIndex);
+    const onTabIndexChange = useCallback((newIndex: number) => {
+        setIndex(newIndex);
+        onIndexChange?.(newIndex);
+    }, [onIndexChange]);
+    useEffect(() => {
+        if (forcedRouteIndex != null && forcedRouteIndex >= 0) {
+            setIndex(forcedRouteIndex);
+        }
+    }, [forcedRouteIndex]);
 
-  return (
-    <TabView
-      lazy
-      initialLayout={useMemo(() => ({width: windowWidth, height: 0}), [])}
-      navigationState={useMemo(() => ({index, routes}), [index, routes])}
-      renderTabBar={CustomTabBar}
-      onIndexChange={onTabIndexChange}
-      //todo add focused to renderScene
-      {...tabProps}
-    />
-  );
+    return (
+        <TabView
+            lazy
+            initialLayout={useMemo(() => ({width: windowWidth, height: 0}), [])}
+            navigationState={useMemo(() => ({index, routes}), [index, routes])}
+            renderTabBar={CustomTabBar}
+            onIndexChange={onTabIndexChange}
+            //todo add focused to renderScene
+            {...tabProps}
+        />
+    );
 });
 
 export const CustomTabBar = <T extends Route>(props: SceneRendererProps & Partial<TabBarProps<T>> & {
-  navigationState: NavigationState<T>;
+    navigationState: NavigationState<T>;
 }) => {
-  const renderCustomLabel = useCallback((labelProps: Scene<Route> & {
-    focused: boolean;
-    color: string;
-    style?: StyleProp<TextStyle>;
-  }) => <CustomLabel {...labelProps} />, []);
-  const styles = useThemedStyles(stylesG);
+    const renderCustomLabel = useCallback((labelProps: Scene<Route> & {
+        focused: boolean;
+        color: string;
+        style?: StyleProp<TextStyle>;
+    }) => <CustomLabel {...labelProps} />, []);
+    const styles = useThemedStyles(stylesG);
 
-  return (
-    <TabBar
-      scrollEnabled={true}
-      tabStyle={styles.tab}
-      contentContainerStyle={CommonStyles.flexGrow}
-      indicatorStyle={{backgroundColor: LightThemeColors.main, height: 3, width: 1}}
-      indicatorContainerStyle={styles.indicatorContainer}
-      renderTabBarItem={CustomTabBarItem}
-      renderLabel={renderCustomLabel}
-      {...props}
-      style={[styles.tabBar, props.style, {backgroundColor: Colors.white}]}
-    />
-  );
+    return (
+        <TabBar
+            scrollEnabled={true}
+            tabStyle={styles.tab}
+            contentContainerStyle={CommonStyles.flexGrow}
+            indicatorStyle={{backgroundColor: LightThemeColors.main, height: 3, width: 1}}
+            indicatorContainerStyle={styles.indicatorContainer}
+            renderTabBarItem={CustomTabBarItem}
+            renderLabel={renderCustomLabel}
+            {...props}
+            style={[styles.tabBar, props.style, {backgroundColor: Colors.white}]}
+        />
+    );
 };
 
-export const CustomTabBarItem = <T extends Route>(props: TabBarItemProps<T> & {key: string}) => {
-  return (
-    <TabBarItem
-      {...props}
-      tabContainerStyle={[CommonStyles.flexGrow, CommonStyles.flex1, props.tabContainerStyle]}
-      labelStyle={{color: LightThemeColors.text}}
-    />
-  );
+export const CustomTabBarItem = <T extends Route>(props: TabBarItemProps<T> & { key: string }) => {
+    return (
+        <TabBarItem
+            {...props}
+            labelStyle={{color: LightThemeColors.text}}
+            style={[CommonStyles.flexGrow, CommonStyles.flex1, props.style]}
+        />
+    );
 };
 
 export const CustomLabel = (props: Scene<Route> & {
-  focused: boolean;
-  color: string;
-  style?: StyleProp<TextStyle>;
+    focused: boolean;
+    color: string;
+    style?: StyleProp<TextStyle>;
 }) => {
-  const styles = useThemedStyles(stylesG);
-  const Component = Brand.H5;
-  const anyRoute = props.route as any;
-  const componentStyle = useMemo(() => {
-    return [
-      styles.label,
-      props.style,
-      anyRoute.fontSize ? {fontSize: anyRoute.fontSize} : null,
-      {letterSpacing: props.focused ? undefined : 0.2} as TextStyle
-    ];
-  }, [anyRoute.fontSize, props.focused, props.style, styles.label]);
+    const styles = useThemedStyles(stylesG);
+    const Component = Brand.H5;
+    const anyRoute = props.route as any;
+    const componentStyle = useMemo(() => {
+        return [
+            styles.label,
+            props.style,
+            anyRoute.fontSize ? {fontSize: anyRoute.fontSize} : null,
+            {letterSpacing: props.focused ? undefined : 0.2} as TextStyle
+        ];
+    }, [anyRoute.fontSize, props.focused, props.style, styles.label]);
 
-  return (
-    <Component style={componentStyle} numberOfLines={1} allowFontScaling={false}>
-      {props.route.title}
-    </Component>
-  );
+    return (
+        <Component style={componentStyle} numberOfLines={1} allowFontScaling={false}>
+            {props.route.title}
+        </Component>
+    );
 };
 
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
-  indicatorContainer: {
-    marginHorizontal: 16,
-  },
-  tabBar: {
-    ...CommonStyles.shadow,
-  },
-  tab: {
-    minHeight: 1,
-    width: "auto",
-    padding: 0,
-    alignItems: "stretch",
-  },
-  indicator: {
-    backgroundColor: LightThemeColors.main,
-    height: 2,
-  },
-  label: {
-    flexGrow: 1,
-    color: LightThemeColors.text,
-    textAlign: "center",
-    paddingVertical: 15,
-  },
+    indicatorContainer: {
+        marginHorizontal: 16,
+    },
+    tabBar: {
+        ...CommonStyles.shadow,
+    },
+    tab: {
+        minHeight: 1,
+        width: "auto",
+        padding: 0,
+        alignItems: "stretch",
+    },
+    indicator: {
+        backgroundColor: LightThemeColors.main,
+        height: 2,
+    },
+    label: {
+        flexGrow: 1,
+        color: LightThemeColors.text,
+        textAlign: "center",
+        paddingVertical: 15,
+    },
 });
-
