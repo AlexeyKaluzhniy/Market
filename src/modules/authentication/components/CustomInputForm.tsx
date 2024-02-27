@@ -31,10 +31,19 @@ export function CustomInputForm(
     const [toggleCheckBox, setToggleCheckBox] = useState(false);
     const {
         setValue,
+        getValues,
         handleSubmit
     } = useForm({resolver: yupResolver(schema)});
 
-    const onButtonPress = handleSubmit((data) => {
+    const onButtonPress = handleSubmit(() => {
+        const data = getValues();
+        if (isRegister) {
+            if (data.hasOwnProperty('repeatPassword')) {
+                onSubmit({email: getValues('email'), password: getValues('password')});
+
+                return;
+            }
+        }
         onSubmit(data);
     });
 
