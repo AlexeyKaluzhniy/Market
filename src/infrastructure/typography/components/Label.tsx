@@ -4,7 +4,7 @@ import {StyleProp, StyleSheet, Text, TextProps, TextStyle} from "react-native";
 import {LabelTypes, LabelSizes, LabelWeights} from "../types";
 import {Typography} from "../typography";
 import {useTranslation} from "react-i18next";
-import {TFuncKeyApp} from "../../../common/localization/localization";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 export interface ILabelProps extends TextProps {
   size: LabelSizes;
@@ -68,6 +68,6 @@ export const Label: FC<ILabelProps> = memo((props) => {
 });
 
 Label.defaultProps = {
-  size: LabelSizes.H4,
+  size: LabelSizes.Medium,
   weight: LabelWeights.Regular,
 };

@@ -1,16 +1,14 @@
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import React from "react";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {useTranslation} from "react-i18next";
-import {Pages} from "../../../navigation/pages";
-import {AuthCustomHeader} from "../../../components/AuthCustomHeader";
+import {Pages} from "~/navigation/pages";
+import {AuthCustomHeader} from "~/components/AuthCustomHeader";
 import {CustomInputForm} from "./CustomInputForm";
-import {CommonStyles} from "../../../core/theme/commonStyles";
+import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, string} from "yup";
+import {Body} from "~/infrastructure";
 
 export const ForgotPassword: NavigationFunctionComponent = (): JSX.Element => {
-    const {t} = useTranslation();
-
     const schema = object({
         email: string().required().matches(/^\+373\d{8}$/),
     });
@@ -30,11 +28,11 @@ export const ForgotPassword: NavigationFunctionComponent = (): JSX.Element => {
 
     return (
         <View style={CommonStyles.flex1}>
-            <AuthCustomHeader headerTitle={t('authentication.recoverPassword')}/>
+            <AuthCustomHeader headerTitle='authentication.recoverPassword'/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
-                <Text style={styles.text}>{t("authentication.phoneRecovery")}</Text>
+                <Body.Medium style={styles.text} labelKey="authentication.phoneRecovery"/>
                 <CustomInputForm
-                    submitButtonTitle={t('authentication.sendSms')}
+                    submitButtonTitle='authentication.sendSms'
                     phoneField
                     schema={schema}
                     onSubmit={onSubmit}
@@ -46,7 +44,7 @@ export const ForgotPassword: NavigationFunctionComponent = (): JSX.Element => {
 
 const styles = StyleSheet.create({
     text: {
-        marginHorizontal: 16
+        marginHorizontal: 16,
     }
 });
 

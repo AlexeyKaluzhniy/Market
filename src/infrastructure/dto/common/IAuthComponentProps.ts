@@ -1,4 +1,5 @@
 import {ObjectSchema} from "yup";
+import {Normalize} from "react-i18next";
 
 interface AuthSchema {
     email: string;
@@ -15,8 +16,18 @@ interface NewPasswordSchema {
     repeatPassword: string;
 }
 
+export interface AuthLocalization {
+    authentication: {
+        sendSms: string;
+        registerTab: string;
+        loginTab: string;
+        savePassword: string;
+        confirm: string;
+    };
+}
+
 export interface IAuthComponentProps {
-    submitButtonTitle: string;
+    submitButtonTitle: Normalize<AuthLocalization>;
     isLogin?: boolean;
     phoneField?: boolean;
     passwordField?: boolean;

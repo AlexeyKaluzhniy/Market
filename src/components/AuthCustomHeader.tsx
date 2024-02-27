@@ -1,15 +1,22 @@
 import React from "react";
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {StyleSheet, TouchableOpacity, View} from "react-native";
 import ArrowBackIcon from '../../resources/icons/arrow_back.svg';
-import {CommonStyles} from "../core/theme/commonStyles";
-import {LanguageButton} from "../common/components/LanguageButton";
+import {CommonStyles} from "~/core/theme/commonStyles";
+import {LanguageButton} from "~/common/components/LanguageButton";
 import {Navigation} from "react-native-navigation";
-import {Pages} from "../navigation/pages";
-import {CommonSizes} from "../core/theme/commonSizes";
-import {LightThemeColors} from "../core/theme/colors";
+import {Pages} from "~/navigation/pages";
+import {CommonSizes} from "~/core/theme/commonSizes";
+import {LightThemeColors} from "~/core/theme/colors";
+import {Title} from "~/infrastructure";
+import {Normalize} from "react-i18next";
 
 interface IProps {
-    headerTitle: string;
+    headerTitle: Normalize<{
+        authentication: {
+          enterCode: string;
+          newPassword: string;
+        };
+    }>;
 }
 
 export function AuthCustomHeader({headerTitle}: IProps) {
@@ -23,7 +30,7 @@ export function AuthCustomHeader({headerTitle}: IProps) {
                 <TouchableOpacity onPress={handleGoBack}>
                     <ArrowBackIcon/>
                 </TouchableOpacity>
-                <Text style={styles.headerTitle}>{headerTitle}</Text>
+                <Title.Large style={styles.headerTitle} labelKey={headerTitle}/>
             </View>
             <LanguageButton/>
         </View>

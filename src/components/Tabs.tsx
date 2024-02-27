@@ -16,8 +16,8 @@ import {NavigationState, Scene, SceneRendererProps} from "react-native-tab-view/
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {Colors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {Brand} from "~/infrastructure";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {Title} from "~/infrastructure";
 
 type TabRoute = Route & { isFirst: boolean; isLast: boolean };
 
@@ -32,7 +32,7 @@ interface IProps<T extends Route, B extends Route> extends Omit<TabViewProps<T>,
 }
 
 export const TabsMargined: <T extends Route>(props: IProps<T & TabRoute, T> & {
-    edgePadding?: number
+    edgePadding?: number;
 }) => ReactElement | null = memo((
     {
         edgePadding = CommonSizes.spacing.medium,
@@ -144,7 +144,7 @@ export const CustomLabel = (props: Scene<Route> & {
     style?: StyleProp<TextStyle>;
 }) => {
     const styles = useThemedStyles(stylesG);
-    const Component = Brand.H5;
+    const Component = Title.Small;
     const anyRoute = props.route as any;
     const componentStyle = useMemo(() => {
         return [

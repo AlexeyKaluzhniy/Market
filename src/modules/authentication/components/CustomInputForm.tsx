@@ -9,11 +9,11 @@ import {useTranslation} from "react-i18next";
 import PhoneIcon from "../../../../resources/icons/phone.svg";
 import LockIcon from "../../../../resources/icons/lock.svg";
 import {Navigation} from "react-native-navigation";
-import {Pages} from "../../../navigation/pages";
-import {SubmitButton} from "../../../components/SubmitButton";
-import {Brand} from "../../../infrastructure";
+import {Pages} from "~/navigation/pages";
+import {SubmitButton} from "~/components/SubmitButton";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
+import {Body, LabelFont} from "~/infrastructure";
 
 export function CustomInputForm(
     {
@@ -89,13 +89,13 @@ export function CustomInputForm(
                         tintColors={{true: LightThemeColors.main}}
                         style={styles.checkBox}
                     />
-                    <Brand.H4>{t("authentication.registrationUserData.toAcceptWith")}
-                        <Brand.H4
+                    <Body.Large>{t("authentication.registrationUserData.toAcceptWith")}
+                        <Body.Large
                             labelKey="authentication.registrationUserData.rulesAndConditions"
                             onPress={() => console.log('++++')}
                             style={styles.agreePrivacyTextColor}
                         />
-                    </Brand.H4>
+                    </Body.Large>
                 </View>
             }
             <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle}/>
@@ -105,7 +105,7 @@ export function CustomInputForm(
                     style={styles.forgotPasswordContainer}
                     onPress={() => handleForgotPassword(Pages.forgotPassword.name)}
                 >
-                    <Brand.H5 labelKey={"authentication.forgotPassword"} style={styles.forgotPassword}/>
+                    <LabelFont.Large labelKey="authentication.forgotPassword" style={styles.forgotPassword}/>
                 </TouchableOpacity>
             }
         </View>
@@ -123,8 +123,9 @@ const styles = StyleSheet.create({
         color: LightThemeColors.main,
     },
     forgotPasswordContainer: {
-        marginTop: 38,
-        alignItems: 'center'
+        marginTop: 33,
+        alignItems: 'center',
+        paddingVertical: 10
     },
     forgotPassword: {
         color: LightThemeColors.main

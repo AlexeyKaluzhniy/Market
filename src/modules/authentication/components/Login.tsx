@@ -1,14 +1,12 @@
 import React, {useEffect} from "react";
 import {CustomInputForm} from "./CustomInputForm";
-import {useTranslation} from "react-i18next";
 import {StyleSheet, View} from "react-native";
-import {getBottomTabsLayout} from "../../../navigation/roots";
-import {navigation} from "../../../services";
-import {useLazyGetSessionIdLoginQuery} from "../../../core/store/auth/authQuery";
+import {getBottomTabsLayout} from "~/navigation/roots";
+import {navigation} from "~/services";
+import {useLazyGetSessionIdLoginQuery} from "~/core/store/auth/authQuery";
 import {object, string} from "yup";
 
 export const Login = () => {
-    const {t} = useTranslation();
     const [trigger, {data}] = useLazyGetSessionIdLoginQuery();
 
     useEffect(() => {
@@ -25,7 +23,7 @@ export const Login = () => {
     return (
         <View style={styles.container}>
             <CustomInputForm
-                submitButtonTitle={t("authentication.loginTab")}
+                submitButtonTitle="authentication.loginTab"
                 phoneField
                 passwordField
                 isLogin

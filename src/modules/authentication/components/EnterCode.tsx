@@ -1,27 +1,28 @@
 import React, {useRef, useState} from "react";
 import {StyleSheet, Text, TextInput, TextInputKeyPressEventData, TouchableOpacity, View} from "react-native";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {AuthCustomHeader} from "../../../components/AuthCustomHeader";
-import {useTranslation} from "react-i18next";
-import {CommonStyles} from "../../../core/theme/commonStyles";
-import {LightThemeColors} from "../../../core/theme/colors";
-import {SubmitButton} from "../../../components/SubmitButton";
-import {Pages} from "../../../navigation/pages";
-import {Brand} from "../../../infrastructure";
+import {AuthCustomHeader} from "~/components/AuthCustomHeader";
+import {CommonStyles} from "~/core/theme/commonStyles";
+import {LightThemeColors} from "~/core/theme/colors";
+import {SubmitButton} from "~/components/SubmitButton";
+import {Pages} from "~/navigation/pages";
+import {Body, LabelFont} from "~/infrastructure";
 
 export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
-    const {t} = useTranslation();
     const inputRefs = useRef<TextInput[]>([]);
     const [isDisabled, setDisabled] = useState(false);
+    const [remainingTime, setRemainingTime] = useState(30);
 
     const handleSendCode = () => {
         setDisabled(true);
         const start = new Date().getTime();
         const interval = setInterval(() => {
             const now = new Date().getTime();
-            if(now - start > 30000) {
+            setRemainingTime(prev => prev - 1);
+            if (now - start >= 30000) {
                 setDisabled(false);
                 clearInterval(interval);
+                setRemainingTime(30);
             }
         }, 1000);
     };
@@ -55,9 +56,9 @@ export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
 
     return (
         <View>
-            <AuthCustomHeader headerTitle={t("authentication.enterCode")}/>
+            <AuthCustomHeader headerTitle="authentication.enterCode"/>
             <View style={[styles.container, CommonStyles.marginContainer]}>
-                <Text>{t("authentication.enterCodeText")}</Text>
+                <Body.Medium labelKey="authentication.enterCodeText"/>
                 <View style={[CommonStyles.row, styles.inputContainer]}>
                     {[...new Array(4)].map((value, index) => {
                         return (
@@ -81,14 +82,16 @@ export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
                         );
                     })}
                 </View>
-                <SubmitButton submitButtonTitle={t('authentication.confirm')} onSubmit={onSubmit}/>
+                <SubmitButton submitButtonTitle="authentication.confirm" onSubmit={onSubmit}/>
                 <TouchableOpacity
                     style={styles.resendCode}
                     disabled={isDisabled}
                     onPress={!isDisabled ? handleSendCode : () => null}>
-                    <Brand.H5
+                    <LabelFont.Large
                         labelKey="authentication.resendCode"
-                        style={isDisabled ? styles.textInactive : styles.textActive}/>
+                        style={isDisabled ? styles.textInactive : styles.textActive}>
+                    </LabelFont.Large>
+                    {isDisabled && <Text style={styles.timer}>{remainingTime}</Text>}
                 </TouchableOpacity>
             </View>
         </View>
@@ -114,11 +117,16 @@ const styles = StyleSheet.create({
     resendCode: {
         marginTop: 38,
         alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     textActive: {
         color: LightThemeColors.main
     },
     textInactive: {
         color: LightThemeColors.secondaryText
+    },
+    timer: {
+        marginLeft: 10
     }
 });

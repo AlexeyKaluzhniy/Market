@@ -1,15 +1,13 @@
 import React, {useEffect} from "react";
 import {CustomInputForm} from "./CustomInputForm";
-import {useTranslation} from "react-i18next";
 import {View} from "react-native";
-import {CommonStyles} from "../../../core/theme/commonStyles";
-import {navigation} from "../../../services";
-import {getBottomTabsLayout} from "../../../navigation/roots";
+import {CommonStyles} from "~/core/theme/commonStyles";
+import {navigation} from "~/services";
+import {getBottomTabsLayout} from "~/navigation/roots";
 import {object, ref, string} from "yup";
-import {useLazyGetSessionIdRegisterQuery} from "../../../core/store/auth/authQuery";
+import {useLazyGetSessionIdRegisterQuery} from "~/core/store/auth/authQuery";
 
 export const SignUp = () => {
-    const {t} = useTranslation();
     const [trigger, {data}] = useLazyGetSessionIdRegisterQuery();
 
     useEffect(() => {
@@ -27,7 +25,7 @@ export const SignUp = () => {
     return (
         <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
             <CustomInputForm
-                submitButtonTitle={t("authentication.register")}
+                submitButtonTitle="authentication.registerTab"
                 passwordField
                 phoneField
                 repeatPasswordField
