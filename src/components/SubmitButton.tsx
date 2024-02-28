@@ -4,6 +4,7 @@ import {DarkThemeColors, LightThemeColors} from "~/core/theme/colors";
 import {Normalize} from "react-i18next";
 import {Roboto} from "~/infrastructure/typography";
 import {AuthLocalization} from "~/infrastructure/dto/common/IAuthComponentProps";
+import {CommonSizes} from "~/core/theme/commonSizes";
 
 interface IProps {
     submitButtonTitle: Normalize<AuthLocalization>;
@@ -24,10 +25,10 @@ export function SubmitButton({submitButtonTitle, onSubmit}: IProps) {
 const styles = StyleSheet.create({
     submitButtonActive: {
         alignItems: 'center',
-        paddingVertical: 18,
+        paddingVertical: CommonSizes.padding.largePlus,
         backgroundColor: LightThemeColors.main,
-        borderRadius: 28,
-        marginTop: 20,
+        borderRadius: CommonSizes.borderRadius.extraLargePlus,
+        marginTop: CommonSizes.margin.extraLarge,
     },
     submitButtonText: {
         color: DarkThemeColors.text,

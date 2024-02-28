@@ -14,6 +14,7 @@ import {SubmitButton} from "~/components/SubmitButton";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Roboto} from "~/infrastructure";
+import {CommonSizes} from "~/core/theme/commonSizes";
 
 export function CustomInputForm(
     {
@@ -124,23 +125,23 @@ export function CustomInputForm(
 
 const styles = StyleSheet.create({
     inputContainer: {
-        marginHorizontal: 16,
+        marginHorizontal: CommonSizes.margin.largePlus,
     },
     agreePrivacy: {
-        marginTop: 20,
+        marginTop: CommonSizes.margin.extraLarge,
     },
     agreePrivacyTextColor: {
         color: LightThemeColors.main,
     },
     forgotPasswordContainer: {
-        marginTop: 33,
+        marginTop: CommonSizes.margin.extraLargePlus,
         alignItems: 'center',
-        paddingVertical: 10
+        paddingVertical: CommonSizes.margin.smallPlus
     },
     forgotPassword: {
         color: LightThemeColors.main
     },
     checkBox: {
-        marginRight: 10
+        marginRight: CommonSizes.margin.smallPlus
     }
 });

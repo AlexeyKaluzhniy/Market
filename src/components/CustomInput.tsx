@@ -38,28 +38,28 @@ export function CustomInput({placeholder, setValue, Icon, passwordInput, name}: 
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
-        marginTop: 20,
-        borderWidth: 1,
+        marginTop: CommonSizes.margin.extraLarge,
+        borderWidth: CommonSizes.borderWidth.extraThin,
         borderColor: LightThemeColors.secondaryText,
-        borderRadius: 16,
+        borderRadius: CommonSizes.borderRadius.largePlus,
         alignItems: 'center',
-        paddingLeft: 15,
+        paddingLeft: CommonSizes.padding.large,
         height: 57
     },
     input: {
         width: '78%',
         fontSize: CommonSizes.font.medium,
-        marginLeft: 10
+        marginLeft: CommonSizes.margin.smallPlus
     },
     eyeIcon: {
-        marginRight: 5
+        marginRight: CommonSizes.margin.extraSmallPlus
     },
     activeInput: {
-        borderWidth: 2,
+        borderWidth: CommonSizes.borderWidth.thin,
         borderColor: LightThemeColors.main
     },
     inactiveInput: {
-        borderWidth: 1,
+        borderWidth: CommonSizes.borderWidth.extraThin,
         borderColor: LightThemeColors.secondaryText
     }
 });

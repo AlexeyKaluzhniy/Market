@@ -5,6 +5,8 @@ import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {useLazyGetSessionIdLoginQuery} from "~/core/store/auth/authQuery";
 import {object, string} from "yup";
+import {CommonSizes} from "~/core/theme/commonSizes";
+import {CommonStyles} from "~/core/theme/commonStyles";
 
 export const Login = () => {
     const [trigger, {data}] = useLazyGetSessionIdLoginQuery();
@@ -36,7 +38,7 @@ export const Login = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 100,
-        flex: 1
+        marginTop: CommonSizes.margin.superLargePlus,
+        ...CommonStyles.flex1
     }
 });

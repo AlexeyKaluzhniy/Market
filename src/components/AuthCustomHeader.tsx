@@ -40,13 +40,13 @@ export function AuthCustomHeader({headerTitle}: IProps) {
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: 20,
+        marginLeft: CommonSizes.margin.extraLarge,
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginTop: 20
+        marginTop: CommonSizes.margin.extraLarge
     },
     headerTitle: {
-        marginLeft: 15,
+        marginLeft: CommonSizes.margin.largePlus,
         fontSize: CommonSizes.font.large,
         lineHeight: CommonSizes.lineHeight.large,
         color: LightThemeColors.text,

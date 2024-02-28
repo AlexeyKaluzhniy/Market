@@ -4,6 +4,7 @@ import React from "react";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {SystemActionsAsync} from "~/core/store/system/systemSlice";
 import {languages} from "../localization/localization";
+import {CommonSizes} from "~/core/theme/commonSizes";
 
 export function LanguageButton() {
     const dispatch = useAppDispatch();
@@ -28,6 +29,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         height: 64,
         justifyContent: 'center',
-        padding: 20
+        padding: CommonSizes.padding.extraLarge
     },
 });

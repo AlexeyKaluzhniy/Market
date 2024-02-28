@@ -6,6 +6,7 @@ import {CustomInputForm} from "./CustomInputForm";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, ref, string} from "yup";
 import {Roboto} from "~/infrastructure";
+import {CommonSizes} from "~/core/theme/commonSizes";
 
 export const NewPassword: NavigationFunctionComponent = (): JSX.Element => {
     const schema = object({
@@ -32,6 +33,6 @@ export const NewPassword: NavigationFunctionComponent = (): JSX.Element => {
 
 const styles = StyleSheet.create({
     textMargin: {
-        marginLeft: 16
+        marginLeft: CommonSizes.margin.largePlus
     }
 });

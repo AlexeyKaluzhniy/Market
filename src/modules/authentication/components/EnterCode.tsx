@@ -7,6 +7,7 @@ import {LightThemeColors} from "~/core/theme/colors";
 import {SubmitButton} from "~/components/SubmitButton";
 import {Pages} from "~/navigation/pages";
 import {Roboto} from "~/infrastructure/typography";
+import {CommonSizes} from "~/core/theme/commonSizes";
 
 export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
     const inputRefs = useRef<TextInput[]>([]);
@@ -100,22 +101,22 @@ export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 16,
+        marginHorizontal: CommonSizes.margin.largePlus,
     },
     input: {
         borderWidth: 1,
-        borderRadius: 15,
+        borderRadius: CommonSizes.borderRadius.largePlus,
         textAlign: 'center',
-        paddingHorizontal: 25,
+        paddingHorizontal: CommonSizes.padding.extraLargePlus,
         borderColor: LightThemeColors.secondaryText
     },
     inputContainer: {
         justifyContent: 'space-between',
-        marginHorizontal: 3,
-        marginTop: 16
+        marginHorizontal: CommonSizes.margin.extraSmall,
+        marginTop: CommonSizes.margin.largePlus
     },
     resendCode: {
-        marginTop: 38,
+        marginTop: CommonSizes.margin.superLarge,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center'
@@ -127,6 +128,6 @@ const styles = StyleSheet.create({
         color: LightThemeColors.secondaryText
     },
     timer: {
-        marginLeft: 10
+        marginLeft: CommonSizes.margin.smallPlus
     }
 });
