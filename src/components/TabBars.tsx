@@ -10,7 +10,7 @@ import {useThemedStyles} from "../core/theme/hooks";
 export const CupTabBar: typeof CustomTabBar = (tabBarProps) => CustomTabBar({
   ...tabBarProps,
   renderLabel: (props) => {
-    const Component = props.focused ? Roboto.LabelFont.Medium : Roboto.LabelFont.Small;
+    const Component = props.focused ? Roboto.Label.Medium : Roboto.Label.Small;
 
     return (
       <Component

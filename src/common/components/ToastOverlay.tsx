@@ -138,9 +138,7 @@ export const ToastOverlay: NavigationFunctionComponent<IToastNavProps> = (
         ]}
       >
         {renderIconOrLoading}
-        <Roboto.LabelFont.Medium style={[styles.text, textStyle]} numberOfLines={3}>
-          {text}
-        </Roboto.LabelFont.Medium>
+        <Roboto.Label.Medium style={[styles.text, textStyle]} numberOfLines={3} text={text}/>
       </Animated.View>
     );
   } else {

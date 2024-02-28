@@ -22,16 +22,17 @@ export const Label: FC<ILabelProps> = memo((props) => {
     const {t} = useTranslation();
     const style = useMemo(
         () => {
-            const baseStyle: TextStyle = _.get(config, `${props.type}.${props.size}`, null);
+            let baseStyle: TextStyle | null = _.get(config, `${props.type}.${props.size}`, null);
 
             if (!baseStyle) {
                 logger?.warn(`${props.type} style of size ${props.size} where not found`, {
                     stack: new Error("debug error").stack,
                 });
+                baseStyle = {} as TextStyle;
             }
 
             //todo fix bug with label weights
-            /*switch (props.weight) {
+            switch (props.weight) {
               case LabelWeights.Regular:
                 baseStyle.fontWeight = "400";
                 break;
@@ -46,7 +47,7 @@ export const Label: FC<ILabelProps> = memo((props) => {
                 break;
               default:
                 break;
-            }*/
+            }
 
             return StyleSheet.flatten([baseStyle, props.color ? {color: props.color} : null, props.style]);
         },

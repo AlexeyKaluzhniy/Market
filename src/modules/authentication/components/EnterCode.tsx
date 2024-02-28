@@ -88,10 +88,10 @@ export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
                     style={styles.resendCode}
                     disabled={isDisabled}
                     onPress={!isDisabled ? handleSendCode : () => null}>
-                    <Roboto.LabelFont.Large
+                    <Roboto.Label.Large
                         labelKey="authentication.resendCode"
                         style={isDisabled ? styles.textInactive : styles.textActive}>
-                    </Roboto.LabelFont.Large>
+                    </Roboto.Label.Large>
                     {isDisabled && <Text style={styles.timer}>{remainingTime}</Text>}
                 </TouchableOpacity>
             </View>

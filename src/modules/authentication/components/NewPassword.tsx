@@ -18,7 +18,7 @@ export const NewPassword: NavigationFunctionComponent = (): JSX.Element => {
         <View style={CommonStyles.flex1}>
             <AuthCustomHeader headerTitle="authentication.newPassword"/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
-                <Roboto.LabelFont.Large style={styles.textMargin} labelKey="authentication.savePassword"/>
+                <Roboto.Label.Large style={styles.textMargin} labelKey="authentication.savePassword"/>
                 <CustomInputForm
                     submitButtonTitle="authentication.savePassword"
                     passwordField

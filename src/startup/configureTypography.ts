@@ -75,7 +75,7 @@ export const typographyStyles = {
             color: Colors.black,
         } as TextStyle,
     },
-    LabelFont: {
+    Label: {
         Large: {
             fontFamily: Fonts.roboto,
             fontWeight: "500",

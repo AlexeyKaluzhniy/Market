@@ -30,9 +30,7 @@ export const RadioButton: FC<IProps> = memo(({isSelected, label, onPress, disabl
   return (
     <TouchablePlatform style={styles.container} onPress={onButtonPress} disabled={disabled}>
       {IconComponent && <IconComponent disabled={disabled} isSelected={isSelected}/>}
-      <Roboto.LabelFont.Medium style={labelStyle} numberOfLines={1}>
-        {label}
-      </Roboto.LabelFont.Medium>
+      <Roboto.Label.Medium style={labelStyle} numberOfLines={1} text={label}/>
     </TouchablePlatform>
   );
 });

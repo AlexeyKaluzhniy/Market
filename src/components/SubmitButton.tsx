@@ -18,7 +18,7 @@ export function SubmitButton({submitButtonTitle, onSubmit}: IProps) {
         onPress={onSubmit}
         activeOpacity={0.7}
     >
-        <Roboto.LabelFont.Large style={styles.submitButtonText} labelKey={submitButtonTitle}/>
+        <Roboto.Label.Large style={styles.submitButtonText} labelKey={submitButtonTitle}/>
     </TouchableOpacity>);
 }
 

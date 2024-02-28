@@ -116,7 +116,7 @@ export function CustomInputForm(
                     style={styles.forgotPasswordContainer}
                     onPress={() => handleForgotPassword(Pages.forgotPassword.name)}
                 >
-                    <Roboto.LabelFont.Large labelKey="authentication.forgotPassword" style={styles.forgotPassword}/>
+                    <Roboto.Label.Large labelKey="authentication.forgotPassword" style={styles.forgotPassword}/>
                 </TouchableOpacity>
             }
         </View>
