@@ -7,14 +7,15 @@ import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {LightThemeColors} from "~/core/theme/colors";
-import {Title} from "~/infrastructure";
 import {Normalize} from "react-i18next";
+import {Roboto} from "~/infrastructure/typography";
 
 interface IProps {
     headerTitle: Normalize<{
         authentication: {
           enterCode: string;
           newPassword: string;
+          recoverPassword: string;
         };
     }>;
 }
@@ -30,7 +31,7 @@ export function AuthCustomHeader({headerTitle}: IProps) {
                 <TouchableOpacity onPress={handleGoBack}>
                     <ArrowBackIcon/>
                 </TouchableOpacity>
-                <Title.Large style={styles.headerTitle} labelKey={headerTitle}/>
+                <Roboto.Title.Large style={styles.headerTitle} labelKey={headerTitle}/>
             </View>
             <LanguageButton/>
         </View>

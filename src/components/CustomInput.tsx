@@ -1,11 +1,11 @@
 import {Image, StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
-import {LightThemeColors} from "../core/theme/colors";
-import {CommonSizes} from "../core/theme/commonSizes";
-import {IPropsCustomInput} from "../infrastructure/dto/common/IPropsCustomInput";
+import {LightThemeColors} from "~/core/theme/colors";
+import {CommonSizes} from "~/core/theme/commonSizes";
+import {IPropsCustomInput} from "~/infrastructure/dto/common/IPropsCustomInput";
 
 export function CustomInput({placeholder, setValue, Icon, passwordInput, name}: IPropsCustomInput) {
-    const [isVisible, setVisible] = useState(false);
+    const [isVisible, setVisible] = useState(passwordInput);
     const [isFocused, setFocused] = useState(false);
     const eyeIcons = {
         open: require('../../resources/images/Eye.png'),

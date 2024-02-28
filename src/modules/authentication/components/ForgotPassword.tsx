@@ -6,7 +6,7 @@ import {AuthCustomHeader} from "~/components/AuthCustomHeader";
 import {CustomInputForm} from "./CustomInputForm";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, string} from "yup";
-import {Body} from "~/infrastructure";
+import {Roboto} from "~/infrastructure";
 
 export const ForgotPassword: NavigationFunctionComponent = (): JSX.Element => {
     const schema = object({
@@ -30,7 +30,7 @@ export const ForgotPassword: NavigationFunctionComponent = (): JSX.Element => {
         <View style={CommonStyles.flex1}>
             <AuthCustomHeader headerTitle='authentication.recoverPassword'/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
-                <Body.Medium style={styles.text} labelKey="authentication.phoneRecovery"/>
+                <Roboto.Body.Medium style={styles.text} labelKey="authentication.phoneRecovery"/>
                 <CustomInputForm
                     submitButtonTitle='authentication.sendSms'
                     phoneField

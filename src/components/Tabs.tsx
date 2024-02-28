@@ -17,13 +17,13 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {Colors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
-import {Title} from "~/infrastructure";
+import {Roboto} from "~/infrastructure";
 
 type TabRoute = Route & { isFirst: boolean; isLast: boolean };
 
 interface IProps<T extends Route, B extends Route> extends Omit<TabViewProps<T>, keyof {
     navigationState: any;
-    onIndexChange: any
+    onIndexChange: any;
 }> {
     routes: TabViewProps<B>["navigationState"]["routes"];
     initialRouteKey?: string;
@@ -49,31 +49,35 @@ export const TabsMargined: <T extends Route>(props: IProps<T & TabRoute, T> & {
             renderTabBar={(tabBarProps) => renderTabBar({
                 ...tabBarProps,
                 renderTabBarItem: (props) => {
-                    const customStyle = props.route.isFirst ? {paddingLeft: 20} : props.route.isLast ? {paddingRight: edgePadding} : {};
+                    const customStyle = props.route.isFirst ?
+                        {paddingLeft: edgePadding} :
+                        props.route.isLast ? {paddingRight: edgePadding} : {};
 
-          return CustomTabBarItem({
-            ...props,
-            tabContainerStyle: StyleSheet.compose(props.tabContainerStyle, customStyle),
-            activeColor: LightThemeColors.main,
-            inactiveColor: colors.text,
-          });
-        },
-        renderIndicator: (props: TabBarIndicatorProps<Route>) => {
-          return (
-            <TabBarIndicator
-              {...props}
-              getTabWidth={(i) => props.getTabWidth(i) - (i == 0 || i == props.navigationState.routes.length - 1 ? edgePadding : 0)}
-            />
-          );
-        },
-      })}
-      routes={useMemo(() => routes.map((el, i) => ({
-        ...el,
-        isFirst: i == 0,
-        isLast: i == routes.length - 1,
-      })), [routes])}
-    />
-  );
+                    return CustomTabBarItem({
+                        ...props,
+                        tabContainerStyle: StyleSheet.compose(props.tabContainerStyle, customStyle),
+                        activeColor: LightThemeColors.main,
+                        inactiveColor: colors.text,
+                    });
+                },
+                renderIndicator: (props: TabBarIndicatorProps<Route>) => {
+                    return (
+                        <TabBarIndicator
+                            {...props}
+                            getTabWidth={(i) =>
+                                props.getTabWidth(i) - (i == 0 || i == props.navigationState.routes.length - 1 ?
+                                    edgePadding : 0)}
+                        />
+                    );
+                },
+            })}
+            routes={useMemo(() => routes.map((el, i) => ({
+                ...el,
+                isFirst: i == 0,
+                isLast: i == routes.length - 1,
+            })), [routes])}
+        />
+    );
 });
 
 export const Tabs: <T extends Route>(props: IProps<T, T>) => ReactElement | null = memo((props) => {
@@ -124,6 +128,7 @@ export const CustomTabBar = <T extends Route>(props: SceneRendererProps & Partia
             renderLabel={renderCustomLabel}
             {...props}
             style={[styles.tabBar, props.style, {backgroundColor: Colors.white}]}
+            gap={5}
         />
     );
 };
@@ -144,7 +149,7 @@ export const CustomLabel = (props: Scene<Route> & {
     style?: StyleProp<TextStyle>;
 }) => {
     const styles = useThemedStyles(stylesG);
-    const Component = Title.Small;
+    const Component = Roboto.Title.Small;
     const anyRoute = props.route as any;
     const componentStyle = useMemo(() => {
         return [
@@ -183,6 +188,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         flexGrow: 1,
         color: LightThemeColors.text,
         textAlign: "center",
-        paddingVertical: 15,
+        paddingBottom: 15,
+        paddingHorizontal: 0,
+        borderWidth: 1
     },
 });

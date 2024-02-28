@@ -6,7 +6,7 @@ import {CommonStyles} from "../../core/theme/commonStyles";
 import {ImageResources} from "../ImageResources.g";
 import {PrimaryButton} from "./PrimaryButton";
 import {ButtonType} from "../../types";
-import {Brand, Regular} from "../../infrastructure";
+import {Regular, Roboto} from "../../infrastructure";
 import {useThemedStyles} from "../../core/theme/hooks";
 import {ThemeColors} from "../../core/theme/colors";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/dist/query/react";
@@ -45,7 +45,7 @@ export const ErrorComponent: FC<IProps> = memo((props) => {
 
             return <Image key={`${char}-${index}`} source={src} style={styles.zero} />;
           } else {
-            return <Brand.H1 key={`${char}-${index}`} style={styles.status} text={char} allowFontScaling={false}/>;
+            return <Roboto.Title.Large key={`${char}-${index}`} style={styles.status} text={char} allowFontScaling={false}/>;
           }
         })}
       </View>
@@ -64,8 +64,8 @@ export const ErrorComponent: FC<IProps> = memo((props) => {
         style={styles.reflectionGradient}
         stopsOverride={gradient}
       />
-      <Brand.H3 labelKey={`errors.status.${error.status}` as any} style={styles.title}/>
-      <Regular.H2 labelKey={`errors.statusDescription.${error.status}` as any} style={styles.description}/>
+      <Roboto.Title.Medium labelKey={`errors.status.${error.status}` as any} style={styles.title}/>
+      <Regular.Large labelKey={`errors.statusDescription.${error.status}` as any} style={styles.description}/>
       {onPress != null && (
         <PrimaryButton
           isLoading={isLoading}

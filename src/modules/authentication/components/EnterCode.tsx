@@ -6,7 +6,7 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {LightThemeColors} from "~/core/theme/colors";
 import {SubmitButton} from "~/components/SubmitButton";
 import {Pages} from "~/navigation/pages";
-import {Body, LabelFont} from "~/infrastructure";
+import {Roboto} from "~/infrastructure/typography";
 
 export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
     const inputRefs = useRef<TextInput[]>([]);
@@ -58,7 +58,7 @@ export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
         <View>
             <AuthCustomHeader headerTitle="authentication.enterCode"/>
             <View style={[styles.container, CommonStyles.marginContainer]}>
-                <Body.Medium labelKey="authentication.enterCodeText"/>
+                <Roboto.Body.Medium labelKey="authentication.enterCodeText"/>
                 <View style={[CommonStyles.row, styles.inputContainer]}>
                     {[...new Array(4)].map((value, index) => {
                         return (
@@ -87,10 +87,10 @@ export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
                     style={styles.resendCode}
                     disabled={isDisabled}
                     onPress={!isDisabled ? handleSendCode : () => null}>
-                    <LabelFont.Large
+                    <Roboto.LabelFont.Large
                         labelKey="authentication.resendCode"
                         style={isDisabled ? styles.textInactive : styles.textActive}>
-                    </LabelFont.Large>
+                    </Roboto.LabelFont.Large>
                     {isDisabled && <Text style={styles.timer}>{remainingTime}</Text>}
                 </TouchableOpacity>
             </View>

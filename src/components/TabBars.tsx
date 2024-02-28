@@ -4,13 +4,13 @@ import React from "react";
 import {Colors, ThemeColors} from "../core/theme/colors";
 import {CustomTabBar, CustomTabBarItem} from "./Tabs";
 import {CommonStyles} from "../core/theme/commonStyles";
-import {Brand, Regular} from "../infrastructure";
+import {Roboto, Regular} from "../infrastructure";
 import {useThemedStyles} from "../core/theme/hooks";
 
 export const CupTabBar: typeof CustomTabBar = (tabBarProps) => CustomTabBar({
   ...tabBarProps,
   renderLabel: (props) => {
-    const Component = props.focused ? Brand.H4 : Brand.H5;
+    const Component = props.focused ? Roboto.LabelFont.Medium : Roboto.LabelFont.Small;
 
     return (
       <Component
@@ -49,7 +49,7 @@ export const ChipsTabBar: typeof CustomTabBar = (
       renderTabBarItem({...props, tabContainerStyle: [props.tabContainerStyle, {flexGrow: 0, flex: 0}]}),
     renderLabel: (props) => {
       return (
-        <Regular.H3
+        <Regular.Medium
           style={[styles.label3, props.focused ? sliderStyles.focusedChipsLabel : sliderStyles.chipsLabel]}
           allowFontScaling={false}
           text={props.route.title}
@@ -69,7 +69,7 @@ export const SliderTabBar: typeof CustomTabBar = (tabBarProps) => {
     renderTabBarItem: (props) => <CustomTabBarItem {...props} tabContainerStyle={sliderStyles.sliderTabContainer} />,
     renderLabel: (props) => {
       return (
-        <Regular.H3
+        <Regular.Medium
           style={[styles.label4, props.focused ? sliderStyles.focusedSliderLabel : sliderStyles.sliderLabel]}
           allowFontScaling={false}
           text={props.route.title}

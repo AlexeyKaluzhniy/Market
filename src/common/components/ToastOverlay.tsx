@@ -15,7 +15,7 @@ import {CommonSizes} from "../../core/theme/commonSizes";
 import {Colors} from "../../core/theme/colors";
 import {CommonStyles} from "../../core/theme/commonStyles";
 import {isIos, minWindowDimension} from "../../core/theme/commonConsts";
-import {Brand} from "../../infrastructure";
+import {Roboto} from "../../infrastructure";
 
 export interface IToastNavProps {
   text: string;
@@ -138,9 +138,9 @@ export const ToastOverlay: NavigationFunctionComponent<IToastNavProps> = (
         ]}
       >
         {renderIconOrLoading}
-        <Brand.H4 style={[styles.text, textStyle]} numberOfLines={3}>
+        <Roboto.LabelFont.Medium style={[styles.text, textStyle]} numberOfLines={3}>
           {text}
-        </Brand.H4>
+        </Roboto.LabelFont.Medium>
       </Animated.View>
     );
   } else {

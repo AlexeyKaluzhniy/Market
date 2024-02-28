@@ -2,24 +2,28 @@ import React, {FC} from "react";
 import {ILabelProps, Label} from "./Label";
 import {LabelSizes, LabelTypes, LabelWeights} from "../types";
 
-type StyledLabelsProps = Omit<ILabelProps, keyof {size: LabelSizes; type: LabelTypes; weight: LabelWeights}>;
+type StyledLabelsProps = Omit<ILabelProps, keyof {
+    size: LabelSizes;
+    type: LabelTypes;
+    weight: LabelWeights;
+}>;
 
 type ComponentsWeight = FC<StyledLabelsProps> & {
-  [PWeight in LabelWeights]: FC<StyledLabelsProps>;
+    [PWeight in LabelWeights]: FC<StyledLabelsProps>;
 };
 
 type ComponentsSize = {
-  [PSize in LabelSizes]: ComponentsWeight;
+    [PSize in LabelSizes]: ComponentsWeight;
 };
 
 type ComponentsType = {
-  [PType in LabelTypes]: ComponentsSize
+    [PType in LabelTypes]: ComponentsSize
 };
 
 function getStyledComponents(): ComponentsType {
-  const types = Object.keys(LabelTypes);
-  const sizes = Object.keys(LabelSizes);
-  const weights = Object.keys(LabelWeights);
+    const types = Object.keys(LabelTypes);
+    const sizes = Object.keys(LabelSizes);
+    const weights = Object.keys(LabelWeights);
 
   const components: any = {};
   types.map(type => {
@@ -43,7 +47,7 @@ function getStyledComponents(): ComponentsType {
     components[type] = sizeSeparation;
   });
 
-  return components;
+    return components;
 }
 
 export const styledLabels = getStyledComponents();

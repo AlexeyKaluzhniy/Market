@@ -13,7 +13,7 @@ import {Pages} from "~/navigation/pages";
 import {SubmitButton} from "~/components/SubmitButton";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {Body, LabelFont} from "~/infrastructure";
+import {Roboto} from "~/infrastructure";
 
 export function CustomInputForm(
     {
@@ -98,13 +98,14 @@ export function CustomInputForm(
                         tintColors={{true: LightThemeColors.main}}
                         style={styles.checkBox}
                     />
-                    <Body.Large>{t("authentication.registrationUserData.toAcceptWith")}
-                        <Body.Large
+                    <Roboto.Body.Large>
+                        {t("authentication.registrationUserData.toAcceptWith")}
+                        <Roboto.Body.Large
                             labelKey="authentication.registrationUserData.rulesAndConditions"
                             onPress={() => console.log('++++')}
                             style={styles.agreePrivacyTextColor}
                         />
-                    </Body.Large>
+                    </Roboto.Body.Large>
                 </View>
             }
             <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle}/>
@@ -114,7 +115,7 @@ export function CustomInputForm(
                     style={styles.forgotPasswordContainer}
                     onPress={() => handleForgotPassword(Pages.forgotPassword.name)}
                 >
-                    <LabelFont.Large labelKey="authentication.forgotPassword" style={styles.forgotPassword}/>
+                    <Roboto.LabelFont.Large labelKey="authentication.forgotPassword" style={styles.forgotPassword}/>
                 </TouchableOpacity>
             }
         </View>

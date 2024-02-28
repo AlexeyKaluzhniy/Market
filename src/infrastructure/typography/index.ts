@@ -1,24 +1,23 @@
 /* eslint-disable camelcase */
-import {Label} from "./components/Label";
+import {Label} from "~/infrastructure";
 import {styledLabels} from "./components/styledLabels";
 import {Typography} from "./typography";
 import {LabelTypes, LabelSizes} from "./types";
 
 const typography = new Typography();
-const Display = styledLabels.Display;
-const Headline = styledLabels.Headline;
-const Title = styledLabels.Title;
-const Body = styledLabels.Body;
-const LabelFont = styledLabels.Label;
+
+const Roboto = {
+    Display: styledLabels.Display,
+    Headline: styledLabels.Headline,
+    Title: styledLabels.Title,
+    LabelFont: styledLabels.Label,
+    Body: styledLabels.Body,
+};
 const Regular = styledLabels.Regular;
 
 export {
     typography,
-    Display,
-    Headline,
-    Title,
-    LabelFont,
-    Body,
+    Roboto,
     Regular,
     Label,
     LabelTypes,

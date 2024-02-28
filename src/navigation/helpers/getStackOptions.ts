@@ -13,7 +13,7 @@ function getOptions(i18nKey: TFuncKeyApp, optionMigrator?: (customOptions: Optio
     topBar: {
       title: {
         text: i18next.t(i18nKey) as string,
-        fontFamily: Fonts.brand,
+        fontFamily: Fonts.roboto,
         fontSize: 17,
         fontWeight: "700",
         color: Colors.black,

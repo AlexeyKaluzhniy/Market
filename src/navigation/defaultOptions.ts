@@ -48,7 +48,7 @@ export function setDefaultOptions(colors?: ThemeColors) {
           dark: getColor("text", "text", DarkThemeColors.text),
           light: getColor("text", "text", LightThemeColors.text),
         },
-        fontFamily: Fonts.brand,
+        fontFamily: Fonts.roboto,
         fontSize: 17,
         alignment: "fill",
       },

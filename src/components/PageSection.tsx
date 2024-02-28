@@ -5,7 +5,7 @@ import {Colors} from "../core/theme/colors";
 import {useThemeColors} from "../core/theme/hooks";
 import {CommonSizes} from "../core/theme/commonSizes";
 import {CommonStyles} from "../core/theme/commonStyles";
-import {Brand, Regular} from "../infrastructure";
+import {Roboto, Regular} from "../infrastructure";
 import {TouchablePlatform} from "../common/components/TouchablePlatform";
 import {ImageResources} from "../common/ImageResources.g";
 import {LoadingComponent} from "../common/components/LoadingComponent";
@@ -39,7 +39,7 @@ const PageSectionFC: FC<IProps> = (props: IProps) => {
     <View style={styles.container}>
       {(titleKey || title) && (
         <View style={styles.titleContainer}>
-          <Brand.H3
+          <Roboto.Title.Medium
             labelKey={titleKey}
             text={title}
             style={[CommonStyles.flexGrow, CommonStyles.flex1]}
@@ -55,7 +55,7 @@ const PageSectionFC: FC<IProps> = (props: IProps) => {
             onPress={onAllPressLocal}
             onLongPress={onAllPressLocal}
           >
-            <Regular.H4.Regular labelKey={allKey} color={colors.main} allowFontScaling={false}/>
+            <Regular.Small.Regular labelKey={allKey} color={colors.main} allowFontScaling={false}/>
             <Image source={ImageResources.arrow_right} style={styles.arrowIcon} />
             {isLoading && <LoadingComponent containerStyle={StyleSheet.absoluteFillObject} />}
           </TouchablePlatform>}

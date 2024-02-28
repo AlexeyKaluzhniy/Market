@@ -5,7 +5,7 @@ import {AuthCustomHeader} from "~/components/AuthCustomHeader";
 import {CustomInputForm} from "./CustomInputForm";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, ref, string} from "yup";
-import {LabelFont} from "~/infrastructure";
+import {Roboto} from "~/infrastructure";
 
 export const NewPassword: NavigationFunctionComponent = (): JSX.Element => {
     const schema = object({
@@ -17,7 +17,7 @@ export const NewPassword: NavigationFunctionComponent = (): JSX.Element => {
         <View style={CommonStyles.flex1}>
             <AuthCustomHeader headerTitle="authentication.newPassword"/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
-                <LabelFont.Large style={styles.textMargin} labelKey="authentication.savePassword"/>
+                <Roboto.LabelFont.Large style={styles.textMargin} labelKey="authentication.savePassword"/>
                 <CustomInputForm
                     submitButtonTitle="authentication.savePassword"
                     passwordField

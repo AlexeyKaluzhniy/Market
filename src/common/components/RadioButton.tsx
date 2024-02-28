@@ -4,7 +4,7 @@ import {RadioIcon} from "./RadioIcon";
 import {TouchablePlatform} from "./TouchablePlatform";
 import {CommonSizes} from "../../core/theme/commonSizes";
 import {Colors} from "../../core/theme/colors";
-import {Brand} from "../../infrastructure/typography";
+import {Roboto} from "../../infrastructure";
 
 interface IIconComponentProps {
   isSelected: boolean;
@@ -30,9 +30,9 @@ export const RadioButton: FC<IProps> = memo(({isSelected, label, onPress, disabl
   return (
     <TouchablePlatform style={styles.container} onPress={onButtonPress} disabled={disabled}>
       {IconComponent && <IconComponent disabled={disabled} isSelected={isSelected}/>}
-      <Brand.H4 style={labelStyle} numberOfLines={1}>
+      <Roboto.LabelFont.Medium style={labelStyle} numberOfLines={1}>
         {label}
-      </Brand.H4>
+      </Roboto.LabelFont.Medium>
     </TouchablePlatform>
   );
 });

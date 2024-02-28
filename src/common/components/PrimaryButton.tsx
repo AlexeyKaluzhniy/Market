@@ -13,10 +13,10 @@ import {ButtonType, TouchablePlatformProps} from "../../types";
 import {TFuncKeyApp} from "../localization/localization";
 import {Colors, DarkThemeColors, LightThemeColors, ThemeColors} from "../../core/theme/colors";
 import {CommonSizes} from "../../core/theme/commonSizes";
-import {Brand} from "../../infrastructure/typography";
 import {useTranslation} from "react-i18next";
 import {useThemeColors} from "../../core/theme/hooks";
 import {TouchablePlatform} from "./TouchablePlatform";
+import {Roboto} from "~/infrastructure";
 
 interface IProps extends TouchablePlatformProps {
   text?: string;
@@ -75,9 +75,9 @@ export const PrimaryButton: FC<IProps> = memo((
       return children || (
         <>
           <ButtonIcon source={icon} style={[styles.icon, iconStyle]} />
-          <Brand.H3 style={StyleSheet.flatten([styles.label, labelStyle])} numberOfLines={1} maxFontSizeMultiplier={1.1}>
+          <Roboto.Title.Medium style={StyleSheet.flatten([styles.label, labelStyle])} numberOfLines={1} maxFontSizeMultiplier={1.1}>
             {labelKey ? t(labelKey)?.toString().toUpperCase() : text?.toUpperCase()}
-          </Brand.H3>
+          </Roboto.Title.Medium>
         </>
       );
     }

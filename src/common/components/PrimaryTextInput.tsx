@@ -18,7 +18,7 @@ import {Colors} from "../../core/theme/colors";
 import {isIos} from "../../core/theme/commonConsts";
 import {CommonSizes} from "../../core/theme/commonSizes";
 import {CommonStyles} from "../../core/theme/commonStyles";
-import {Brand} from "../../infrastructure/typography";
+import {Roboto} from "~/infrastructure";
 
 interface IProps extends TextInputProps {
   nextInputFocusRefGetter?: () => MutableRefObject<any>;
@@ -124,9 +124,9 @@ export const PrimaryTextInput: FC<IProps> = memo(
 const Label: FC<{text?: string}> = memo(({text}) => {
   if (text != null) {
     return (
-      <Brand.H4 style={styles.label} numberOfLines={1}>
+      <Roboto.Title.Medium style={styles.label} numberOfLines={1}>
         {text}
-      </Brand.H4>
+      </Roboto.Title.Medium>
     );
   } else {
     return null;
@@ -135,9 +135,9 @@ const Label: FC<{text?: string}> = memo(({text}) => {
 
 const BottomText: FC<{error?: string | null; hint?: string}> = memo(({error, hint}) => {
   if (error != null) {
-    return <Brand.H5 style={styles.error}>{error}</Brand.H5>;
+    return <Roboto.LabelFont.Medium style={styles.error}>{error}</Roboto.LabelFont.Medium>;
   } else if (hint != null) {
-    return <Brand.H5 style={styles.hint}>{hint}</Brand.H5>;
+    return <Roboto.LabelFont.Medium  style={styles.hint}>{hint}</Roboto.LabelFont.Medium >;
   } else {
     return null;
   }

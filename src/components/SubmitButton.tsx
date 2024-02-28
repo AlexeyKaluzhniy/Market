@@ -2,7 +2,7 @@ import {StyleSheet, TouchableOpacity} from "react-native";
 import React from "react";
 import {DarkThemeColors, LightThemeColors} from "~/core/theme/colors";
 import {Normalize} from "react-i18next";
-import {LabelFont} from "~/infrastructure/typography";
+import {Roboto} from "~/infrastructure/typography";
 import {AuthLocalization} from "~/infrastructure/dto/common/IAuthComponentProps";
 
 interface IProps {
@@ -17,7 +17,7 @@ export function SubmitButton({submitButtonTitle, onSubmit}: IProps) {
         onPress={onSubmit}
         activeOpacity={0.7}
     >
-        <LabelFont.Large style={styles.submitButtonText} labelKey={submitButtonTitle}/>
+        <Roboto.LabelFont.Large style={styles.submitButtonText} labelKey={submitButtonTitle}/>
     </TouchableOpacity>);
 }
 

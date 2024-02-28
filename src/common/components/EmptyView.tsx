@@ -2,7 +2,7 @@ import React, {FC, memo} from "react";
 import {StyleSheet, View, ViewStyle} from "react-native";
 import {CommonSizes} from "../../core/theme/commonSizes";
 import {CommonStyles} from "../../core/theme/commonStyles";
-import {Brand} from "../../infrastructure/typography";
+import {Roboto} from "../../infrastructure";
 
 interface IProps {
   title: string;
@@ -12,8 +12,8 @@ interface IProps {
 export const EmptyView: FC<IProps> = memo(({title, description}) => {
   return (
     <View style={styles.container}>
-      <Brand.H4>{title}</Brand.H4>
-      <Brand.H4>{description}</Brand.H4>
+      <>{title}</>
+      <Roboto.LabelFont.Medium>{description}</Roboto.LabelFont.Medium>
     </View>
   );
 });

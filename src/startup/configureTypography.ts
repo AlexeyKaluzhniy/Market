@@ -6,57 +6,6 @@ import {LogLevel} from "../infrastructure/common/logger";
 import {TextStyle} from "react-native";
 
 export const typographyStyles = {
-    //Brand: {
-    //   H1: {
-    //     fontFamily: Fonts.brand,
-    //     fontWeight: "400",
-    //     fontSize: 28,
-    //     lineHeight: 36,
-    //     color: Colors.black,
-    //   } as TextStyle,
-    //   H2: {
-    //     fontFamily: Fonts.brand,
-    //     fontWeight: "400",
-    //     fontSize: 24,
-    //     lineHeight: 32,
-    //     color: Colors.black,
-    //   } as TextStyle,
-    //   H3: {
-    //     fontFamily: Fonts.brand,
-    //     fontWeight: "400",
-    //     fontSize: 22,
-    //     lineHeight: 28,
-    //     color: Colors.black,
-    //   } as TextStyle,
-    //   H4: {
-    //     fontFamily: Fonts.brand,
-    //     fontWeight: "400",
-    //     fontSize: 16,
-    //     lineHeight: 24,
-    //     color: Colors.black,
-    //   } as TextStyle,
-    //   H5: {
-    //     fontFamily: Fonts.brand,
-    //     fontWeight: "400",
-    //     fontSize: 14,
-    //     lineHeight: 20,
-    //     color: Colors.black,
-    //   } as TextStyle,
-    //   H6: {
-    //     fontFamily: Fonts.brand,
-    //     fontWeight: "400",
-    //     fontSize: 12,
-    //     lineHeight: 16,
-    //     color: Colors.black,
-    //   } as TextStyle,
-    //   H7: {
-    //     fontFamily: Fonts.brand,
-    //     fontWeight: "400",
-    //     fontSize: 10,
-    //     lineHeight: 12,
-    //     color: Colors.black,
-    //   } as TextStyle,
-    // },
     Display: {
         Large: {
             fontFamily: Fonts.roboto,
@@ -126,7 +75,7 @@ export const typographyStyles = {
             color: Colors.black,
         } as TextStyle,
     },
-    Label: {
+    LabelFont: {
         Large: {
             fontFamily: Fonts.roboto,
             fontWeight: "500",

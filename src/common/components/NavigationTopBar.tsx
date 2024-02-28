@@ -6,8 +6,8 @@ import {TouchablePlatform} from "./TouchablePlatform";
 import {ImageResources} from "../ImageResources.g";
 import {CommonStyles} from "../../core/theme/commonStyles";
 import {hitSlopBig} from "../../core/theme/commonConsts";
-import {Brand} from "../../infrastructure";
 import {useThemedStyles} from "../../core/theme/hooks";
+import {Roboto} from "~/infrastructure";
 
 interface IProps {
   style?: StyleProp<ViewStyle>;
@@ -25,7 +25,7 @@ export const NavigationTopBar: FC<IProps> = memo(({style, title, rightButtons, b
   );
 
   const TextComponent = useMemo(
-    () => backHandler ? Brand.H2 : Brand.H1,
+    () => backHandler ? Roboto.Title.Medium : Roboto.Title.Large,
     [backHandler],
   );
 
