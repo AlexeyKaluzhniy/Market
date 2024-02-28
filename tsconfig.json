@@ -28,7 +28,8 @@
     "__tests__/**/*",
     "e2e/**/*",
     "src/**/*",
-    "storybook/**/*"
+    "storybook/**/*", "src/components",
+    "custom.d.ts"
   ],
   "exclude": [
     "node_modules",

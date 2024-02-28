@@ -1,10 +1,9 @@
-import {SvgProps} from "react-native-svg";
-import React from "react";
+import {FunctionComponent, SVGAttributes} from "react";
 
 export interface IPropsCustomInput {
     placeholder: string;
     name: string;
     setValue: any;
     passwordInput: boolean;
-    Icon: React.FC<SvgProps>;
+    Icon: FunctionComponent<SVGAttributes<SVGElement>>;
 }
