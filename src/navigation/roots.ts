@@ -5,6 +5,7 @@ import {i18next} from "../common/localization/localization";
 
 import {Dimensions} from "react-native";
 import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
+import {Components} from "~/navigation/components";
 
 export function setInitialRoot() {
     Navigation.setRoot({
@@ -69,7 +70,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
         id: Pages.tabs.id,
         options: {
             topBar: {
-                visible: false
+                visible: true,
             },
         },
         children: [
@@ -89,6 +90,9 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                             text: i18next.t("pages.main"),
                             icon: TabbarInactiveResources.advertise,
                             selectedIcon: TabbarLightResources.advertise
+                        },
+                        topBar: {
+                            visible: false,
                         },
                     },
                 },
@@ -130,6 +134,19 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                             icon: TabbarInactiveResources.profile,
                             selectedIcon: TabbarLightResources.profile
                         },
+                        topBar: {
+                            visible: false,
+                            title: {
+                                component: {
+                                    id: Components.topBarHeader.id,
+                                    name: Components.topBarHeader.name,
+                                    passProps: {
+                                        title: i18next.t("pages.profile"),
+                                        isProfile: true
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -141,7 +158,24 @@ export function bottomTabsLayout(): LayoutBottomTabs {
 export const getBottomTabsLayout = () => {
     return {
         root: {
-            bottomTabs: bottomTabsLayout(),
+            sideMenu: {
+                left: {
+                    component: {
+                        id: Pages.bottomTabsDrawer.id,
+                        name: Pages.bottomTabsDrawer.name,
+                    },
+                },
+                options: {
+                    sideMenu: {
+                        left: {
+                            width: Dimensions.get('window').width / 390 * 360,
+                        },
+                    },
+                },
+                center: {
+                    bottomTabs: bottomTabsLayout()
+                }
+            }
         }
     };
 };

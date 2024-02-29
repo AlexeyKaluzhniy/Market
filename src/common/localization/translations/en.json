@@ -160,7 +160,7 @@
       "savePassword": "Save new password"
     },
     "pages": {
-      "main": "Main",
+      "main": "Advertises",
       "news": "News",
       "shop": "Shopping",
       "login": "Login",
@@ -217,6 +217,12 @@
       "notifications": "notifications",
       "rateApp": "App rating",
       "privacyPolicy": "Privacy Policy"
+    },
+    "drawer": {
+      "brandTitle": "buy it - period",
+      "settings": "Settings",
+      "about": "About",
+      "logOut": "Log out"
     }
   }
 }

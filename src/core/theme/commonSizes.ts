@@ -86,6 +86,7 @@ export const CommonSizes = {
     largePlus: 18,
     extraLarge: 20,
     extraLargePlus: 25,
+    superLarge: 28
   },
   borderWidth: {
     extraThin: 1,
