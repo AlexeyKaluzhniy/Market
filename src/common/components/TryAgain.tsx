@@ -42,7 +42,7 @@ export const TryAgain: FC<Props> = memo((props) => {
       <>
         <Image style={styles.image} source={ImageResources.avatar} resizeMode={"contain"} />
         //todo replace source
-        <Regular.H2 style={styles.title} text={errorString} />
+        <Regular.Medium style={styles.title} text={errorString} />
         {onPress != null
           ? (
             <PrimaryButton

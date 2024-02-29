@@ -62,7 +62,7 @@ export function FilterItem<TVal extends {Id: string}>(props: IFilterItemProps<TV
 
   return (
     <Pressable style={styles.container} onPress={onSortItemPress} disabled={!isEnabled}>
-      <Regular.H3
+      <Regular.Small
         style={CommonStyles.flexGrow}
         color={isEnabled ? styles.colors.text : styles.colors.secondaryText}
         numberOfLines={1}

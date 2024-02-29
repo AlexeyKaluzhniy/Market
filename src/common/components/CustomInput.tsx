@@ -166,11 +166,11 @@ export const CustomInput = (
   return (
     <View style={styles.inputItemContainer}>
       {labelKey && <View style={styles.headerContainer}>
-        <Regular.H2
+        <Regular.Medium
           labelKey={labelKey}
           style={styles.inputSign}
         />
-        {optional ? <Regular.H3 labelKey={"validation.optional"} style={styles.optional} /> : null}
+        {optional ? <Regular.Small labelKey={"validation.optional"} style={styles.optional} /> : null}
       </View>}
       <View style={[inputStyle, CommonStyles.row]}>
         {isPhone && <CountryPicker
@@ -219,9 +219,9 @@ export const CustomInput = (
           : null}
       </View>
       {(error || serverError) &&
-        <Regular.H3 text={errorMessage} color={styles.colors.danger} style={props.hintStyle} allowFontScaling={false} />}
+        <Regular.Small text={errorMessage} color={styles.colors.danger} style={props.hintStyle} allowFontScaling={false} />}
       {(hintKey && !(error || serverError)) &&
-        <Regular.H3
+        <Regular.Small
           labelKey={hintKey}
           color={styles.colors.secondaryText}
           style={props.hintStyle}

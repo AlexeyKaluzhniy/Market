@@ -35,7 +35,7 @@ export const ItemIdNameSelector: FC<IProps> = memo((props: IProps) => {
 
     return (
       <TouchableOpacity onPress={onSelected(info.item.ItemId)} style={styles.itemButton} activeOpacity={0.7}>
-        <Regular.H1 text={info.item.ItemName.trim()} allowFontScaling={false} />
+        <Regular.Large text={info.item.ItemName.trim()} allowFontScaling={false} />
         {isSelected && <Image source={ImageResources.check} style={styles.selectIcon} />}
       </TouchableOpacity>
     );

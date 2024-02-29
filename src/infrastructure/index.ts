@@ -2,7 +2,7 @@ import * as Dto from "./dto";
 import * as Modules from "./modules";
 import {appSettingsProvider} from "./settings/appSettingsProvider";
 import {logger} from "./logger";
-import {Label, Regular, Roboto} from "./typography";
+import {Regular, Roboto} from "./typography";
 
 export {
     Dto,
@@ -11,5 +11,4 @@ export {
     logger,
     Roboto,
     Regular,
-    Label,
 };
