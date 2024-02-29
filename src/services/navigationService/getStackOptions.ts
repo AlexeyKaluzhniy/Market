@@ -4,19 +4,17 @@ import {IGetOptions, IGetOptionsOptionalButtons, INavigationPage} from "../../ty
 import {isIos} from "../../core/theme/commonConsts";
 import {Components} from "../../navigation/components";
 
-function getOptions({title, screenId, optionalButtons}: IGetOptions) {
+function getOptions({screenId, optionalButtons}: IGetOptions) {
   const options: Options = {
     topBar: {
       backButton: {
         visible: isIos,
       },
       title: {
-        text: title,
         component: {
-          id: Components.topBarTitle.id + screenId,
-          name: Components.topBarTitle.name,
+          id: Components.topBarHeader.id + screenId,
+          name: Components.topBarHeader.name,
           passProps: {
-            title,
             cancelButton: optionalButtons?.cancelButton,
             filterTeams: optionalButtons?.filterTeams,
             promotionsHistory: optionalButtons?.promotionsHistory,
@@ -37,7 +35,6 @@ export const getStackOptions = (
   optionalButtons?: IGetOptionsOptionalButtons,
 ) => (): Options => getOptions(
   {
-    title: i18nKey as string || "",
     screenId: screen.id,
     optionalButtons,
   },

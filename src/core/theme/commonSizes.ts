@@ -58,7 +58,7 @@ export const CommonSizes = {
     mediumPlus: 13,
     large: 14,
     largePlus: 16,
-    extraLarge: 18,
+    extraLarge: 20,
     extraLargePlus: 28,
   } as Readonly<ISize>,
   margin: {

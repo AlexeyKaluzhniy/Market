@@ -3,6 +3,9 @@ import {LayoutBottomTabs, Navigation} from "react-native-navigation";
 import {Tabs} from "./tabs";
 import {i18next} from "../common/localization/localization";
 
+import {Dimensions} from "react-native";
+import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
+
 export function setInitialRoot() {
     Navigation.setRoot({
         root: {
@@ -39,7 +42,7 @@ export async function setAuthRoot() {
                         push: {
                             content: {
                                 translationX: {
-                                    from: require('react-native').Dimensions.get('window').width,
+                                    from: Dimensions.get('window').width,
                                     to: 0,
                                     duration: 200
                                 }
@@ -49,7 +52,7 @@ export async function setAuthRoot() {
                             content: {
                                 translationX: {
                                     from: 0,
-                                    to: require('react-native').Dimensions.get('window').width,
+                                    to: Dimensions.get('window').width,
                                     duration: 200
                                 }
                             }
@@ -84,6 +87,8 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                     options: {
                         bottomTab: {
                             text: i18next.t("pages.main"),
+                            icon: TabbarInactiveResources.advertise,
+                            selectedIcon: TabbarLightResources.advertise
                         },
                     },
                 },
@@ -102,6 +107,8 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                     options: {
                         bottomTab: {
                             text: i18next.t("pages.favorite"),
+                            icon: TabbarInactiveResources.favorite,
+                            selectedIcon: TabbarLightResources.favorite
                         },
                     },
                 },
@@ -120,6 +127,8 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                     options: {
                         bottomTab: {
                             text: i18next.t("pages.profile"),
+                            icon: TabbarInactiveResources.profile,
+                            selectedIcon: TabbarLightResources.profile
                         },
                     }
                 }

@@ -3,6 +3,8 @@ interface IThemeColors {
   main: string;
   element: string;
   background: string;
+  backgroundBottomTab: string;
+  searchBar: string;
   text: string;
   secondaryText: string;
   danger: string;
@@ -22,7 +24,9 @@ export const LightThemeColors: IThemeColors = {
   theme: "light",
   main: "#DF3A76",
   element: "#ffffff",
-  background: "#f4f5f8",
+  background: "#fff8f9",
+  backgroundBottomTab: "#F9EAEF",
+  searchBar: "#F3E5EA",
   text: "#1f2731",
   secondaryText: "#828997",
   danger: "#f51709",
@@ -55,6 +59,8 @@ export const DarkThemeColors: IThemeColors = {
   main: "#cc122d",
   element: "#1f2731",
   background: "#0d1116",
+  backgroundBottomTab: "#F9EAEF",
+  searchBar: "#F3E5EA",
   text: "#ffffff",
   secondaryText: "#939bac",
   danger: "#eb2f16",
