@@ -83,4 +83,7 @@ export const CommonStyles = StyleSheet.create({
   noTextTransform: {
     textTransform: "none",
   },
+  blockMargin: {
+    marginTop: CommonSizes.margin.small
+  }
 });

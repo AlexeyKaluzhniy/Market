@@ -1,5 +1,5 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, TouchableOpacity, View} from "react-native";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {SideMenuButton} from "~/common/components/SideMenuButton";
 import {Roboto} from "~/infrastructure";
@@ -17,7 +17,7 @@ export const TopBarHeader: AppNavigationComponent<ITopBarHeader> = (props) => {
         <View style={styles.container}>
             <SideMenuButton/>
             <Roboto.Title.Large text={props.title} style={styles.title}/>
-            {props.isProfile && <EditIcon style={styles.editIcon}/>}
+            {props.isProfile && <TouchableOpacity><EditIcon/></TouchableOpacity>}
         </View>
     );
 };
@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
     container: {
         ...CommonStyles.rowCenter,
         ...CommonStyles.flex1,
-        alignItems: "center"
+        ...CommonStyles.flexGrow,
+        paddingHorizontal: CommonSizes.padding.extraSmallPlus
     },
     title: {
-        marginLeft: CommonSizes.margin.extraLarge
-    },
-    editIcon: {
+        marginLeft: CommonSizes.margin.extraLarge,
+        ...CommonStyles.flex1
     }
 });

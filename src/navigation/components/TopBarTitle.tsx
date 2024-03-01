@@ -12,7 +12,7 @@ interface IProps {
 export const TopBarTitle: NavigationFunctionComponent<IProps> = (props) => {
     return (
         <View>
-            <Roboto.Display.Large color={Colors.black} labelKey={props.title}/>
+            <Roboto.Title.Large color={Colors.black} labelKey={props.title}/>
         </View>
     );
 };

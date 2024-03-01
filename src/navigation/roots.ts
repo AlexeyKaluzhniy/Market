@@ -7,6 +7,7 @@ import {Dimensions} from "react-native";
 import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
 import {Components} from "~/navigation/components";
 import {Stacks} from "~/navigation/stacks";
+import {LightThemeColors} from "~/core/theme/colors";
 
 export function setInitialRoot() {
     Navigation.setRoot({
@@ -115,6 +116,10 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                             icon: TabbarInactiveResources.favorite,
                             selectedIcon: TabbarLightResources.favorite
                         },
+                        topBar: {
+                            title: getTopBarHeader(i18next.t("pages.favorite"), Pages.favorite.id),
+                            elevation: 0
+                        }
                     },
                 },
             },
@@ -136,17 +141,8 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                             selectedIcon: TabbarLightResources.profile
                         },
                         topBar: {
-                            visible: false,
-                            title: {
-                                component: {
-                                    id: Components.topBarHeader.id,
-                                    name: Components.topBarHeader.name,
-                                    passProps: {
-                                        title: i18next.t("pages.profile"),
-                                        isProfile: true
-                                    }
-                                }
-                            }
+                            title: getTopBarHeader(i18next.t("pages.profile"), Pages.profile.id, true),
+                            elevation: 0
                         }
                     }
                 }
@@ -155,6 +151,18 @@ export function bottomTabsLayout(): LayoutBottomTabs {
     };
 }
 
+const getTopBarHeader = (title: string, pageId: string, isProfile = false) => {
+    return {
+        component: {
+            id: Components.topBarHeader.id + pageId,
+            name: Components.topBarHeader.name,
+            passProps: {
+                title: title,
+                isProfile: isProfile
+            }
+        }
+    };
+};
 
 export const getBottomTabsLayout = () => {
     return {
@@ -186,42 +194,61 @@ export const getBottomTabsLayout = () => {
     };
 };
 
-export const drawerStackScreensLayout = (name: string) => {
-    return (
-        {
-            component: {
-                name: name,
-                options: {
-                    topBar: {
-                        visible: false,
+export const drawerStackScreensLayout = (name: string, titleText: string) => {
+    return {
+        component: {
+            name: name,
+            options: {
+                topBar: {
+                    title: {
+                        text: titleText,
+                        fontSize: 22,
                     },
-                    sideMenu: {
-                        left: {
-                            visible: false
-                        },
+                    backButton: {
+                        color: LightThemeColors.outlineVariant
                     },
-                    animations: {
-                        push: {
-                            content: {
-                                translationX: {
-                                    from: Dimensions.get('window').width,
-                                    to: 0,
-                                    duration: 200
-                                }
-                            },
+                    elevation: 0
+                },
+                sideMenu: {
+                    left: {
+                        visible: false
+                    },
+                },
+                animations: {
+                    push: {
+                        content: {
+                            translationX: {
+                                from: Dimensions.get('window').width,
+                                to: 0,
+                                duration: 200
+                            }
                         },
-                        pop: {
-                            content: {
-                                translationX: {
-                                    from: 0,
-                                    to: Dimensions.get('window').width,
-                                    duration: 200
-                                }
-                            },
+                        topBar: {
+                            translationX: {
+                                from: Dimensions.get('window').width,
+                                to: 0,
+                                duration: 200
+                            }
                         }
                     },
-                }
+                    pop: {
+                        content: {
+                            translationX: {
+                                from: 0,
+                                to: Dimensions.get('window').width,
+                                duration: 200
+                            }
+                        },
+                        topBar: {
+                            translationX: {
+                                from: 0,
+                                to: Dimensions.get('window').width,
+                                duration: 200
+                            }
+                        }
+                    }
+                },
             }
         }
-    );
+    };
 };
