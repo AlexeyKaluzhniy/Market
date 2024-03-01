@@ -6,6 +6,7 @@ import {i18next} from "../common/localization/localization";
 import {Dimensions} from "react-native";
 import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
 import {Components} from "~/navigation/components";
+import {Stacks} from "~/navigation/stacks";
 
 export function setInitialRoot() {
     Navigation.setRoot({
@@ -173,9 +174,54 @@ export const getBottomTabsLayout = () => {
                     },
                 },
                 center: {
-                    bottomTabs: bottomTabsLayout()
+                    stack: {
+                        id: Stacks.drawerStack.id,
+                        children: [{
+                            bottomTabs: bottomTabsLayout()
+                        }]
+                    }
                 }
             }
         }
     };
+};
+
+export const drawerStackScreensLayout = (name: string) => {
+    return (
+        {
+            component: {
+                name: name,
+                options: {
+                    topBar: {
+                        visible: false,
+                    },
+                    sideMenu: {
+                        left: {
+                            visible: false
+                        },
+                    },
+                    animations: {
+                        push: {
+                            content: {
+                                translationX: {
+                                    from: Dimensions.get('window').width,
+                                    to: 0,
+                                    duration: 200
+                                }
+                            },
+                        },
+                        pop: {
+                            content: {
+                                translationX: {
+                                    from: 0,
+                                    to: Dimensions.get('window').width,
+                                    duration: 200
+                                }
+                            },
+                        }
+                    },
+                }
+            }
+        }
+    );
 };

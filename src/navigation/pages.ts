@@ -46,5 +46,13 @@ export const Pages = {
   bottomTabsDrawer: {
     id: "DRAWER_SCREEN",
     name: "DrawerScreen"
+  },
+  about: {
+    id: "ABOUT_SCREEN",
+    name: "AboutScreen"
+  },
+  settings: {
+    id: "SETTINGS_SCREEN",
+    name: "SettingsScreen"
   }
 };

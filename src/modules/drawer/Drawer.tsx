@@ -1,4 +1,4 @@
-import {NavigationFunctionComponent} from "react-native-navigation";
+import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {StyleSheet, View} from "react-native";
 import {Colors, LightThemeColors} from "~/core/theme/colors";
 import BrandIcon from '../../../resources/icons/brand.svg';
@@ -8,12 +8,18 @@ import LogOutIcon from '../../../resources/icons/logout.svg';
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {MenuItem} from "~/modules/drawer/components/MenuItem";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {setAuthRoot} from "~/navigation/roots";
+import {drawerStackScreensLayout, setAuthRoot} from "~/navigation/roots";
 import {Brand} from "~/infrastructure";
+import {Pages} from "~/navigation/pages";
+import {Stacks} from "~/navigation/stacks";
 
 export const Drawer: NavigationFunctionComponent = () => {
     const handleLogOut = () => {
         setAuthRoot();
+    };
+
+    const handlePushScreen = (name: string) => {
+        Navigation.push(Stacks.drawerStack.id, drawerStackScreensLayout(name));
     };
 
     return (
@@ -22,8 +28,9 @@ export const Drawer: NavigationFunctionComponent = () => {
                 <BrandIcon height={45} width={45}/>
                 <Brand.Large labelKey="drawer.brandTitle" style={styles.brandTitle}/>
             </View>
-            <MenuItem Icon={SettingsIcon} title="drawer.settings" onPress={() => console.log('Settings')}/>
-            <MenuItem Icon={InfoIcon} title="drawer.about" onPress={() => console.log('About')}/>
+            <MenuItem Icon={SettingsIcon} title="drawer.settings"
+                      onPress={() => handlePushScreen(Pages.settings.name)}/>
+            <MenuItem Icon={InfoIcon} title="drawer.about" onPress={() => handlePushScreen(Pages.about.name)}/>
             <View style={styles.outline}/>
             <MenuItem Icon={LogOutIcon} title="drawer.logOut" onPress={handleLogOut}/>
         </View>
