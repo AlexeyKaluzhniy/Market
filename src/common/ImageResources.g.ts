@@ -10,47 +10,43 @@ import {ImageURISource} from "react-native";
 */
 
 export class OnboardingResources {
-  static readonly onboarding_background_1: ImageURISource = require("../../../../market/resources/images/onboarding/onboarding_background_1.png");
-  static readonly onboarding_background_2: ImageURISource = require("../../../../market/resources/images/onboarding/onboarding_background_2.png");
-  static readonly onboarding_background_3: ImageURISource = require("../../../../market/resources/images/onboarding/onboarding_background_3.png");
-  static readonly onboarding_background_4: ImageURISource = require("../../../../market/resources/images/onboarding/onboarding_background_4.png");
+  static readonly onboarding_background_1: ImageURISource = require("../../resources/images/onboarding/onboarding_background_1.png");
+  static readonly onboarding_background_2: ImageURISource = require("../../resources/images/onboarding/onboarding_background_2.png");
+  static readonly onboarding_background_3: ImageURISource = require("../../resources/images/onboarding/onboarding_background_3.png");
+  static readonly onboarding_background_4: ImageURISource = require("../../resources/images/onboarding/onboarding_background_4.png");
 }
 
 export class TabbarDarkResources {
-  static readonly bag: ImageURISource = require("../../../../market/resources/images/tabbarDark/bag.png");
-  static readonly date: ImageURISource = require("../../../../market/resources/images/tabbarDark/date.png");
-  static readonly home: ImageURISource = require("../../../../market/resources/images/tabbarDark/home.png");
-  static readonly menu: ImageURISource = require("../../../../market/resources/images/tabbarDark/menu.png");
-  static readonly news: ImageURISource = require("../../../../market/resources/images/tabbarDark/news.png");
+  static readonly bag: ImageURISource = require("../../resources/images/tabbarDark/bag.png");
+  static readonly date: ImageURISource = require("../../resources/images/tabbarDark/date.png");
+  static readonly home: ImageURISource = require("../../resources/images/tabbarDark/home.png");
+  static readonly menu: ImageURISource = require("../../resources/images/tabbarDark/menu.png");
+  static readonly news: ImageURISource = require("../../resources/images/tabbarDark/news.png");
 }
 
 export class TabbarInactiveResources {
-  static readonly bag: ImageURISource = require("../../../../market/resources/images/tabbarInactive/bag.png");
-  static readonly date: ImageURISource = require("../../../../market/resources/images/tabbarInactive/date.png");
-  static readonly home: ImageURISource = require("../../../../market/resources/images/tabbarInactive/home.png");
-  static readonly menu: ImageURISource = require("../../../../market/resources/images/tabbarInactive/menu.png");
-  static readonly news: ImageURISource = require("../../../../market/resources/images/tabbarInactive/news.png");
+  static readonly advertise: ImageURISource = require("../../resources/images/tabbarInactive/advertise.png");
+  static readonly favorite: ImageURISource = require("../../resources/images/tabbarInactive/favorite.png");
+  static readonly profile: ImageURISource = require("../../resources/images/tabbarInactive/profile.png");
 }
 
 export class TabbarLightResources {
-  static readonly bag: ImageURISource = require("../../../../market/resources/images/tabbarLight/bag.png");
-  static readonly date: ImageURISource = require("../../../../market/resources/images/tabbarLight/date.png");
-  static readonly home: ImageURISource = require("../../../../market/resources/images/tabbarLight/home.png");
-  static readonly menu: ImageURISource = require("../../../../market/resources/images/tabbarLight/menu.png");
-  static readonly news: ImageURISource = require("../../../../market/resources/images/tabbarLight/news.png");
+  static readonly advertise: ImageURISource = require("../../resources/images/tabbarLight/advertise.png");
+  static readonly favorite: ImageURISource = require("../../resources/images/tabbarLight/favorite.png");
+  static readonly profile: ImageURISource = require("../../resources/images/tabbarLight/profile.png");
 }
 
 export class ImageResources {
-  static readonly arrow_down: ImageURISource = require("../../../../market/resources/images/arrow_down.png");
-  static readonly arrow_left: ImageURISource = require("../../../../market/resources/images/arrow_left.png");
-  static readonly arrow_right: ImageURISource = require("../../../../market/resources/images/arrow_right.png");
-  static readonly avatar: ImageURISource = require("../../../../market/resources/images/avatar.png");
-  static readonly calendarblank: ImageURISource = require("../../../../market/resources/images/CalendarBlank.png");
-  static readonly camera: ImageURISource = require("../../../../market/resources/images/camera.png");
-  static readonly check: ImageURISource = require("../../../../market/resources/images/check.png");
-  static readonly close_modal: ImageURISource = require("../../../../market/resources/images/close_modal.png");
-  static readonly drop_down: ImageURISource = require("../../../../market/resources/images/drop_down.png");
-  static readonly eye: ImageURISource = require("../../../../market/resources/images/Eye.png");
-  static readonly eyeclosed: ImageURISource = require("../../../../market/resources/images/EyeClosed.png");
-  static readonly menu: ImageURISource = require("../../../../market/resources/images/menu.png");
+  static readonly arrow_down: ImageURISource = require("../../resources/images/arrow_down.png");
+  static readonly arrow_left: ImageURISource = require("../../resources/images/arrow_left.png");
+  static readonly arrow_right: ImageURISource = require("../../resources/images/arrow_right.png");
+  static readonly avatar: ImageURISource = require("../../resources/images/avatar.png");
+  static readonly calendarblank: ImageURISource = require("../../resources/images/CalendarBlank.png");
+  static readonly camera: ImageURISource = require("../../resources/images/camera.png");
+  static readonly check: ImageURISource = require("../../resources/images/check.png");
+  static readonly close_modal: ImageURISource = require("../../resources/images/close_modal.png");
+  static readonly drop_down: ImageURISource = require("../../resources/images/drop_down.png");
+  static readonly eye: ImageURISource = require("../../resources/images/Eye.png");
+  static readonly eyeclosed: ImageURISource = require("../../resources/images/EyeClosed.png");
+  static readonly menu: ImageURISource = require("../../resources/images/menu.png");
 }

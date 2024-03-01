@@ -4,5 +4,6 @@ export enum LabelTypes {
     Title = "Title",
     Label = "Label",
     Body = "Body",
+    Brand = "Brand",
     Regular = "Regular"
 }

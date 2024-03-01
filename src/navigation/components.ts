@@ -23,4 +23,8 @@ export const Components = {
     id: "MODALIZE_CONTAINER",
     name: "ModalizeContainer",
   },
+  topBarHeader: {
+    id: "TOP_BAR_HEADER",
+    name: "TopBarHeader"
+  }
 };

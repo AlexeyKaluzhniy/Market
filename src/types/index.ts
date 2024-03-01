@@ -18,7 +18,7 @@ export interface INavigationPage {
 }
 
 export interface IGetOptions {
-  title: string;
+  title?: string;
   screenId?: string;
   optionalButtons?: IGetOptionsOptionalButtons;
 }

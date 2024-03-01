@@ -42,5 +42,17 @@ export const Pages = {
   newPassword: {
     id: "NEW_PASSWORD_SCREEN",
     name: "NewPasswordScreen"
+  },
+  bottomTabsDrawer: {
+    id: "DRAWER_SCREEN",
+    name: "DrawerScreen"
+  },
+  about: {
+    id: "ABOUT_SCREEN",
+    name: "AboutScreen"
+  },
+  settings: {
+    id: "SETTINGS_SCREEN",
+    name: "SettingsScreen"
   }
 };

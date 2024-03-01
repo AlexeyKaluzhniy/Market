@@ -1,6 +1,6 @@
 import {i18next} from "../common/localization/localization";
 import {Navigation} from "react-native-navigation";
-import {Colors} from "../core/theme/colors";
+import {Colors, LightThemeColors} from "../core/theme/colors";
 import {isAndroid} from "../core/theme/commonConsts";
 
 export function setDefaultOptions() {
@@ -14,14 +14,15 @@ export function setDefaultOptions() {
       },
     },
     layout: {
-      componentBackgroundColor: Colors.white,
+      componentBackgroundColor: LightThemeColors.background,
     },
     topBar: {
       animate: true,
       drawBehind: !isAndroid,
+      height: 68,
       background: {
         translucent: true,
-        color: Colors.blue,
+        color: LightThemeColors.background,
       },
       title: {
         color: Colors.black,
@@ -55,18 +56,15 @@ export function setDefaultOptions() {
       animateTabSelection: true,
       preferLargeIcons: false,
       tabsAttachMode: "together",
-      backgroundColor: Colors.blue,
-      borderWidth: 1,
-      borderColor: Colors.black,
+      backgroundColor: LightThemeColors.backgroundBottomTab,
     },
     bottomTab: {
-      selectedTextColor: Colors.black,
-      selectedIconColor: Colors.black,
-      textColor: Colors.black,
-      iconColor: Colors.black,
+      selectedTextColor: LightThemeColors.text,
+      textColor: LightThemeColors.text,
+      iconHeight: 25,
     },
     statusBar: {
-      backgroundColor: Colors.white,
+      backgroundColor: LightThemeColors.background,
       visible: true,
     },
   });

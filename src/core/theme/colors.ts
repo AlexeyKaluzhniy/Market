@@ -3,6 +3,12 @@ interface IThemeColors {
   main: string;
   element: string;
   background: string;
+  backgroundBottomTab: string;
+  drawer: string;
+  outline: string;
+  outlineVariant: string;
+  onSurface: string;
+  searchBar: string;
   text: string;
   secondaryText: string;
   danger: string;
@@ -22,7 +28,13 @@ export const LightThemeColors: IThemeColors = {
   theme: "light",
   main: "#DF3A76",
   element: "#ffffff",
-  background: "#f4f5f8",
+  background: "#fff8f9",
+  backgroundBottomTab: "#F9EAEF",
+  drawer: "#FEF0F5",
+  outline: "#D3C2C9",
+  outlineVariant: "#81737A",
+  onSurface: "#4F4449",
+  searchBar: "#F3E5EA",
   text: "#1f2731",
   secondaryText: "#828997",
   danger: "#f51709",
@@ -52,9 +64,15 @@ export const LightThemeColors: IThemeColors = {
 // todo MVPFade
 export const DarkThemeColors: IThemeColors = {
   theme: "dark",
-  main: "#cc122d",
+  main: "#F9B1DB",
   element: "#1f2731",
-  background: "#0d1116",
+  background: "#181115",
+  backgroundBottomTab: "#251E21",
+  drawer: '#211A1D',
+  outline: '#4F4449',
+  outlineVariant: "#9C8D93",
+  onSurface: "#D3C2C9",
+  searchBar: "#30282C",
   text: "#ffffff",
   secondaryText: "#939bac",
   danger: "#eb2f16",
@@ -113,6 +131,7 @@ export enum Colors {
   buttonHighlight = "#FFE9EC",
   solidButtonHighlight = "#9b001a",
   lightPrimary = "#EAEDFB",
+  primaryFixed = "#6A3457",
   secondary = "#939BAC",
   tertialy = "#C4C4CC",
   winline2Disabled = "#5C6168",

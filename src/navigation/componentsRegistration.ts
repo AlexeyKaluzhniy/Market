@@ -16,6 +16,10 @@ import {Profile} from "../modules/profile/Profile";
 import {ForgotPassword} from "../modules/authentication/components/ForgotPassword";
 import {EnterCode} from "../modules/authentication/components/EnterCode";
 import {NewPassword} from "../modules/authentication/components/NewPassword";
+import {TopBarHeader} from "~/navigation/components/TopBarHeader";
+import {Drawer} from "~/modules/drawer/Drawer";
+import {About} from "~/modules/about/About";
+import {Settings} from "~/modules/settings/Settings";
 
 function registerAppScreenComponent<P extends AppNavigationComponentProps>(props: NavigationHOCProps<P>) {
   Navigation.registerComponent(props.page.name, () => NavigationHOC(props), () => props.Component);
@@ -40,7 +44,11 @@ export function registerComponents() {
   registerAppScreenComponent({Component: ForgotPassword, page: Pages.forgotPassword, useRedux: true});
   registerAppScreenComponent({Component: EnterCode, page: Pages.code, useRedux: true});
   registerAppScreenComponent({Component: NewPassword, page: Pages.newPassword, useRedux: true});
+  registerAppScreenComponent({Component: Drawer, page: Pages.bottomTabsDrawer, useRedux: true});
+  registerAppScreenComponent({Component: About, page: Pages.about, useRedux: true});
+  registerAppScreenComponent({Component: Settings, page: Pages.settings, useRedux: true});
 
   registerReduxComponent(Components.topBarTitle.name, TopBarTitle);
   registerReduxComponent(Components.topBarBackButton.name, TopBarBackButton);
+  registerReduxComponent(Components.topBarHeader.name, TopBarHeader);
 }

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {CustomInputForm} from "./CustomInputForm";
-import {StyleSheet, View} from "react-native";
+import {Button, StyleSheet, View} from "react-native";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {useLazyGetSessionIdLoginQuery} from "~/core/store/auth/authQuery";
@@ -32,6 +32,7 @@ export const Login = () => {
                 schema={schema}
                 onSubmit={trigger}
             />
+            <Button title="Войти" onPress={() => navigation.setRoot(getBottomTabsLayout)}/>
         </View>
     );
 };

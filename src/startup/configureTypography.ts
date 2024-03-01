@@ -120,6 +120,29 @@ export const typographyStyles = {
             lineHeight: 16,
             color: Colors.black,
         } as TextStyle,
+    },
+    Brand: {
+        Large: {
+            fontFamily: Fonts.montserrat,
+            fontWeight: "900",
+            fontSize: 20,
+            lineHeight: 22,
+            color: Colors.black,
+        } as TextStyle,
+        Medium: {
+            fontFamily: Fonts.montserrat,
+            fontWeight: "900",
+            fontSize: 14,
+            lineHeight: 16,
+            color: Colors.black,
+        } as TextStyle,
+        Small: {
+            fontFamily: Fonts.montserrat,
+            fontWeight: "900",
+            fontSize: 12,
+            lineHeight: 14,
+            color: Colors.black,
+        } as TextStyle,
     }
 };
 

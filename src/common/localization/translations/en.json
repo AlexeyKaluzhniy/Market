@@ -160,7 +160,7 @@
       "savePassword": "Save new password"
     },
     "pages": {
-      "main": "Main",
+      "main": "Advertises",
       "news": "News",
       "shop": "Shopping",
       "login": "Login",
@@ -217,6 +217,33 @@
       "notifications": "notifications",
       "rateApp": "App rating",
       "privacyPolicy": "Privacy Policy"
+    },
+    "drawer": {
+      "brandTitle": "купи - и точка",
+      "settings": "Settings",
+      "about": "About",
+      "logOut": "Log out"
+    },
+    "about": {
+      "welcome": "Welcome to ",
+      "brand": "Купи - и точка! ",
+      "firstBody": "- your universal assistant in the world of classified ads! Our app provides a convenient and secure way to buy or sell almost anything, from household appliances to real estate and cars.",
+      "secondBody": "Here you will find a wide selection of goods and services offered by both individuals and companies. Whether it’s searching for an apartment, buying a car, or choosing a contractor for housework - all this is available in a few clicks.",
+      "features": "Application Features: ",
+      "categories": "Variety of Categories: ",
+      "search": "Search and Filters: ",
+      "security": "Security: ",
+      "easyPublish": "Ease of Publishing Advertisements: ",
+      "personalArea": "Personal Area: ",
+      "categoriesBody": "From real estate and cars to household appliances and clothing.",
+      "searchBody": "Set up search filters to quickly find what you need.",
+      "securityBody": "We make every effort to make transactions safe and transparent.",
+      "easyPublishBody": "Sell your products by posting ads quickly and easily.",
+      "personalAreaBody": "Manage your ads and settings through your personal account.",
+      "in": "In ",
+      "thirdBody": "we are committed to providing you with the best shopping and selling experience. Constant updates and improvements make our application even more convenient and functional.",
+      "thanks": "Thank you for choosing ",
+      "thanksBody": "We are happy to help you make successful transactions."
     }
   }
 }
