@@ -31,27 +31,9 @@ export const Label: FC<ILabelProps> = memo((props) => {
                 baseStyle = {} as TextStyle;
             }
 
-            //todo fix bug with label weights
-            switch (props.weight) {
-              case LabelWeights.Regular:
-                baseStyle.fontWeight = "400";
-                break;
-              case LabelWeights.Medium:
-                baseStyle.fontWeight = "500";
-                break;
-              case LabelWeights.Bold:
-                baseStyle.fontWeight = "700";
-                break;
-              case LabelWeights.EBold:
-                baseStyle.fontWeight = "900";
-                break;
-              default:
-                break;
-            }
-
             return StyleSheet.flatten([baseStyle, props.color ? {color: props.color} : null, props.style]);
         },
-        [config, logger, props.color, props.size, props.style, props.type, props.weight],
+        [config, logger, props.color, props.size, props.style, props.type],
     );
 
     const localize = useCallback(() => {

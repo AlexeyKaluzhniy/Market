@@ -5,11 +5,11 @@ import BrandIcon from '../../../resources/icons/brand.svg';
 import SettingsIcon from '../../../resources/icons/settings.svg';
 import InfoIcon from '../../../resources/icons/info.svg';
 import LogOutIcon from '../../../resources/icons/logout.svg';
-import {Roboto} from "~/infrastructure";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {MenuItem} from "~/modules/drawer/components/MenuItem";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {setAuthRoot} from "~/navigation/roots";
+import {Brand} from "~/infrastructure";
 
 export const Drawer: NavigationFunctionComponent = () => {
     const handleLogOut = () => {
@@ -20,7 +20,7 @@ export const Drawer: NavigationFunctionComponent = () => {
         <View style={styles.container}>
             <View style={styles.brandContainer}>
                 <BrandIcon height={45} width={45}/>
-                <Roboto.Title.Large labelKey="drawer.brandTitle" style={styles.brandTitle}/>
+                <Brand.Large labelKey="drawer.brandTitle" style={styles.brandTitle}/>
             </View>
             <MenuItem Icon={SettingsIcon} title="drawer.settings" onPress={() => console.log('Settings')}/>
             <MenuItem Icon={InfoIcon} title="drawer.about" onPress={() => console.log('About')}/>
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
         marginVertical: CommonSizes.margin.smallPlus
     },
     brandTitle: {
-        fontWeight: '900',
         marginLeft: CommonSizes.margin.largePlus,
         color: Colors.primaryFixed
     },
