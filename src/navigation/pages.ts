@@ -54,5 +54,9 @@ export const Pages = {
   settings: {
     id: "SETTINGS_SCREEN",
     name: "SettingsScreen"
+  },
+  modal: {
+    id: "MODAL_SCREEN",
+    name: "ModalScreen"
   }
 };

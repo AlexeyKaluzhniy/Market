@@ -8,21 +8,37 @@ import LogOutIcon from '../../../resources/icons/logout.svg';
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {MenuItem} from "~/modules/drawer/components/MenuItem";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {drawerStackScreensLayout, setAuthRoot} from "~/navigation/roots";
+import {setAuthRoot} from "~/navigation/roots";
 import {Brand} from "~/infrastructure";
 import {Pages} from "~/navigation/pages";
 import {Stacks} from "~/navigation/stacks";
-import {useTranslation} from "react-i18next";
 
-export const Drawer: NavigationFunctionComponent = () => {
-    const {t} = useTranslation();
-
+export const Drawer: NavigationFunctionComponent = (props) => {
     const handleLogOut = () => {
         setAuthRoot();
     };
+    console.log('DrawerID', props.componentId);
 
-    const handlePushScreen = (name: string, title: string) => {
-        Navigation.push(Stacks.drawerStack.id, drawerStackScreensLayout(name, title));
+    const handlePushScreen = (name: string) => {
+        // Navigation.push(Stacks.drawerStack.id, drawerStackScreensLayout(name));
+        Navigation.showOverlay({
+
+                    component: {
+                        name: Pages.modal.name,
+
+                        options: {
+                            overlay: {
+                                interceptTouchOutside: true,
+                                handleKeyboardEvents: true,
+                            },
+                            // modalPresentationStyle: OptionsModalPresentationStyle.overCurrentContext,
+                            layout: {
+                                backgroundColor: 'transparent'
+                            },
+                        }
+                    }
+
+        });
     };
 
     return (
@@ -31,9 +47,9 @@ export const Drawer: NavigationFunctionComponent = () => {
                 <BrandIcon height={45} width={45}/>
                 <Brand.Large labelKey="drawer.brandTitle" style={styles.brandTitle}/>
             </View>
-            <MenuItem Icon={SettingsIcon} title="drawer.settings"
-                      onPress={() => handlePushScreen(Pages.settings.name, t("drawer.settings"))}/>
-            <MenuItem Icon={InfoIcon} title="drawer.about" onPress={() => handlePushScreen(Pages.about.name, t("drawer.about"))}/>
+            <MenuItem Icon={SettingsIcon} title="drawer.settings" onPress={() => handlePushScreen(Pages.modal.name)}/>
+            <MenuItem Icon={InfoIcon} title="drawer.about"
+                      onPress={() => handlePushScreen(Pages.about.name)}/>
             <View style={styles.outline}/>
             <MenuItem Icon={LogOutIcon} title="drawer.logOut" onPress={handleLogOut}/>
         </View>

@@ -197,13 +197,6 @@ export const drawerStackScreensLayout = (name: string): LayoutStackChildren => {
                                 duration: 200
                             }
                         },
-                        topBar: {
-                            translationX: {
-                                from: Dimensions.get('window').width,
-                                to: 0,
-                                duration: 200
-                            }
-                        }
                     },
                     pop: {
                         content: {
@@ -211,15 +204,8 @@ export const drawerStackScreensLayout = (name: string): LayoutStackChildren => {
                                 from: 0,
                                 to: Dimensions.get('window').width,
                                 duration: 200
-                            }
+                            },
                         },
-                        topBar: {
-                            translationX: {
-                                from: 0,
-                                to: Dimensions.get('window').width,
-                                duration: 200
-                            }
-                        }
                     }
                 },
             }

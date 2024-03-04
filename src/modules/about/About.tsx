@@ -6,6 +6,7 @@ import {FeaturesBlock} from "~/modules/about/components/FeaturesBlock";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {BrandBlock} from "~/modules/about/components/BrandBlock";
 import {CustomHeader} from "~/components/CustomHeader";
+import {ModalizeContainer} from "~/components/ModalizeContainer";
 
 export const About: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
@@ -20,6 +21,7 @@ export const About: NavigationFunctionComponent = (props) => {
                 <BrandBlock title={t("about.in")} body={"about.thirdBody"}/>
                 <BrandBlock title={t("about.thanks")} body={"about.thanksBody"}/>
             </ScrollView>
+            <ModalizeContainer componentId={props.componentId}/>
         </>
     );
 };
