@@ -1,14 +1,14 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
 import {StyleSheet, View} from "react-native";
 import React from "react";
-import {AuthCustomHeader} from "~/components/AuthCustomHeader";
+import {CustomHeader} from "~/components/CustomHeader";
 import {CustomInputForm} from "./CustomInputForm";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, ref, string} from "yup";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 
-export const NewPassword: NavigationFunctionComponent = (): JSX.Element => {
+export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => {
     const schema = object({
         password: string().min(8).required(),
         repeatPassword: string().oneOf([ref("password")]).required()
@@ -16,7 +16,7 @@ export const NewPassword: NavigationFunctionComponent = (): JSX.Element => {
 
     return (
         <View style={CommonStyles.flex1}>
-            <AuthCustomHeader headerTitle="authentication.newPassword"/>
+            <CustomHeader headerTitle="authentication.newPassword" id={props.componentId} isStack isAuth/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
                 <Roboto.Label.Large style={styles.textMargin} labelKey="authentication.savePassword"/>
                 <CustomInputForm

@@ -2,14 +2,14 @@ import {StyleSheet, View} from "react-native";
 import React from "react";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
-import {AuthCustomHeader} from "~/components/AuthCustomHeader";
+import {CustomHeader} from "~/components/CustomHeader";
 import {CustomInputForm} from "./CustomInputForm";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, string} from "yup";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 
-export const ForgotPassword: NavigationFunctionComponent = (): JSX.Element => {
+export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element => {
     const schema = object({
         email: string().required().matches(/^\+373\d{8}$/),
     });
@@ -29,7 +29,7 @@ export const ForgotPassword: NavigationFunctionComponent = (): JSX.Element => {
 
     return (
         <View style={CommonStyles.flex1}>
-            <AuthCustomHeader headerTitle='authentication.recoverPassword'/>
+            <CustomHeader headerTitle='authentication.recoverPassword' id={props.componentId} isStack isAuth/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
                 <Roboto.Body.Medium style={styles.text} labelKey="authentication.phoneRecovery"/>
                 <CustomInputForm

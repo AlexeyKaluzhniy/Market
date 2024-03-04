@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {StyleSheet, Text, TextInput, TextInputKeyPressEventData, TouchableOpacity, View} from "react-native";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {AuthCustomHeader} from "~/components/AuthCustomHeader";
+import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {LightThemeColors} from "~/core/theme/colors";
 import {SubmitButton} from "~/components/SubmitButton";
@@ -9,7 +9,7 @@ import {Pages} from "~/navigation/pages";
 import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
 
-export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
+export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
     const inputRefs = useRef<TextInput[]>([]);
     const [isDisabled, setDisabled] = useState(false);
     const [remainingTime, setRemainingTime] = useState(30);
@@ -57,7 +57,7 @@ export const EnterCode: NavigationFunctionComponent = (): JSX.Element => {
 
     return (
         <View>
-            <AuthCustomHeader headerTitle="authentication.enterCode"/>
+            <CustomHeader headerTitle="authentication.enterCode" id={props.componentId} isAuth isStack/>
             <View style={[styles.container, CommonStyles.marginContainer]}>
                 <Roboto.Body.Medium labelKey="authentication.enterCodeText"/>
                 <View style={[CommonStyles.row, styles.inputContainer]}>

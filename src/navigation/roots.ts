@@ -1,11 +1,13 @@
 import {Pages} from "./pages";
-import {LayoutBottomTabs, LayoutStackChildren, Navigation} from "react-native-navigation";
+import {
+    LayoutBottomTabs,
+    LayoutStackChildren,
+    Navigation,
+} from "react-native-navigation";
 import {Tabs} from "./tabs";
 import {i18next} from "~/common/localization/localization";
 import {Dimensions} from "react-native";
 import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
-import {Components} from "~/navigation/components";
-import {LightThemeColors} from "~/core/theme/colors";
 import {Stacks} from "~/navigation/stacks";
 
 export function setInitialRoot() {
@@ -69,11 +71,6 @@ export async function setAuthRoot() {
 export function bottomTabsLayout(): LayoutBottomTabs {
     return {
         id: Pages.tabs.id,
-        options: {
-            topBar: {
-                visible: true,
-            },
-        },
         children: [
             {
                 stack: {
@@ -116,8 +113,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                             selectedIcon: TabbarLightResources.favorite
                         },
                         topBar: {
-                            title: getTopBarHeader(i18next.t("pages.favorite"), Pages.favorite.id),
-                            elevation: 0,
+                            visible: false
                         }
                     },
                 },
@@ -140,8 +136,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                             selectedIcon: TabbarLightResources.profile
                         },
                         topBar: {
-                            title: getTopBarHeader(i18next.t("pages.profile"), Pages.profile.id, true),
-                            elevation: 0
+                            visible: false
                         },
                     }
                 }
@@ -149,19 +144,6 @@ export function bottomTabsLayout(): LayoutBottomTabs {
         ]
     };
 }
-
-const getTopBarHeader = (title: string, pageId: string, isProfile = false) => {
-    return {
-        component: {
-            id: Components.topBarHeader.id + pageId,
-            name: Components.topBarHeader.name,
-            passProps: {
-                title: title,
-                isProfile: isProfile
-            }
-        }
-    };
-};
 
 export const getBottomTabsLayout = () => {
     return {
@@ -193,25 +175,17 @@ export const getBottomTabsLayout = () => {
     };
 };
 
-export const drawerStackScreensLayout = (name: string, titleText: string): LayoutStackChildren => {
+export const drawerStackScreensLayout = (name: string): LayoutStackChildren => {
     return {
         component: {
             name: name,
             options: {
                 topBar: {
-                    title: {
-                        text: titleText,
-                        fontSize: 22,
-                        alignment: 'fill'
-                    },
-                    backButton: {
-                        color: LightThemeColors.outlineVariant
-                    },
-                    elevation: 0,
+                    visible: false
                 },
                 sideMenu: {
                     left: {
-                        visible: false
+                        visible: false,
                     },
                 },
                 animations: {
