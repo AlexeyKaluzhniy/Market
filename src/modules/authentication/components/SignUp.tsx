@@ -6,13 +6,15 @@ import {navigation} from "~/services";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {object, ref, string} from "yup";
 import {useLazyGetSessionIdRegisterQuery} from "~/core/store/auth/authQuery";
+import {LayoutRoot} from "react-native-navigation";
 
 export const SignUp = () => {
     const [trigger, {data}] = useLazyGetSessionIdRegisterQuery();
 
+    //todo fix navigation types
     useEffect(() => {
         if (data) {
-            navigation.setRoot(getBottomTabsLayout);
+            navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot);
         }
     }, [data]);
 

@@ -7,13 +7,15 @@ import {useLazyGetSessionIdLoginQuery} from "~/core/store/auth/authQuery";
 import {object, string} from "yup";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {CommonStyles} from "~/core/theme/commonStyles";
+import {LayoutRoot} from "react-native-navigation";
 
 export const Login = () => {
     const [trigger, {data}] = useLazyGetSessionIdLoginQuery();
 
+    //todo fix navigation types
     useEffect(() => {
         if (data) {
-            navigation.setRoot(getBottomTabsLayout);
+            navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot);
         }
     }, [data]);
 
@@ -32,7 +34,7 @@ export const Login = () => {
                 schema={schema}
                 onSubmit={trigger}
             />
-            <Button title="Войти" onPress={() => navigation.setRoot(getBottomTabsLayout)}/>
+            <Button title="Войти" onPress={() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)}/>
         </View>
     );
 };

@@ -1,13 +1,12 @@
 import {Pages} from "./pages";
-import {LayoutBottomTabs, Navigation} from "react-native-navigation";
+import {LayoutBottomTabs, LayoutStackChildren, Navigation} from "react-native-navigation";
 import {Tabs} from "./tabs";
-import {i18next} from "../common/localization/localization";
-
+import {i18next} from "~/common/localization/localization";
 import {Dimensions} from "react-native";
 import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
 import {Components} from "~/navigation/components";
-import {Stacks} from "~/navigation/stacks";
 import {LightThemeColors} from "~/core/theme/colors";
+import {Stacks} from "~/navigation/stacks";
 
 export function setInitialRoot() {
     Navigation.setRoot({
@@ -118,7 +117,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                         },
                         topBar: {
                             title: getTopBarHeader(i18next.t("pages.favorite"), Pages.favorite.id),
-                            elevation: 0
+                            elevation: 0,
                         }
                     },
                 },
@@ -143,7 +142,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                         topBar: {
                             title: getTopBarHeader(i18next.t("pages.profile"), Pages.profile.id, true),
                             elevation: 0
-                        }
+                        },
                     }
                 }
             }
@@ -194,7 +193,7 @@ export const getBottomTabsLayout = () => {
     };
 };
 
-export const drawerStackScreensLayout = (name: string, titleText: string) => {
+export const drawerStackScreensLayout = (name: string, titleText: string): LayoutStackChildren => {
     return {
         component: {
             name: name,
@@ -203,11 +202,12 @@ export const drawerStackScreensLayout = (name: string, titleText: string) => {
                     title: {
                         text: titleText,
                         fontSize: 22,
+                        alignment: 'fill'
                     },
                     backButton: {
                         color: LightThemeColors.outlineVariant
                     },
-                    elevation: 0
+                    elevation: 0,
                 },
                 sideMenu: {
                     left: {
