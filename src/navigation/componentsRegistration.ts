@@ -19,7 +19,8 @@ import {NewPassword} from "../modules/authentication/components/NewPassword";
 import {TopBarHeader} from "~/navigation/components/TopBarHeader";
 import {Drawer} from "~/modules/drawer/Drawer";
 import {About} from "~/modules/about/About";
-import {Settings} from "~/modules/settings/Settings";
+import {ModalWrapper} from "~/components/ModalWrapper";
+import {ModalizeContainer} from "~/components/ModalizeContainer";
 
 function registerAppScreenComponent<P extends AppNavigationComponentProps>(props: NavigationHOCProps<P>) {
   Navigation.registerComponent(props.page.name, () => NavigationHOC(props), () => props.Component);
@@ -46,9 +47,10 @@ export function registerComponents() {
   registerAppScreenComponent({Component: NewPassword, page: Pages.newPassword, useRedux: true});
   registerAppScreenComponent({Component: Drawer, page: Pages.bottomTabsDrawer, useRedux: true});
   registerAppScreenComponent({Component: About, page: Pages.about, useRedux: true});
-  registerAppScreenComponent({Component: Settings, page: Pages.settings, useRedux: true});
+  registerAppScreenComponent({Component: ModalWrapper, page: Pages.modal, useRedux: true });
 
   registerReduxComponent(Components.topBarTitle.name, TopBarTitle);
   registerReduxComponent(Components.topBarBackButton.name, TopBarBackButton);
   registerReduxComponent(Components.topBarHeader.name, TopBarHeader);
+  registerReduxComponent(Components.modalizeContainer.name, ModalizeContainer);
 }
