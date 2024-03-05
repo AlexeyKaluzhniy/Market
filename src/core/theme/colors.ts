@@ -6,6 +6,7 @@ interface IThemeColors {
   backgroundBottomTab: string;
   drawer: string;
   outline: string;
+  surfaceContainer: string;
   outlineVariant: string;
   onSurface: string;
   searchBar: string;
@@ -32,11 +33,12 @@ export const LightThemeColors: IThemeColors = {
   backgroundBottomTab: "#F9EAEF",
   drawer: "#FEF0F5",
   outline: "#D3C2C9",
+  surfaceContainer: "#EDDFE4",
   outlineVariant: "#81737A",
   onSurface: "#4F4449",
   searchBar: "#F3E5EA",
   text: "#1f2731",
-  secondaryText: "#828997",
+  secondaryText: "#49454F",
   danger: "#f51709",
   attention: "#ffbd3e",
   positive: "#4acb0d",
@@ -70,6 +72,7 @@ export const DarkThemeColors: IThemeColors = {
   backgroundBottomTab: "#251E21",
   drawer: '#211A1D',
   outline: '#4F4449',
+  surfaceContainer: "#3B3236",
   outlineVariant: "#9C8D93",
   onSurface: "#D3C2C9",
   searchBar: "#30282C",

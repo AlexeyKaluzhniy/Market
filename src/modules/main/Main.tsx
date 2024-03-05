@@ -1,13 +1,14 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
 import {Button, View} from "react-native";
 import React from "react";
-import {ModalizeContainer} from "~/components/ModalizeContainer";
+import {navigation} from "~/services";
+import {Components} from "~/navigation/components";
 
 export const Main: NavigationFunctionComponent = (props): JSX.Element => {
     return (
-        <View>
-            <Button title='ModalShow' onPress={() => console.log('+')}/>
-            <ModalizeContainer componentId={props.componentId}/>
+        <View style={{flex: 1}}>
+            <Button title='ModalShow'
+                    onPress={() => navigation.showOverlay(Components.modalizeContainer, {screenIdSuffix: props.componentId})}/>
         </View>
     );
 };

@@ -1,14 +1,14 @@
 import React, {memo, useCallback, useMemo, useRef} from "react";
-import {Image, ScrollViewProps, StyleSheet, ViewStyle} from "react-native";
+import {ScrollViewProps, StyleSheet, ViewStyle} from "react-native";
 import {Modalize, ModalizeProps} from "react-native-modalize";
-import {isIos} from "../core/theme/commonConsts";
-import {Colors, ThemeColors} from "../core/theme/colors";
-import {useThemedStyles} from "../core/theme/hooks";
+import {isIos} from "~/core/theme/commonConsts";
+import {Colors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
+import {useThemedStyles} from "~/core/theme/hooks";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {CommonSizes} from "../core/theme/commonSizes";
-import {TouchablePlatform} from "../common/components/TouchablePlatform";
-import {useMount} from "../common/hooks/useMount";
-import {ImageResources} from "../common/ImageResources.g";
+import {TouchablePlatform} from "~/common/components/TouchablePlatform";
+import {useMount} from "~/common/hooks/useMount";
+import {Roboto} from "~/infrastructure";
+import {CommonSizes} from "~/core/theme/commonSizes";
 
 interface IProps {
   getHeaderComponent?: (closeButton: React.ReactNode) => React.ReactNode;
@@ -36,9 +36,9 @@ export const ModalizeContainer: NavigationFunctionComponent<IProps> = memo((prop
 
   const closeButton = useMemo(() => (
     <TouchablePlatform onPress={closeModal} style={styles.closeContainer}>
-      <Image source={ImageResources.close_modal} />
+      <Roboto.Label.Large labelKey={"common.done"} style={styles.done}/>
     </TouchablePlatform>
-  ), [closeModal, styles.closeContainer]);
+  ), [closeModal, styles.closeContainer, styles.done]);
 
   return (
     <Modalize
@@ -65,21 +65,22 @@ export const ModalizeContainer: NavigationFunctionComponent<IProps> = memo((prop
 const styleGetter = (colors: ThemeColors) => StyleSheet.create({
   handleLine: {
     backgroundColor: `${colors.background}88`,
+    width: 32,
+    marginTop: CommonSizes.margin.largePlus
   } as ViewStyle,
   modalContainer: {
-    backgroundColor: colors.element,
+    backgroundColor: LightThemeColors.background,
     overflow: "visible",
   } as ViewStyle,
   closeContainer: {
-    alignSelf: "flex-end",
-    margin: CommonSizes.spacing.medium,
-    backgroundColor: `${colors.background}66`,
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    alignSelf: 'flex-end',
     alignItems: "center",
     justifyContent: "center",
+    paddingVertical: CommonSizes.padding.superLarge
   } as ViewStyle,
+  done: {
+    color: LightThemeColors.main
+  } as ViewStyle
 });
 
 ModalizeContainer.options = {

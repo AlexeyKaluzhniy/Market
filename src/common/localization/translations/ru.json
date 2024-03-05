@@ -216,7 +216,8 @@
       "language": "ЯЗЫК",
       "notifications": "уведомления",
       "rateApp": "Оценка приложения",
-      "privacyPolicy": "Политика конфиденциальности"
+      "privacyPolicy": "Политика конфиденциальности",
+      "darkTheme": "Тёмная тема"
     },
     "drawer": {
       "brandTitle": "купи - и точка",
