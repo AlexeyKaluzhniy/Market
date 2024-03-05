@@ -3,13 +3,34 @@ import React, {useState} from "react";
 import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {IPropsCustomInput} from "~/infrastructure/dto/common/IPropsCustomInput";
+import {ImageResources} from "~/common/ImageResources.g";
+import {CommonStyles} from "~/core/theme/commonStyles";
+import {showActionSheet} from "~/common/helpers/dialogsHelpers";
+import {useTranslation} from "react-i18next";
 
-export function CustomInput({placeholder, setValue, Icon, passwordInput, name}: IPropsCustomInput) {
+export function DefaultInput(
+    {
+        placeholder,
+        setValue,
+        Icon,
+        passwordInput = false,
+        name,
+    }: IPropsCustomInput) {
     const [isVisible, setVisible] = useState(passwordInput);
     const [isFocused, setFocused] = useState(false);
     const eyeIcons = {
-        open: require('../../resources/images/Eye.png'),
-        closed: require('../../resources/images/EyeClosed.png')
+        open: ImageResources.eye,
+        closed: ImageResources.eyeclosed
+    };
+
+
+    const {t} = useTranslation();
+
+    const onPress = () => {
+        showActionSheet({
+            options: ['1515', '215154', t("common.cancel")],
+            cancelButtonIndex: 2
+        }, () => console.log('++++'));
     };
 
     return (
@@ -49,7 +70,8 @@ const styles = StyleSheet.create({
     input: {
         width: '78%',
         fontSize: CommonSizes.font.medium,
-        marginLeft: CommonSizes.margin.smallPlus
+        marginLeft: CommonSizes.margin.smallPlus,
+        color: LightThemeColors.text
     },
     eyeIcon: {
         marginRight: CommonSizes.margin.extraSmallPlus
@@ -61,5 +83,14 @@ const styles = StyleSheet.create({
     inactiveInput: {
         borderWidth: CommonSizes.borderWidth.extraThin,
         borderColor: LightThemeColors.secondaryText
+    },
+    dropDownInput: {
+        ...CommonStyles.rowCenter,
+        borderWidth: CommonSizes.borderWidth.extraThin,
+        borderColor: LightThemeColors.outlineVariant,
+        borderRadius: CommonSizes.borderRadius.largePlus,
+        justifyContent: 'space-between',
+        paddingRight: CommonSizes.padding.large,
+        height: 52,
     }
 });

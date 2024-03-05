@@ -1,7 +1,7 @@
 import {View, StyleSheet, TouchableOpacity} from "react-native";
 import React, {useState} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
-import {CustomInput} from "~/components/CustomInput";
+import {DefaultInput} from "~/components/DefaultInput";
 import {LightThemeColors} from "~/core/theme/colors";
 import CheckBox from "@react-native-community/checkbox";
 import {IAuthComponentProps} from "~/infrastructure/dto/common/IAuthComponentProps";
@@ -64,7 +64,7 @@ export function CustomInputForm(
     return (
         <View style={[CommonStyles.flex1, styles.inputContainer]}>
             {phoneField &&
-                <CustomInput
+                <DefaultInput
                     placeholder={t("authentication.phoneNumber")}
                     name="email"
                     passwordInput={false}
@@ -73,7 +73,7 @@ export function CustomInputForm(
                 />
             }
             {passwordField &&
-                <CustomInput
+                <DefaultInput
                     placeholder={t("authentication.password")}
                     name="password"
                     passwordInput={true}
@@ -82,7 +82,7 @@ export function CustomInputForm(
                 />
             }
             {repeatPasswordField &&
-                <CustomInput
+                <DefaultInput
                     placeholder={t("authentication.repeatPassword")}
                     name="repeatPassword"
                     passwordInput={true}
