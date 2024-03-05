@@ -16,7 +16,9 @@ export function showActionSheet(options: ActionSheetIOSOptions, onOptionSelected
       };
     });
 
-    Alert.alert(options.title || "", options.message, buttons, {cancelable: true});
+    Alert.alert(options.title || "546353", '15151',
+        [{text: 'dnjfvndjfnv', isPreferred: true, style: 'default'}, {text: 'dfvdfjvn', style: "default"}],
+        {cancelable: true});
   }
 }
 

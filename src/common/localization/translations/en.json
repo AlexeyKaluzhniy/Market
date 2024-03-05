@@ -216,7 +216,8 @@
       "language": "LANGUAGE",
       "notifications": "notifications",
       "rateApp": "App rating",
-      "privacyPolicy": "Privacy Policy"
+      "privacyPolicy": "Privacy Policy",
+      "darkTheme": "Dark theme"
     },
     "drawer": {
       "brandTitle": "купи - и точка",

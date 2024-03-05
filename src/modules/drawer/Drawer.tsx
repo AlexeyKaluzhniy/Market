@@ -8,36 +8,37 @@ import LogOutIcon from '../../../resources/icons/logout.svg';
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {MenuItem} from "~/modules/drawer/components/MenuItem";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {setAuthRoot} from "~/navigation/roots";
+import {drawerStackScreensLayout, setAuthRoot} from "~/navigation/roots";
 import {Brand} from "~/infrastructure";
 import {Pages} from "~/navigation/pages";
 import {Stacks} from "~/navigation/stacks";
+import {navigation} from "~/services";
+import {Components} from "~/navigation/components";
+import {ModalizeHeader} from "~/components/ModalizeHeader";
+import {ModalizeSettingsContainer} from "~/components/ModalizeSettingsContainer";
 
 export const Drawer: NavigationFunctionComponent = (props) => {
     const handleLogOut = () => {
         setAuthRoot();
     };
-    console.log('DrawerID', props.componentId);
 
     const handlePushScreen = (name: string) => {
-        // Navigation.push(Stacks.drawerStack.id, drawerStackScreensLayout(name));
-        Navigation.showOverlay({
+        Navigation.push(Stacks.drawerStack.id, drawerStackScreensLayout(name));
+    };
 
-                    component: {
-                        name: Pages.modal.name,
-
-                        options: {
-                            overlay: {
-                                interceptTouchOutside: true,
-                                handleKeyboardEvents: true,
-                            },
-                            // modalPresentationStyle: OptionsModalPresentationStyle.overCurrentContext,
-                            layout: {
-                                backgroundColor: 'transparent'
-                            },
-                        }
-                    }
-
+    const handleShowModal = () => {
+        Navigation.mergeOptions(Pages.bottomTabsDrawer.id, {
+            sideMenu: {
+                left: {
+                    visible: false,
+                },
+            },
+        });
+        navigation.showOverlay(Components.modalizeContainer, {
+            screenIdSuffix: props.componentId, params: {
+                getHeaderComponent: ModalizeHeader,
+                getContentComponent: ModalizeSettingsContainer
+            }
         });
     };
 
@@ -47,7 +48,8 @@ export const Drawer: NavigationFunctionComponent = (props) => {
                 <BrandIcon height={45} width={45}/>
                 <Brand.Large labelKey="drawer.brandTitle" style={styles.brandTitle}/>
             </View>
-            <MenuItem Icon={SettingsIcon} title="drawer.settings" onPress={() => handlePushScreen(Pages.modal.name)}/>
+            <MenuItem Icon={SettingsIcon} title="drawer.settings"
+                      onPress={() => handleShowModal()}/>
             <MenuItem Icon={InfoIcon} title="drawer.about"
                       onPress={() => handlePushScreen(Pages.about.name)}/>
             <View style={styles.outline}/>

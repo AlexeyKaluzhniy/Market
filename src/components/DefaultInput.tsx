@@ -4,9 +4,6 @@ import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {IPropsCustomInput} from "~/infrastructure/dto/common/IPropsCustomInput";
 import {ImageResources} from "~/common/ImageResources.g";
-import {CommonStyles} from "~/core/theme/commonStyles";
-import {showActionSheet} from "~/common/helpers/dialogsHelpers";
-import {useTranslation} from "react-i18next";
 
 export function DefaultInput(
     {
@@ -21,16 +18,6 @@ export function DefaultInput(
     const eyeIcons = {
         open: ImageResources.eye,
         closed: ImageResources.eyeclosed
-    };
-
-
-    const {t} = useTranslation();
-
-    const onPress = () => {
-        showActionSheet({
-            options: ['1515', '215154', t("common.cancel")],
-            cancelButtonIndex: 2
-        }, () => console.log('++++'));
     };
 
     return (
@@ -83,14 +70,5 @@ const styles = StyleSheet.create({
     inactiveInput: {
         borderWidth: CommonSizes.borderWidth.extraThin,
         borderColor: LightThemeColors.secondaryText
-    },
-    dropDownInput: {
-        ...CommonStyles.rowCenter,
-        borderWidth: CommonSizes.borderWidth.extraThin,
-        borderColor: LightThemeColors.outlineVariant,
-        borderRadius: CommonSizes.borderRadius.largePlus,
-        justifyContent: 'space-between',
-        paddingRight: CommonSizes.padding.large,
-        height: 52,
     }
 });
