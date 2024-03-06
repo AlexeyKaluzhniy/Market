@@ -11,16 +11,18 @@ import {EditButton} from "~/common/components/EditButton";
 import {TFuncKeyApp} from "~/common/localization/localization";
 import {BackButton} from "~/components/BackButton";
 import {OpenDrawerButton} from "~/components/OpenDrawerButton";
+import {FavoriteButton} from "~/components/FavoriteButton";
 
 interface IProps {
-    headerTitle: TFuncKeyApp;
+    headerTitle?: TFuncKeyApp;
     isProfile?: boolean;
     isStack?: boolean;
     isAuth?: boolean;
+    isDetails?: boolean;
     id: string;
 }
 
-export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id}: IProps) {
+export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id, isDetails}: IProps) {
     const handleGoBack = () => {
         Navigation.pop(id);
     };
@@ -43,13 +45,14 @@ export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id}: IPro
             </View>
             {isAuth && <LanguageButton/>}
             {isProfile && <EditButton/>}
+            {isDetails && <FavoriteButton/>}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: CommonSizes.margin.extraLarge,
+        marginHorizontal: CommonSizes.margin.extraLarge,
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingVertical: CommonSizes.margin.extraLarge,

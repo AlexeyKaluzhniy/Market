@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         borderRadius: CommonSizes.borderRadius.largePlus,
         alignItems: 'center',
         paddingLeft: CommonSizes.padding.large,
-        height: 57
+        height: 56,
     },
     input: {
         width: '78%',

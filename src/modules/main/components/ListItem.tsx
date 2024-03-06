@@ -1,10 +1,12 @@
-import {Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Dimensions, Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {LightThemeColors} from "~/core/theme/colors";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {FavoriteButton} from "~/components/FavoriteButton";
+import {Navigation} from "react-native-navigation";
+import {Pages} from "~/navigation/pages";
 
 interface IListItemProps {
     item: {
@@ -19,8 +21,44 @@ interface IListItemProps {
 }
 
 export function ListItem({item}: IListItemProps) {
+    const navigateToDetails = () => {
+        Navigation.push(Pages.tabs.id, {
+            component: {
+                name: Pages.details.name,
+                options: {
+                    topBar: {
+                        visible: false
+                    },
+                    animations: {
+                        push: {
+                            content: {
+                                translationX: {
+                                    from: Dimensions.get('window').width,
+                                    to: 0,
+                                    duration: 200
+                                }
+                            },
+                        },
+                        pop: {
+                            content: {
+                                translationX: {
+                                    from: 0,
+                                    to: Dimensions.get('window').width,
+                                    duration: 200
+                                },
+                            },
+                        }
+                    },
+                },
+                passProps: {
+                    item: item
+                }
+            }
+        });
+    };
+
     return (
-        <TouchableOpacity style={styles.container} activeOpacity={0.6}>
+        <TouchableOpacity style={styles.container} activeOpacity={0.6} onPress={navigateToDetails}>
             {item.image && <Image source={item.image} style={styles.image}/>}
             <View style={{padding: CommonSizes.padding.large}}>
                 <View style={styles.header}>

@@ -81,6 +81,10 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                                 id: Pages.main.id,
                                 name: Pages.main.name,
                             },
+                            externalComponent: {
+                                id: Pages.details.id,
+                                name: Pages.details.name,
+                            }
                         },
                     ],
                     options: {
@@ -104,6 +108,10 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                                 id: Pages.favorite.id,
                                 name: Pages.favorite.name,
                             },
+                            externalComponent: {
+                                id: Pages.details.id,
+                                name: Pages.details.name
+                            }
                         },
                     ],
                     options: {
