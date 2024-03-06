@@ -16,6 +16,7 @@ import {navigation} from "~/services";
 import {Components} from "~/navigation/components";
 import {ModalizeHeader} from "~/components/ModalizeHeader";
 import {ModalizeSettingsContainer} from "~/components/ModalizeSettingsContainer";
+import {ReactNode} from "react";
 
 export const Drawer: NavigationFunctionComponent = (props) => {
     const handleLogOut = () => {
@@ -36,7 +37,7 @@ export const Drawer: NavigationFunctionComponent = (props) => {
         });
         navigation.showOverlay(Components.modalizeContainer, {
             screenIdSuffix: props.componentId, params: {
-                getHeaderComponent: ModalizeHeader,
+                getHeaderComponent: (closeButton: ReactNode) => ModalizeHeader(closeButton, "drawer.settings"),
                 getContentComponent: ModalizeSettingsContainer
             }
         });

@@ -31,7 +31,8 @@
       "proposeNotifications2": "“Settings”",
       "notNow": "Not now",
       "skip": "Skip",
-      "currencySymbol": "$"
+      "currencySymbol": "$",
+      "filters": "Filters"
     },
     "date": {
       "days": "days",

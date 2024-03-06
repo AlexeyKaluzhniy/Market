@@ -4,12 +4,13 @@ import {StyleSheet, View} from "react-native";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {LightThemeColors} from "~/core/theme/colors";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
-export function ModalizeHeader(close: ReactNode) {
+export function ModalizeHeader(closeButton: ReactNode, title: TFuncKeyApp) {
     return (
         <View style={[CommonStyles.rowCenter, styles.container]}>
-            <Roboto.Title.Large labelKey={"drawer.settings"} style={styles.text}/>
-            {close}
+            <Roboto.Title.Large labelKey={title} style={styles.text}/>
+            {closeButton}
         </View>
     );
 }

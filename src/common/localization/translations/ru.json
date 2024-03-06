@@ -31,7 +31,8 @@
       "proposeNotifications2": "“Настройки”",
       "notNow": "Не сейчас",
       "skip": "Пропустить",
-      "currencySymbol": "₽"
+      "currencySymbol": "₽",
+      "filters": "Фильтры"
     },
     "date": {
       "days": "дни",

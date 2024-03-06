@@ -1,10 +1,10 @@
-import {StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
+import {StyleSheet, TextInput, View} from "react-native";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {SideMenuButton} from "~/common/components/SideMenuButton";
-import FilterIcon from "../../../../resources/icons/filter.svg";
 import React from "react";
 import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {FilterButton} from "~/components/FilterButton";
 
 export function ListHeaderComponent() {
     return (
@@ -16,9 +16,7 @@ export function ListHeaderComponent() {
                     style={styles.menu}
                 />
             </View>
-            <TouchableOpacity style={styles.filter}>
-                <FilterIcon/>
-            </TouchableOpacity>
+            <FilterButton/>
         </View>
     );
 }
@@ -26,7 +24,8 @@ export function ListHeaderComponent() {
 const styles = StyleSheet.create({
     container: {
         ...CommonStyles.rowCenter,
-        marginVertical: CommonSizes.margin.smallPlus
+        marginTop: CommonSizes.margin.smallPlus,
+        marginBottom: CommonSizes.margin.largePlus
     },
     searchBar: {
         ...CommonStyles.flex1,
@@ -38,10 +37,5 @@ const styles = StyleSheet.create({
     },
     menu: {
         marginLeft: CommonSizes.margin.extraLarge
-    },
-    filter: {
-        padding: CommonSizes.padding.medium,
-        backgroundColor: LightThemeColors.searchBar,
-        borderRadius: CommonSizes.borderRadius.extraLarge,
     },
 });
