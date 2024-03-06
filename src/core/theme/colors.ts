@@ -7,6 +7,7 @@ interface IThemeColors {
   drawer: string;
   outline: string;
   surfaceContainer: string;
+  primaryContainer: string;
   outlineVariant: string;
   onSurface: string;
   searchBar: string;
@@ -34,6 +35,7 @@ export const LightThemeColors: IThemeColors = {
   drawer: "#FEF0F5",
   outline: "#D3C2C9",
   surfaceContainer: "#EDDFE4",
+  primaryContainer: "#FFD8EC",
   outlineVariant: "#81737A",
   onSurface: "#4F4449",
   searchBar: "#F3E5EA",
@@ -73,6 +75,7 @@ export const DarkThemeColors: IThemeColors = {
   drawer: '#211A1D',
   outline: '#4F4449',
   surfaceContainer: "#3B3236",
+  primaryContainer: "#6A3457",
   outlineVariant: "#9C8D93",
   onSurface: "#D3C2C9",
   searchBar: "#30282C",

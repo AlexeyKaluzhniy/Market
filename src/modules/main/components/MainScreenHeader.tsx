@@ -6,7 +6,7 @@ import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {FilterButton} from "~/components/FilterButton";
 
-export function MainHeader() {
+export function MainScreenHeader() {
     return (
         <View style={styles.container}>
             <View style={[styles.searchBar, CommonStyles.rowCenter]}>

@@ -7,7 +7,7 @@ import {windowWidth} from "~/core/theme/commonConsts";
 
 interface IProps {
     routes: Route[];
-    renderScene:  (props: (SceneRendererProps & {route: Route})) => React.ReactNode;
+    renderScene: (props: (SceneRendererProps & {route: Route})) => React.ReactNode;
 }
 
 export function CustomTabs({routes, renderScene}: IProps) {
