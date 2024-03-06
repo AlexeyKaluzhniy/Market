@@ -4,14 +4,18 @@ import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 
 export function SideMenuButton() {
-    return (
-        <TouchableOpacity onPress={() => Navigation.mergeOptions(Pages.bottomTabsDrawer.id, {
+    const handleOpenDrawer = () => {
+        Navigation.mergeOptions(Pages.bottomTabsDrawer.id, {
             sideMenu: {
                 left: {
                     visible: true
                 }
             }
-        })}>
+        });
+    };
+
+    return (
+        <TouchableOpacity onPress={handleOpenDrawer}>
             <MenuIcon/>
         </TouchableOpacity>
     );
