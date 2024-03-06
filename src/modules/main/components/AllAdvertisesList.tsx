@@ -2,6 +2,7 @@ import {FlatList, StyleSheet} from "react-native";
 import {ListItem} from "~/modules/main/components/ListItem";
 import React, {useState} from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {AdvertisesResources} from "~/common/ImageResources.g";
 
 export function AllAdvertisesList() {
     const [data] = useState([
@@ -11,7 +12,8 @@ export function AllAdvertisesList() {
             body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
             price: '1200 руб.',
             location: 'Тирасполь',
-            date: 'сегодня в 13:04'
+            date: 'сегодня в 13:04',
+            image: AdvertisesResources.bicycle
         },
         {
             id: '2',
@@ -19,7 +21,8 @@ export function AllAdvertisesList() {
             body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
             price: '1200 руб.',
             location: 'Тирасполь',
-            date: 'сегодня в 13:04'
+            date: 'сегодня в 13:04',
+            image: null
         },
         {
             id: '3',
@@ -27,7 +30,8 @@ export function AllAdvertisesList() {
             body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
             price: '1200 руб.',
             location: 'Тирасполь',
-            date: 'сегодня в 13:04'
+            date: 'сегодня в 13:04',
+            image: null
         },
         {
             id: '4',
@@ -35,7 +39,8 @@ export function AllAdvertisesList() {
             body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
             price: '1200 руб.',
             location: 'Тирасполь',
-            date: 'сегодня в 13:04'
+            date: 'сегодня в 13:04',
+            image: AdvertisesResources.bicycle
         }
     ]);
 

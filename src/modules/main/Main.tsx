@@ -31,6 +31,5 @@ export const Main: NavigationFunctionComponent = (): JSX.Element => {
             <MainHeader/>
             <CustomTabs routes={routes} renderScene={renderScene}/>
         </View>
-
     );
 };

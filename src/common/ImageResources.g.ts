@@ -9,6 +9,10 @@ import {ImageURISource} from "react-native";
  * https://github.com/svbutko/react-native-image-resource-generator
 */
 
+export class AdvertisesResources {
+  static readonly bicycle: ImageURISource = require("../../resources/images/advertises/bicycle.png");
+}
+
 export class OnboardingResources {
   static readonly onboarding_background_1: ImageURISource = require("../../resources/images/onboarding/onboarding_background_1.png");
   static readonly onboarding_background_2: ImageURISource = require("../../resources/images/onboarding/onboarding_background_2.png");
@@ -48,5 +52,6 @@ export class ImageResources {
   static readonly drop_down: ImageURISource = require("../../resources/images/drop_down.png");
   static readonly eye: ImageURISource = require("../../resources/images/Eye.png");
   static readonly eyeclosed: ImageURISource = require("../../resources/images/EyeClosed.png");
+  static readonly logo: ImageURISource = require("../../resources/images/logo.svg");
   static readonly menu: ImageURISource = require("../../resources/images/menu.png");
 }
