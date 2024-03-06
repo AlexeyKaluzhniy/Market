@@ -1,16 +1,16 @@
 import React from "react";
-import {StyleSheet, TouchableOpacity, View} from "react-native";
-import ArrowBackIcon from '../../resources/icons/arrow_back.svg';
+import {StyleSheet, View} from "react-native";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {LanguageButton} from "~/common/components/LanguageButton";
 import {Navigation} from "react-native-navigation";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {LightThemeColors} from "~/core/theme/colors";
 import {Roboto} from "~/infrastructure/typography";
-import MenuIcon from "../../resources/icons/menu.svg";
 import {Pages} from "~/navigation/pages";
 import {EditButton} from "~/common/components/EditButton";
 import {TFuncKeyApp} from "~/common/localization/localization";
+import {BackButton} from "~/components/BackButton";
+import {OpenDrawerButton} from "~/components/OpenDrawerButton";
 
 interface IProps {
     headerTitle: TFuncKeyApp;
@@ -38,17 +38,11 @@ export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id}: IPro
     return (
         <View style={[CommonStyles.row, styles.container]}>
             <View style={CommonStyles.rowCenter}>
-                {isStack ?
-                    <TouchableOpacity onPress={handleGoBack}>
-                        <ArrowBackIcon/>
-                    </TouchableOpacity> :
-                    <TouchableOpacity onPress={handleOpenDrawer}>
-                        <MenuIcon/>
-                    </TouchableOpacity>
-                }
+                {isStack ? <BackButton onPress={handleGoBack}/> : <OpenDrawerButton onPress={handleOpenDrawer}/>}
                 <Roboto.Title.Large style={styles.headerTitle} labelKey={headerTitle}/>
             </View>
-            {isAuth ? <LanguageButton/> : isProfile && <EditButton/>}
+            {isAuth && <LanguageButton/>}
+            {isProfile && <EditButton/>}
         </View>
     );
 }
