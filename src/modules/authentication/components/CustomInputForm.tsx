@@ -19,11 +19,11 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 export function CustomInputForm(
     {
         submitButtonTitle,
-        isLogin = false,
-        phoneField = false,
-        passwordField = false,
-        repeatPasswordField = false,
-        isRegister = false,
+        isLogin,
+        phoneField ,
+        passwordField ,
+        repeatPasswordField,
+        isRegister,
         schema,
         onSubmit,
     }: IAuthComponentProps) {

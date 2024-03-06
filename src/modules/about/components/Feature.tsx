@@ -1,19 +1,11 @@
 import {Roboto} from "~/infrastructure";
-import {Normalize} from "react-i18next";
 import {StyleSheet} from "react-native";
 import {LightThemeColors} from "~/core/theme/colors";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface IFeatureProps {
     title: string;
-    body: Normalize<{
-        about: {
-            categoriesBody: string;
-            searchBody: string;
-            securityBody: string;
-            easyPublishBody: string;
-            personalAreaBody: string;
-        };
-    }>;
+    body: TFuncKeyApp;
 }
 
 export function Feature({title, body}: IFeatureProps) {

@@ -6,35 +6,21 @@ import {LanguageButton} from "~/common/components/LanguageButton";
 import {Navigation} from "react-native-navigation";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {LightThemeColors} from "~/core/theme/colors";
-import {Normalize} from "react-i18next";
 import {Roboto} from "~/infrastructure/typography";
 import MenuIcon from "../../resources/icons/menu.svg";
 import {Pages} from "~/navigation/pages";
 import {EditButton} from "~/common/components/EditButton";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface IProps {
-    headerTitle: Normalize<{
-        authentication: {
-            enterCode: string;
-            newPassword: string;
-            recoverPassword: string;
-        };
-        pages: {
-            profile: string;
-            favorite: string;
-        };
-        drawer: {
-            settings: string;
-            about: string;
-        };
-    }>;
+    headerTitle: TFuncKeyApp;
     isProfile?: boolean;
     isStack?: boolean;
     isAuth?: boolean;
     id: string;
 }
 
-export function CustomHeader({headerTitle, isStack = false, isProfile = false, isAuth = false, id}: IProps) {
+export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id}: IProps) {
     const handleGoBack = () => {
         Navigation.pop(id);
     };

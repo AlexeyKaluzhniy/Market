@@ -1,5 +1,5 @@
 import {ObjectSchema} from "yup";
-import {Normalize} from "react-i18next";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface AuthSchema {
     email: string;
@@ -16,18 +16,8 @@ interface NewPasswordSchema {
     repeatPassword: string;
 }
 
-export interface AuthLocalization {
-    authentication: {
-        sendSms: string;
-        registerTab: string;
-        loginTab: string;
-        savePassword: string;
-        confirm: string;
-    };
-}
-
 export interface IAuthComponentProps {
-    submitButtonTitle: Normalize<AuthLocalization>;
+    submitButtonTitle: TFuncKeyApp;
     isLogin?: boolean;
     phoneField?: boolean;
     passwordField?: boolean;

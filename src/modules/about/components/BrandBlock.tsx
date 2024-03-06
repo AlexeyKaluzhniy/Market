@@ -1,22 +1,16 @@
 import {Roboto} from "~/infrastructure";
-import {Normalize} from "react-i18next";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {StyleSheet} from "react-native";
 import {LightThemeColors} from "~/core/theme/colors";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface IBrandBlockProps {
     title: string;
-    body: Normalize<{
-        about: {
-            firstBody: string;
-            thirdBody: string;
-            thanksBody: string;
-        };
-    }>;
+    body: TFuncKeyApp;
     isFirst?: boolean;
 }
 
-export function BrandBlock({title, body, isFirst = false}: IBrandBlockProps) {
+export function BrandBlock({title, body, isFirst}: IBrandBlockProps) {
     return (
         <Roboto.Body.Medium style={!isFirst && CommonStyles.blockMargin}>
             {title}

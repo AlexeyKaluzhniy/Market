@@ -1,18 +1,16 @@
 import {StyleSheet, TouchableOpacity} from "react-native";
 import React from "react";
 import {DarkThemeColors, LightThemeColors} from "~/core/theme/colors";
-import {Normalize} from "react-i18next";
 import {Roboto} from "~/infrastructure/typography";
-import {AuthLocalization} from "~/infrastructure/dto/common/IAuthComponentProps";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface IProps {
-    submitButtonTitle: Normalize<AuthLocalization>;
+    submitButtonTitle: TFuncKeyApp;
     onSubmit: () => void;
 }
 
 export function SubmitButton({submitButtonTitle, onSubmit}: IProps) {
-
     return (<TouchableOpacity
         style={styles.submitButtonActive}
         onPress={onSubmit}

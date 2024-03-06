@@ -1,19 +1,13 @@
 import {Roboto} from "~/infrastructure";
 import {StyleSheet, TouchableOpacity} from "react-native";
 import {FunctionComponent, SVGAttributes} from "react";
-import {Normalize} from "react-i18next";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface IProps {
     Icon: FunctionComponent<SVGAttributes<SVGElement>>;
-    title: Normalize<{
-        drawer: {
-            settings: string;
-            about: string;
-            logOut: string;
-        };
-    }>;
+    title: TFuncKeyApp;
     onPress: () => void;
 }
 
