@@ -6,34 +6,30 @@ import {LightThemeColors} from "~/core/theme/colors";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {Roboto} from "~/infrastructure";
 import {ImageResources} from "~/common/ImageResources.g";
-import {languages, languagesNames} from "~/common/localization/localization";
-import {useAppDispatch, useAppSelector} from "~/core/store/store";
-import {SystemActionsAsync} from "~/core/store/system/systemSlice";
 
-export function OptionInput() {
+interface ISelectorProps {
+    values: string[];
+    handleSelect: (value: string) => void;
+    title: string;
+}
+
+export function Selector({values, handleSelect, title}: ISelectorProps) {
     const {t} = useTranslation();
-    const dispatch = useAppDispatch();
-    const language = useAppSelector(state => state.system.language);
 
     const handleShowMenu = () => {
         showActionSheet({
-            options: [...languagesNames, t("common.cancel")],
-            cancelButtonIndex: languagesNames.length,
-        }, (optionIndex) => languagesNames[optionIndex] && handleChangeLanguage(languagesNames[optionIndex]));
-    };
-
-    const handleChangeLanguage = (name: string) => {
-        const l = languages.find(value => value.name === name) || language;
-        dispatch(SystemActionsAsync.changeLang(l));
+            options: [...values, t("common.cancel")],
+            cancelButtonIndex: values.length,
+        }, (optionIndex) => values[optionIndex] && handleSelect(values[optionIndex]));
     };
 
     return (
-        <View style={styles.dropDownInput}>
-            <Roboto.Title.Medium text={language.name}/>
-            <TouchableOpacity onPress={handleShowMenu}>
+        <TouchableOpacity onPress={handleShowMenu} activeOpacity={0.7}>
+            <View style={styles.dropDownInput}>
+                <Roboto.Title.Medium text={title}/>
                 <Image source={ImageResources.drop_down} style={styles.dropDownIcon}/>
-            </TouchableOpacity>
-        </View>
+            </View>
+        </TouchableOpacity>
     );
 }
 
