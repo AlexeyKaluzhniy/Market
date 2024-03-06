@@ -1,16 +1,14 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {StyleSheet, Text, View} from "react-native";
-import React, {useCallback, useMemo, useState} from "react";
+import {Text, View} from "react-native";
+import React, {useCallback, useMemo} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {useHideSplash} from "../splash/useHideSplash";
 import {useTranslation} from "react-i18next";
 import {LanguageButton} from "~/common/components/LanguageButton";
-import {Route, TabBar, TabView} from "react-native-tab-view";
+import {Route} from "react-native-tab-view";
 import {Login} from "./components/Login";
 import {SignUp} from "./components/SignUp";
-import {Colors, LightThemeColors} from "~/core/theme/colors";
-import {windowWidth} from "~/core/theme/commonConsts";
-import {CommonSizes} from "~/core/theme/commonSizes";
+import {CustomTabs} from "~/components/CustomTabs";
 
 const tabTypes = ["login", "register"] as const;
 
@@ -31,48 +29,10 @@ export const Authentication: NavigationFunctionComponent = (): JSX.Element => {
         }
     }, []);
 
-    const [index, setIndex] = useState(0);
-
     return (
         <View style={CommonStyles.flex1}>
             <LanguageButton/>
-            <TabView
-                navigationState={{index, routes}}
-                renderScene={renderScene}
-                onIndexChange={setIndex}
-                renderTabBar={props =>
-                    <TabBar
-                        {...props}
-                        style={tabStyles.tabBar}
-                        indicatorStyle={tabStyles.indicatorStyle}
-                        labelStyle={tabStyles.labelStyle}
-                        activeColor={LightThemeColors.main}
-                        tabStyle={tabStyles.tab}
-                        pressColor={Colors.transparent}
-                        pressOpacity={0}
-                    />
-                }
-            />
+            <CustomTabs renderScene={renderScene} routes={routes}/>
         </View>
     );
 };
-
-const tabStyles = StyleSheet.create({
-    indicatorStyle: {
-        backgroundColor: LightThemeColors.main,
-        height: 5,
-        borderTopLeftRadius: CommonSizes.borderRadius.smallPlus,
-        borderTopRightRadius: CommonSizes.borderRadius.smallPlus,
-    },
-    labelStyle: {
-        color: LightThemeColors.text,
-        textTransform: 'capitalize',
-        marginBottom: CommonSizes.margin.smallPlus,
-    },
-    tab: {
-        width: windowWidth / 2,
-    },
-    tabBar: {
-        backgroundColor: Colors.white,
-    }
-});

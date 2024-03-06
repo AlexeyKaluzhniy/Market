@@ -6,7 +6,7 @@ import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {FilterButton} from "~/components/FilterButton";
 
-export function ListHeaderComponent() {
+export function MainHeader() {
     return (
         <View style={styles.container}>
             <View style={[styles.searchBar, CommonStyles.rowCenter]}>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     container: {
         ...CommonStyles.rowCenter,
         marginTop: CommonSizes.margin.smallPlus,
-        marginBottom: CommonSizes.margin.largePlus
+        marginHorizontal: CommonSizes.margin.largePlus
     },
     searchBar: {
         ...CommonStyles.flex1,

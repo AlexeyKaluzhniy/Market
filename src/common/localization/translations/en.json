@@ -2,6 +2,7 @@
   "translation": {
     "common": {
       "all": "All",
+      "my": "My",
       "search": "Search",
       "selectPhoto": "Select photo",
       "takePhoto": "Take photo",
@@ -91,7 +92,7 @@
       "login": "Login",
       "register": "Register",
       "loginTab": "Login",
-      "registerTab":  "Register",
+      "registerTab": "Register",
       "authScreenTitle": "Single fan\ncabinet",
       "phoneNumber": "Phone",
       "phoneNumberInUse": "Phone number is already in use",
@@ -166,7 +167,7 @@
       "shop": "Shopping",
       "login": "Login",
       "favorite": "Favorite",
-      "profile":  "Profile",
+      "profile": "Profile",
       "forgotPassword": "Forgot your password?",
       "leftSideMenu": "Left Side Menu",
       "rightSideMenu": "Right Side Menu",

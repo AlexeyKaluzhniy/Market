@@ -1,55 +1,36 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {FlatList} from "react-native";
-import React, {useState} from "react";
-import {CommonSizes} from "~/core/theme/commonSizes";
-import {ListHeaderComponent} from "~/modules/main/components/ListHeaderComponent";
-import {ListItem} from "~/modules/main/components/ListItem";
+import {Text, View} from "react-native";
+import {MainHeader} from "~/modules/main/components/MainHeader";
+import {CommonStyles} from "~/core/theme/commonStyles";
+import {AllAdvertisesList} from "~/modules/main/components/AllAdvertisesList";
+import {useTranslation} from "react-i18next";
+import React, {useCallback, useMemo} from "react";
+import {Route} from "react-native-tab-view";
+import {MyAdvertisesList} from "~/modules/main/components/MyAdvertisesList";
+import {CustomTabs} from "~/components/CustomTabs";
 
-export const Main: NavigationFunctionComponent = (props): JSX.Element => {
-    const [data] = useState([
-        {
-            id: '1',
-            title: 'Продажа велосипеда',
-            body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-            price: '1200 руб.',
-            location: 'Тирасполь',
-            date: 'сегодня в 13:04'
-        },
-        {
-            id: '2',
-            title: 'Продажа велосипеда',
-            body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-            price: '1200 руб.',
-            location: 'Тирасполь',
-            date: 'сегодня в 13:04'
-        },
-        {
-            id: '3',
-            title: 'Продажа велосипеда',
-            body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-            price: '1200 руб.',
-            location: 'Тирасполь',
-            date: 'сегодня в 13:04'
-        },
-        {
-            id: '4',
-            title: 'Продажа велосипеда',
-            body: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-            price: '1200 руб.',
-            location: 'Тирасполь',
-            date: 'сегодня в 13:04'
+const tabTypes = ["all", "my"] as const;
+
+export const Main: NavigationFunctionComponent = (): JSX.Element => {
+    const {t} = useTranslation();
+
+    const routes = useMemo(() => tabTypes.map(type => ({key: type, title: t(`common.${type}`)})), [t]);
+    const renderScene = useCallback((props: { route: Route }) => {
+        switch (props.route.key) {
+            case "all":
+                return <AllAdvertisesList/>;
+            case "my":
+                return <MyAdvertisesList/>;
+            default:
+                return <Text></Text>;
         }
-    ]);
+    }, []);
 
     return (
-        <FlatList
-            data={data}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => {
-                return <ListItem item={item}/>;
-            }}
-            ListHeaderComponent={ListHeaderComponent}
-            contentContainerStyle={{marginHorizontal: CommonSizes.margin.largePlus}}
-        />
+        <View style={CommonStyles.flex1}>
+            <MainHeader/>
+            <CustomTabs routes={routes} renderScene={renderScene}/>
+        </View>
+
     );
 };
