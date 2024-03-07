@@ -247,6 +247,15 @@
       "thirdBody": "we are committed to providing you with the best shopping and selling experience. Constant updates and improvements make our application even more convenient and functional.",
       "thanks": "Thank you for choosing ",
       "thanksBody": "We are happy to help you make successful transactions."
+    },
+    "new_advertise": {
+      "title": "Title",
+      "description": "Description",
+      "rub": "rub.",
+      "rub/h": "rub./hour",
+      "rub/m": "rub./month",
+      "rub/y": "rub./year",
+      "rub/once": "rub./once"
     }
   }
 }

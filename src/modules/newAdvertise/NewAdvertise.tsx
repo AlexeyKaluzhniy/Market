@@ -8,8 +8,10 @@ import {useState} from "react";
 import {LightThemeColors} from "~/core/theme/colors";
 import {ImageOrVideo} from "react-native-image-crop-picker";
 import {ImagePickerButton} from "~/common/components/ImagePickerButton";
+import {useTranslation} from "react-i18next";
 
 export const NewAdvertise: NavigationFunctionComponent = (props) => {
+    const {t} = useTranslation();
     const [priceListVisible, setPriceListVisible] = useState(false);
     const [cityListVisible, setCityListVisible] = useState(false);
     const [images, setImages] = useState<ImageOrVideo[]>([]);
@@ -45,10 +47,10 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
     return (
         <SafeAreaView style={CommonStyles.flex1}>
             <CustomHeader id={props.componentId} isStack isEdit/>
-            <TouchableWithoutFeedback onPress={dismissAll} style={{zIndex: 2}}>
+            <TouchableWithoutFeedback onPress={dismissAll}>
                 <View style={styles.container}>
                     <TextInput
-                        placeholder={"Название"}
+                        placeholder={t("new_advertise.title")}
                         placeholderTextColor={LightThemeColors.text}
                         selectionColor={LightThemeColors.main}
                         style={styles.title}
@@ -67,7 +69,7 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                                 style={{marginRight: CommonSizes.margin.extraSmallPlus}}
                             />
                             <DropDownList
-                                values={['руб.', 'руб./час', 'руб./месяц', 'руб./год', 'руб./разово']}
+                                values={[t("new_advertise.rub"), t("new_advertise.rub/h"), t("new_advertise.rub/m"), t("new_advertise.rub/y"), t("new_advertise.rub/once")]}
                                 isVisible={priceListVisible}
                                 setVisible={toggleDropDownPriceList}/>
                         </View>
@@ -79,7 +81,7 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                     </View>
                     <TextInput
                         multiline={true}
-                        placeholder="Описание"
+                        placeholder={t("new_advertise.description")}
                         style={styles.description}
                         selectionColor={LightThemeColors.main}
                         placeholderTextColor={LightThemeColors.text}
