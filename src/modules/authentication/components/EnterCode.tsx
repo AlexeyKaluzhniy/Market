@@ -1,5 +1,13 @@
 import React, {useRef, useState} from "react";
-import {StyleSheet, Text, TextInput, TextInputKeyPressEventData, TouchableOpacity, View} from "react-native";
+import {
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TextInputKeyPressEventData,
+    TouchableOpacity,
+    View
+} from "react-native";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
@@ -56,7 +64,7 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
     };
 
     return (
-        <View>
+        <SafeAreaView>
             <CustomHeader headerTitle="authentication.enterCode" id={props.componentId} isAuth isStack/>
             <View style={[styles.container, CommonStyles.marginContainer]}>
                 <Roboto.Body.Medium labelKey="authentication.enterCodeText"/>
@@ -95,7 +103,7 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                     {isDisabled && <Text style={styles.timer}>{remainingTime}</Text>}
                 </TouchableOpacity>
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 

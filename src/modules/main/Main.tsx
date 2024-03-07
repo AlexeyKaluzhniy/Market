@@ -1,5 +1,5 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {Text, View} from "react-native";
+import {SafeAreaView, Text} from "react-native";
 import {MainScreenHeader} from "~/modules/main/components/MainScreenHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {AllAdvertisesList} from "~/modules/main/components/AllAdvertisesList";
@@ -28,10 +28,10 @@ export const Main: NavigationFunctionComponent = (): JSX.Element => {
     }, []);
 
     return (
-        <View style={CommonStyles.flex1}>
+        <SafeAreaView style={CommonStyles.flex1}>
             <MainScreenHeader/>
             <CustomTabs routes={routes} renderScene={renderScene}/>
             <AddButton/>
-        </View>
+        </SafeAreaView>
     );
 };

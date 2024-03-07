@@ -1,5 +1,5 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {Image, ImageURISource, StyleSheet, View} from "react-native";
+import {Image, ImageURISource, SafeAreaView, StyleSheet, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -21,7 +21,7 @@ interface IProps {
 
 export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => {
     return (
-        <View>
+        <SafeAreaView>
             <CustomHeader id={props.componentId} isStack isDetails/>
             <View style={styles.contentContainer}>
                 {props.item.image &&
@@ -36,7 +36,7 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                 <Roboto.Body.Medium text={props.item.body} style={styles.text}/>
             </View>
             <View style={styles.outline}/>
-        </View>
+        </SafeAreaView>
     );
 };
 

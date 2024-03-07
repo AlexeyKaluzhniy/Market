@@ -4,11 +4,13 @@ import ActionSheet from 'react-native-action-sheet';
 import {i18next} from "../localization/localization";
 
 export function showActionSheet(options: ActionSheetIOSOptions, onOptionSelected: (optionIndex: number) => void) {
-    if (isIos) {
-        ActionSheetIOS.showActionSheetWithOptions(options, onOptionSelected);
-    } else if (isAndroid) {
-        ActionSheet.showActionSheetWithOptions(options, onOptionSelected);
-    }
+    //todo check if it's the same on both platforms
+    // if (isIos) {
+    //     ActionSheetIOS.showActionSheetWithOptions(options, onOptionSelected);
+    // } else if (isAndroid) {
+    //     ActionSheet.showActionSheetWithOptions(options, onOptionSelected);
+    // }
+    ActionSheet.showActionSheetWithOptions(options, onOptionSelected);
 }
 
 export function showAlert(title: string, message?: string, buttons?: AlertButton[], options?: AlertOptions) {

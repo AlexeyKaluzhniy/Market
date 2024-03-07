@@ -1,5 +1,5 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {StyleSheet, Text, View} from "react-native";
+import {SafeAreaView, StyleSheet, Text, View} from "react-native";
 import React, {useCallback, useMemo} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {useHideSplash} from "../splash/useHideSplash";
@@ -31,12 +31,12 @@ export const Authentication: NavigationFunctionComponent = (navProps): JSX.Eleme
     }, []);
 
     return (
-        <View style={CommonStyles.flex1}>
+        <SafeAreaView style={CommonStyles.flex1}>
             <View style={styles.languageContainer}>
                 <LanguageButton/>
             </View>
             <CustomTabs renderScene={renderScene} routes={routes}/>
-        </View>
+        </SafeAreaView>
     );
 };
 

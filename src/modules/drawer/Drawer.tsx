@@ -1,5 +1,5 @@
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {StyleSheet, View} from "react-native";
+import {SafeAreaView, StyleSheet, View} from "react-native";
 import {Colors, LightThemeColors} from "~/core/theme/colors";
 import BrandIcon from '../../../resources/icons/brand.svg';
 import SettingsIcon from '../../../resources/icons/settings.svg';
@@ -44,7 +44,7 @@ export const Drawer: NavigationFunctionComponent = (props) => {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.brandContainer}>
                 <BrandIcon height={45} width={45}/>
                 <Brand.Large labelKey="drawer.brandTitle" style={styles.brandTitle}/>
@@ -55,7 +55,7 @@ export const Drawer: NavigationFunctionComponent = (props) => {
                       onPress={() => handlePushScreen(Pages.about.name)}/>
             <View style={styles.outline}/>
             <MenuItem Icon={LogOutIcon} title="drawer.logOut" onPress={handleLogOut}/>
-        </View>
+        </SafeAreaView>
     );
 };
 
