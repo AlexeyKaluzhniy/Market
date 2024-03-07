@@ -58,5 +58,9 @@ export const Pages = {
     details: {
         id: "DETAILS_SCREEN",
         name: "DetailsScreen"
+    },
+    newAdvertise: {
+        id: "NEW_ADVERTISE_SCREEN",
+        name: "NewAdvertiseScreen"
     }
 };

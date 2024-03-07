@@ -85,5 +85,8 @@ export const CommonStyles = StyleSheet.create({
   },
   blockMargin: {
     marginTop: CommonSizes.margin.small
-  }
+  } as ViewStyle,
+  iconPadding: {
+    padding: CommonSizes.padding.large
+  } as ViewStyle
 });

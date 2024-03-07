@@ -2,10 +2,25 @@ import {StyleSheet, TouchableOpacity} from "react-native";
 import {LightThemeColors} from "~/core/theme/colors";
 import AddIcon from "../../resources/icons/add.svg";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {Navigation} from "react-native-navigation";
+import {Pages} from "~/navigation/pages";
 
 export function AddButton() {
+    const pushNewAdvertiseScreen = () => {
+        Navigation.push(Pages.tabs.id, {
+            component: {
+                name: Pages.newAdvertise.name,
+                options: {
+                    topBar: {
+                        visible: false
+                    }
+                }
+            }
+        });
+    };
+
     return (
-        <TouchableOpacity style={styles.container} activeOpacity={0.8}>
+        <TouchableOpacity style={styles.container} activeOpacity={0.8} onPress={pushNewAdvertiseScreen}>
             <AddIcon/>
         </TouchableOpacity>
     );

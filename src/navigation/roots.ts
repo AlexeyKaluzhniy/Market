@@ -78,6 +78,12 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                     children: [
                         {
                             component: {
+                                id: Pages.newAdvertise.id,
+                                name: Pages.newAdvertise.name
+                            }
+                        },
+                        {
+                            component: {
                                 id: Pages.main.id,
                                 name: Pages.main.name,
                             },
@@ -103,6 +109,12 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                 stack: {
                     id: Tabs.favorite.id,
                     children: [
+                        {
+                            component: {
+                                id: Pages.newAdvertise.id,
+                                name: Pages.newAdvertise.name
+                            }
+                        },
                         {
                             component: {
                                 id: Pages.favorite.id,
@@ -149,7 +161,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                     }
                 }
             }
-        ]
+        ],
     };
 }
 
@@ -175,7 +187,29 @@ export const getBottomTabsLayout = () => {
                         id: Stacks.drawerStack.id,
                         children: [{
                             bottomTabs: bottomTabsLayout()
-                        }]
+                        }],
+                        options: {
+                            animations: {
+                                push: {
+                                    content: {
+                                        translationX: {
+                                            from: Dimensions.get('window').width,
+                                            to: 0,
+                                            duration: 200
+                                        }
+                                    },
+                                },
+                                pop: {
+                                    content: {
+                                        translationX: {
+                                            from: 0,
+                                            to: Dimensions.get('window').width,
+                                            duration: 200
+                                        },
+                                    },
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -1,4 +1,4 @@
-import {Dimensions, Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -28,26 +28,6 @@ export function ListItem({item}: IListItemProps) {
                 options: {
                     topBar: {
                         visible: false
-                    },
-                    animations: {
-                        push: {
-                            content: {
-                                translationX: {
-                                    from: Dimensions.get('window').width,
-                                    to: 0,
-                                    duration: 200
-                                }
-                            },
-                        },
-                        pop: {
-                            content: {
-                                translationX: {
-                                    from: 0,
-                                    to: Dimensions.get('window').width,
-                                    duration: 200
-                                },
-                            },
-                        }
                     },
                 },
                 passProps: {

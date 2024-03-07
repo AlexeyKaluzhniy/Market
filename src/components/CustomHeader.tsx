@@ -12,6 +12,7 @@ import {TFuncKeyApp} from "~/common/localization/localization";
 import {BackButton} from "~/components/BackButton";
 import {OpenDrawerButton} from "~/components/OpenDrawerButton";
 import {FavoriteButton} from "~/components/FavoriteButton";
+import {ConfirmButton} from "~/common/components/ConfirmButton";
 
 interface IProps {
     headerTitle?: TFuncKeyApp;
@@ -19,10 +20,11 @@ interface IProps {
     isStack?: boolean;
     isAuth?: boolean;
     isDetails?: boolean;
+    isEdit?: boolean;
     id: string;
 }
 
-export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id, isDetails}: IProps) {
+export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id, isDetails, isEdit}: IProps) {
     const handleGoBack = () => {
         Navigation.pop(id);
     };
@@ -46,6 +48,7 @@ export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id, isDet
             {isAuth && <LanguageButton/>}
             {isProfile && <EditButton/>}
             {isDetails && <FavoriteButton/>}
+            {isEdit && <ConfirmButton/>}
         </View>
     );
 }
