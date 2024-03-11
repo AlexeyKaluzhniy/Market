@@ -24,7 +24,16 @@ interface IProps {
     id: string;
 }
 
-export function CustomHeader({headerTitle, isStack, isProfile, isAuth, id, isDetails, isEdit}: IProps) {
+export function CustomHeader(
+    {
+        headerTitle,
+        isStack,
+        isProfile,
+        isAuth,
+        id,
+        isDetails,
+        isEdit,
+    }: IProps) {
     const handleGoBack = () => {
         Navigation.pop(id);
     };

@@ -1,5 +1,12 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {Image, Keyboard, SafeAreaView, StyleSheet, TextInput, TouchableWithoutFeedback, View} from "react-native";
+import {
+    Keyboard,
+    SafeAreaView, ScrollView,
+    StyleSheet,
+    TextInput,
+    TouchableWithoutFeedback,
+    View
+} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -9,52 +16,45 @@ import {LightThemeColors} from "~/core/theme/colors";
 import {ImageOrVideo} from "react-native-image-crop-picker";
 import {ImagePickerButton} from "~/common/components/ImagePickerButton";
 import {useTranslation} from "react-i18next";
+import {AdvertiseImage} from "~/modules/newAdvertise/components/AdvertiseImage";
+import DotsVertical from "../../../resources/icons/dot_vertical.svg";
 
 export const NewAdvertise: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
-    const [priceListVisible, setPriceListVisible] = useState(false);
-    const [cityListVisible, setCityListVisible] = useState(false);
     const [images, setImages] = useState<ImageOrVideo[]>([]);
 
-    const toggleDropDownPriceList = () => {
-        if (cityListVisible) {
-            setCityListVisible(false);
-            setPriceListVisible(prevState => !prevState);
-        } else {
-            setPriceListVisible(prevState => !prevState);
-        }
-    };
+    const cities = [
+        {value: 'Тирасполь'},
+        {value: 'Бендеры'},
+        {value: 'Григориополь'},
+        {value: 'Каменка'},
+        {value: 'Рыбница'},
+        {value: 'Слободзея'},
+        {value: 'Дубоссары'}
+    ];
 
-    const toggleDropDownCityList = () => {
-        if (priceListVisible) {
-            setPriceListVisible(false);
-            setCityListVisible(prevState => !prevState);
-        } else {
-            setCityListVisible(prevState => !prevState);
-        }
-    };
+    const prices = [
+        {value: t("new_advertise.rub")},
+        {value: t("new_advertise.rub/h")},
+        {value: t("new_advertise.rub/m")},
+        {value: t("new_advertise.rub/y")},
+        {value: t("new_advertise.rub/once")},
+    ];
 
-    const dismissAll = () => {
-        dismissDropDowns();
+    const dismissKeyboard = () => {
         Keyboard.dismiss();
-    };
-
-    const dismissDropDowns = () => {
-        setPriceListVisible(false);
-        setCityListVisible(false);
     };
 
     return (
         <SafeAreaView style={CommonStyles.flex1}>
             <CustomHeader id={props.componentId} isStack isEdit/>
-            <TouchableWithoutFeedback onPress={dismissAll}>
+            <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <View style={styles.container}>
                     <TextInput
                         placeholder={t("new_advertise.title")}
                         placeholderTextColor={LightThemeColors.text}
                         selectionColor={LightThemeColors.main}
                         style={styles.title}
-                        onFocus={dismissDropDowns}
                     />
                     <View style={styles.dropDowns}>
                         <View style={CommonStyles.rowCenter}>
@@ -62,40 +62,37 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                                 placeholder={"0"}
                                 placeholderTextColor={LightThemeColors.text}
                                 selectionColor={LightThemeColors.main}
-                                onFocus={dismissDropDowns}
                                 textAlign={"right"}
                                 maxLength={5}
                                 keyboardType={"numeric"}
                                 style={{marginRight: CommonSizes.margin.extraSmallPlus}}
                             />
                             <DropDownList
-                                values={[t("new_advertise.rub"), t("new_advertise.rub/h"), t("new_advertise.rub/m"), t("new_advertise.rub/y"), t("new_advertise.rub/once")]}
-                                isVisible={priceListVisible}
-                                setVisible={toggleDropDownPriceList}/>
+                                values={prices}
+                            />
                         </View>
                         <DropDownList
-                            values={['Тирасполь', 'Бендеры', 'Каменка', 'Рыбница', 'Слободзея', 'Григориополь', 'Дубоссары']}
+                            values={cities}
                             onRightSide
-                            isVisible={cityListVisible}
-                            setVisible={toggleDropDownCityList}/>
+                        />
                     </View>
-                    <TextInput
-                        multiline={true}
-                        placeholder={t("new_advertise.description")}
-                        style={styles.description}
-                        selectionColor={LightThemeColors.main}
-                        placeholderTextColor={LightThemeColors.text}
-                        textAlignVertical="top"
-                        onFocus={dismissDropDowns}
-                    />
-                    {images && images.map(image => {
-                        return (
-                            <Image source={{uri: image.sourceURL}}/>
-                        );
-                    })}
-                    <View style={CommonStyles.rowCenter}>
-                        <ImagePickerButton isCamera images={images} setImage={setImages}/>
-                        <ImagePickerButton images={images} setImage={setImages}/>
+                    <ScrollView>
+                        <TextInput
+                            multiline={true}
+                            placeholder={t("new_advertise.description")}
+                            style={styles.description}
+                            selectionColor={LightThemeColors.main}
+                            placeholderTextColor={LightThemeColors.text}
+                            textAlignVertical="top"
+                        />
+                        <AdvertiseImage images={images} setImages={setImages}/>
+                    </ScrollView>
+                    <View style={styles.footer}>
+                        <View style={CommonStyles.rowCenter}>
+                            <ImagePickerButton isCamera images={images} setImage={setImages}/>
+                            <ImagePickerButton images={images} setImage={setImages}/>
+                        </View>
+                        <DotsVertical style={{marginRight: CommonSizes.margin.smallPlus}}/>
                     </View>
                 </View>
             </TouchableWithoutFeedback>
@@ -120,11 +117,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     description: {
-        ...CommonStyles.flex1,
-        zIndex: -1,
+        maxHeight: 300,
         marginTop: CommonSizes.margin.large,
         fontSize: 16,
         lineHeight: 24,
         fontFamily: "Roboto",
+    },
+    footer: {
+        ...CommonStyles.rowCenter,
+        backgroundColor: LightThemeColors.background,
+        justifyContent: 'space-between'
     }
 });

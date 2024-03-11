@@ -1,17 +1,16 @@
 import {Roboto} from "~/infrastructure";
-import {StyleSheet, TouchableOpacity} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {CommonSizes} from "~/core/theme/commonSizes";
 
 interface IDropDownItemProps {
-    onPress: (value: string) => void;
     value: string;
 }
 
-export function DropDownItem({onPress, value}: IDropDownItemProps) {
+export function DropDownItem({value}: IDropDownItemProps) {
     return (
-        <TouchableOpacity onPress={() => onPress(value)} style={styles.itemContainer}>
+        <View style={styles.itemContainer}>
             <Roboto.Label.Large text={value}/>
-        </TouchableOpacity>
+        </View>
     );
 }
 
