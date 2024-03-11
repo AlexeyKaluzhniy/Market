@@ -13,7 +13,8 @@ export function FilterButton() {
         navigation.showOverlay(Components.modalizeContainer, {
             params: {
                 getHeaderComponent: (closeButton: ReactNode) => ModalizeHeader(closeButton, "common.filters"),
-                getContentComponent: ModalizeFilterContainer
+                getContentComponent: ModalizeFilterContainer,
+                titleCloseButton: "common.confirm"
             }
         });
     };

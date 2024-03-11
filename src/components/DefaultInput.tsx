@@ -4,6 +4,7 @@ import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {IPropsCustomInput} from "~/infrastructure/dto/common/IPropsCustomInput";
 import {ImageResources} from "~/common/ImageResources.g";
+import {CommonStyles} from "~/core/theme/commonStyles";
 
 export function DefaultInput(
     {
@@ -55,13 +56,15 @@ const styles = StyleSheet.create({
         height: 56,
     },
     input: {
-        width: '78%',
+        minWidth: '43%',
         fontSize: CommonSizes.font.medium,
         marginLeft: CommonSizes.margin.smallPlus,
-        color: LightThemeColors.text
+        color: LightThemeColors.text,
     },
     eyeIcon: {
-        marginRight: CommonSizes.margin.extraSmallPlus
+        marginRight: CommonSizes.margin.mediumPlus,
+        alignItems: 'flex-end',
+        ...CommonStyles.flex1
     },
     activeInput: {
         borderWidth: CommonSizes.borderWidth.thin,

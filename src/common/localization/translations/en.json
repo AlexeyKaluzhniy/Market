@@ -33,7 +33,9 @@
       "notNow": "Not now",
       "skip": "Skip",
       "currencySymbol": "$",
-      "filters": "Filters"
+      "filters": "Filters",
+      "confirm": "Confirm",
+      "reset": "Reset"
     },
     "date": {
       "days": "days",
@@ -256,6 +258,13 @@
       "rub/m": "rub./month",
       "rub/y": "rub./year",
       "rub/once": "rub./once"
+    },
+    "filter": {
+      "from": "From",
+      "to": "To",
+      "city": "City",
+      "add_city": "Add city",
+      "adv_price": "Advertise's price"
     }
   }
 }

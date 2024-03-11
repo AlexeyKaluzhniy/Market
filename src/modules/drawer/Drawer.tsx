@@ -38,7 +38,8 @@ export const Drawer: NavigationFunctionComponent = (props) => {
         navigation.showOverlay(Components.modalizeContainer, {
             screenIdSuffix: props.componentId, params: {
                 getHeaderComponent: (closeButton: ReactNode) => ModalizeHeader(closeButton, "drawer.settings"),
-                getContentComponent: ModalizeSettingsContainer
+                getContentComponent: ModalizeSettingsContainer,
+                titleCloseButton: "common.done"
             }
         });
     };

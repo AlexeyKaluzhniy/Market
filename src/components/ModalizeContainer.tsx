@@ -9,15 +9,17 @@ import {TouchablePlatform} from "~/common/components/TouchablePlatform";
 import {useMount} from "~/common/hooks/useMount";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface IProps {
   getHeaderComponent?: (closeButton: React.ReactNode) => React.ReactNode;
   getContentComponent?: (close: () => void) => React.ReactNode;
   modalizeProps?: Omit<ModalizeProps, "HeaderComponent" | "children">;
+  titleCloseButton: TFuncKeyApp;
 }
 
 export const ModalizeContainer: NavigationFunctionComponent<IProps> = memo((props) => {
-  const {getHeaderComponent, getContentComponent, modalizeProps} = props;
+  const {getHeaderComponent, getContentComponent, modalizeProps, titleCloseButton} = props;
   const styles = useThemedStyles(styleGetter);
   const modalizeRef = useRef<Modalize>();
 
@@ -36,7 +38,7 @@ export const ModalizeContainer: NavigationFunctionComponent<IProps> = memo((prop
 
   const closeButton = useMemo(() => (
     <TouchablePlatform onPress={closeModal} style={styles.closeContainer}>
-      <Roboto.Label.Large labelKey={"common.done"} style={styles.done}/>
+      <Roboto.Label.Large labelKey={titleCloseButton} style={styles.done}/>
     </TouchablePlatform>
   ), [closeModal, styles.closeContainer, styles.done]);
 
