@@ -8,4 +8,5 @@ export interface IPropsCustomInput {
     numberInput?: boolean;
     Icon?: FunctionComponent<SVGAttributes<SVGElement>>;
     maxLength?: number;
+    value?: string;
 }

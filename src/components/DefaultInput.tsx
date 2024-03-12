@@ -1,9 +1,10 @@
-import {Image, StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
-import React, {useState} from "react";
+import {Image, StyleSheet, TextInput, TextStyle, TouchableOpacity, View} from "react-native";
+import React, {useCallback, useState} from "react";
 import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {IPropsCustomInput} from "~/infrastructure/dto/common/IPropsCustomInput";
 import {ImageResources} from "~/common/ImageResources.g";
+import {Roboto} from "~/infrastructure";
 
 export function DefaultInput(
     {
@@ -13,8 +14,10 @@ export function DefaultInput(
         passwordInput,
         name,
         maxLength,
-        numberInput
+        numberInput,
+        value
     }: IPropsCustomInput) {
+    const [initValue, setInitValue] = useState(value);
     const [isVisible, setVisible] = useState(passwordInput);
     const [isFocused, setFocused] = useState(false);
     const eyeIcons = {
@@ -22,14 +25,43 @@ export function DefaultInput(
         closed: ImageResources.eyeclosed
     };
 
+    const updateValue = (text: string) => {
+        setValue(name, text);
+        setInitValue(text);
+    };
+
+    const activePlaceholderStyle: TextStyle = {
+        top: -10,
+        left: 12,
+        paddingHorizontal: 3,
+        color: LightThemeColors.main
+    };
+
+    const inactivePlaceholderStyle: TextStyle = {
+        top: 20,
+        left: Icon ? 55 : 20,
+        fontSize: 16,
+        zIndex: -1
+    };
+
+    const movePlaceholder = useCallback(() => {
+        if (isFocused) {
+            return activePlaceholderStyle;
+        } else if (!isFocused && !initValue) {
+            return inactivePlaceholderStyle;
+        } else {
+            return {...activePlaceholderStyle, color: LightThemeColors.text};
+        }
+    }, [isFocused]);
+
     return (
         <View style={[styles.inputContainer, isFocused ? styles.activeInput : styles.inactiveInput]}>
             {Icon && <Icon width={25} height={25} style={styles.icon}/>}
             <TextInput
-                onChangeText={text => setValue(name, text)}
-                placeholder={placeholder}
+                onChangeText={text => updateValue(text)}
                 secureTextEntry={isVisible}
                 style={styles.input}
+                value={initValue}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
                 keyboardType={numberInput ? 'numeric' : 'default'}
@@ -42,6 +74,7 @@ export function DefaultInput(
                         source={isVisible ? eyeIcons.closed : eyeIcons.open}
                     />
                 </TouchableOpacity>}
+            <Roboto.Body.Small text={placeholder} style={[styles.placeholder, movePlaceholder()]}/>
         </View>
     );
 }
@@ -76,5 +109,9 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginRight: CommonSizes.margin.smallPlus
+    },
+    placeholder: {
+        backgroundColor: LightThemeColors.background,
+        position: 'absolute'
     }
 });
