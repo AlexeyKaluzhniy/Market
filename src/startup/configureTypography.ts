@@ -1,8 +1,8 @@
-import {logger} from "../infrastructure/logger";
-import {typography} from "../infrastructure/typography";
-import {Fonts} from "../core/theme/fonts";
-import {Colors} from "../core/theme/colors";
-import {LogLevel} from "../infrastructure/common/logger";
+import {logger} from "~/infrastructure";
+import {typography} from "~/infrastructure/typography";
+import {Fonts} from "~/core/theme/fonts";
+import {Colors} from "~/core/theme/colors";
+import {LogLevel} from "~/infrastructure/common/logger";
 import {TextStyle} from "react-native";
 
 export const typographyStyles = {
@@ -12,6 +12,7 @@ export const typographyStyles = {
             fontWeight: "400",
             fontSize: 57,
             lineHeight: 64,
+            letterSpacing: -0.25,
             color: Colors.black,
         } as TextStyle,
         Medium: {
@@ -65,6 +66,7 @@ export const typographyStyles = {
             fontWeight: "500",
             fontSize: 16,
             lineHeight: 24,
+            letterSpacing: 0.15,
             color: Colors.black,
         } as TextStyle,
         Small: {
@@ -72,6 +74,7 @@ export const typographyStyles = {
             fontWeight: "500",
             fontSize: 14,
             lineHeight: 20,
+            letterSpacing: 0.1,
             color: Colors.black,
         } as TextStyle,
     },
@@ -81,6 +84,7 @@ export const typographyStyles = {
             fontWeight: "500",
             fontSize: 14,
             lineHeight: 20,
+            letterSpacing: 0.1,
             color: Colors.black,
         } as TextStyle,
         Medium: {
@@ -88,6 +92,7 @@ export const typographyStyles = {
             fontWeight: "500",
             fontSize: 12,
             lineHeight: 16,
+            letterSpacing: 0.5,
             color: Colors.black,
         } as TextStyle,
         Small: {
@@ -95,6 +100,7 @@ export const typographyStyles = {
             fontWeight: "500",
             fontSize: 11,
             lineHeight: 16,
+            letterSpacing: 0.5,
             color: Colors.black,
         } as TextStyle,
     },
@@ -104,6 +110,7 @@ export const typographyStyles = {
             fontWeight: "400",
             fontSize: 16,
             lineHeight: 24,
+            letterSpacing: 0.5,
             color: Colors.black,
         } as TextStyle,
         Medium: {
@@ -111,6 +118,7 @@ export const typographyStyles = {
             fontWeight: "400",
             fontSize: 14,
             lineHeight: 20,
+            letterSpacing: 0.25,
             color: Colors.black,
         } as TextStyle,
         Small: {
@@ -118,6 +126,7 @@ export const typographyStyles = {
             fontWeight: "400",
             fontSize: 12,
             lineHeight: 16,
+            letterSpacing: 0.4,
             color: Colors.black,
         } as TextStyle,
     },

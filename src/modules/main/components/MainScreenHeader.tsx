@@ -5,15 +5,19 @@ import React from "react";
 import {LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {FilterButton} from "~/components/FilterButton";
+import {useTranslation} from "react-i18next";
 
 export function MainScreenHeader() {
+    const {t} = useTranslation();
+
     return (
         <View style={styles.container}>
             <View style={[styles.searchBar, CommonStyles.rowCenter]}>
                 <SideMenuButton/>
                 <TextInput
-                    placeholder="Поиск объявления"
+                    placeholder={t("common.search")}
                     style={styles.menu}
+                    selectionColor={LightThemeColors.main}
                 />
             </View>
             <FilterButton/>
@@ -36,6 +40,10 @@ const styles = StyleSheet.create({
         paddingLeft: CommonSizes.padding.large,
     },
     menu: {
-        marginLeft: CommonSizes.margin.extraLarge
+        marginLeft: CommonSizes.margin.extraLarge,
+        fontSize: 16,
+        fontFamily: "Roboto",
+        letterSpacing: 0.5,
+        ...CommonStyles.flex1
     },
 });
