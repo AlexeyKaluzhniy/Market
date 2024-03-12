@@ -2,7 +2,6 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import CheckBox from "@react-native-community/checkbox";
 import {LightThemeColors} from "~/core/theme/colors";
 import {StyleSheet, TouchableOpacity} from "react-native";
-import React, {useState} from "react";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useAppDispatch} from "~/core/store/store";
@@ -14,16 +13,14 @@ interface ICheckBoxProps {
 }
 
 export function CheckBoxButton({city, isChecked}: ICheckBoxProps) {
-    const [toggleCheckBox, setToggleCheckBox] = useState(isChecked);
     const dispatch = useAppDispatch();
 
     const setCityChosen = () => {
-        if (!toggleCheckBox) {
+        if (!isChecked) {
             dispatch(actions.selectCity(city));
         } else {
             dispatch(actions.deselectCity(city));
         }
-        setToggleCheckBox(prevState => !prevState);
     };
 
     return (
@@ -33,7 +30,7 @@ export function CheckBoxButton({city, isChecked}: ICheckBoxProps) {
             <CheckBox
                 disabled={false}
                 tintColors={{true: LightThemeColors.main}}
-                value={toggleCheckBox}
+                value={isChecked}
             />
             <Roboto.Body.Large text={city} style={styles.text}/>
         </TouchableOpacity>

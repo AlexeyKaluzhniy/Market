@@ -1,19 +1,31 @@
-import {StyleSheet, View} from "react-native";
+import {FlatList, StyleSheet} from "react-native";
 import {CheckBoxButton} from "~/components/CheckBoxButton";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useAppSelector} from "~/core/store/store";
+import {useCallback} from "react";
 
 export const ModalizeCitiesContainer = () => {
     const cities = ['Тирасполь', 'Бендеры', 'Дубоссары', 'Григориополь', 'Каменка', 'Рыбница', 'Слободзея', 'Днестровск'];
     const citiesChosen = useAppSelector(state => state.filter.cities);
 
+    console.log('citiesChosen', citiesChosen);
+
+    const renderItem = useCallback(({item, index}: { item: string; index: number }) => {
+        return (
+            <CheckBoxButton
+                city={item}
+                key={index}
+                isChecked={citiesChosen && !!citiesChosen.find((el) => el === item)}
+            />
+        );
+    }, [citiesChosen]);
+
     return (
-        <View style={styles.container}>
-            {cities.map(city => <CheckBoxButton
-                city={city} key={city}
-                isChecked={citiesChosen && !!citiesChosen.find((item) => item === city)}
-            />)}
-        </View>
+        <FlatList
+            data={cities}
+            renderItem={renderItem}
+            contentContainerStyle={styles.container}
+        />
     );
 };
 

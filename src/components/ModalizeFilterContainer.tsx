@@ -18,6 +18,8 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
     const dispatch = useAppDispatch();
     const cities = useAppSelector(state => state.filter.cities);
+    const priceFrom = useAppSelector(state => state.filter.priceFrom);
+    const priceTo = useAppSelector(state => state.filter.priceTo);
 
     const openCitiesModal = () => {
         Navigation.dismissAllOverlays();
@@ -39,7 +41,7 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     };
 
     const setPriceTo = (name: string, price: string) => {
-        dispatch(actions.setPriceFrom(price));
+        dispatch(actions.setPriceTo(price));
     };
 
     return (
@@ -68,13 +70,15 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
                     name={'from'}
                     setValue={setPriceFrom}
                     maxLength={5}
-                    numberInput/>
+                    numberInput
+                    value={priceFrom}/>
                 <DefaultInput
                     placeholder={t("filter.to")}
                     name={'to'}
                     setValue={setPriceTo}
                     maxLength={5}
-                    numberInput/>
+                    numberInput
+                    value={priceTo}/>
             </View>
         </View>
     );
