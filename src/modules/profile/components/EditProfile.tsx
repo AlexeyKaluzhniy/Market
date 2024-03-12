@@ -6,8 +6,9 @@ import EditIcon from "../../../../resources/icons/edit.svg";
 import {Colors, LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {DefaultInput} from "~/components/DefaultInput";
-import ImagePicker, {Options} from "react-native-image-crop-picker";
+import ImagePicker, {ImageOrVideo, Options} from "react-native-image-crop-picker";
 import {useTranslation} from "react-i18next";
+import {useState} from "react";
 
 const pickerOptions: Options = {
     height: 1000,
@@ -21,10 +22,11 @@ const pickerOptions: Options = {
 
 export const EditProfile: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
+    const [image, setImage] = useState<ImageOrVideo>();
 
     const openGallery = () => {
         ImagePicker.openPicker(pickerOptions)
-            .then(image => console.log(image))
+            .then(img => setImage(img))
             .catch(error => console.warn(error));
     };
 
@@ -33,7 +35,7 @@ export const EditProfile: NavigationFunctionComponent = (props) => {
             <CustomHeader id={props.componentId} isStack isEdit headerTitle={"editProfile.screenTitle"}/>
             <View style={styles.container}>
                 <View style={styles.avatarContainer}>
-                    <Image source={ImageResources.avatar} style={styles.avatar}/>
+                    <Image source={ image ? {uri: image.path} : ImageResources.avatar } style={styles.avatar}/>
                     <TouchableOpacity style={styles.editPhotoButton} activeOpacity={0.8} onPress={openGallery}>
                         <EditIcon color={Colors.white}/>
                     </TouchableOpacity>
@@ -60,7 +62,8 @@ const styles = StyleSheet.create({
     },
     avatar: {
         width: 100,
-        height: 100
+        height: 100,
+        borderRadius: CommonSizes.borderRadius.extraLargePlus * 2
     },
     editPhotoButton: {
         padding: CommonSizes.padding.smallPlus,
