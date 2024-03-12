@@ -55,4 +55,5 @@ export class ImageResources {
   static readonly heart: ImageURISource = require("../../resources/images/heart.png");
   static readonly logo: ImageURISource = require("../../resources/images/logo.svg");
   static readonly menu: ImageURISource = require("../../resources/images/menu.png");
+  static readonly plus: ImageURISource = require("../../resources/images/plus.png");
 }
