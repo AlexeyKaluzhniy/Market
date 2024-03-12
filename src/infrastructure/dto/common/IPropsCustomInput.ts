@@ -6,4 +6,5 @@ export interface IPropsCustomInput {
     setValue: any;
     passwordInput?: boolean;
     Icon?: FunctionComponent<SVGAttributes<SVGElement>>;
+    maxLength?: number;
 }

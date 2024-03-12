@@ -1,24 +1,18 @@
 import {StyleSheet, View} from "react-native";
 import {CheckBoxButton} from "~/components/CheckBoxButton";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {useAppSelector} from "~/core/store/store";
 
-interface IModalizeCitiesContainerProps {
-    citiesChosen: string[];
-    setCitiesChosen: (citiesChosen: string[]) => void;
-}
-
-export const ModalizeCitiesContainer = ({citiesChosen, setCitiesChosen}: IModalizeCitiesContainerProps) => {
+export const ModalizeCitiesContainer = () => {
     const cities = ['Тирасполь', 'Бендеры', 'Дубоссары', 'Григориополь', 'Каменка', 'Рыбница', 'Слободзея', 'Днестровск'];
+    const citiesChosen = useAppSelector(state => state.filter.cities);
 
     return (
         <View style={styles.container}>
             {cities.map(city => <CheckBoxButton
                 city={city} key={city}
-                isChecked={!!citiesChosen.find((item) => item === city)}
-                citiesChosen={citiesChosen}
-                setCitiesChosen={setCitiesChosen}
-            />)
-            }
+                isChecked={citiesChosen && !!citiesChosen.find((item) => item === city)}
+            />)}
         </View>
     );
 };

@@ -10,8 +10,12 @@ import {Components} from "~/navigation/components";
 import {ModalizeFilterContainer} from "~/components/ModalizeFilterContainer";
 import {ReactNode} from "react";
 import {ModalizeHeader} from "~/components/ModalizeHeader";
+import {useAppDispatch} from "~/core/store/store";
+import {actions} from "~/core/store/filter/filterSlice";
 
 export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
+    const dispatch = useAppDispatch();
+
     const handleGoBack = () => {
         Navigation.dismissAllOverlays();
         navigation.showOverlay(Components.modalizeContainer, {
@@ -23,6 +27,10 @@ export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
         });
     };
 
+    const resetAllCities = () => {
+        dispatch(actions.deselectAll());
+    };
+
     return (
         <View style={[CommonStyles.rowCenter, styles.container]}>
             <View style={CommonStyles.rowCenter}>
@@ -31,7 +39,9 @@ export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
                 </TouchableOpacity>
                 <Roboto.Title.Medium labelKey={"authentication.registrationUserData.city"} style={styles.text}/>
             </View>
-            <Roboto.Label.Large labelKey={"common.reset"} style={styles.resetText}/>
+            <TouchableOpacity onPress={resetAllCities}>
+                <Roboto.Label.Large labelKey={"common.reset"} style={styles.resetText}/>
+            </TouchableOpacity>
         </View>
     );
 };

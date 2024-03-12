@@ -11,8 +11,9 @@ export function DefaultInput(
         placeholder,
         setValue,
         Icon,
-        passwordInput = false,
+        passwordInput,
         name,
+        maxLength
     }: IPropsCustomInput) {
     const [isVisible, setVisible] = useState(passwordInput);
     const [isFocused, setFocused] = useState(false);
@@ -33,6 +34,7 @@ export function DefaultInput(
                 onBlur={() => setFocused(false)}
                 keyboardType={!passwordInput ? 'numeric' : 'default'}
                 selectionColor={LightThemeColors.main}
+                maxLength={maxLength}
             />
             {passwordInput &&
                 <TouchableOpacity onPress={() => setVisible((prev) => !prev)} style={styles.eyeIcon}>
