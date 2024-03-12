@@ -22,6 +22,7 @@ import {About} from "~/modules/about/About";
 import {ModalizeContainer} from "~/components/ModalizeContainer";
 import {AdvertiseDetails} from "~/modules/details/AdvertiseDetails";
 import {NewAdvertise} from "~/modules/newAdvertise/NewAdvertise";
+import {EditProfile} from "~/modules/profile/components/EditProfile";
 
 function registerAppScreenComponent<P extends AppNavigationComponentProps>(props: NavigationHOCProps<P>) {
     Navigation.registerComponent(props.page.name, () => NavigationHOC(props), () => props.Component);
@@ -50,6 +51,7 @@ export function registerComponents() {
     registerAppScreenComponent({Component: About, page: Pages.about, useRedux: true});
     registerAppScreenComponent({Component: AdvertiseDetails, page: Pages.details, useRedux: true});
     registerAppScreenComponent({Component: NewAdvertise, page: Pages.newAdvertise, useRedux: true});
+    registerAppScreenComponent({Component: EditProfile, page: Pages.editProfile, useRedux: true});
 
     registerReduxComponent(Components.topBarTitle.name, TopBarTitle);
     registerReduxComponent(Components.topBarBackButton.name, TopBarBackButton);

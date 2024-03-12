@@ -31,6 +31,10 @@ export const Pages = {
         id: "PROFILE_SCREEN",
         name: "ProfileScreen"
     },
+    editProfile: {
+        id: "EDIT_PROFILE_SCREEN",
+        name: "EditProfileScreen"
+    },
     forgotPassword: {
         id: "FORGOT_PASSWORD_SCREEN",
         name: "ForgotPasswordScreen"

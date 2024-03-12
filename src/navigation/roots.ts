@@ -147,6 +147,10 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                                 id: Pages.profile.id,
                                 name: Pages.profile.name,
                             },
+                            externalComponent: {
+                                id: Pages.editProfile.id,
+                                name: Pages.editProfile.name
+                            }
                         },
                     ],
                     options: {
