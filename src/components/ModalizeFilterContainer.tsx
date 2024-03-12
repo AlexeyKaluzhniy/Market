@@ -67,12 +67,14 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
                     placeholder={t("filter.from")}
                     name={'from'}
                     setValue={setPriceFrom}
-                    maxLength={5}/>
+                    maxLength={5}
+                    numberInput/>
                 <DefaultInput
                     placeholder={t("filter.to")}
                     name={'to'}
                     setValue={setPriceTo}
-                    maxLength={5}/>
+                    maxLength={5}
+                    numberInput/>
             </View>
         </View>
     );

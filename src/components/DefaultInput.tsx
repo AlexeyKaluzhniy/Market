@@ -13,7 +13,8 @@ export function DefaultInput(
         Icon,
         passwordInput,
         name,
-        maxLength
+        maxLength,
+        numberInput
     }: IPropsCustomInput) {
     const [isVisible, setVisible] = useState(passwordInput);
     const [isFocused, setFocused] = useState(false);
@@ -24,7 +25,7 @@ export function DefaultInput(
 
     return (
         <View style={[styles.inputContainer, isFocused ? styles.activeInput : styles.inactiveInput]}>
-            {Icon && <Icon width={25} height={25}/>}
+            {Icon && <Icon width={25} height={25} style={styles.icon}/>}
             <TextInput
                 onChangeText={text => setValue(name, text)}
                 placeholder={placeholder}
@@ -32,7 +33,7 @@ export function DefaultInput(
                 style={styles.input}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
-                keyboardType={!passwordInput ? 'numeric' : 'default'}
+                keyboardType={numberInput ? 'numeric' : 'default'}
                 selectionColor={LightThemeColors.main}
                 maxLength={maxLength}
             />
@@ -60,7 +61,6 @@ const styles = StyleSheet.create({
     input: {
         minWidth: '43%',
         fontSize: CommonSizes.font.medium,
-        marginLeft: CommonSizes.margin.smallPlus,
         color: LightThemeColors.text,
     },
     eyeIcon: {
@@ -75,5 +75,8 @@ const styles = StyleSheet.create({
     inactiveInput: {
         borderWidth: CommonSizes.borderWidth.extraThin,
         borderColor: LightThemeColors.secondaryText
+    },
+    icon: {
+        marginRight: CommonSizes.margin.smallPlus
     }
 });

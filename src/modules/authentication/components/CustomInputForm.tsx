@@ -70,6 +70,7 @@ export function CustomInputForm(
                     passwordInput={false}
                     Icon={PhoneIcon}
                     setValue={setValue}
+                    numberInput
                 />
             }
             {passwordField &&
