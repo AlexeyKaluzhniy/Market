@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     inputContainer: {
         ...CommonStyles.rowCenter,
         justifyContent: 'space-between',
-        marginBottom: CommonSizes.margin.largePlus
+        marginBottom: CommonSizes.margin.largePlus,
     },
     chosenCitiesContainer: {
         ...CommonStyles.rowCenter,
