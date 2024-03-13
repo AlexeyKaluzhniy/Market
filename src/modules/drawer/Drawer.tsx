@@ -1,6 +1,6 @@
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {SafeAreaView, StyleSheet, View} from "react-native";
-import {Colors, LightThemeColors} from "~/core/theme/colors";
+import {Colors, ThemeColors} from "~/core/theme/colors";
 import BrandIcon from '../../../resources/icons/brand.svg';
 import SettingsIcon from '../../../resources/icons/settings.svg';
 import InfoIcon from '../../../resources/icons/info.svg';
@@ -17,8 +17,11 @@ import {Components} from "~/navigation/components";
 import {ModalizeHeader} from "~/components/ModalizeHeader";
 import {ModalizeSettingsContainer} from "~/components/ModalizeSettingsContainer";
 import {ReactNode} from "react";
+import {useThemedStyles} from "~/core/theme/hooks";
 
 export const Drawer: NavigationFunctionComponent = (props) => {
+    const styles = useThemedStyles(stylesG);
+
     const handleLogOut = () => {
         setAuthRoot();
     };
@@ -60,10 +63,10 @@ export const Drawer: NavigationFunctionComponent = (props) => {
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: LightThemeColors.drawer,
+        backgroundColor: colors.drawer,
         paddingHorizontal: CommonSizes.padding.superLarge
     },
     brandContainer: {
@@ -76,6 +79,6 @@ const styles = StyleSheet.create({
     },
     outline: {
         height: CommonSizes.borderWidth.extraThin,
-        backgroundColor: LightThemeColors.outline
+        backgroundColor: colors.outlineVariant
     }
 });

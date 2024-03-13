@@ -1,10 +1,11 @@
 import {StyleSheet} from "react-native";
 import {useState} from "react";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import DropDownListIcon from "../../resources/icons/drop_down.svg";
 import {Dropdown} from "react-native-element-dropdown";
 import {DropDownItem} from "~/components/DropDownItem";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 interface IDropDownList {
     values: { value: string }[];
@@ -12,6 +13,8 @@ interface IDropDownList {
 }
 
 export function DropDownList({values, onRightSide}: IDropDownList) {
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
     const [valueShown, setValueShown] = useState<string>(values[0].value);
 
     const leftMargin = {
@@ -26,28 +29,28 @@ export function DropDownList({values, onRightSide}: IDropDownList) {
             onChange={({value}) => setValueShown(value)}
             style={styles.dropdown}
             value={valueShown}
-            renderRightIcon={() => <DropDownListIcon/>}
+            renderRightIcon={() => <DropDownListIcon color={colors.outline}/>}
             renderItem={({value}) => <DropDownItem value={value}/>}
             containerStyle={[styles.container, leftMargin]}
             selectedTextStyle={styles.selectedText}
-            activeColor={LightThemeColors.surfaceContainer}
+            activeColor={colors.surfaceContainer}
             autoScroll={false}
         />
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         width: 200,
         maxHeight: 264,
-        backgroundColor: LightThemeColors.surfaceContainer,
+        backgroundColor: colors.surfaceContainer,
         borderRadius: CommonSizes.borderRadius.extraSmall,
         elevation: 3,
         paddingVertical: CommonSizes.padding.extraSmallPlus,
     },
     selectedText: {
         fontSize: 14,
-        color: LightThemeColors.text
+        color: colors.onSurface
     },
     dropdown: {
         width: 110

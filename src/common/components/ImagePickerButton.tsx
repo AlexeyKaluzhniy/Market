@@ -3,6 +3,7 @@ import CameraIcon from "../../../resources/icons/camera.svg";
 import GalleryIcon from "../../../resources/icons/gallery.svg";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import ImagePicker, {ImageOrVideo, Options} from "react-native-image-crop-picker";
+import {useThemeColors} from "~/core/theme/hooks";
 
 interface IProps {
     isCamera?: boolean;
@@ -21,6 +22,8 @@ const pickerOptions: Options = {
 };
 
 export function ImagePickerButton({isCamera, setImage, images}: IProps) {
+    const colors = useThemeColors();
+
     const openCamera = () => {
         ImagePicker.openCamera(pickerOptions)
             .then(image => setImage([...images, image]))
@@ -35,7 +38,7 @@ export function ImagePickerButton({isCamera, setImage, images}: IProps) {
 
     return (
         <TouchableOpacity style={CommonStyles.iconPadding} onPress={isCamera ? openCamera : openGallery}>
-            {isCamera ? <CameraIcon/> : <GalleryIcon/>}
+            {isCamera ? <CameraIcon color={colors.outline}/> : <GalleryIcon color={colors.outline}/>}
         </TouchableOpacity>
     );
 }

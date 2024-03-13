@@ -3,8 +3,9 @@ import {Roboto} from "~/infrastructure";
 import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {CommonStyles} from "~/core/theme/commonStyles";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {TFuncKeyApp} from "~/common/localization/localization";
+import {useThemedStyles} from "~/core/theme/hooks";
 
 interface IEmptyScreenProps {
     image: ImageURISource;
@@ -13,6 +14,8 @@ interface IEmptyScreenProps {
 }
 
 export function EmptyScreen({image, title, text}: IEmptyScreenProps) {
+    const styles = useThemedStyles(stylesG);
+
     return (
         <View style={styles.emptyContainer}>
             <Image source={image} style={styles.heartImage}/>
@@ -22,23 +25,25 @@ export function EmptyScreen({image, title, text}: IEmptyScreenProps) {
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     emptyContainer: {
         marginHorizontal: CommonSizes.margin.largePlus,
         justifyContent: 'center',
         alignItems: 'center',
-        ...CommonStyles.flex1
+        ...CommonStyles.flex1,
     },
     heartImage: {
-        marginTop: -CommonSizes.margin.superLarge
+        marginTop: -CommonSizes.margin.superLarge,
+        tintColor: colors.outlineVariant
     },
     title: {
         textAlign: 'center',
-        marginTop: CommonSizes.margin.extraLargePlus
+        marginTop: CommonSizes.margin.extraLargePlus,
+        color: colors.onSurface
     },
     text: {
         marginTop: CommonSizes.margin.largePlus,
-        color: LightThemeColors.onSurface,
+        color: colors.onSurface,
         textAlign: 'center'
     }
 });

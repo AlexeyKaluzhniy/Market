@@ -8,30 +8,30 @@ import {useThemeColors} from "../../core/theme/hooks";
 import {CommonSizes} from "../../core/theme/commonSizes";
 
 interface IProps {
-  title: TFuncKeyApp;
+    title: TFuncKeyApp;
 }
 
 export const TopBarBackButton: NavigationFunctionComponent<IProps> = (props) => {
-  const colors = useThemeColors();
-  const onArrowPress = () => {
-    Keyboard.dismiss();
-    setTimeout(() => navigation.pop(), 500);
-  };
+    const colors = useThemeColors();
+    const onArrowPress = () => {
+        Keyboard.dismiss();
+        setTimeout(() => navigation.pop(), 500);
+    };
 
-  return (
-    <Pressable style={styles.container} onPress={onArrowPress}>
-      <Image source={ImageResources.arrow_left} style={{tintColor: colors.text}}/>
-    </Pressable>
-  );
+    return (
+        <Pressable style={styles.container} onPress={onArrowPress}>
+            <Image source={ImageResources.arrow_left} style={{tintColor: colors.outline}}/>
+        </Pressable>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    paddingLeft: CommonSizes.spacing.medium,
-    minHeight: CommonSizes.lineHeight.smallPlus,
-    alignItems: "center",
-    justifyContent: "space-between",
-  } as ViewStyle,
+    container: {
+        flex: 1,
+        flexDirection: "row",
+        paddingLeft: CommonSizes.spacing.medium,
+        minHeight: CommonSizes.lineHeight.smallPlus,
+        alignItems: "center",
+        justifyContent: "space-between",
+    } as ViewStyle,
 });

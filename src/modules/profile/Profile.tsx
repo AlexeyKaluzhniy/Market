@@ -1,37 +1,46 @@
-import {Image, SafeAreaView, StyleSheet, View} from "react-native";
+import {Image, StyleSheet, View} from "react-native";
 import {NavigationFunctionComponent} from "react-native-navigation";
 import React from "react";
 import {CustomHeader} from "~/components/CustomHeader";
 import {ImageResources} from "~/common/ImageResources.g";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {CommonStyles} from "~/core/theme/commonStyles";
 
 export const Profile: NavigationFunctionComponent = (props): JSX.Element => {
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
+
     return (
-        <SafeAreaView>
+        <View style={styles.container}>
             <CustomHeader id={props.componentId} headerTitle="pages.profile" isProfile/>
-            <View style={styles.container}>
+            <View style={styles.body}>
                 <View style={styles.avatarContainer}>
                     <Image source={ImageResources.avatar} style={styles.avatar}/>
-                    <Roboto.Title.Large text={"Георгий Васильков"} style={styles.name}/>
+                    <Roboto.Title.Large text={"Георгий Васильков"} style={styles.name} color={colors.onSurface}/>
                 </View>
                 <View style={styles.data}>
-                    <Roboto.Label.Medium text={"E-mail"}/>
-                    <Roboto.Body.Large text={"g.vasilkov@yandex.ru"}/>
+                    <Roboto.Label.Medium text={"E-mail"} color={colors.onSurface}/>
+                    <Roboto.Body.Large text={"g.vasilkov@yandex.ru"} color={colors.onSurface}/>
                 </View>
                 <View style={styles.data}>
-                    <Roboto.Label.Medium text={"Телефон"}/>
-                    <Roboto.Body.Large text={"+ 373 777 2 54 97"}/>
+                    <Roboto.Label.Medium text={"Телефон"} color={colors.onSurface}/>
+                    <Roboto.Body.Large text={"+ 373 777 2 54 97"} color={colors.onSurface}/>
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
-        paddingHorizontal: CommonSizes.padding.large
+        ...CommonStyles.flex1,
+        backgroundColor: colors.background
+    },
+    body: {
+        paddingHorizontal: CommonSizes.padding.large,
     },
     data: {
         marginVertical: CommonSizes.margin.small
@@ -39,7 +48,7 @@ const styles = StyleSheet.create({
     avatarContainer: {
         alignItems: 'center',
         borderBottomWidth: CommonSizes.borderWidth.extraThin,
-        borderBottomColor: LightThemeColors.outline,
+        borderBottomColor: colors.outline,
         paddingTop: CommonSizes.padding.extraLargePlus,
         paddingBottom: CommonSizes.padding.large,
         marginBottom: CommonSizes.margin.largePlus

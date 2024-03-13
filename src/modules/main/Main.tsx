@@ -1,5 +1,5 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {SafeAreaView, Text} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import {MainScreenHeader} from "~/modules/main/components/MainScreenHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {AllAdvertisesList} from "~/modules/main/components/AllAdvertisesList";
@@ -9,11 +9,14 @@ import {Route} from "react-native-tab-view";
 import {MyAdvertisesList} from "~/modules/main/components/MyAdvertisesList";
 import {CustomTabs} from "~/components/CustomTabs";
 import {AddButton} from "~/components/AddButton";
+import {ThemeColors} from "~/core/theme/colors";
+import {useThemedStyles} from "~/core/theme/hooks";
 
 const tabTypes = ["all", "my"] as const;
 
 export const Main: NavigationFunctionComponent = (): JSX.Element => {
     const {t} = useTranslation();
+    const styles = useThemedStyles(stylesG);
 
     const routes = useMemo(() => tabTypes.map(type => ({key: type, title: t(`common.${type}`)})), [t]);
     const renderScene = useCallback((props: { route: Route }) => {
@@ -28,10 +31,17 @@ export const Main: NavigationFunctionComponent = (): JSX.Element => {
     }, []);
 
     return (
-        <SafeAreaView style={CommonStyles.flex1}>
+        <View style={styles.container}>
             <MainScreenHeader/>
             <CustomTabs routes={routes} renderScene={renderScene}/>
             <AddButton/>
-        </SafeAreaView>
+        </View>
     );
 };
+
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
+    container: {
+        ...CommonStyles.flex1,
+        backgroundColor: colors.background
+    }
+});

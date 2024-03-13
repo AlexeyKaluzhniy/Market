@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import React from "react";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
@@ -28,7 +28,7 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
     };
 
     return (
-        <SafeAreaView style={CommonStyles.flex1}>
+        <View style={CommonStyles.flex1}>
             <CustomHeader headerTitle='authentication.recoverPassword' id={props.componentId} isStack isAuth/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
                 <Roboto.Body.Medium style={styles.text} labelKey="authentication.phoneRecovery"/>
@@ -39,7 +39,7 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
                     onSubmit={onSubmit}
                 />
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 

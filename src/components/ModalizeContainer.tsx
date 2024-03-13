@@ -2,7 +2,7 @@ import React, {memo, useCallback, useMemo, useRef} from "react";
 import {ScrollViewProps, StyleSheet, ViewStyle} from "react-native";
 import {Modalize, ModalizeProps} from "react-native-modalize";
 import {isIos} from "~/core/theme/commonConsts";
-import {Colors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
+import {Colors, ThemeColors} from "~/core/theme/colors";
 import {useThemedStyles} from "~/core/theme/hooks";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {TouchablePlatform} from "~/common/components/TouchablePlatform";
@@ -71,7 +71,7 @@ const styleGetter = (colors: ThemeColors) => StyleSheet.create({
     marginTop: CommonSizes.margin.largePlus
   } as ViewStyle,
   modalContainer: {
-    backgroundColor: LightThemeColors.background,
+    backgroundColor: colors.background,
     overflow: "visible",
   } as ViewStyle,
   closeContainer: {
@@ -81,7 +81,7 @@ const styleGetter = (colors: ThemeColors) => StyleSheet.create({
     paddingVertical: CommonSizes.padding.superLarge
   } as ViewStyle,
   done: {
-    color: LightThemeColors.main
+    color: colors.main
   } as ViewStyle
 });
 

@@ -8,8 +8,6 @@ export const ModalizeCitiesContainer = () => {
     const cities = ['Тирасполь', 'Бендеры', 'Дубоссары', 'Григориополь', 'Каменка', 'Рыбница', 'Слободзея', 'Днестровск'];
     const citiesChosen = useAppSelector(state => state.filter.cities);
 
-    console.log('citiesChosen', citiesChosen);
-
     const renderItem = useCallback(({item, index}: { item: string; index: number }) => {
         return (
             <CheckBoxButton

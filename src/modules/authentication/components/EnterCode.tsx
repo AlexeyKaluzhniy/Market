@@ -1,6 +1,5 @@
 import React, {useRef, useState} from "react";
 import {
-    SafeAreaView,
     StyleSheet,
     Text,
     TextInput,
@@ -11,16 +10,18 @@ import {
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
-import {LightThemeColors} from "~/core/theme/colors";
+import {LightThemeColors, ThemeColors} from "~/core/theme/colors";
 import {SubmitButton} from "~/components/SubmitButton";
 import {Pages} from "~/navigation/pages";
 import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {useThemedStyles} from "~/core/theme/hooks";
 
 export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
     const inputRefs = useRef<TextInput[]>([]);
     const [isDisabled, setDisabled] = useState(false);
     const [remainingTime, setRemainingTime] = useState(30);
+    const styles = useThemedStyles(stylesG);
 
     const handleSendCode = () => {
         setDisabled(true);
@@ -64,7 +65,7 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
     };
 
     return (
-        <SafeAreaView>
+        <View>
             <CustomHeader headerTitle="authentication.enterCode" id={props.componentId} isAuth isStack/>
             <View style={[styles.container, CommonStyles.marginContainer]}>
                 <Roboto.Body.Medium labelKey="authentication.enterCodeText"/>
@@ -103,20 +104,20 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                     {isDisabled && <Text style={styles.timer}>{remainingTime}</Text>}
                 </TouchableOpacity>
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         marginHorizontal: CommonSizes.margin.largePlus,
     },
     input: {
-        borderWidth: 1,
+        borderWidth: CommonSizes.borderWidth.extraThin,
         borderRadius: CommonSizes.borderRadius.largePlus,
         textAlign: 'center',
         paddingHorizontal: CommonSizes.padding.extraLargePlus,
-        borderColor: LightThemeColors.secondaryText
+        borderColor: colors.secondaryText
     },
     inputContainer: {
         justifyContent: 'space-between',
@@ -130,10 +131,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     textActive: {
-        color: LightThemeColors.main
+        color: colors.main
     },
     textInactive: {
-        color: LightThemeColors.secondaryText
+        color: colors.secondaryText
     },
     timer: {
         marginLeft: CommonSizes.margin.smallPlus

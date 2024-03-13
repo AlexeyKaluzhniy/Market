@@ -1,6 +1,6 @@
 import {StyleSheet, View} from "react-native";
 import {Roboto} from "~/infrastructure";
-import {Colors, LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {SwitchButton} from "~/common/components/SwitchButton";
 import {CommonStyles} from "~/core/theme/commonStyles";
@@ -11,11 +11,11 @@ import {SystemActionsAsync} from "~/core/store/system/systemSlice";
 import {useCallback} from "react";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
-import {Tabs} from "~/navigation/tabs";
-import {Pages} from "~/navigation/pages";
-import {Navigation} from "react-native-navigation";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export function ModalizeSettingsContainer() {
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
     const dispatch = useAppDispatch();
     const language = useAppSelector(state => state.system.language);
 
@@ -55,20 +55,20 @@ export function ModalizeSettingsContainer() {
             <Selector values={languagesNames} title={language.name} handleSelect={handleChangeLanguage}/>
             <View style={styles.outline}/>
             <View style={styles.switchContainer}>
-                <Roboto.Body.Large labelKey={"settings.darkTheme"} style={CommonStyles.flex1}/>
+                <Roboto.Body.Large labelKey={"settings.darkTheme"} style={CommonStyles.flex1} color={colors.onSurface}/>
                 <SwitchButton/>
             </View>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         paddingHorizontal: CommonSizes.padding.large,
     },
     outline: {
         height: 1,
-        backgroundColor: LightThemeColors.outline,
+        backgroundColor: colors.outline,
         marginVertical: CommonSizes.margin.extraLarge
     },
     switchContainer: {
@@ -76,8 +76,4 @@ const styles = StyleSheet.create({
         ...CommonStyles.rowCenter,
         justifyContent: 'space-between'
     },
-    input: {
-        color: Colors.black,
-        marginLeft: CommonSizes.margin.largePlus
-    }
 });

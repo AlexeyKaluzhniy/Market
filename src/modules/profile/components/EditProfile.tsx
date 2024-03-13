@@ -1,14 +1,16 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {Image, SafeAreaView, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import {ImageResources} from "~/common/ImageResources.g";
 import EditIcon from "../../../../resources/icons/edit.svg";
-import {Colors, LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {DefaultInput} from "~/components/DefaultInput";
 import ImagePicker, {ImageOrVideo, Options} from "react-native-image-crop-picker";
 import {useTranslation} from "react-i18next";
 import {useState} from "react";
+import {CommonStyles} from "~/core/theme/commonStyles";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 const pickerOptions: Options = {
     height: 1000,
@@ -22,6 +24,8 @@ const pickerOptions: Options = {
 
 export const EditProfile: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
     const [image, setImage] = useState<ImageOrVideo>();
 
     const openGallery = () => {
@@ -31,28 +35,34 @@ export const EditProfile: NavigationFunctionComponent = (props) => {
     };
 
     return (
-        <SafeAreaView>
+        <View style={styles.container}>
             <CustomHeader id={props.componentId} isStack isEdit headerTitle={"editProfile.screenTitle"}/>
-            <View style={styles.container}>
+            <View style={styles.contentContainer}>
                 <View style={styles.avatarContainer}>
-                    <Image source={ image ? {uri: image.path} : ImageResources.avatar } style={styles.avatar}/>
+                    <Image source={image ? {uri: image.path} : ImageResources.avatar} style={styles.avatar}/>
                     <TouchableOpacity style={styles.editPhotoButton} activeOpacity={0.8} onPress={openGallery}>
-                        <EditIcon color={Colors.white}/>
+                        <EditIcon color={colors.onPrimary}/>
                     </TouchableOpacity>
                 </View>
                 <View>
                     <DefaultInput name={"name"} placeholder={t("editProfile.name")} setValue={() => console.log(1)}/>
-                    <DefaultInput name={"lastName"} placeholder={t("editProfile.surname")} setValue={() => console.log(1)}/>
+                    <DefaultInput name={"lastName"} placeholder={t("editProfile.surname")}
+                                  setValue={() => console.log(1)}/>
                     <DefaultInput name={"email"} placeholder={t("editProfile.email")} setValue={() => console.log(1)}/>
-                    <DefaultInput name={"phone"} placeholder={t("authentication.phoneNumber")} setValue={() => console.log(1)} numberInput/>
+                    <DefaultInput name={"phone"} placeholder={t("authentication.phoneNumber")}
+                                  setValue={() => console.log(1)} numberInput/>
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
+        ...CommonStyles.flex1,
+        backgroundColor: colors.background
+    },
+    contentContainer: {
         paddingHorizontal: CommonSizes.padding.large,
     },
     avatarContainer: {
@@ -67,7 +77,7 @@ const styles = StyleSheet.create({
     },
     editPhotoButton: {
         padding: CommonSizes.padding.smallPlus,
-        backgroundColor: LightThemeColors.main,
+        backgroundColor: colors.main,
         borderRadius: CommonSizes.borderRadius.extraLarge,
         marginTop: -35,
         marginRight: -55

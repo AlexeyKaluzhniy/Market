@@ -1,10 +1,9 @@
 import {Appearance} from "react-native";
 import {Navigation} from "react-native-navigation";
-import {DarkThemeColors, LightThemeColors, ThemeColors} from "../core/theme/colors";
-import {ImageResources} from "../common/ImageResources.g";
-import {i18next} from "../common/localization/localization";
-import {Fonts} from "../core/theme/fonts";
-import {isIos} from "../core/theme/commonConsts";
+import {DarkThemeColors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
+import {ImageResources} from "~/common/ImageResources.g";
+import {i18next} from "~/common/localization/localization";
+import {Fonts} from "~/core/theme/fonts";
 
 export function setDefaultOptions(colors?: ThemeColors) {
   const isLight = colors?.theme == "light";
@@ -80,34 +79,35 @@ export function setDefaultOptions(colors?: ThemeColors) {
       },
     },
     bottomTabs: {
-      animate: isIos,
+      animate: false,
       hideShadow: false,
-      translucent: false,
-      animateTabSelection: false,
+      translucent: true,
+      animateTabSelection: true,
       preferLargeIcons: false,
       tabsAttachMode: "together",
-      titleDisplayMode: "alwaysShow",
       backgroundColor: {
-        dark: getColor("background", "element", DarkThemeColors.background),
-        light: getColor("background", "element", LightThemeColors.element),
-      },
-      borderWidth: 1,
-      borderColor: {
-        dark: getColor("winline2", "secondaryText", DarkThemeColors.winline2),
-        light: getColor("winline2", "secondaryText", LightThemeColors.secondaryText),
+        dark: getColor("background", "background", DarkThemeColors.background),
+        light: getColor("background", "background", LightThemeColors.background),
       },
     },
     bottomTab: {
       selectedTextColor: {
-        dark: getColor("text", "text", DarkThemeColors.text),
-        light: getColor("text", "text", LightThemeColors.main),
+        dark: getColor("text", "text", DarkThemeColors.onSurface),
+        light: getColor("text", "text", LightThemeColors.onSurface),
       },
       textColor: {
-        dark: colors?.secondaryText || DarkThemeColors.secondaryText,
-        light: colors?.secondaryText || LightThemeColors.secondaryText,
+        dark: getColor("text", "text", DarkThemeColors.onSurfaceVariant),
+        light: getColor("text", "text", LightThemeColors.onSurfaceVariant),
       },
-      fontWeight: "700",
-      fontSize: 11,
+      iconHeight: 25,
+      iconColor: {
+        dark: colors?.outline || DarkThemeColors.outline,
+        light: colors?.outline || LightThemeColors.outline
+      },
+      selectedIconColor: {
+        dark: colors?.onSurface || DarkThemeColors.onSurface,
+        light: colors?.onSurface || LightThemeColors.onSurface
+      }
     },
     popGesture: true,
     statusBar: {

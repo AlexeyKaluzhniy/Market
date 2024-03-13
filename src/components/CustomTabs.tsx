@@ -1,9 +1,10 @@
 import {Route, SceneRendererProps, TabBar, TabView} from "react-native-tab-view";
-import {Colors, LightThemeColors} from "~/core/theme/colors";
+import {Colors, ThemeColors} from "~/core/theme/colors";
 import React, {useState} from "react";
 import {StyleSheet} from "react-native";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {windowWidth} from "~/core/theme/commonConsts";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 interface IProps {
     routes: Route[];
@@ -12,6 +13,8 @@ interface IProps {
 
 export function CustomTabs({routes, renderScene}: IProps) {
     const [index, setIndex] = useState(0);
+    const colors = useThemeColors();
+    const styles = useThemedStyles(tabStyles);
 
     return (
         <TabView
@@ -21,11 +24,11 @@ export function CustomTabs({routes, renderScene}: IProps) {
             renderTabBar={props =>
                 <TabBar
                     {...props}
-                    style={tabStyles.tabBar}
-                    indicatorStyle={tabStyles.indicatorStyle}
-                    labelStyle={tabStyles.labelStyle}
-                    activeColor={LightThemeColors.main}
-                    tabStyle={tabStyles.tab}
+                    style={styles.tabBar}
+                    indicatorStyle={styles.indicatorStyle}
+                    labelStyle={styles.labelStyle}
+                    activeColor={colors.main}
+                    tabStyle={styles.tab}
                     pressColor={Colors.transparent}
                 />
             }
@@ -33,15 +36,15 @@ export function CustomTabs({routes, renderScene}: IProps) {
     );
 }
 
-const tabStyles = StyleSheet.create({
+const tabStyles = (colors: ThemeColors) => StyleSheet.create({
     indicatorStyle: {
-        backgroundColor: LightThemeColors.main,
+        backgroundColor: colors.main,
         height: 5,
         borderTopLeftRadius: CommonSizes.borderRadius.smallPlus,
         borderTopRightRadius: CommonSizes.borderRadius.smallPlus,
     },
     labelStyle: {
-        color: LightThemeColors.text,
+        color: colors.onSurface,
         textTransform: 'capitalize',
         marginBottom: CommonSizes.margin.smallPlus,
     },
@@ -49,9 +52,9 @@ const tabStyles = StyleSheet.create({
         width: windowWidth / 2,
     },
     tabBar: {
-        backgroundColor: LightThemeColors.background,
+        backgroundColor: colors.background,
         borderBottomWidth: CommonSizes.borderWidth.extraThin,
-        borderColor: LightThemeColors.outline,
+        borderColor: colors.outlineVariant,
         elevation: 0
     }
 });

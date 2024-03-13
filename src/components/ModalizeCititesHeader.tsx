@@ -2,7 +2,7 @@ import {Roboto} from "~/infrastructure";
 import {StyleSheet, TouchableOpacity, View} from "react-native";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import ArrowBackIcon from "../../resources/icons/arrow_back.svg";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {navigation} from "~/services";
@@ -12,9 +12,11 @@ import {ReactNode} from "react";
 import {ModalizeHeader} from "~/components/ModalizeHeader";
 import {useAppDispatch} from "~/core/store/store";
 import {actions} from "~/core/store/filter/filterSlice";
+import {useThemedStyles} from "~/core/theme/hooks";
 
 export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
     const dispatch = useAppDispatch();
+    const styles = useThemedStyles(stylesG);
 
     const handleGoBack = () => {
         Navigation.dismissAllOverlays();
@@ -46,7 +48,7 @@ export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         justifyContent: 'space-between',
         paddingHorizontal: CommonSizes.padding.large,
@@ -54,10 +56,10 @@ const styles = StyleSheet.create({
         paddingVertical: CommonSizes.padding.extraLargePlus
     },
     text: {
-        color: LightThemeColors.secondaryText,
+        color: colors.onSurfaceVariant,
         marginLeft: CommonSizes.margin.medium
     },
     resetText: {
-        color: LightThemeColors.main
+        color: colors.main
     }
 });

@@ -1,7 +1,7 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {StyleSheet, TouchableOpacity, View} from "react-native";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {Roboto} from "~/infrastructure";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {DefaultInput} from "~/components/DefaultInput";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import RemoveIcon from "../../resources/icons/remove.svg";
@@ -13,9 +13,12 @@ import {ModalizeCitiesContainer} from "~/components/ModalizeCitiesContainer";
 import {ModalizeCitiesHeader} from "~/components/ModalizeCititesHeader";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {actions} from "~/core/store/filter/filterSlice";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
     const dispatch = useAppDispatch();
     const cities = useAppSelector(state => state.filter.cities);
     const priceFrom = useAppSelector(state => state.filter.priceFrom);
@@ -46,7 +49,7 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
 
     return (
         <View style={styles.container}>
-            <Roboto.Title.Medium labelKey={"filter.city"}/>
+            <Roboto.Title.Medium labelKey={"filter.city"} color={colors.onSurface}/>
             <View style={styles.chosenCitiesContainer}>
                 {cities && cities.map(city => {
                     return (
@@ -56,7 +59,7 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
                             onPress={() => removeCity(city)}
                             activeOpacity={0.8}
                         >
-                            <Text>{city}</Text>
+                            <Roboto.Label.Large text={city} color={colors.text}/>
                             <RemoveIcon style={styles.removeIcon}/>
                         </TouchableOpacity>
                     );
@@ -84,16 +87,17 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         paddingHorizontal: CommonSizes.padding.large
     },
     addCity: {
-        color: LightThemeColors.main,
+        color: colors.main,
         marginTop: CommonSizes.margin.small
     },
     price: {
-        marginTop: CommonSizes.margin.extraLarge
+        marginTop: CommonSizes.margin.extraLarge,
+        color: colors.onSurface
     },
     inputContainer: {
         ...CommonStyles.rowCenter,
@@ -112,7 +116,8 @@ const styles = StyleSheet.create({
         paddingVertical: CommonSizes.padding.extraSmallPlus,
         borderRadius: CommonSizes.borderRadius.small,
         marginRight: CommonSizes.margin.extraSmallPlus,
-        marginBottom: CommonSizes.margin.extraSmallPlus
+        marginBottom: CommonSizes.margin.extraSmallPlus,
+        borderColor: colors.outline
     },
     removeIcon: {
         marginTop: CommonSizes.margin.extraSmall,

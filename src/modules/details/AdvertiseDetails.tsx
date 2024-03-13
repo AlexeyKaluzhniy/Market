@@ -1,14 +1,15 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {Image, ImageURISource, SafeAreaView, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {Roboto} from "~/infrastructure";
 import {CommonStyles} from "~/core/theme/commonStyles";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {ImageResources} from "~/common/ImageResources.g";
 import MailIcon from "../../../resources/icons/mail.svg";
 import PhoneIcon from "../../../resources/icons/phone.svg";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 interface IProps {
     item: {
@@ -23,8 +24,11 @@ interface IProps {
 }
 
 export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => {
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
+
     return (
-        <SafeAreaView>
+        <View style={styles.container}>
             <CustomHeader id={props.componentId} isStack isDetails/>
             <View style={styles.contentContainer}>
                 {props.item.image &&
@@ -43,12 +47,12 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                 <View style={CommonStyles.rowCenter}>
                     <Image source={ImageResources.avatar} style={{width: 40, height: 40}}/>
                     <View style={{marginLeft: 16}}>
-                        <Roboto.Body.Large text={"Евлампия Романова"}/>
-                        <Roboto.Body.Small text={"на купи - и точка с декабря 2024"}/>
+                        <Roboto.Body.Large text={"Евлампия Романова"} color={colors.onSurface}/>
+                        <Roboto.Body.Small text={"на купи - и точка с декабря 2024"} color={colors.onSurface}/>
                     </View>
                 </View>
                 <View style={styles.mailContainer}>
-                    <MailIcon/>
+                    <MailIcon color={colors.outline}/>
                     <Roboto.Body.Large text={"e.romanova@mail.ru"} style={styles.profileText}/>
                 </View>
                 <View style={CommonStyles.rowCenter}>
@@ -56,11 +60,15 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                     <Roboto.Body.Large text={"+ 373 779 3 12 03"} style={[styles.profileText, styles.phoneText]}/>
                 </View>
             </TouchableOpacity>
-        </SafeAreaView>
+        </View>
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
+    container: {
+        ...CommonStyles.flex1,
+        backgroundColor: colors.background
+    },
     contentContainer: {
         marginHorizontal: CommonSizes.margin.largePlus
     },
@@ -72,15 +80,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     text: {
-        marginTop: CommonSizes.margin.small
+        marginTop: CommonSizes.margin.small,
+        color: colors.onSurface
     },
     outline: {
         height: 1,
         marginVertical: CommonSizes.margin.largePlus,
-        backgroundColor: LightThemeColors.outline
+        backgroundColor: colors.outline
     },
     profileText: {
-        marginLeft: CommonSizes.margin.largePlus
+        marginLeft: CommonSizes.margin.largePlus,
+        color: colors.onSurface
     },
     mailContainer: {
         ...CommonStyles.rowCenter,

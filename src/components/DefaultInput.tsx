@@ -1,10 +1,11 @@
 import {Image, StyleSheet, TextInput, TextStyle, TouchableOpacity, View} from "react-native";
 import React, {useCallback, useState} from "react";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {IPropsCustomInput} from "~/infrastructure/dto/common/IPropsCustomInput";
 import {ImageResources} from "~/common/ImageResources.g";
 import {Roboto} from "~/infrastructure";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export function DefaultInput(
     {
@@ -20,6 +21,8 @@ export function DefaultInput(
     const [initValue, setInitValue] = useState(value);
     const [isVisible, setVisible] = useState(passwordInput);
     const [isFocused, setFocused] = useState(false);
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
     const eyeIcons = {
         open: ImageResources.eye,
         closed: ImageResources.eyeclosed
@@ -34,14 +37,15 @@ export function DefaultInput(
         top: -10,
         left: 12,
         paddingHorizontal: 3,
-        color: LightThemeColors.main
+        color: colors.main
     };
 
     const inactivePlaceholderStyle: TextStyle = {
         top: 20,
         left: Icon ? 55 : 20,
         fontSize: 16,
-        zIndex: -1
+        zIndex: -1,
+        color: colors.onSurface
     };
 
     const movePlaceholder = useCallback(() => {
@@ -50,7 +54,7 @@ export function DefaultInput(
         } else if (!isFocused && !initValue) {
             return inactivePlaceholderStyle;
         } else {
-            return {...activePlaceholderStyle, color: LightThemeColors.text};
+            return {...activePlaceholderStyle, color: colors.onSurface};
         }
     }, [isFocused]);
 
@@ -65,13 +69,14 @@ export function DefaultInput(
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
                 keyboardType={numberInput ? 'numeric' : 'default'}
-                selectionColor={LightThemeColors.main}
+                selectionColor={colors.main}
                 maxLength={maxLength}
             />
             {passwordInput &&
-                <TouchableOpacity onPress={() => setVisible((prev) => !prev)} style={styles.eyeIcon}>
+                <TouchableOpacity onPress={() => setVisible((prev) => !prev)} style={styles.eyeIconContainer}>
                     <Image
                         source={isVisible ? eyeIcons.closed : eyeIcons.open}
+                        style={styles.eyeIcon}
                     />
                 </TouchableOpacity>}
             <Roboto.Body.Small text={placeholder} style={[styles.placeholder, movePlaceholder()]}/>
@@ -79,12 +84,12 @@ export function DefaultInput(
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         marginTop: CommonSizes.margin.extraLarge,
         borderWidth: CommonSizes.borderWidth.extraThin,
-        borderColor: LightThemeColors.secondaryText,
+        borderColor: colors.outlineVariant,
         borderRadius: CommonSizes.borderRadius.largePlus,
         alignItems: 'center',
         paddingLeft: CommonSizes.padding.large,
@@ -93,25 +98,28 @@ const styles = StyleSheet.create({
     input: {
         minWidth: '45%',
         fontSize: CommonSizes.font.medium,
-        color: LightThemeColors.text,
+        color: colors.text,
         flexGrow: 1,
     },
-    eyeIcon: {
+    eyeIconContainer: {
         marginRight: CommonSizes.margin.largePlus,
+    },
+    eyeIcon: {
+        tintColor: colors.outline
     },
     activeInput: {
         borderWidth: CommonSizes.borderWidth.thin,
-        borderColor: LightThemeColors.main
+        borderColor: colors.main
     },
     inactiveInput: {
         borderWidth: CommonSizes.borderWidth.extraThin,
-        borderColor: LightThemeColors.secondaryText
+        borderColor: colors.outline
     },
     icon: {
         marginRight: CommonSizes.margin.smallPlus
     },
     placeholder: {
-        backgroundColor: LightThemeColors.background,
+        backgroundColor: colors.background,
         position: 'absolute'
     }
 });

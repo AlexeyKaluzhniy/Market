@@ -1,5 +1,5 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {SafeAreaView, StyleSheet, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import React from "react";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CustomInputForm} from "./CustomInputForm";
@@ -15,7 +15,7 @@ export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => 
     });
 
     return (
-        <SafeAreaView style={CommonStyles.flex1}>
+        <View style={CommonStyles.flex1}>
             <CustomHeader headerTitle="authentication.newPassword" id={props.componentId} isStack isAuth/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
                 <Roboto.Label.Large style={styles.textMargin} labelKey="authentication.savePassword"/>
@@ -27,7 +27,7 @@ export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => 
                     onSubmit={() => console.log('submit new password')}
                 />
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 

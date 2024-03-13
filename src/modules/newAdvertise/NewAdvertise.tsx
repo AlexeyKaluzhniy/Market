@@ -1,7 +1,7 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
 import {
     Keyboard,
-    SafeAreaView, ScrollView,
+    ScrollView,
     StyleSheet,
     TextInput,
     TouchableWithoutFeedback,
@@ -12,15 +12,18 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {DropDownList} from "~/components/DropDownList";
 import {useState} from "react";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {ImageOrVideo} from "react-native-image-crop-picker";
 import {ImagePickerButton} from "~/common/components/ImagePickerButton";
 import {useTranslation} from "react-i18next";
 import {AdvertiseImage} from "~/modules/newAdvertise/components/AdvertiseImage";
 import DotsVertical from "../../../resources/icons/dot_vertical.svg";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export const NewAdvertise: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
     const [images, setImages] = useState<ImageOrVideo[]>([]);
 
     const cities = [
@@ -46,22 +49,22 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
     };
 
     return (
-        <SafeAreaView style={CommonStyles.flex1}>
+        <View style={styles.container}>
             <CustomHeader id={props.componentId} isStack isEdit/>
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
-                <View style={styles.container}>
+                <View style={styles.body}>
                     <TextInput
                         placeholder={t("new_advertise.title")}
-                        placeholderTextColor={LightThemeColors.text}
-                        selectionColor={LightThemeColors.main}
+                        placeholderTextColor={colors.onSurface}
+                        selectionColor={colors.main}
                         style={styles.title}
                     />
                     <View style={styles.dropDowns}>
                         <View style={CommonStyles.rowCenter}>
                             <TextInput
                                 placeholder={"0"}
-                                placeholderTextColor={LightThemeColors.text}
-                                selectionColor={LightThemeColors.main}
+                                placeholderTextColor={colors.onSurface}
+                                selectionColor={colors.main}
                                 textAlign={"right"}
                                 maxLength={5}
                                 keyboardType={"numeric"}
@@ -81,8 +84,8 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                             multiline={true}
                             placeholder={t("new_advertise.description")}
                             style={styles.description}
-                            selectionColor={LightThemeColors.main}
-                            placeholderTextColor={LightThemeColors.text}
+                            selectionColor={colors.main}
+                            placeholderTextColor={colors.onSurface}
                             textAlignVertical="top"
                         />
                         <AdvertiseImage images={images} setImages={setImages}/>
@@ -96,12 +99,16 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                     </View>
                 </View>
             </TouchableWithoutFeedback>
-        </SafeAreaView>
+        </View>
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
+        ...CommonStyles.flex1,
+        backgroundColor: colors.background,
+    },
+    body: {
         marginHorizontal: CommonSizes.margin.largePlus,
         ...CommonStyles.flex1
     },
@@ -125,7 +132,6 @@ const styles = StyleSheet.create({
     },
     footer: {
         ...CommonStyles.rowCenter,
-        backgroundColor: LightThemeColors.background,
         justifyContent: 'space-between'
     }
 });

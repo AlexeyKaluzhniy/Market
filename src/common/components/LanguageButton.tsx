@@ -4,8 +4,10 @@ import React from "react";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {SystemActionsAsync} from "~/core/store/system/systemSlice";
 import {languages} from "../localization/localization";
+import {useThemeColors} from "~/core/theme/hooks";
 
 export function LanguageButton() {
+    const colors = useThemeColors();
     const dispatch = useAppDispatch();
     const lang = useAppSelector(state => state.system.language);
     const reverseLang = languages.find(i => i.languageTag != lang.languageTag) || lang;
@@ -17,7 +19,7 @@ export function LanguageButton() {
     return (
         <View style={styles.languageContainer}>
             <TouchableOpacity onPress={() => handleChangeLang()}>
-                <LanguageIcon/>
+                <LanguageIcon color={colors.outline}/>
             </TouchableOpacity>
         </View>
     );

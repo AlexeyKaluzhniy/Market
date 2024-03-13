@@ -2,7 +2,7 @@ import {View, StyleSheet, TouchableOpacity} from "react-native";
 import React, {useState} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {DefaultInput} from "~/components/DefaultInput";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import CheckBox from "@react-native-community/checkbox";
 import {IAuthComponentProps} from "~/infrastructure/dto/common/IAuthComponentProps";
 import {useTranslation} from "react-i18next";
@@ -15,20 +15,22 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export function CustomInputForm(
     {
         submitButtonTitle,
         isLogin,
-        phoneField ,
-        passwordField ,
+        phoneField,
+        passwordField,
         repeatPasswordField,
         isRegister,
         schema,
         onSubmit,
     }: IAuthComponentProps) {
     const {t} = useTranslation();
-
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
     const [toggleCheckBox, setToggleCheckBox] = useState(false);
     const {
         setValue,
@@ -97,10 +99,10 @@ export function CustomInputForm(
                         disabled={false}
                         value={toggleCheckBox}
                         onValueChange={(value) => setToggleCheckBox(value)}
-                        tintColors={{true: LightThemeColors.main}}
+                        tintColors={{true: colors.main}}
                         style={styles.checkBox}
                     />
-                    <Roboto.Body.Large>
+                    <Roboto.Body.Large color={colors.onSurface}>
                         {t("authentication.registrationUserData.toAcceptWith")}
                         <Roboto.Body.Large
                             labelKey="authentication.registrationUserData.rulesAndConditions"
@@ -124,7 +126,7 @@ export function CustomInputForm(
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     inputContainer: {
         marginHorizontal: CommonSizes.margin.largePlus,
     },
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
         marginTop: CommonSizes.margin.extraLarge,
     },
     agreePrivacyTextColor: {
-        color: LightThemeColors.main,
+        color: colors.main,
     },
     forgotPasswordContainer: {
         marginTop: CommonSizes.margin.extraLargePlus,
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
         paddingVertical: CommonSizes.margin.smallPlus
     },
     forgotPassword: {
-        color: LightThemeColors.main
+        color: colors.main
     },
     checkBox: {
         marginRight: CommonSizes.margin.smallPlus

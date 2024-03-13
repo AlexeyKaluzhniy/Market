@@ -2,11 +2,12 @@ import {Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-n
 import React from "react";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {FavoriteButton} from "~/components/FavoriteButton";
 import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 interface IListItemProps {
     item: {
@@ -21,6 +22,9 @@ interface IListItemProps {
 }
 
 export function ListItem({item}: IListItemProps) {
+    const colors = useThemeColors();
+    const styles = useThemedStyles(stylesG);
+
     const navigateToDetails = () => {
         Navigation.push(Pages.tabs.id, {
             component: {
@@ -42,27 +46,28 @@ export function ListItem({item}: IListItemProps) {
             {item.image && <Image source={item.image} style={styles.image}/>}
             <View style={{padding: CommonSizes.padding.large}}>
                 <View style={styles.header}>
-                    <Roboto.Title.Medium text={item.title}/>
+                    <Roboto.Title.Medium text={item.title} color={colors.onSurface}/>
                     <FavoriteButton/>
                 </View>
-                <Roboto.Body.Medium text={item.body} numberOfLines={2} color={LightThemeColors.onSurface}/>
+                <Roboto.Body.Medium text={item.body} numberOfLines={2} color={colors.onSurface}/>
                 <Roboto.Title.Large text={item.price} style={styles.text}/>
-                <Roboto.Body.Medium text={item.location} style={styles.text} color={LightThemeColors.onSurface}/>
-                <Roboto.Body.Medium text={item.date} color={LightThemeColors.onSurface}/>
+                <Roboto.Body.Medium text={item.location} style={styles.text} color={colors.onSurface}/>
+                <Roboto.Body.Medium text={item.date} color={colors.onSurface}/>
             </View>
         </TouchableOpacity>
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         borderWidth: CommonSizes.borderWidth.extraThin,
         borderRadius: CommonSizes.borderRadius.medium,
-        borderColor: LightThemeColors.outline,
+        borderColor: colors.outline,
         marginBottom: CommonSizes.margin.small
     },
     text: {
-        marginTop: CommonSizes.margin.small
+        marginTop: CommonSizes.margin.small,
+        color: colors.onSurface
     },
     header: {
         ...CommonStyles.row,

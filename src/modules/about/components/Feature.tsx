@@ -1,7 +1,8 @@
 import {Roboto} from "~/infrastructure";
 import {StyleSheet} from "react-native";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {TFuncKeyApp} from "~/common/localization/localization";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 interface IFeatureProps {
     title: string;
@@ -9,17 +10,20 @@ interface IFeatureProps {
 }
 
 export function Feature({title, body}: IFeatureProps) {
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
+
     return (
         <Roboto.Body.Medium style={styles.title}>
             {title}
-            <Roboto.Body.Medium labelKey={body}/>
+            <Roboto.Body.Medium labelKey={body} color={colors.onSurface}/>
         </Roboto.Body.Medium>
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     title: {
         fontWeight: "700",
-        color: LightThemeColors.onSurface
+        color: colors.onSurface
     }
 });

@@ -1,11 +1,15 @@
 import {StyleSheet, TouchableOpacity} from "react-native";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import AddIcon from "../../resources/icons/add.svg";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export function AddButton() {
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
+
     const pushNewAdvertiseScreen = () => {
         Navigation.push(Pages.tabs.id, {
             component: {
@@ -21,14 +25,14 @@ export function AddButton() {
 
     return (
         <TouchableOpacity style={styles.container} activeOpacity={0.8} onPress={pushNewAdvertiseScreen}>
-            <AddIcon/>
+            <AddIcon color={colors.onPrimaryContainer}/>
         </TouchableOpacity>
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
-        backgroundColor: LightThemeColors.primaryContainer,
+        backgroundColor: colors.primaryContainer,
         position: 'absolute',
         padding: CommonSizes.padding.mediumPlus,
         bottom: 16,

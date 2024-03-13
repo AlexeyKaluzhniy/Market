@@ -1,31 +1,35 @@
-import {StyleSheet, TextInput, View} from "react-native";
+import {SafeAreaView, StyleSheet, TextInput, View} from "react-native";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {SideMenuButton} from "~/common/components/SideMenuButton";
 import React from "react";
-import {LightThemeColors} from "~/core/theme/colors";
+import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {FilterButton} from "~/components/FilterButton";
 import {useTranslation} from "react-i18next";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export function MainScreenHeader() {
     const {t} = useTranslation();
+    const styles = useThemedStyles(stylesG);
+    const colors = useThemeColors();
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={[styles.searchBar, CommonStyles.rowCenter]}>
                 <SideMenuButton/>
                 <TextInput
                     placeholder={t("common.search")}
                     style={styles.menu}
-                    selectionColor={LightThemeColors.main}
+                    selectionColor={colors.main}
+                    placeholderTextColor={colors.onSurface}
                 />
             </View>
             <FilterButton/>
-        </View>
+        </SafeAreaView>
     );
 }
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         ...CommonStyles.rowCenter,
         marginTop: CommonSizes.margin.smallPlus,
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
     },
     searchBar: {
         ...CommonStyles.flex1,
-        backgroundColor: LightThemeColors.searchBar,
+        backgroundColor: colors.searchBar,
         height: 48,
         borderRadius: CommonSizes.borderRadius.extraLargePlus,
         marginRight: CommonSizes.margin.small,
@@ -44,6 +48,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: "Roboto",
         letterSpacing: 0.5,
-        ...CommonStyles.flex1
+        ...CommonStyles.flex1,
+        color: colors.onSurface
     },
 });
