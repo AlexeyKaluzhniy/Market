@@ -37,7 +37,6 @@ export const Profile: NavigationFunctionComponent = (props): JSX.Element => {
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.background
     },
     body: {
         paddingHorizontal: CommonSizes.padding.large,

@@ -8,6 +8,8 @@ import {Fonts} from "~/core/theme/fonts";
 export function setDefaultOptions(colors?: ThemeColors) {
   const isLight = colors?.theme == "light";
 
+  console.log(colors);
+
   function getColor(
     darkKey: keyof Omit<ThemeColors, "linealBg" | "personalAreaHeader" | 'MVPFade'>,
     lightKey: keyof Omit<ThemeColors, "linealBg" | "personalAreaHeader" | "MVPFade">,
@@ -92,12 +94,12 @@ export function setDefaultOptions(colors?: ThemeColors) {
     },
     bottomTab: {
       selectedTextColor: {
-        dark: getColor("text", "text", DarkThemeColors.onSurface),
-        light: getColor("text", "text", LightThemeColors.onSurface),
+        dark: colors?.onSurface || DarkThemeColors.onSurface,
+        light: colors?.onSurface || LightThemeColors.onSurface
       },
       textColor: {
-        dark: getColor("text", "text", DarkThemeColors.onSurfaceVariant),
-        light: getColor("text", "text", LightThemeColors.onSurfaceVariant),
+        dark: colors?.onSurfaceVariant || DarkThemeColors.onSurfaceVariant,
+        light: colors?.onSurfaceVariant || LightThemeColors.onSurfaceVariant
       },
       iconHeight: 25,
       iconColor: {

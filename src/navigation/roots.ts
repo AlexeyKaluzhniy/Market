@@ -9,6 +9,7 @@ import {i18next} from "~/common/localization/localization";
 import {Dimensions} from "react-native";
 import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
 import {Stacks} from "~/navigation/stacks";
+import {DarkThemeColors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
 
 export function setInitialRoot() {
     Navigation.setRoot({
@@ -26,7 +27,14 @@ export function setInitialRoot() {
     });
 }
 
-export async function setAuthRoot() {
+export async function setAuthRoot(theme: 'light' | 'dark') {
+    let colors: ThemeColors;
+    if (theme === 'light') {
+        colors = LightThemeColors;
+    } else {
+        colors = DarkThemeColors;
+    }
+
     Navigation.setRoot({
         root: {
             stack: {
@@ -38,10 +46,18 @@ export async function setAuthRoot() {
                             topBar: {
                                 visible: false,
                             },
+                            statusBar: {
+                                style: colors.theme === 'dark' ? 'light' : 'dark',
+                                backgroundColor: colors.background
+                            }
                         },
                     },
                 }],
                 options: {
+                    statusBar: {
+                        style: colors.theme === 'dark' ? 'light' : 'dark',
+                        backgroundColor: colors.background
+                    },
                     animations: {
                         push: {
                             content: {
@@ -63,7 +79,7 @@ export async function setAuthRoot() {
                         }
                     }
                 }
-            },
+            }
         }
     });
 }
@@ -97,7 +113,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
                         bottomTab: {
                             text: i18next.t("pages.main"),
                             icon: TabbarInactiveResources.advertise,
-                            selectedIcon: TabbarLightResources.advertise
+                            selectedIcon: TabbarLightResources.advertise,
                         },
                         topBar: {
                             visible: false,
@@ -170,6 +186,7 @@ export function bottomTabsLayout(): LayoutBottomTabs {
 }
 
 export const getBottomTabsLayout = () => {
+
     return {
         root: {
             sideMenu: {

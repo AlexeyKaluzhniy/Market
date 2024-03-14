@@ -67,7 +67,6 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.background
     },
     contentContainer: {
         marginHorizontal: CommonSizes.margin.largePlus

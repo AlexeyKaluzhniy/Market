@@ -18,12 +18,14 @@ import {ModalizeHeader} from "~/components/ModalizeHeader";
 import {ModalizeSettingsContainer} from "~/components/ModalizeSettingsContainer";
 import {ReactNode} from "react";
 import {useThemedStyles} from "~/core/theme/hooks";
+import {useAppSelector} from "~/core/store/store";
 
 export const Drawer: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
+    const appTheme = useAppSelector(state => state.system.appTheme);
 
     const handleLogOut = () => {
-        setAuthRoot();
+        setAuthRoot(appTheme || 'dark');
     };
 
     const handlePushScreen = (name: string) => {
@@ -66,7 +68,6 @@ export const Drawer: NavigationFunctionComponent = (props) => {
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.drawer,
         paddingHorizontal: CommonSizes.padding.superLarge
     },
     brandContainer: {

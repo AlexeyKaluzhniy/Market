@@ -6,12 +6,9 @@ import {AddButton} from "~/components/AddButton";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {EmptyScreen} from "~/components/EmptyScreen";
 import {ImageResources} from "~/common/ImageResources.g";
-import {ThemeColors} from "~/core/theme/colors";
-import {useThemedStyles} from "~/core/theme/hooks";
 
 export const Favorite: NavigationFunctionComponent = (props): JSX.Element => {
     const images = null;
-    const styles = useThemedStyles(stylesG);
 
     return (
         <View style={styles.container}>
@@ -35,9 +32,8 @@ export const Favorite: NavigationFunctionComponent = (props): JSX.Element => {
     );
 };
 
-const stylesG = (colors: ThemeColors) => StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.background
     }
 });

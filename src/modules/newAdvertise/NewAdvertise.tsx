@@ -12,17 +12,15 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {DropDownList} from "~/components/DropDownList";
 import {useState} from "react";
-import {ThemeColors} from "~/core/theme/colors";
 import {ImageOrVideo} from "react-native-image-crop-picker";
 import {ImagePickerButton} from "~/common/components/ImagePickerButton";
 import {useTranslation} from "react-i18next";
 import {AdvertiseImage} from "~/modules/newAdvertise/components/AdvertiseImage";
 import DotsVertical from "../../../resources/icons/dot_vertical.svg";
-import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {useThemeColors} from "~/core/theme/hooks";
 
 export const NewAdvertise: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
-    const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
     const [images, setImages] = useState<ImageOrVideo[]>([]);
 
@@ -103,10 +101,9 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
     );
 };
 
-const stylesG = (colors: ThemeColors) => StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.background,
     },
     body: {
         marginHorizontal: CommonSizes.margin.largePlus,

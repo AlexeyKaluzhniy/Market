@@ -12,6 +12,7 @@ import {useCallback} from "react";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {LayoutRoot} from "react-native-navigation";
 
 export function ModalizeSettingsContainer() {
     const styles = useThemedStyles(stylesG);
@@ -37,7 +38,7 @@ export function ModalizeSettingsContainer() {
             // });
 
             //todo check whether second level screen brake this function
-            return navigation.setRootAsync(tabsLayout);
+            return navigation.setRootAsync(tabsLayout as LayoutRoot);
         },
         [],
     );

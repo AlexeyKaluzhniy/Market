@@ -5,11 +5,16 @@ import {useThemedStyles} from "~/core/theme/hooks";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {SystemActions} from "~/core/store/system/systemSlice";
 import {setDefaultOptions} from "~/navigation/defaultOptions";
+import {useCallback} from "react";
+import {getBottomTabsLayout} from "~/navigation/roots";
+import {navigation} from "~/services";
+import {LayoutRoot} from "react-native-navigation";
 
 export function SwitchButton() {
     const styles = useThemedStyles(stylesG);
     const dispatch = useAppDispatch();
-    const isDark = useAppSelector(state => state.system.appTheme) === 'dark';
+    const appTheme = useAppSelector(state => state.system.appTheme);
+    const isDark = appTheme === 'dark';
 
     const changeAppTheme = () => {
         if (isDark) {
@@ -18,7 +23,19 @@ export function SwitchButton() {
             dispatch(SystemActions.setAppTheme("dark"));
         }
         setDefaultOptions(!isDark ? DarkThemeColors : LightThemeColors);
+        resetNavigation();
     };
+
+    const resetNavigation = useCallback(
+        async () => {
+            const tabsLayout = getBottomTabsLayout();
+            console.log(tabsLayout);
+
+            //todo check whether second level screen brake this function
+            return navigation.setRootAsync(tabsLayout as LayoutRoot);
+        },
+        [],
+    );
 
     return (
         <TouchableOpacity style={styles.container} activeOpacity={0.7} onPress={changeAppTheme}>

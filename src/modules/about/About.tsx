@@ -6,13 +6,11 @@ import {FeaturesBlock} from "~/modules/about/components/FeaturesBlock";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {BrandBlock} from "~/modules/about/components/BrandBlock";
 import {CustomHeader} from "~/components/CustomHeader";
-import {ThemeColors} from "~/core/theme/colors";
-import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {useThemeColors} from "~/core/theme/hooks";
 import {CommonStyles} from "~/core/theme/commonStyles";
 
 export const About: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
-    const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
 
     return (
@@ -29,10 +27,9 @@ export const About: NavigationFunctionComponent = (props) => {
     );
 };
 
-const stylesG = (colors: ThemeColors) => StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.background,
     },
     scrollView: {
         paddingHorizontal: CommonSizes.padding.large,

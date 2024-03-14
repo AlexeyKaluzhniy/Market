@@ -9,14 +9,11 @@ import {Route} from "react-native-tab-view";
 import {MyAdvertisesList} from "~/modules/main/components/MyAdvertisesList";
 import {CustomTabs} from "~/components/CustomTabs";
 import {AddButton} from "~/components/AddButton";
-import {ThemeColors} from "~/core/theme/colors";
-import {useThemedStyles} from "~/core/theme/hooks";
 
 const tabTypes = ["all", "my"] as const;
 
 export const Main: NavigationFunctionComponent = (): JSX.Element => {
     const {t} = useTranslation();
-    const styles = useThemedStyles(stylesG);
 
     const routes = useMemo(() => tabTypes.map(type => ({key: type, title: t(`common.${type}`)})), [t]);
     const renderScene = useCallback((props: { route: Route }) => {
@@ -39,9 +36,8 @@ export const Main: NavigationFunctionComponent = (): JSX.Element => {
     );
 };
 
-const stylesG = (colors: ThemeColors) => StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.background
     }
 });

@@ -10,8 +10,6 @@ import {Login} from "./components/Login";
 import {SignUp} from "./components/SignUp";
 import {CustomTabs} from "~/components/CustomTabs";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {ThemeColors} from "~/core/theme/colors";
-import {useThemedStyles} from "~/core/theme/hooks";
 
 const tabTypes = ["login", "register"] as const;
 
@@ -19,8 +17,6 @@ export const Authentication: NavigationFunctionComponent = (navProps): JSX.Eleme
     useHideSplash();
 
     const {t} = useTranslation();
-    const styles = useThemedStyles(stylesG);
-
     const routes = useMemo(() => tabTypes.map(type => ({key: type, title: t(`authentication.${type}`)})), [t]);
     const renderScene = useCallback((props: { route: Route }) => {
         switch (props.route.key) {
@@ -43,10 +39,9 @@ export const Authentication: NavigationFunctionComponent = (navProps): JSX.Eleme
     );
 };
 
-const stylesG = (colors: ThemeColors) => StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        backgroundColor: colors.background
     },
     languageContainer: {
         marginRight: CommonSizes.margin.extraLarge

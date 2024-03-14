@@ -12,7 +12,8 @@ export const Splash: NavigationFunctionComponent = () => {
   ]);
 
   useEffect(() => {
-    (async () => setAuthRoot())();
+    console.log(appTheme);
+    (async () => setAuthRoot(appTheme || 'dark'))();
   }, [appTheme, deviceTheme, isOnboardingVisited]);
 
   return <LoadingComponent size={"large"} />;

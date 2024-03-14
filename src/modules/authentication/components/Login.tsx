@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {CustomInputForm} from "./CustomInputForm";
 import {Button, StyleSheet, View} from "react-native";
 import {getBottomTabsLayout} from "~/navigation/roots";
@@ -8,16 +8,24 @@ import {object, string} from "yup";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {LayoutRoot} from "react-native-navigation";
+import {useAppSelector} from "~/core/store/store";
 
 export const Login = () => {
     const [trigger, {data}] = useLazyGetSessionIdLoginQuery();
+    const [appTheme] = useAppSelector(state => [
+        state.system.appTheme,
+    ]);
+    const [canLogin, setCanLogin] = useState(false);
 
     //todo fix navigation types
     useEffect(() => {
-        if (data) {
-            navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot);
+        // if (data) {
+        //     navigation.setRoot(getBottomTabsLayout(appTheme || 'dark') as unknown as LayoutRoot);
+        // }
+        if (canLogin) {
+            navigation.setRoot(getBottomTabsLayout() as unknown as LayoutRoot);
         }
-    }, [data]);
+    }, [appTheme, data, canLogin]);
 
     const schema = object({
         email: string().required().matches(/^\+373\d{8}$/),
@@ -34,7 +42,7 @@ export const Login = () => {
                 schema={schema}
                 onSubmit={trigger}
             />
-            <Button title="Войти" onPress={() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)}/>
+            <Button title="Войти" onPress={() => setCanLogin(true)}/>
         </View>
     );
 };
