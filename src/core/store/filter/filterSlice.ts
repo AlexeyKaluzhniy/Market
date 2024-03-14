@@ -19,10 +19,10 @@ export const {reducer: FilterReducer, actions} = createSlice({
         selectCity: (state, action) => {
             return {...state, cities: [...state.cities, action.payload]};
         },
-        deselectCity: (state, action) => {
+        resetCity: (state, action) => {
             return {...state, cities: state.cities.filter(city => city !== action.payload)};
         },
-        deselectAll: (state) => {
+        resetAll: (state) => {
             return {...state, cities: []};
         },
         setPriceFrom: (state, action) => {

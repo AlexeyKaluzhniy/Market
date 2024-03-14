@@ -30,7 +30,7 @@ export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
     };
 
     const resetAllCities = () => {
-        dispatch(actions.deselectAll());
+        dispatch(actions.resetAll());
     };
 
     return (

@@ -36,7 +36,7 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     };
 
     const removeCity = (city: string) => {
-        dispatch(actions.deselectCity(city));
+        dispatch(actions.resetCity(city));
     };
 
     const setPriceFrom = (name: string, price: string) => {

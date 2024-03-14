@@ -22,7 +22,7 @@ export function CheckBoxButton({city, isChecked}: ICheckBoxProps) {
         if (!isChecked) {
             dispatch(actions.selectCity(city));
         } else {
-            dispatch(actions.deselectCity(city));
+            dispatch(actions.resetCity(city));
         }
     };
 
