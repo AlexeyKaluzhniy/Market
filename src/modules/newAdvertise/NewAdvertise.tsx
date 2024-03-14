@@ -19,19 +19,31 @@ import {AdvertiseImage} from "~/modules/newAdvertise/components/AdvertiseImage";
 import DotsVertical from "../../../resources/icons/dot_vertical.svg";
 import {useThemeColors} from "~/core/theme/hooks";
 
+enum Cities {
+    Tiraspol = 'Тирасполь',
+    Bender = 'Бендеры',
+    Grigoriopol = 'Григориополь',
+    Kamenka = 'Каменка',
+    Rybnitsa = 'Рыбница',
+    Slobozia = 'Слободзея',
+    Dubossary = 'Дубоссары',
+    Dnestrovsk = 'Днестровск',
+}
+
 export const NewAdvertise: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
     const colors = useThemeColors();
     const [images, setImages] = useState<ImageOrVideo[]>([]);
 
     const cities = [
-        {value: 'Тирасполь'},
-        {value: 'Бендеры'},
-        {value: 'Григориополь'},
-        {value: 'Каменка'},
-        {value: 'Рыбница'},
-        {value: 'Слободзея'},
-        {value: 'Дубоссары'}
+        {value: Cities.Tiraspol},
+        {value: Cities.Bender},
+        {value: Cities.Grigoriopol},
+        {value: Cities.Kamenka},
+        {value: Cities.Rybnitsa},
+        {value: Cities.Slobozia},
+        {value: Cities.Dubossary},
+        {value: Cities.Dnestrovsk}
     ];
 
     const prices = [

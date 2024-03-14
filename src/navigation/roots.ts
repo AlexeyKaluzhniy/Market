@@ -9,7 +9,6 @@ import {i18next} from "~/common/localization/localization";
 import {Dimensions} from "react-native";
 import {TabbarInactiveResources, TabbarLightResources} from "~/common/ImageResources.g";
 import {Stacks} from "~/navigation/stacks";
-import {DarkThemeColors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
 
 export function setInitialRoot() {
     Navigation.setRoot({
@@ -27,14 +26,7 @@ export function setInitialRoot() {
     });
 }
 
-export async function setAuthRoot(theme: 'light' | 'dark') {
-    let colors: ThemeColors;
-    if (theme === 'light') {
-        colors = LightThemeColors;
-    } else {
-        colors = DarkThemeColors;
-    }
-
+export async function setAuthRoot() {
     Navigation.setRoot({
         root: {
             stack: {
@@ -46,18 +38,10 @@ export async function setAuthRoot(theme: 'light' | 'dark') {
                             topBar: {
                                 visible: false,
                             },
-                            statusBar: {
-                                style: colors.theme === 'dark' ? 'light' : 'dark',
-                                backgroundColor: colors.background
-                            }
                         },
                     },
                 }],
                 options: {
-                    statusBar: {
-                        style: colors.theme === 'dark' ? 'light' : 'dark',
-                        backgroundColor: colors.background
-                    },
                     animations: {
                         push: {
                             content: {
@@ -186,7 +170,6 @@ export function bottomTabsLayout(): LayoutBottomTabs {
 }
 
 export const getBottomTabsLayout = () => {
-
     return {
         root: {
             sideMenu: {

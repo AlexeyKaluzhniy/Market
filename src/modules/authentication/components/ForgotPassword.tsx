@@ -8,8 +8,12 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, string} from "yup";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {ThemeColors} from "~/core/theme/colors";
+import {useThemedStyles} from "~/core/theme/hooks";
 
 export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element => {
+    const styles = useThemedStyles(stylesG);
+
     const schema = object({
         email: string().required().matches(/^\+373\d{8}$/),
     });
@@ -43,9 +47,10 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     text: {
         marginHorizontal: CommonSizes.margin.largePlus,
+        color: colors.onSurface
     }
 });
 
