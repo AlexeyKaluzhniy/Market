@@ -28,7 +28,6 @@ export function LanguageButton() {
 const styles = StyleSheet.create({
     languageContainer: {
         alignItems: 'flex-end',
-        height: 64,
         justifyContent: 'center',
     },
 });

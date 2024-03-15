@@ -12,7 +12,7 @@ export const Favorite: NavigationFunctionComponent = (props): JSX.Element => {
 
     return (
         <View style={styles.container}>
-            <CustomHeader id={props.componentId} headerTitle="pages.favorite"/>
+            <CustomHeader id={props.componentId} headerTitle="pages.favorite" isDrawer/>
             <FlatList
                 data={images}
                 renderItem={({item}) => {

@@ -18,6 +18,7 @@ interface IProps {
     headerTitle?: TFuncKeyApp;
     isProfile?: boolean;
     isStack?: boolean;
+    isDrawer?: boolean;
     isAuth?: boolean;
     isDetails?: boolean;
     isEdit?: boolean;
@@ -33,6 +34,7 @@ export function CustomHeader(
         id,
         isDetails,
         isEdit,
+        isDrawer
     }: IProps) {
     const styles = useThemedStyles(stylesG);
 
@@ -43,7 +45,8 @@ export function CustomHeader(
     return (
         <SafeAreaView style={[CommonStyles.row, styles.container]}>
             <View style={CommonStyles.rowCenter}>
-                {isStack ? <BackButton onPress={handleGoBack}/> : <SideMenuButton/>}
+                {isStack && <BackButton onPress={handleGoBack}/>}
+                {isDrawer && <SideMenuButton/>}
                 <Roboto.Title.Large style={styles.headerTitle} labelKey={headerTitle}/>
             </View>
             {isAuth && <LanguageButton/>}
@@ -60,7 +63,6 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginVertical: CommonSizes.margin.extraLarge,
-        height: 64
     },
     headerTitle: {
         marginLeft: CommonSizes.margin.largePlus,

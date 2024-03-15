@@ -13,7 +13,8 @@ export function CustomCheckBox({isChecked, setChecked}: ICheckBoxProps) {
 
     const checkBoxColor = {
         backgroundColor: isChecked ? colors.main : undefined,
-        borderColor: isChecked ? colors.main : colors.outline
+        borderColor: isChecked ? colors.main : colors.outline,
+        borderWidth: isChecked ? 0 : 2,
     };
 
     return (
@@ -30,7 +31,6 @@ const styles = StyleSheet.create({
     checkBoxContainer: {
         width: 18,
         height: 18,
-        borderWidth: CommonSizes.borderWidth.thin,
         borderRadius: CommonSizes.borderRadius.extraSmall,
         marginRight: CommonSizes.margin.extraLarge,
         marginLeft: CommonSizes.margin.extraSmallPlus,

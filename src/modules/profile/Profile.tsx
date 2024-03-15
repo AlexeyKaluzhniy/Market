@@ -15,7 +15,7 @@ export const Profile: NavigationFunctionComponent = (props): JSX.Element => {
 
     return (
         <View style={styles.container}>
-            <CustomHeader id={props.componentId} headerTitle="pages.profile" isProfile/>
+            <CustomHeader id={props.componentId} headerTitle="pages.profile" isProfile isDrawer/>
             <View style={styles.body}>
                 <View style={styles.avatarContainer}>
                     <Image source={ImageResources.avatar} style={styles.avatar}/>
