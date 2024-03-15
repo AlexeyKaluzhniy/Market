@@ -1,11 +1,11 @@
-import {StyleSheet, TouchableOpacity, View} from "react-native";
+import {StyleSheet, TouchableOpacity, Animated} from "react-native";
 import {DarkThemeColors, LightThemeColors, ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemedStyles} from "~/core/theme/hooks";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {SystemActions} from "~/core/store/system/systemSlice";
 import {setDefaultOptions} from "~/navigation/defaultOptions";
-import {useCallback} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {LayoutRoot} from "react-native-navigation";
@@ -15,6 +15,11 @@ export function SwitchButton() {
     const dispatch = useAppDispatch();
     const appTheme = useAppSelector(state => state.system.appTheme);
     const isDark = appTheme === 'dark';
+    const [position] = useState(new Animated.Value(0));
+
+    useEffect(() => {
+        position.setValue(isDark ? 22 : 0);
+    }, []);
 
     const changeAppTheme = () => {
         if (isDark) {
@@ -23,7 +28,17 @@ export function SwitchButton() {
             dispatch(SystemActions.setAppTheme("dark"));
         }
         setDefaultOptions(!isDark ? DarkThemeColors : LightThemeColors);
-        resetNavigation();
+        movePin().then(() => resetNavigation());
+    };
+
+    const movePin = async () => {
+        return new Promise<void>(resolve => {
+            Animated.timing(position, {
+                toValue: isDark ? 0 : 22,
+                duration: 300,
+                useNativeDriver: true
+            }).start(() => resolve());
+        });
     };
 
     const resetNavigation = useCallback(
@@ -39,7 +54,9 @@ export function SwitchButton() {
 
     return (
         <TouchableOpacity style={styles.container} activeOpacity={0.7} onPress={changeAppTheme}>
-            <View style={[styles.pin, {alignSelf: isDark ? 'flex-end' : 'flex-start'}]}/>
+            <Animated.View style={[styles.pin, {
+                transform: [{translateX: position}]
+            }]}/>
         </TouchableOpacity>
     );
 }
@@ -58,6 +75,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         borderRadius: CommonSizes.borderRadius.small,
         paddingHorizontal: CommonSizes.padding.small,
         paddingVertical: CommonSizes.padding.small,
-        margin: CommonSizes.margin.extraSmallPlus
+        margin: CommonSizes.margin.extraSmallPlus,
+        alignSelf: 'flex-start'
     }
 });
