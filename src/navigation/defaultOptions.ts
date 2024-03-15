@@ -81,7 +81,6 @@ export function setDefaultOptions(colors?: ThemeColors) {
         bottomTabs: {
             animate: false,
             hideShadow: false,
-            translucent: true,
             animateTabSelection: true,
             preferLargeIcons: false,
             tabsAttachMode: "together",
