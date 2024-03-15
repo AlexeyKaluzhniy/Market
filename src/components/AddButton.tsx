@@ -1,10 +1,11 @@
 import {StyleSheet, TouchableOpacity} from "react-native";
-import {ThemeColors} from "~/core/theme/colors";
+import {Colors, ThemeColors} from "~/core/theme/colors";
 import AddIcon from "../../resources/icons/add.svg";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {isIos} from "~/core/theme/commonConsts";
 
 export function AddButton() {
     const styles = useThemedStyles(stylesG);
@@ -35,9 +36,15 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         backgroundColor: colors.primaryContainer,
         position: 'absolute',
         padding: CommonSizes.padding.mediumPlus,
-        bottom: 16,
-        right: 16,
+        bottom: isIos ? 110 : 16,
+        right: CommonSizes.margin.largePlus + 1,
         borderRadius: CommonSizes.borderRadius.medium,
-        elevation: 2
+        elevation: 2,
+        shadowColor: Colors.black,
+        shadowOpacity: 0.3,
+        shadowOffset: {
+            height: 3,
+            width: 1
+        }
     }
 });

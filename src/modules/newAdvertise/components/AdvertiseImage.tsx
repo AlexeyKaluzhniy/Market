@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         marginBottom: CommonSizes.margin.smallPlus,
-        marginRight: CommonSizes.margin.smallPlus
+        marginRight: CommonSizes.margin.smallPlus,
+        marginTop: CommonSizes.margin.largePlus
     },
     deleteButton: {
         backgroundColor: LightThemeColors.outline,

@@ -8,8 +8,8 @@ export function ConfirmButton() {
     const colors = useThemeColors();
 
     return (
-        <TouchableOpacity onPress={() => Navigation.pop(Pages.tabs.id)}>
-            <ConfirmIcon color={colors.outline}/>
-        </TouchableOpacity>
+            <TouchableOpacity onPress={() => Navigation.pop(Pages.tabs.id)}>
+                <ConfirmIcon color={colors.outline}/>
+            </TouchableOpacity>
     );
 }

@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {DefaultInput} from "~/components/DefaultInput";
 import {ThemeColors} from "~/core/theme/colors";
-import CheckBox from "@react-native-community/checkbox";
 import {IAuthComponentProps} from "~/infrastructure/dto/common/IAuthComponentProps";
 import {useTranslation} from "react-i18next";
 import PhoneIcon from "../../../../resources/icons/phone.svg";
@@ -16,6 +15,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {CustomCheckBox} from "~/common/components/CustomCheckBox";
 
 export function CustomInputForm(
     {
@@ -95,13 +95,9 @@ export function CustomInputForm(
             }
             {isRegister &&
                 <View style={[CommonStyles.row, styles.agreePrivacy]}>
-                    <CheckBox
-                        disabled={false}
-                        value={toggleCheckBox}
-                        onValueChange={(value) => setToggleCheckBox(value)}
-                        tintColors={{true: colors.main}}
-                        style={styles.checkBox}
-                    />
+                    <CustomCheckBox
+                        isChecked={toggleCheckBox}
+                        setChecked={(isChecked) => setToggleCheckBox(isChecked as boolean)}/>
                     <Roboto.Body.Large color={colors.onSurface}>
                         {t("authentication.registrationUserData.toAcceptWith")}
                         <Roboto.Body.Large
@@ -131,7 +127,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         marginHorizontal: CommonSizes.margin.largePlus,
     },
     agreePrivacy: {
-        marginTop: CommonSizes.margin.extraLarge,
+        marginTop: CommonSizes.margin.extraLarge
     },
     agreePrivacyTextColor: {
         color: colors.main,
@@ -144,7 +140,4 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     forgotPassword: {
         color: colors.main
     },
-    checkBox: {
-        marginRight: CommonSizes.margin.smallPlus
-    }
 });

@@ -7,8 +7,10 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {object, ref, string} from "yup";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {useThemeColors} from "~/core/theme/hooks";
 
 export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => {
+    const colors = useThemeColors();
     const schema = object({
         password: string().min(8).required(),
         repeatPassword: string().oneOf([ref("password")]).required()
@@ -18,7 +20,7 @@ export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => 
         <View style={CommonStyles.flex1}>
             <CustomHeader headerTitle="authentication.newPassword" id={props.componentId} isStack isAuth/>
             <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
-                <Roboto.Label.Large style={styles.textMargin} labelKey="authentication.savePassword"/>
+                <Roboto.Label.Large style={styles.textMargin} labelKey="authentication.savePassword" color={colors.onSurface}/>
                 <CustomInputForm
                     submitButtonTitle="authentication.savePassword"
                     passwordField

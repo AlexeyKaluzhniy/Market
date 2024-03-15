@@ -1,4 +1,4 @@
-import {StyleSheet, View} from "react-native";
+import {SafeAreaView, StyleSheet, View} from "react-native";
 import {Roboto} from "~/infrastructure";
 import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -52,20 +52,20 @@ export function ModalizeSettingsContainer() {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Selector values={languagesNames} title={language.name} handleSelect={handleChangeLanguage}/>
             <View style={styles.outline}/>
             <View style={styles.switchContainer}>
                 <Roboto.Body.Large labelKey={"settings.darkTheme"} style={CommonStyles.flex1} color={colors.onSurface}/>
                 <SwitchButton/>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
-        paddingHorizontal: CommonSizes.padding.large,
+        marginHorizontal: CommonSizes.padding.large,
     },
     outline: {
         height: 1,

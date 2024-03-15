@@ -1,6 +1,6 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
 import {
-    Keyboard,
+    Keyboard, SafeAreaView,
     ScrollView,
     StyleSheet,
     TextInput,
@@ -100,13 +100,13 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                         />
                         <AdvertiseImage images={images} setImages={setImages}/>
                     </ScrollView>
-                    <View style={styles.footer}>
+                    <SafeAreaView style={styles.footer}>
                         <View style={CommonStyles.rowCenter}>
                             <ImagePickerButton isCamera images={images} setImage={setImages}/>
                             <ImagePickerButton images={images} setImage={setImages}/>
                         </View>
                         <DotsVertical style={{marginRight: CommonSizes.margin.smallPlus}}/>
-                    </View>
+                    </SafeAreaView>
                 </View>
             </TouchableWithoutFeedback>
         </View>

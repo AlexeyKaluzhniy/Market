@@ -60,6 +60,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginVertical: CommonSizes.margin.extraLarge,
+        height: 64
     },
     headerTitle: {
         marginLeft: CommonSizes.margin.largePlus,

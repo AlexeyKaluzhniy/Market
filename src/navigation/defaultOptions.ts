@@ -5,7 +5,7 @@ import {ImageResources} from "~/common/ImageResources.g";
 import {i18next} from "~/common/localization/localization";
 import {Fonts} from "~/core/theme/fonts";
 
-export function setDefaultOptions(colors: ThemeColors) {
+export function setDefaultOptions(colors?: ThemeColors) {
     const isLight = colors?.theme == "light";
 
     function getColor(

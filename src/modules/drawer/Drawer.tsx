@@ -66,7 +66,7 @@ export const Drawer: NavigationFunctionComponent = (props) => {
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        paddingHorizontal: CommonSizes.padding.superLarge
+        marginHorizontal: CommonSizes.padding.superLarge,
     },
     brandContainer: {
         ...CommonStyles.rowCenter,

@@ -16,6 +16,7 @@ import {Pages} from "~/navigation/pages";
 import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {isAndroid, isIos} from "~/core/theme/commonConsts";
 
 export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
     const inputRefs = useRef<TextInput[]>([]);
@@ -117,8 +118,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         borderWidth: CommonSizes.borderWidth.extraThin,
         borderRadius: CommonSizes.borderRadius.largePlus,
         textAlign: 'center',
-        paddingHorizontal: CommonSizes.padding.extraLargePlus,
-        paddingVertical: CommonSizes.padding.smallPlus,
+        paddingHorizontal: isAndroid ? CommonSizes.padding.extraLargePlus : CommonSizes.padding.superLarge,
+        paddingVertical: isIos ? CommonSizes.padding.large : CommonSizes.padding.smallPlus,
         borderColor: colors.outline,
         color: colors.onSurface
     },

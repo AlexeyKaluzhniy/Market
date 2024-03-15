@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet} from "react-native";
+import {FlatList, SafeAreaView, StyleSheet} from "react-native";
 import {CheckBoxButton} from "~/components/CheckBoxButton";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useAppSelector} from "~/core/store/store";
@@ -19,11 +19,13 @@ export const ModalizeCitiesContainer = () => {
     }, [citiesChosen]);
 
     return (
-        <FlatList
-            data={cities}
-            renderItem={renderItem}
-            contentContainerStyle={styles.container}
-        />
+        <SafeAreaView>
+            <FlatList
+                data={cities}
+                renderItem={renderItem}
+                contentContainerStyle={styles.container}
+            />
+        </SafeAreaView>
     );
 };
 

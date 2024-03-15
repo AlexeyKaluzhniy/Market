@@ -1,12 +1,12 @@
 import {CommonStyles} from "~/core/theme/commonStyles";
-import CheckBox from "@react-native-community/checkbox";
 import {ThemeColors} from "~/core/theme/colors";
 import {StyleSheet, TouchableOpacity} from "react-native";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useAppDispatch} from "~/core/store/store";
 import {actions} from "~/core/store/filter/filterSlice";
-import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {useThemedStyles} from "~/core/theme/hooks";
+import {CustomCheckBox} from "~/common/components/CustomCheckBox";
 
 interface ICheckBoxProps {
     city: string;
@@ -15,7 +15,6 @@ interface ICheckBoxProps {
 
 export function CheckBoxButton({city, isChecked}: ICheckBoxProps) {
     const dispatch = useAppDispatch();
-    const colors = useThemeColors();
     const styles = useThemedStyles(stylesG);
 
     const setCityChosen = () => {
@@ -30,11 +29,7 @@ export function CheckBoxButton({city, isChecked}: ICheckBoxProps) {
         <TouchableOpacity
             style={styles.container}
             onPress={setCityChosen}>
-            <CheckBox
-                disabled={false}
-                tintColors={{true: colors.main}}
-                value={isChecked}
-            />
+            <CustomCheckBox isChecked={isChecked} setChecked={setCityChosen}/>
             <Roboto.Body.Large text={city} style={styles.text}/>
         </TouchableOpacity>
     );
@@ -46,7 +41,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         paddingVertical: CommonSizes.padding.medium
     },
     text: {
-        marginLeft: CommonSizes.margin.extraLarge,
+        //marginLeft: CommonSizes.margin.extraLarge,
         color: colors.onSurface
     }
 });

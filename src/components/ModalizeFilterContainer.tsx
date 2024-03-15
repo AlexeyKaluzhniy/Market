@@ -1,4 +1,4 @@
-import {StyleSheet, TouchableOpacity, View} from "react-native";
+import {SafeAreaView, StyleSheet, TouchableOpacity, View} from "react-native";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {Roboto} from "~/infrastructure";
 import {ThemeColors} from "~/core/theme/colors";
@@ -48,7 +48,7 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Roboto.Title.Medium labelKey={"filter.city"} color={colors.onSurface}/>
             <View style={styles.chosenCitiesContainer}>
                 {cities && cities.map(city => {
@@ -83,13 +83,13 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
                     numberInput
                     value={priceTo}/>
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
-        paddingHorizontal: CommonSizes.padding.large
+        marginHorizontal: CommonSizes.padding.large
     },
     addCity: {
         color: colors.main,
