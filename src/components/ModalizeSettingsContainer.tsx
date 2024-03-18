@@ -40,7 +40,11 @@ export function ModalizeSettingsContainer(componentId: string) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Selector values={languagesNames} title={language.name} handleSelect={handleChangeLanguage}/>
+            <Selector
+                values={languagesNames}
+                title={language.name}
+                handleSelect={handleChangeLanguage}
+                placeholder={"settings.language"}/>
             <View style={styles.outline}/>
             <View style={styles.switchContainer}>
                 <Roboto.Body.Large labelKey={"settings.darkTheme"} style={CommonStyles.flex1} color={colors.onSurface}/>

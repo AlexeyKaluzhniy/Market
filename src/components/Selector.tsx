@@ -7,14 +7,16 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {Roboto} from "~/infrastructure";
 import {ImageResources} from "~/common/ImageResources.g";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface ISelectorProps {
     values: string[];
     handleSelect: (value: string) => void;
     title: string;
+    placeholder: TFuncKeyApp;
 }
 
-export function Selector({values, handleSelect, title}: ISelectorProps) {
+export function Selector({values, handleSelect, title, placeholder}: ISelectorProps) {
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
@@ -29,6 +31,7 @@ export function Selector({values, handleSelect, title}: ISelectorProps) {
     return (
         <TouchableOpacity onPress={handleShowMenu} activeOpacity={0.7}>
             <View style={styles.dropDownInput}>
+                <Roboto.Body.Small labelKey={placeholder} color={colors.onSurface} style={styles.placeholder}/>
                 <Roboto.Title.Medium text={title} color={colors.onSurface}/>
                 <Image source={ImageResources.drop_down} style={styles.dropDownIcon}/>
             </View>
@@ -45,8 +48,16 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: CommonSizes.padding.large,
         height: 52,
+        marginTop: CommonSizes.margin.extraSmallPlus
     },
     dropDownIcon: {
         tintColor: colors.outline
+    },
+    placeholder: {
+        position: 'absolute',
+        backgroundColor: colors.background,
+        top: -10,
+        left: 12,
+        paddingHorizontal: 3,
     }
 });

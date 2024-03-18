@@ -217,7 +217,7 @@
     },
     "settings": {
       "screenTitle": "SETTINGS",
-      "language": "LANGUAGE",
+      "language": "App language",
       "notifications": "notifications",
       "rateApp": "App rating",
       "privacyPolicy": "Privacy Policy",
