@@ -16,15 +16,33 @@ import {navigation} from "~/services";
 import {Components} from "~/navigation/components";
 import {ModalizeHeader} from "~/components/ModalizeHeader";
 import {ModalizeSettingsContainer} from "~/components/ModalizeSettingsContainer";
-import {ReactNode} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import {useThemedStyles} from "~/core/theme/hooks";
 
 export const Drawer: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
+    const [currentTabId, setCurrentTabId] = useState<string>();
+
+    console.log(currentTabId);
 
     const handleLogOut = () => {
         setAuthRoot();
     };
+
+    useEffect(() => {
+        const bottomTabEventListener = Navigation.events().registerComponentDidAppearListener(event => {
+            const tabIds = [
+                Pages.main.id,
+                Pages.favorite.id,
+                Pages.profile.id
+            ];
+            if (tabIds.includes(event.componentId)) {
+                setCurrentTabId(event.componentId);
+            }
+        });
+
+        return () => bottomTabEventListener.remove();
+    }, []);
 
     const handlePushScreen = (name: string) => {
         Navigation.push(Stacks.drawerStack.id, drawerStackScreensLayout(name));
@@ -41,7 +59,7 @@ export const Drawer: NavigationFunctionComponent = (props) => {
         navigation.showOverlay(Components.modalizeContainer, {
             screenIdSuffix: props.componentId, params: {
                 getHeaderComponent: (closeButton: ReactNode) => ModalizeHeader(closeButton, "drawer.settings"),
-                getContentComponent: ModalizeSettingsContainer,
+                getContentComponent: () => ModalizeSettingsContainer(currentTabId as string),
                 titleCloseButton: "common.done"
             }
         });

@@ -232,6 +232,7 @@ export const drawerStackScreensLayout = (name: string): LayoutStackChildren => {
                 sideMenu: {
                     left: {
                         visible: false,
+                        enabled: false
                     },
                 },
                 animations: {

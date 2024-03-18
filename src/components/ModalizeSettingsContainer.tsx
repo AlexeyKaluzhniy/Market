@@ -14,7 +14,7 @@ import {navigation} from "~/services";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {LayoutRoot} from "react-native-navigation";
 
-export function ModalizeSettingsContainer() {
+export function ModalizeSettingsContainer(componentId: string) {
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
     const dispatch = useAppDispatch();
@@ -23,24 +23,11 @@ export function ModalizeSettingsContainer() {
     const resetNavigation = useCallback(
         async () => {
             const tabsLayout = getBottomTabsLayout();
-            console.log(tabsLayout);
+            tabsLayout.root.sideMenu.center.stack.children[0].bottomTabs.options = {bottomTabs: {currentTabId: componentId}};
 
-            // Navigation.constants().then(res => console.log('res', res))
-            // Navigation.getLaunchArgs().then(res => console.log('res', res))
-            // // upgrade layout to stay on the same screen
-            // tabsLayout.root.sideMenu.center.stack.children[0].bottomTabs.options = {bottomTabs: {currentTabId: Tabs.main.id}};
-            // tabsLayout.root.sideMenu.center.stack.children[0].bottomTabs.children?.[4].stack?.children?.push({
-            //     component: {
-            //         id: Pages.settings.id,
-            //         name: Pages.settings.name,
-            //         options: {bottomTabs: {visible: false}},
-            //     },
-            // });
-
-            //todo check whether second level screen brake this function
             return navigation.setRootAsync(tabsLayout as LayoutRoot);
         },
-        [],
+        [componentId],
     );
 
     const handleChangeLanguage = (name: string) => {
@@ -57,7 +44,7 @@ export function ModalizeSettingsContainer() {
             <View style={styles.outline}/>
             <View style={styles.switchContainer}>
                 <Roboto.Body.Large labelKey={"settings.darkTheme"} style={CommonStyles.flex1} color={colors.onSurface}/>
-                <SwitchButton/>
+                <SwitchButton componentId={componentId}/>
             </View>
         </SafeAreaView>
     );

@@ -10,7 +10,7 @@ import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {LayoutRoot} from "react-native-navigation";
 
-export function SwitchButton() {
+export function SwitchButton({componentId}: {componentId: string}) {
     const styles = useThemedStyles(stylesG);
     const dispatch = useAppDispatch();
     const appTheme = useAppSelector(state => state.system.appTheme);
@@ -44,12 +44,11 @@ export function SwitchButton() {
     const resetNavigation = useCallback(
         async () => {
             const tabsLayout = getBottomTabsLayout();
-            console.log(tabsLayout);
+            tabsLayout.root.sideMenu.center.stack.children[0].bottomTabs.options = {bottomTabs: {currentTabId: componentId}};
 
-            //todo check whether second level screen brake this function
             return navigation.setRootAsync(tabsLayout as LayoutRoot);
         },
-        [],
+        [componentId],
     );
 
     return (
