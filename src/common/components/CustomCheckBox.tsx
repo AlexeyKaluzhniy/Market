@@ -13,7 +13,7 @@ export function CustomCheckBox({isChecked, setChecked}: ICheckBoxProps) {
 
     const checkBoxColor = {
         backgroundColor: isChecked ? colors.main : undefined,
-        borderColor: isChecked ? colors.main : colors.outline,
+        borderColor: isChecked ? colors.main : colors.onSurfaceVariant,
         borderWidth: isChecked ? 0 : 2,
     };
 

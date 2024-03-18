@@ -1,4 +1,4 @@
-import {View, StyleSheet, TouchableOpacity} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Linking} from "react-native";
 import React, {useState} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {DefaultInput} from "~/components/DefaultInput";
@@ -63,6 +63,10 @@ export function CustomInputForm(
         });
     };
 
+    const openTermsAndConditions = async () => {
+        await Linking.openURL('https://reactnative.dev/docs/linking');
+    };
+
     return (
         <View style={[CommonStyles.flex1, styles.inputContainer]}>
             {phoneField &&
@@ -102,7 +106,7 @@ export function CustomInputForm(
                         {t("authentication.registrationUserData.toAcceptWith")}
                         <Roboto.Body.Large
                             labelKey="authentication.registrationUserData.rulesAndConditions"
-                            onPress={() => console.log('++++')}
+                            onPress={openTermsAndConditions}
                             style={styles.agreePrivacyTextColor}
                         />
                     </Roboto.Body.Large>
