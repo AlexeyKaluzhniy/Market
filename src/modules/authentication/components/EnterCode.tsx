@@ -22,8 +22,17 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
     const inputRefs = useRef<TextInput[]>([]);
     const [isDisabled, setDisabled] = useState(false);
     const [remainingTime, setRemainingTime] = useState(30);
+    const [isFocused, setFocused] = useState<boolean[]>(Array(inputRefs.current.length).fill(false));
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
+
+    const handleFocus = (index: number, state: boolean) => {
+        setFocused(prev => {
+            const newState = [...prev];
+            newState[index] = state;
+            return newState;
+        });
+    };
 
     const handleSendCode = () => {
         setDisabled(true);
@@ -87,8 +96,10 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                                 onChangeText={text => {
                                     handleChangeCode(index, text);
                                 }}
+                                onFocus={() => handleFocus(index, true)}
+                                onBlur={() => handleFocus(index, false)}
                                 onKeyPress={({nativeEvent}) => handleBackspaceInput(nativeEvent, index)}
-                                style={styles.input}
+                                style={[styles.input, isFocused[index] ? styles.activeInput : styles.inactiveInput]}
                                 selectionColor={colors.main}
                             />
                         );
@@ -121,12 +132,22 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         paddingHorizontal: isAndroid ? CommonSizes.padding.extraLargePlus : CommonSizes.padding.superLarge,
         paddingVertical: isIos ? CommonSizes.padding.large : CommonSizes.padding.smallPlus,
         borderColor: colors.outline,
-        color: colors.onSurface
+        color: colors.onSurface,
+        height: 52,
+        width: 75
     },
     inputContainer: {
         justifyContent: 'space-between',
         marginHorizontal: CommonSizes.margin.extraSmall,
-        marginTop: CommonSizes.margin.largePlus
+        marginTop: CommonSizes.margin.largePlus,
+    },
+    activeInput: {
+        borderColor: colors.main,
+        borderWidth: CommonSizes.borderWidth.thin
+    },
+    inactiveInput: {
+        borderColor: colors.outline,
+        borderWidth: CommonSizes.borderWidth.extraThin
     },
     resendCode: {
         marginTop: CommonSizes.margin.superLarge,
@@ -143,5 +164,5 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     timer: {
         marginLeft: CommonSizes.margin.smallPlus,
         color: colors.onSurface
-    }
+    },
 });
