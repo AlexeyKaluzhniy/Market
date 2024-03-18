@@ -6,14 +6,13 @@ import {DefaultInput} from "~/components/DefaultInput";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import RemoveIcon from "../../resources/icons/remove.svg";
 import {useTranslation} from "react-i18next";
-import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {navigation} from "~/services";
-import {Components} from "~/navigation/components";
+import {NavigationFunctionComponent} from "react-native-navigation";
 import {ModalizeCitiesContainer} from "~/components/ModalizeCitiesContainer";
 import {ModalizeCitiesHeader} from "~/components/ModalizeCititesHeader";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {actions} from "~/core/store/filter/filterSlice";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {showOverlay} from "~/navigation/helpers/showOverlay";
 
 export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
@@ -25,14 +24,7 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     const priceTo = useAppSelector(state => state.filter.priceTo);
 
     const openCitiesModal = () => {
-        Navigation.dismissAllOverlays();
-        navigation.showOverlay(Components.modalizeContainer, {
-            screenIdSuffix: props.componentId, params: {
-                getHeaderComponent: ModalizeCitiesHeader,
-                getContentComponent: ModalizeCitiesContainer,
-                titleCloseButton: "common.reset"
-            }
-        });
+        showOverlay(ModalizeCitiesHeader, ModalizeCitiesContainer);
     };
 
     const removeCity = (city: string) => {

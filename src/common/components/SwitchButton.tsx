@@ -28,7 +28,7 @@ export function SwitchButton() {
             dispatch(SystemActions.setAppTheme("dark"));
         }
         setDefaultOptions(!isDark ? DarkThemeColors : LightThemeColors);
-        movePin().then(() => resetNavigation());
+        movePin().then(async () => await resetNavigation());
     };
 
     const movePin = async () => {

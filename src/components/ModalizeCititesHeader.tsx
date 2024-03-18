@@ -4,29 +4,20 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {ThemeColors} from "~/core/theme/colors";
 import ArrowBackIcon from "../../resources/icons/arrow_back.svg";
-import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {navigation} from "~/services";
-import {Components} from "~/navigation/components";
+import {NavigationFunctionComponent} from "react-native-navigation";
 import {ModalizeFilterContainer} from "~/components/ModalizeFilterContainer";
-import {ReactNode} from "react";
-import {ModalizeHeader} from "~/components/ModalizeHeader";
 import {useAppDispatch} from "~/core/store/store";
 import {actions} from "~/core/store/filter/filterSlice";
 import {useThemedStyles} from "~/core/theme/hooks";
+import {showOverlay} from "~/navigation/helpers/showOverlay";
+import {ModalizeFilterHeader} from "~/components/ModalizeFilterHeader";
 
 export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
     const dispatch = useAppDispatch();
     const styles = useThemedStyles(stylesG);
 
     const handleGoBack = () => {
-        Navigation.dismissAllOverlays();
-        navigation.showOverlay(Components.modalizeContainer, {
-            screenIdSuffix: props.componentId, params: {
-                getHeaderComponent: (closeButton: ReactNode) => ModalizeHeader(closeButton, "common.filters"),
-                getContentComponent: ModalizeFilterContainer,
-                titleCloseButton: "common.confirm"
-            }
-        });
+        showOverlay(ModalizeFilterHeader, ModalizeFilterContainer);
     };
 
     const resetAllCities = () => {

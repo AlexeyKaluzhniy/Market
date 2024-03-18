@@ -1,26 +1,18 @@
 import {StyleSheet, TouchableOpacity} from "react-native";
 import FilterIcon from "../../resources/icons/filter.svg";
-import React, {ReactNode} from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {LightThemeColors, ThemeColors} from "~/core/theme/colors";
-import {navigation} from "~/services";
-import {Components} from "~/navigation/components";
-import {ModalizeHeader} from "~/components/ModalizeHeader";
+import {ThemeColors} from "~/core/theme/colors";
 import {ModalizeFilterContainer} from "~/components/ModalizeFilterContainer";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {showOverlay} from "~/navigation/helpers/showOverlay";
+import {ModalizeFilterHeader} from "~/components/ModalizeFilterHeader";
 
 export function FilterButton() {
     const colors = useThemeColors();
     const styles = useThemedStyles(stylesG);
 
     const handlePressFilter = () => {
-        navigation.showOverlay(Components.modalizeContainer, {
-            params: {
-                getHeaderComponent: (closeButton: ReactNode) => ModalizeHeader(closeButton, "common.filters"),
-                getContentComponent: ModalizeFilterContainer,
-                titleCloseButton: "common.confirm"
-            }
-        });
+        showOverlay(ModalizeFilterHeader, ModalizeFilterContainer);
     };
 
     return (
