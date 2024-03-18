@@ -179,7 +179,8 @@
       "storybook": "Storybook",
       "cart": "Корзина",
       "search": "Поиск",
-      "settings": "Настройки"
+      "settings": "Настройки",
+      "drafts": "Черновики"
     },
     "validation": {
       "required": "Обязательное поле",
@@ -227,7 +228,8 @@
       "brandTitle": "купи - и точка",
       "settings": "Настройки",
       "about": "О приложении",
-      "logOut": "Выход"
+      "logOut": "Выход",
+      "drafts": "Черновики"
     },
     "about": {
       "welcome": "Добро пожаловать в ",

@@ -5,7 +5,7 @@ import {rootReducer, RootState} from "./rootReducer";
 import {Provider, TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {PersistGate} from "redux-persist/integration/react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {setLanguage} from "../../common/localization/localization";
+import {setLanguage} from "~/common/localization/localization";
 import {createLogger, ReduxLoggerOptions} from "redux-logger";
 import {authorizationApi} from "./auth/authQuery";
 

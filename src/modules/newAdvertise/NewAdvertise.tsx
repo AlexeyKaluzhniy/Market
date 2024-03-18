@@ -16,8 +16,8 @@ import {ImageOrVideo} from "react-native-image-crop-picker";
 import {ImagePickerButton} from "~/common/components/ImagePickerButton";
 import {useTranslation} from "react-i18next";
 import {AdvertiseImage} from "~/modules/newAdvertise/components/AdvertiseImage";
-import DotsVertical from "../../../resources/icons/dot_vertical.svg";
 import {useThemeColors} from "~/core/theme/hooks";
+import {ToggleDraftButton} from "~/components/ToggleDraftButton";
 
 enum Cities {
     Tiraspol = 'Тирасполь',
@@ -105,7 +105,7 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                             <ImagePickerButton isCamera images={images} setImage={setImages}/>
                             <ImagePickerButton images={images} setImage={setImages}/>
                         </View>
-                        <DotsVertical style={{marginRight: CommonSizes.margin.smallPlus}}/>
+                        <ToggleDraftButton/>
                     </SafeAreaView>
                 </View>
             </TouchableWithoutFeedback>
@@ -141,6 +141,6 @@ const styles = StyleSheet.create({
     },
     footer: {
         ...CommonStyles.rowCenter,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     }
 });

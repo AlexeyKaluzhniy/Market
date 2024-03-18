@@ -5,6 +5,7 @@ import BrandIcon from '../../../resources/icons/brand.svg';
 import SettingsIcon from '../../../resources/icons/settings.svg';
 import InfoIcon from '../../../resources/icons/info.svg';
 import LogOutIcon from '../../../resources/icons/logout.svg';
+import EditIcon from "../../../resources/icons/edit.svg";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {MenuItem} from "~/modules/drawer/components/MenuItem";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -22,8 +23,6 @@ import {useThemedStyles} from "~/core/theme/hooks";
 export const Drawer: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
     const [currentTabId, setCurrentTabId] = useState<string>();
-
-    console.log(currentTabId);
 
     const handleLogOut = () => {
         setAuthRoot();
@@ -73,6 +72,8 @@ export const Drawer: NavigationFunctionComponent = (props) => {
             </View>
             <MenuItem Icon={SettingsIcon} title="drawer.settings"
                       onPress={() => handleShowModal()}/>
+            <MenuItem Icon={EditIcon} title="drawer.drafts"
+                      onPress={() => handlePushScreen(Pages.drafts.name)}/>
             <MenuItem Icon={InfoIcon} title="drawer.about"
                       onPress={() => handlePushScreen(Pages.about.name)}/>
             <View style={styles.outline}/>

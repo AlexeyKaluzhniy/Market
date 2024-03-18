@@ -17,7 +17,7 @@ export function MenuItem({Icon, title, onPress}: IProps) {
 
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Icon/>
+            <Icon color={colors.outline}/>
             <Roboto.Label.Large labelKey={title} style={styles.title} color={colors.onSurface}/>
         </TouchableOpacity>
     );

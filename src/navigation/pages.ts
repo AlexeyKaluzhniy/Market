@@ -66,5 +66,9 @@ export const Pages = {
     newAdvertise: {
         id: "NEW_ADVERTISE_SCREEN",
         name: "NewAdvertiseScreen"
+    },
+    drafts: {
+        id: "DRAFTS_SCREEN",
+        name: "DraftsScreen"
     }
 };

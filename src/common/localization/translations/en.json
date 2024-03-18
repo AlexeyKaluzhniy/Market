@@ -179,7 +179,8 @@
       "storybook": "Storybook",
       "cart": "Cart",
       "search": "Search",
-      "settings": "Settings"
+      "settings": "Settings",
+      "drafts": "Drafts"
     },
     "validation": {
       "required": "This field is required",
@@ -227,7 +228,8 @@
       "brandTitle": "купи - и точка",
       "settings": "Settings",
       "about": "About",
-      "logOut": "Log out"
+      "logOut": "Log out",
+      "drafts": "Drafts"
     },
     "about": {
       "welcome": "Welcome to ",
