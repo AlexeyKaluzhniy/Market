@@ -10,7 +10,7 @@ import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {LayoutRoot} from "react-native-navigation";
 
-export function SwitchButton({componentId}: {componentId: string}) {
+export function SwitchButton({componentId}: { componentId: string }) {
     const styles = useThemedStyles(stylesG);
     const dispatch = useAppDispatch();
     const appTheme = useAppSelector(state => state.system.appTheme);
@@ -62,7 +62,7 @@ export function SwitchButton({componentId}: {componentId: string}) {
 
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
-        backgroundColor: colors.surfaceContainer,
+        backgroundColor: colors.surfaceContainerHighest,
         borderRadius: CommonSizes.borderRadius.largePlus,
         borderWidth: CommonSizes.borderWidth.thin,
         borderColor: colors.outline,

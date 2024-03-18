@@ -8,6 +8,7 @@ interface IThemeColors {
     outline: string;
     surface: string;
     surfaceContainer: string;
+    surfaceContainerHighest: string;
     onPrimary: string;
     primaryContainer: string;
     onPrimaryContainer: string;
@@ -39,13 +40,14 @@ export const LightThemeColors: IThemeColors = {
     drawer: "#FEF0F5",
     outline: "#81737A",
     surface: "#FFF8F9",
-    surfaceContainer: "#EDDFE4",
+    surfaceContainer: "#F9EAEF",
     onPrimary: "#FFFFFF",
     primaryContainer: "#FFD8EC",
     onPrimaryContainer: "#37072A",
     outlineVariant: "#D3C2C9",
     onSurface: "#211A1D",
     onSurfaceVariant: "#4F4449",
+    surfaceContainerHighest: "#EDDFE4",
     searchBar: "#F3E5EA",
     text: "#1f2731",
     secondaryText: "#49454F",
@@ -84,6 +86,7 @@ export const DarkThemeColors: IThemeColors = {
     outline: '#9C8D93',
     surface: "#181115",
     surfaceContainer: "#3B3236",
+    surfaceContainerHighest: "#3B3236",
     onPrimary: "#501E40",
     primaryContainer: "#6A3457",
     onPrimaryContainer: "#FFD8EC",
