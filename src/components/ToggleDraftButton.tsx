@@ -24,20 +24,27 @@ export function ToggleDraftButton({advertise, setAdvertise, values}: ITogglwDraf
     const dispatch = useAppDispatch();
 
     const handleChangeValue = (value: string) => {
-        if (value === t("drafts.reset")) {
-            setAdvertise({
-                title: '',
-                price: '',
-                priceType: '',
-                city: '',
-                description: '',
-                images: []
-            });
-        } else if (value === t("drafts.save")) {
-            dispatch(actions.addDraft({...advertise, title: advertise.title}));
-        } else if (value === t("drafts.delete")) {
-            Navigation.pop(Pages.tabs.id);
-            dispatch(actions.removeDraft(advertise));
+        switch (value) {
+            case t("drafts.reset"): {
+                setAdvertise({
+                    title: '',
+                    price: '',
+                    priceType: '',
+                    city: '',
+                    description: '',
+                    images: []
+                });
+            }
+                break;
+            case t("drafts.save"): {
+                dispatch(actions.addDraft({...advertise, title: advertise.title}));
+            }
+                break;
+            default: {
+                Navigation.pop(Pages.tabs.id);
+                dispatch(actions.removeDraft(advertise));
+            }
+                break;
         }
     };
 
