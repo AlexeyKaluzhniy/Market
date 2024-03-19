@@ -13,15 +13,16 @@ import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {actions} from "~/core/store/filter/filterSlice";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {showOverlay} from "~/navigation/helpers/showOverlay";
+import {selectCities, selectPriceFrom, selectPriceTo} from "~/core/store/filter/filterSelectors";
 
 export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
     const dispatch = useAppDispatch();
-    const cities = useAppSelector(state => state.filter.cities);
-    const priceFrom = useAppSelector(state => state.filter.priceFrom);
-    const priceTo = useAppSelector(state => state.filter.priceTo);
+    const cities = useAppSelector(selectCities);
+    const priceFrom = useAppSelector(selectPriceFrom);
+    const priceTo = useAppSelector(selectPriceTo);
 
     const openCitiesModal = () => {
         showOverlay(ModalizeCitiesHeader, ModalizeCitiesContainer);

@@ -9,12 +9,11 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {LayoutRoot} from "react-native-navigation";
 import {useAppSelector} from "~/core/store/store";
+import {selectAppTheme} from "~/core/store/system/systemSelectors";
 
 export const Login = () => {
     const [trigger, {data}] = useLazyGetSessionIdLoginQuery();
-    const [appTheme] = useAppSelector(state => [
-        state.system.appTheme,
-    ]);
+    const appTheme = useAppSelector(selectAppTheme);
     const [canLogin, setCanLogin] = useState(false);
 
     //todo fix navigation types

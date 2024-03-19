@@ -5,11 +5,12 @@ import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {SystemActionsAsync} from "~/core/store/system/systemSlice";
 import {languages} from "../localization/localization";
 import {useThemeColors} from "~/core/theme/hooks";
+import {selectAppLanguage} from "~/core/store/system/systemSelectors";
 
 export function LanguageButton() {
     const colors = useThemeColors();
     const dispatch = useAppDispatch();
-    const lang = useAppSelector(state => state.system.language);
+    const lang = useAppSelector(selectAppLanguage);
     const reverseLang = languages.find(i => i.languageTag != lang.languageTag) || lang;
 
     const handleChangeLang = () => {

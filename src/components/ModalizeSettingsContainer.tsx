@@ -13,12 +13,13 @@ import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {LayoutRoot} from "react-native-navigation";
+import {selectAppLanguage} from "~/core/store/system/systemSelectors";
 
 export function ModalizeSettingsContainer(componentId: string) {
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
     const dispatch = useAppDispatch();
-    const language = useAppSelector(state => state.system.language);
+    const language = useAppSelector(selectAppLanguage);
 
     const resetNavigation = useCallback(
         async () => {

@@ -3,10 +3,11 @@ import {CheckBoxButton} from "~/components/CheckBoxButton";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useAppSelector} from "~/core/store/store";
 import {useCallback} from "react";
+import {selectCities} from "~/core/store/filter/filterSelectors";
 
 export const ModalizeCitiesContainer = () => {
     const cities = ['Тирасполь', 'Бендеры', 'Дубоссары', 'Григориополь', 'Каменка', 'Рыбница', 'Слободзея', 'Днестровск'];
-    const citiesChosen = useAppSelector(state => state.filter.cities);
+    const citiesChosen = useAppSelector(selectCities);
 
     const renderItem = useCallback(({item, index}: { item: string; index: number }) => {
         return (

@@ -12,9 +12,10 @@ import {Pages} from "~/navigation/pages";
 import {useTranslation} from "react-i18next";
 import {EmptyScreen} from "~/components/EmptyScreen";
 import {ImageResources} from "~/common/ImageResources.g";
+import {selectDrafts} from "~/core/store/drafts/draftsSelectors";
 
 export const Drafts: NavigationFunctionComponent = (props) => {
-    const drafts = useAppSelector(state => state.drafts);
+    const drafts = useAppSelector(selectDrafts);
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();

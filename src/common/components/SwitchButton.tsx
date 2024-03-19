@@ -9,11 +9,12 @@ import {useCallback, useEffect, useState} from "react";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {LayoutRoot} from "react-native-navigation";
+import {selectAppTheme} from "~/core/store/system/systemSelectors";
 
 export function SwitchButton({componentId}: { componentId: string }) {
     const styles = useThemedStyles(stylesG);
     const dispatch = useAppDispatch();
-    const appTheme = useAppSelector(state => state.system.appTheme);
+    const appTheme = useAppSelector(selectAppTheme);
     const isDark = appTheme === 'dark';
     const [position] = useState(new Animated.Value(0));
 
