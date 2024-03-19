@@ -41,7 +41,6 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         paddingVertical: CommonSizes.padding.medium
     },
     text: {
-        //marginLeft: CommonSizes.margin.extraLarge,
         color: colors.onSurface
     }
 });

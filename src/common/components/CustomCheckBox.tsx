@@ -2,6 +2,7 @@ import {StyleSheet, TouchableOpacity} from "react-native";
 import ConfirmIcon from "../../../resources/icons/confirmSmall.svg";
 import {useThemeColors} from "~/core/theme/hooks";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {useMemo} from "react";
 
 interface ICheckBoxProps {
     isChecked: boolean;
@@ -11,11 +12,13 @@ interface ICheckBoxProps {
 export function CustomCheckBox({isChecked, setChecked}: ICheckBoxProps) {
     const colors = useThemeColors();
 
-    const checkBoxColor = {
-        backgroundColor: isChecked ? colors.main : undefined,
-        borderColor: isChecked ? colors.main : colors.onSurfaceVariant,
-        borderWidth: isChecked ? 0 : 2,
-    };
+    const checkBoxColor = useMemo(() => {
+        return {
+            backgroundColor: isChecked ? colors.main : undefined,
+            borderColor: isChecked ? colors.main : colors.onSurfaceVariant,
+            borderWidth: isChecked ? 0 : 2
+        }
+    }, [isChecked]);
 
     return (
         <TouchableOpacity
