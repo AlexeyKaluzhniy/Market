@@ -276,6 +276,10 @@
       "myAdvertises": {
         "title": "You don't have any ads yet",
         "text": "Don't miss the opportunity!\nCreate and publish your ad right now to offer products or services to a wide audience."
+      },
+      "drafts": {
+        "title": "Save the draft",
+        "text": "You can continue working with the ad later"
       }
     },
     "drafts": {

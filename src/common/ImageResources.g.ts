@@ -49,6 +49,7 @@ export class ImageResources {
   static readonly camera: ImageURISource = require("../../resources/images/camera.png");
   static readonly check: ImageURISource = require("../../resources/images/check.png");
   static readonly close_modal: ImageURISource = require("../../resources/images/close_modal.png");
+  static readonly draft: ImageURISource = require("../../resources/images/draft.png");
   static readonly drop_down: ImageURISource = require("../../resources/images/drop_down.png");
   static readonly eye: ImageURISource = require("../../resources/images/Eye.png");
   static readonly eyeclosed: ImageURISource = require("../../resources/images/EyeClosed.png");

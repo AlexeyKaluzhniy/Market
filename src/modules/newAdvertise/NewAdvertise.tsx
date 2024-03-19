@@ -51,8 +51,6 @@ export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) =>
         images: []
     });
 
-    console.log(advertiseDetails);
-
     const draftValues = [
         {value: t("drafts.reset")},
         {value: props.draft ? t("drafts.delete") : t("drafts.save")}
@@ -87,13 +85,19 @@ export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) =>
         });
     };
 
+    console.log(advertiseDetails);
+
     const confirmEditingAd = () => {
-        dispatch(actions.updateDraft(advertiseDetails));
+        dispatch(actions.updateDraft({...advertiseDetails, id: props.draft.id}));
+    };
+
+    const confirmPublishAd = () => {
+        console.log('Published');
     };
 
     return (
         <View style={styles.container}>
-            <CustomHeader id={props.componentId} isStack isEdit onPressConfirmButton={confirmEditingAd}/>
+            <CustomHeader id={props.componentId} isStack isEdit onPressConfirmButton={props.draft ? confirmEditingAd : confirmPublishAd}/>
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <View style={styles.body}>
                     <TextInput

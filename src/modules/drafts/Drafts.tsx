@@ -10,6 +10,8 @@ import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {Pages} from "~/navigation/pages";
 import {useTranslation} from "react-i18next";
+import {EmptyScreen} from "~/components/EmptyScreen";
+import {ImageResources} from "~/common/ImageResources.g";
 
 export const Drafts: NavigationFunctionComponent = (props) => {
     const drafts = useAppSelector(state => state.drafts);
@@ -61,6 +63,10 @@ export const Drafts: NavigationFunctionComponent = (props) => {
                 data={drafts}
                 renderItem={({item}) => renderItem(item)}
                 contentContainerStyle={styles.contentContainer}
+                ListEmptyComponent={() => <EmptyScreen
+                    image={ImageResources.draft}
+                    title={"emptyScreen.drafts.title"}
+                    text={"emptyScreen.drafts.text"}/>}
             />
         </View>
     );
@@ -76,6 +82,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         marginBottom: CommonSizes.margin.smallPlus
     },
     contentContainer: {
-        paddingHorizontal: CommonSizes.padding.large
+        paddingHorizontal: CommonSizes.padding.large,
+        ...CommonStyles.flex1
     }
 });
