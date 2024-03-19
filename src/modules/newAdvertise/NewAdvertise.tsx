@@ -21,6 +21,7 @@ import {IAdvertise} from "~/infrastructure/dto/common/IAdvertise";
 import {useAppDispatch} from "~/core/store/store";
 import {actions} from "~/core/store/drafts/draftsSlice";
 import {ThemeColors} from "~/core/theme/colors";
+import {emptyDraft} from "~/infrastructure/mocks/emptyDraft";
 
 enum Cities {
     Tiraspol = 'Тирасполь',
@@ -42,14 +43,7 @@ export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) =>
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
-    const [advertiseDetails, setAdvertiseDetails] = useState<IAdvertise>(props.draft || {
-        title: '',
-        price: '',
-        priceType: '',
-        city: '',
-        description: '',
-        images: []
-    });
+    const [advertiseDetails, setAdvertiseDetails] = useState<IAdvertise>(props.draft || emptyDraft);
 
     const draftValues = [
         {value: t("drafts.reset")},
@@ -97,7 +91,8 @@ export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) =>
 
     return (
         <View style={styles.container}>
-            <CustomHeader id={props.componentId} isStack isEdit onPressConfirmButton={props.draft ? confirmEditingAd : confirmPublishAd}/>
+            <CustomHeader id={props.componentId} isStack isEdit
+                          onPressConfirmButton={props.draft ? confirmEditingAd : confirmPublishAd}/>
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <View style={styles.body}>
                     <TextInput

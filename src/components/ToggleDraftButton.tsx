@@ -10,6 +10,7 @@ import {actions} from "~/core/store/drafts/draftsSlice";
 import {Pages} from "~/navigation/pages";
 import {Navigation} from "react-native-navigation";
 import {useTranslation} from "react-i18next";
+import {emptyDraft} from "~/infrastructure/mocks/emptyDraft";
 
 interface ITogglwDraftButton {
     advertise: IAdvertise;
@@ -26,14 +27,7 @@ export function ToggleDraftButton({advertise, setAdvertise, values}: ITogglwDraf
     const handleChangeValue = (value: string) => {
         switch (value) {
             case t("drafts.reset"): {
-                setAdvertise({
-                    title: '',
-                    price: '',
-                    priceType: '',
-                    city: '',
-                    description: '',
-                    images: []
-                });
+                setAdvertise(emptyDraft);
             }
                 break;
             case t("drafts.save"): {
@@ -78,8 +72,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         height: 50,
     },
     containerStyle: {
-        width: 200,
-        marginLeft: -160,
+        width: 185,
+        marginLeft: -145,
         marginBottom: -CommonSizes.margin.extraSmallPlus,
         backgroundColor: colors.surfaceContainer,
         borderRadius: CommonSizes.borderRadius.extraSmall,
