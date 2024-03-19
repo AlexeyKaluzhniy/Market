@@ -9,9 +9,11 @@ import {ThemeColors} from "~/core/theme/colors";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {Pages} from "~/navigation/pages";
+import {useTranslation} from "react-i18next";
 
 export const Drafts: NavigationFunctionComponent = (props) => {
     const drafts = useAppSelector(state => state.drafts);
+    const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
 
@@ -38,8 +40,16 @@ export const Drafts: NavigationFunctionComponent = (props) => {
 
     const renderItem = (item: IAdvertise) => {
         return (
-            <TouchableOpacity style={styles.itemContainer} activeOpacity={0.5} onPress={() => handleEditAdvertise(item)}>
-                <Roboto.Title.Large text={item.title} numberOfLines={1} color={colors.onSurface}/>
+            <TouchableOpacity
+                style={styles.itemContainer}
+                activeOpacity={0.5}
+                onPress={() => handleEditAdvertise(item)}
+            >
+                <Roboto.Title.Large
+                    text={item.title || t("drafts.untitled")}
+                    numberOfLines={1}
+                    color={colors.onSurface}
+                />
             </TouchableOpacity>
         );
     };

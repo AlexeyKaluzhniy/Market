@@ -34,7 +34,7 @@ export function ToggleDraftButton({advertise, setAdvertise, values}: ITogglwDraf
                 images: []
             });
         } else if (value === t("drafts.save")) {
-            dispatch(actions.addDraft({...advertise, title: advertise.title || t("drafts.untitled")}));
+            dispatch(actions.addDraft({...advertise, title: advertise.title}));
         } else if (value === t("drafts.delete")) {
             Navigation.pop(Pages.tabs.id);
             dispatch(actions.removeDraft(advertise));
@@ -81,6 +81,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     iconStyle: {
         width: 50,
         height: 50,
+        fontSize: 14,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'flex-end',
@@ -89,6 +90,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     },
     textStyle: {
         fontSize: 14,
-        color: colors.onSurface
+        color: colors.onSurface,
+        marginLeft: -CommonSizes.margin.extraSmallPlus
     }
 });
