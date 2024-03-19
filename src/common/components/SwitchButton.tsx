@@ -5,7 +5,7 @@ import {useThemedStyles} from "~/core/theme/hooks";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {SystemActions} from "~/core/store/system/systemSlice";
 import {setDefaultOptions} from "~/navigation/defaultOptions";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useState} from "react";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {LayoutRoot} from "react-native-navigation";
@@ -16,11 +16,7 @@ export function SwitchButton({componentId}: { componentId: string }) {
     const dispatch = useAppDispatch();
     const appTheme = useAppSelector(selectAppTheme);
     const isDark = appTheme === 'dark';
-    const [position] = useState(new Animated.Value(0));
-
-    useEffect(() => {
-        position.setValue(isDark ? 22 : 0);
-    }, []);
+    const [position] = useState(new Animated.Value(isDark ? 22 : 0));
 
     const changeAppTheme = () => {
         if (isDark) {
