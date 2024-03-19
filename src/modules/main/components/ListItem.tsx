@@ -33,6 +33,11 @@ export function ListItem({item}: IListItemProps) {
                     topBar: {
                         visible: false
                     },
+                    sideMenu: {
+                        left: {
+                            enabled: false
+                        }
+                    }
                 },
                 passProps: {
                     item: item

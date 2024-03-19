@@ -16,6 +16,11 @@ export function EditButton() {
                         topBar: {
                             visible: false
                         },
+                        sideMenu: {
+                            left: {
+                                enabled: false
+                            }
+                        }
                     }
                 }
             }

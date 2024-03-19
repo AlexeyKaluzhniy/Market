@@ -18,6 +18,11 @@ export function AddButton() {
                 options: {
                     topBar: {
                         visible: false
+                    },
+                    sideMenu: {
+                        left: {
+                            enabled: false
+                        }
                     }
                 }
             }
