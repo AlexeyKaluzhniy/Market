@@ -12,12 +12,15 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {DropDownList} from "~/components/DropDownList";
 import {useState} from "react";
-import {ImageOrVideo} from "react-native-image-crop-picker";
 import {ImagePickerButton} from "~/common/components/ImagePickerButton";
 import {useTranslation} from "react-i18next";
 import {AdvertiseImage} from "~/modules/newAdvertise/components/AdvertiseImage";
-import {useThemeColors} from "~/core/theme/hooks";
+import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {ToggleDraftButton} from "~/components/ToggleDraftButton";
+import {IAdvertise} from "~/infrastructure/dto/common/IAdvertise";
+import {useAppDispatch} from "~/core/store/store";
+import {actions} from "~/core/store/drafts/draftsSlice";
+import {ThemeColors} from "~/core/theme/colors";
 
 enum Cities {
     Tiraspol = 'Тирасполь',
@@ -30,10 +33,30 @@ enum Cities {
     Dnestrovsk = 'Днестровск',
 }
 
-export const NewAdvertise: NavigationFunctionComponent = (props) => {
+interface IDraftProps {
+    draft: IAdvertise;
+}
+
+export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) => {
+    const dispatch = useAppDispatch();
     const {t} = useTranslation();
+    const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
-    const [images, setImages] = useState<ImageOrVideo[]>([]);
+    const [advertiseDetails, setAdvertiseDetails] = useState<IAdvertise>(props.draft || {
+        title: '',
+        price: '',
+        priceType: '',
+        city: '',
+        description: '',
+        images: []
+    });
+
+    console.log(advertiseDetails);
+
+    const draftValues = [
+        {value: t("drafts.reset")},
+        {value: props.draft ? t("drafts.delete") : t("drafts.save")}
+    ];
 
     const cities = [
         {value: Cities.Tiraspol},
@@ -58,9 +81,19 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
         Keyboard.dismiss();
     };
 
+    const setDataAdvertise = (value: {}) => {
+        setAdvertiseDetails(prevState => {
+            return {...prevState, ...value};
+        });
+    };
+
+    const confirmEditingAd = () => {
+        dispatch(actions.updateDraft(advertiseDetails));
+    };
+
     return (
         <View style={styles.container}>
-            <CustomHeader id={props.componentId} isStack isEdit/>
+            <CustomHeader id={props.componentId} isStack isEdit onPressConfirmButton={confirmEditingAd}/>
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <View style={styles.body}>
                     <TextInput
@@ -68,44 +101,57 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
                         placeholderTextColor={colors.onSurface}
                         selectionColor={colors.main}
                         style={styles.title}
+                        value={advertiseDetails.title}
+                        onChangeText={(text) => setDataAdvertise({title: text})}
                     />
                     <View style={styles.dropDowns}>
                         <View style={CommonStyles.rowCenter}>
                             <TextInput
                                 placeholder={"0"}
+                                value={advertiseDetails.price}
                                 placeholderTextColor={colors.onSurface}
                                 selectionColor={colors.main}
                                 textAlign={"right"}
                                 maxLength={5}
                                 keyboardType={"numeric"}
-                                style={{marginRight: CommonSizes.margin.extraSmallPlus}}
+                                style={styles.price}
+                                onChangeText={(text) => setDataAdvertise({price: text})}
                             />
                             <DropDownList
                                 values={prices}
+                                setDropDownValue={(value) => setDataAdvertise({priceType: value})}
+                                valueShow={advertiseDetails.priceType}
                             />
                         </View>
                         <DropDownList
                             values={cities}
                             onRightSide
+                            setDropDownValue={(value) => setDataAdvertise({city: value})}
+                            valueShow={advertiseDetails.city}
                         />
                     </View>
                     <ScrollView>
                         <TextInput
                             multiline={true}
                             placeholder={t("new_advertise.description")}
+                            value={advertiseDetails.description}
                             style={styles.description}
                             selectionColor={colors.main}
                             placeholderTextColor={colors.onSurface}
                             textAlignVertical="top"
+                            onChangeText={(text) => setDataAdvertise({description: text})}
                         />
-                        <AdvertiseImage images={images} setImages={setImages}/>
+                        <AdvertiseImage images={advertiseDetails.images} setImages={setDataAdvertise}/>
                     </ScrollView>
                     <SafeAreaView style={styles.footer}>
                         <View style={CommonStyles.rowCenter}>
-                            <ImagePickerButton isCamera images={images} setImage={setImages}/>
-                            <ImagePickerButton images={images} setImage={setImages}/>
+                            <ImagePickerButton isCamera images={advertiseDetails.images} setImage={setDataAdvertise}/>
+                            <ImagePickerButton images={advertiseDetails.images} setImage={setDataAdvertise}/>
                         </View>
-                        <ToggleDraftButton/>
+                        <ToggleDraftButton
+                            advertise={advertiseDetails}
+                            setAdvertise={setAdvertiseDetails}
+                            values={draftValues}/>
                     </SafeAreaView>
                 </View>
             </TouchableWithoutFeedback>
@@ -113,7 +159,7 @@ export const NewAdvertise: NavigationFunctionComponent = (props) => {
     );
 };
 
-const styles = StyleSheet.create({
+const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
     },
@@ -126,7 +172,8 @@ const styles = StyleSheet.create({
         marginBottom: CommonSizes.margin.medium,
         fontSize: 28,
         lineHeight: 36,
-        fontFamily: "Roboto"
+        fontFamily: "Roboto",
+        color: colors.onSurface
     },
     dropDowns: {
         ...CommonStyles.rowCenter,
@@ -138,6 +185,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 24,
         fontFamily: "Roboto",
+        color: colors.onSurface
+    },
+    price: {
+        color: colors.onSurface,
+        marginRight: CommonSizes.margin.extraSmallPlus
     },
     footer: {
         ...CommonStyles.rowCenter,

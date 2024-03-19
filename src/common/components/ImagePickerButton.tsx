@@ -8,7 +8,7 @@ import {useThemeColors} from "~/core/theme/hooks";
 interface IProps {
     isCamera?: boolean;
     images: ImageOrVideo[];
-    setImage: (image: ImageOrVideo[]) => void;
+    setImage: ({images}: { images: ImageOrVideo[] }) => void;
 }
 
 const pickerOptions: Options = {
@@ -26,13 +26,13 @@ export function ImagePickerButton({isCamera, setImage, images}: IProps) {
 
     const openCamera = () => {
         ImagePicker.openCamera(pickerOptions)
-            .then(image => setImage([...images, image]))
+            .then(image => setImage({images: [...images, image]}))
             .catch(error => console.warn(error));
     };
 
     const openGallery = () => {
         ImagePicker.openPicker(pickerOptions)
-            .then(image => setImage([...images, image]))
+            .then(image => setImage({images: [...images, image]}))
             .catch(error => console.warn(error));
     };
 

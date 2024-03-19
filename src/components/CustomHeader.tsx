@@ -22,6 +22,7 @@ interface IProps {
     isAuth?: boolean;
     isDetails?: boolean;
     isEdit?: boolean;
+    onPressConfirmButton?: () => void;
     id: string;
 }
 
@@ -34,7 +35,8 @@ export function CustomHeader(
         id,
         isDetails,
         isEdit,
-        isDrawer
+        isDrawer,
+        onPressConfirmButton
     }: IProps) {
     const styles = useThemedStyles(stylesG);
 
@@ -52,7 +54,7 @@ export function CustomHeader(
             {isAuth && <LanguageButton/>}
             {isProfile && <EditButton/>}
             {isDetails && <FavoriteButton/>}
-            {isEdit && <ConfirmButton/>}
+            {isEdit && <ConfirmButton onPress={onPressConfirmButton}/>}
         </SafeAreaView>
     );
 }

@@ -7,12 +7,12 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 
 interface IImageProps {
     images: ImageOrVideo[];
-    setImages: (images: ImageOrVideo[]) => void;
+    setImages: ({images}: { images: ImageOrVideo[] }) => void;
 }
 
 export function AdvertiseImage({images, setImages}: IImageProps) {
     const removeImage = (image: ImageOrVideo) => {
-        setImages(images.filter(item => item !== image));
+        setImages({images: images.filter(i => i !== image)});
     };
 
     return (
@@ -20,7 +20,10 @@ export function AdvertiseImage({images, setImages}: IImageProps) {
             {images && images.map((image) => {
                 return (
                     <View style={styles.imageContainer}>
-                        <TouchableOpacity style={styles.deleteButton} onPress={() => removeImage(image)} activeOpacity={0.8}>
+                        <TouchableOpacity
+                            style={styles.deleteButton}
+                            onPress={() => removeImage(image)}
+                            activeOpacity={0.8}>
                             <DeleteIcon/>
                         </TouchableOpacity>
                         <Image source={{uri: image.path}} style={styles.image}/>

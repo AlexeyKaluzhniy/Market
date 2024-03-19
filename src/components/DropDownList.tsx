@@ -10,15 +10,22 @@ import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 interface IDropDownList {
     values: { value: string }[];
     onRightSide?: boolean;
+    setDropDownValue: (value: string) => void;
+    valueShow?: string;
 }
 
-export function DropDownList({values, onRightSide}: IDropDownList) {
+export function DropDownList({values, onRightSide, setDropDownValue, valueShow}: IDropDownList) {
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
-    const [valueShown, setValueShown] = useState<string>(values[0].value);
+    const [valueShown, setValueShown] = useState<string>(valueShow || values[0].value);
 
     const leftMargin = {
         marginLeft: onRightSide ? -85 : 0,
+    };
+
+    const onChangeValue = (value: string) => {
+        setValueShown(value);
+        setDropDownValue(value);
     };
 
     return (
@@ -26,7 +33,7 @@ export function DropDownList({values, onRightSide}: IDropDownList) {
             data={values}
             valueField={'value'}
             labelField={'value'}
-            onChange={({value}) => setValueShown(value)}
+            onChange={({value}) => onChangeValue(value)}
             style={styles.dropdown}
             value={valueShown}
             renderRightIcon={() => <DropDownListIcon color={colors.outline}/>}
