@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useMemo, useRef, useState} from "react";
 import {
     StyleSheet,
     Text,
@@ -30,9 +30,16 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
         setFocused(prev => {
             const newState = [...prev];
             newState[index] = state;
+
             return newState;
         });
     };
+
+    const textStyles = useMemo(() => {
+        return {
+            color: isDisabled ?  colors.onSurface : colors.main
+        };
+    }, [colors.main, colors.onSurface, isDisabled]);
 
     const handleSendCode = () => {
         setDisabled(true);
@@ -112,7 +119,7 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                     onPress={!isDisabled ? handleSendCode : () => null}>
                     <Roboto.Label.Large
                         labelKey="authentication.resendCode"
-                        style={isDisabled ? styles.textInactive : styles.textActive}>
+                        style={textStyles}>
                     </Roboto.Label.Large>
                     {isDisabled && <Text style={styles.timer}>{remainingTime}</Text>}
                 </TouchableOpacity>
@@ -154,12 +161,6 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center'
-    },
-    textActive: {
-        color: colors.main
-    },
-    textInactive: {
-        color: colors.onSurface
     },
     timer: {
         marginLeft: CommonSizes.margin.smallPlus,

@@ -28,7 +28,7 @@ export const ModalizeCitiesHeader: NavigationFunctionComponent = (props) => {
         <View style={[CommonStyles.rowCenter, styles.container]}>
             <View style={CommonStyles.rowCenter}>
                 <TouchableOpacity onPress={handleGoBack}>
-                    <ArrowBackIcon style={{width: 15, height: 15}}/>
+                    <ArrowBackIcon style={styles.icon}/>
                 </TouchableOpacity>
                 <Roboto.Title.Medium labelKey={"authentication.registrationUserData.city"} style={styles.text}/>
             </View>
@@ -52,5 +52,9 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     },
     resetText: {
         color: colors.main
+    },
+    icon: {
+        width: 15,
+        height: 15
     }
 });

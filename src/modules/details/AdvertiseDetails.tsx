@@ -45,8 +45,8 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
             <View style={styles.outline}/>
             <TouchableOpacity style={styles.contentContainer} activeOpacity={0.7}>
                 <View style={CommonStyles.rowCenter}>
-                    <Image source={ImageResources.avatar} style={{width: 40, height: 40}}/>
-                    <View style={{marginLeft: 16}}>
+                    <Image source={ImageResources.avatar} style={styles.avatar}/>
+                    <View style={styles.name}>
                         <Roboto.Body.Large text={"Евлампия Романова"} color={colors.onSurface}/>
                         <Roboto.Body.Small text={"на купи - и точка с декабря 2024"} color={colors.onSurface}/>
                     </View>
@@ -69,7 +69,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         ...CommonStyles.flex1,
     },
     contentContainer: {
-        marginHorizontal: CommonSizes.margin.largePlus
+        marginHorizontal: CommonSizes.margin.largePlus,
     },
     image: {
         borderRadius: CommonSizes.borderRadius.extraLargePlus,
@@ -97,5 +97,12 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     },
     phoneText: {
         marginLeft: CommonSizes.margin.medium
+    },
+    avatar: {
+        width: 40,
+        height: 40
+    },
+    name: {
+        marginLeft: CommonSizes.margin.largePlus
     }
 });

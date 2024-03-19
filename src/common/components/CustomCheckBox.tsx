@@ -17,8 +17,8 @@ export function CustomCheckBox({isChecked, setChecked}: ICheckBoxProps) {
             backgroundColor: isChecked ? colors.main : undefined,
             borderColor: isChecked ? colors.main : colors.onSurfaceVariant,
             borderWidth: isChecked ? 0 : 2
-        }
-    }, [isChecked]);
+        };
+    }, [colors.main, colors.onSurfaceVariant, isChecked]);
 
     return (
         <TouchableOpacity
