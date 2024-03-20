@@ -5,7 +5,11 @@ import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {useThemeColors} from "~/core/theme/hooks";
 
-export function EditButton() {
+interface IEditButtonProps {
+    onPressEditButton?: () => void;
+}
+
+export function EditButton({onPressEditButton}: IEditButtonProps) {
     const colors = useThemeColors();
 
     const handleNavigateToEditProfile = () => {
@@ -28,7 +32,7 @@ export function EditButton() {
     };
 
     return (
-        <TouchableOpacity onPress={handleNavigateToEditProfile}>
+        <TouchableOpacity onPress={onPressEditButton || handleNavigateToEditProfile}>
             <EditIcon color={colors.outline}/>
         </TouchableOpacity>
     );

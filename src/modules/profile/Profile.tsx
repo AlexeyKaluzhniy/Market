@@ -23,7 +23,7 @@ export const Profile: NavigationFunctionComponent<IProfileProps> = (props): JSX.
         <View style={styles.container}>
             {props.isExternalUserProfile ?
                 <CustomHeader id={props.componentId} isStack/> :
-                <CustomHeader id={props.componentId} headerTitle="pages.profile" isProfile isDrawer/>
+                <CustomHeader id={props.componentId} headerTitle="pages.profile" hasEditButton isDrawer/>
             }
             <View style={styles.body}>
                 <View style={styles.avatarContainer}>

@@ -34,20 +34,21 @@ enum Cities {
     Dnestrovsk = 'Днестровск',
 }
 
-interface IDraftProps {
-    draft: IAdvertise;
+interface INewAdvertiseProps {
+    advertise: IAdvertise;
+    isMyAd?: boolean;
 }
 
-export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) => {
+export const NewAdvertise: NavigationFunctionComponent<INewAdvertiseProps> = (props) => {
     const dispatch = useAppDispatch();
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
-    const [advertiseDetails, setAdvertiseDetails] = useState<IAdvertise>(props.draft || emptyDraft);
+    const [advertiseDetails, setAdvertiseDetails] = useState<IAdvertise>(props.advertise || emptyDraft);
 
     const draftValues = [
         {value: t("drafts.reset")},
-        {value: props.draft ? t("drafts.delete") : t("drafts.save")}
+        {value: props.advertise ? t("drafts.delete") : t("drafts.save")}
     ];
 
     const cities = [
@@ -79,10 +80,12 @@ export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) =>
         });
     };
 
-    console.log(advertiseDetails);
-
     const confirmEditingAd = () => {
-        dispatch(actions.updateDraft({...advertiseDetails, id: props.draft.id}));
+        if (props.isMyAd) {
+            console.log("Confirm editing my advertise");
+        } else {
+            dispatch(actions.updateDraft({...advertiseDetails, id: props.advertise.id}));
+        }
     };
 
     const confirmPublishAd = () => {
@@ -91,8 +94,12 @@ export const NewAdvertise: NavigationFunctionComponent<IDraftProps> = (props) =>
 
     return (
         <View style={styles.container}>
-            <CustomHeader id={props.componentId} isStack isEdit
-                          onPressConfirmButton={props.draft ? confirmEditingAd : confirmPublishAd}/>
+            <CustomHeader
+                id={props.componentId}
+                isStack
+                isEdit
+                onPressConfirmButton={props.advertise ? confirmEditingAd : confirmPublishAd}
+            />
             <TouchableWithoutFeedback onPress={dismissKeyboard}>
                 <View style={styles.body}>
                     <TextInput

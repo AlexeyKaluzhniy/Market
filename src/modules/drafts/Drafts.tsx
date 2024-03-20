@@ -35,7 +35,7 @@ export const Drafts: NavigationFunctionComponent = (props) => {
                     }
                 },
                 passProps: {
-                    draft: draft
+                    advertise: draft
                 }
             }
         });

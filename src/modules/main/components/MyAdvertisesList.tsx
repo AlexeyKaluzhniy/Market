@@ -10,7 +10,7 @@ export function MyAdvertisesList() {
         <FlatList
             data={[data[0]]}
             renderItem={({item}) => {
-                return <ListItem item={item}/>;
+                return <ListItem item={item} isMyAd/>;
             }}
             ListEmptyComponent={() =>
                 <EmptyScreen

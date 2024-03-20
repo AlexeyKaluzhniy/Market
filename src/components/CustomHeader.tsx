@@ -16,13 +16,14 @@ import {SideMenuButton} from "~/common/components/SideMenuButton";
 
 interface IProps {
     headerTitle?: TFuncKeyApp;
-    isProfile?: boolean;
+    hasEditButton?: boolean;
     isStack?: boolean;
     isDrawer?: boolean;
     isAuth?: boolean;
     isDetails?: boolean;
     isEdit?: boolean;
     onPressConfirmButton?: () => void;
+    onPressEditButton?: () => void;
     id: string;
 }
 
@@ -30,13 +31,14 @@ export function CustomHeader(
     {
         headerTitle,
         isStack,
-        isProfile,
+        hasEditButton,
         isAuth,
         id,
         isDetails,
         isEdit,
         isDrawer,
-        onPressConfirmButton
+        onPressConfirmButton,
+        onPressEditButton
     }: IProps) {
     const styles = useThemedStyles(stylesG);
 
@@ -52,7 +54,7 @@ export function CustomHeader(
                 <Roboto.Title.Large style={styles.headerTitle} labelKey={headerTitle}/>
             </View>
             {isAuth && <LanguageButton/>}
-            {isProfile && <EditButton/>}
+            {hasEditButton && <EditButton onPressEditButton={onPressEditButton}/>}
             {isDetails && <FavoriteButton/>}
             {isEdit && <ConfirmButton onPress={onPressConfirmButton}/>}
         </SafeAreaView>

@@ -1,4 +1,4 @@
-import {Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -8,20 +8,22 @@ import {FavoriteButton} from "~/components/FavoriteButton";
 import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {ImageResources} from "~/common/ImageResources.g";
 
 interface IListItemProps {
     item: {
         id: string;
         title: string;
-        body: string;
+        description: string;
         price: string;
         location: string;
         date: string;
-        image: ImageURISource | null;
+        image: ImageResources | null;
     };
+    isMyAd?: boolean;
 }
 
-export function ListItem({item}: IListItemProps) {
+export function ListItem({item, isMyAd}: IListItemProps) {
     const colors = useThemeColors();
     const styles = useThemedStyles(stylesG);
 
@@ -40,7 +42,8 @@ export function ListItem({item}: IListItemProps) {
                     }
                 },
                 passProps: {
-                    item: item
+                    item: item,
+                    isMyAd: isMyAd
                 }
             }
         });
@@ -54,7 +57,7 @@ export function ListItem({item}: IListItemProps) {
                     <Roboto.Title.Medium text={item.title} color={colors.onSurface}/>
                     <FavoriteButton/>
                 </View>
-                <Roboto.Body.Medium text={item.body} numberOfLines={2} color={colors.onSurface}/>
+                <Roboto.Body.Medium text={item.description} numberOfLines={2} color={colors.onSurface}/>
                 <Roboto.Title.Large text={item.price} style={styles.text}/>
                 <Roboto.Body.Medium text={item.location} style={styles.text} color={colors.onSurface}/>
                 <Roboto.Body.Medium text={item.date} color={colors.onSurface}/>
