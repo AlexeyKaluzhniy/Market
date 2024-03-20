@@ -18,7 +18,7 @@ interface IListItemProps {
         price: string;
         location: string;
         date: string;
-        image: ImageResources | null;
+        images: ImageResources[] | null;
     };
     isMyAd?: boolean;
 }
@@ -51,7 +51,7 @@ export function ListItem({item, isMyAd}: IListItemProps) {
 
     return (
         <TouchableOpacity style={styles.container} activeOpacity={0.6} onPress={navigateToDetails}>
-            {item.image && <Image source={item.image} style={styles.image}/>}
+            {item.images && <Image source={item.images[0]} style={styles.image}/>}
             <View style={{padding: CommonSizes.padding.large}}>
                 <View style={styles.header}>
                     <Roboto.Title.Medium text={item.title} color={colors.onSurface}/>
@@ -85,7 +85,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     image: {
         alignSelf: 'center',
         width: '100%',
+        height: 176,
         borderTopLeftRadius: CommonSizes.borderRadius.medium - 1,
-        borderTopRightRadius: CommonSizes.borderRadius.medium - 1
+        borderTopRightRadius: CommonSizes.borderRadius.medium - 1,
     }
 });

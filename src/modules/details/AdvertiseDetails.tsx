@@ -1,5 +1,5 @@
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {Image, ImageURISource, StyleSheet, View} from "react-native";
+import {ImageURISource, StyleSheet, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -9,6 +9,7 @@ import {ThemeColors} from "~/core/theme/colors";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {Pages} from "~/navigation/pages";
 import {Publisher} from "~/modules/details/components/Publisher";
+import {ImagesList} from "~/modules/details/components/ImagesList";
 
 interface IProps {
     item: {
@@ -18,7 +19,7 @@ interface IProps {
         price: string;
         location: string;
         date: string;
-        image: ImageURISource | null;
+        images: ImageURISource[] | null;
     };
     isMyAd: boolean;
 }
@@ -65,8 +66,7 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                 })}
             />
             <View style={styles.contentContainer}>
-                {props.item.image &&
-                    <Image source={props.item.image} style={styles.image}/>}
+                {props.item.images && <ImagesList images={props.item.images}/>}
                 <View style={[CommonStyles.rowCenter, styles.locationContainer]}>
                     <Roboto.Body.Medium text={props.item.date} color={colors.onSurface}/>
                     <Roboto.Body.Medium text={props.item.location} color={colors.onSurface}/>
@@ -96,7 +96,6 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     },
     image: {
         borderRadius: CommonSizes.borderRadius.extraLargePlus,
-        marginBottom: CommonSizes.margin.largePlus
     },
     locationContainer: {
         justifyContent: 'space-between',

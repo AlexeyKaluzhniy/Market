@@ -8,7 +8,7 @@ export const data = [
         price: '1200 руб.',
         location: 'Тирасполь',
         date: 'сегодня в 13:04',
-        image: AdvertisesResources.bicycle
+        images: [AdvertisesResources.bicycle]
     },
     {
         id: '2',
@@ -17,7 +17,7 @@ export const data = [
         price: '1200 руб.',
         location: 'Тирасполь',
         date: 'сегодня в 13:04',
-        image: null
+        images: null
     },
     {
         id: '3',
@@ -26,7 +26,7 @@ export const data = [
         price: '1200 руб.',
         location: 'Тирасполь',
         date: 'сегодня в 13:04',
-        image: null
+        images: [AdvertisesResources.bicycle, AdvertisesResources.bicycle, AdvertisesResources.bicycle]
     },
     {
         id: '4',
@@ -35,6 +35,6 @@ export const data = [
         price: '1200 руб.',
         location: 'Тирасполь',
         date: 'сегодня в 13:04',
-        image: AdvertisesResources.bicycle
+        images: [AdvertisesResources.bicycle, AdvertisesResources.bicycle]
     }
 ];
