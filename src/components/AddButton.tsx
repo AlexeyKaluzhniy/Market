@@ -5,7 +5,6 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
-import {isIos} from "~/core/theme/commonConsts";
 
 export function AddButton() {
     const styles = useThemedStyles(stylesG);
@@ -41,7 +40,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         backgroundColor: colors.primaryContainer,
         position: 'absolute',
         padding: CommonSizes.padding.mediumPlus,
-        bottom: isIos ? 110 : 16,
+        bottom: 16,
         right: CommonSizes.margin.largePlus + 1,
         borderRadius: CommonSizes.borderRadius.medium,
         elevation: 2,

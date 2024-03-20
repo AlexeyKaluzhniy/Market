@@ -1,4 +1,4 @@
-import {NavigationFunctionComponent} from "react-native-navigation";
+import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {Image, ImageURISource, StyleSheet, TouchableOpacity, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import React from "react";
@@ -10,6 +10,7 @@ import {ImageResources} from "~/common/ImageResources.g";
 import MailIcon from "../../../resources/icons/mail.svg";
 import PhoneIcon from "../../../resources/icons/phone.svg";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {Pages} from "~/navigation/pages";
 
 interface IProps {
     item: {
@@ -27,6 +28,35 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
 
+    const userData = {
+        name: "Евлампия Романова",
+        registerDate: "на купи - и точка с декабря 2024",
+        email: "e.romanova@mail.ru",
+        phone: "+ 373 779 3 12 03"
+    };
+
+    const navigatetoUserProfile = () => {
+        Navigation.push(Pages.tabs.id, {
+            component: {
+                name: Pages.profile.name,
+                options: {
+                    topBar: {
+                        visible: false
+                    },
+                    sideMenu: {
+                        left: {
+                            enabled: false
+                        }
+                    }
+                },
+                passProps: {
+                    isExternalUserProfile: true,
+                    userData: userData
+                }
+            }
+        });
+    };
+
     return (
         <View style={styles.container}>
             <CustomHeader id={props.componentId} isStack isDetails/>
@@ -43,7 +73,7 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                 <Roboto.Body.Medium text={props.item.body} style={styles.text}/>
             </View>
             <View style={styles.outline}/>
-            <TouchableOpacity style={styles.contentContainer} activeOpacity={0.7}>
+            <TouchableOpacity style={styles.contentContainer} activeOpacity={0.7} onPress={navigatetoUserProfile}>
                 <View style={CommonStyles.rowCenter}>
                     <Image source={ImageResources.avatar} style={styles.avatar}/>
                     <View style={styles.name}>

@@ -8,26 +8,36 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {ThemeColors} from "~/core/theme/colors";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {CommonStyles} from "~/core/theme/commonStyles";
+import {IUserData} from "~/infrastructure/dto/common/IUserData";
 
-export const Profile: NavigationFunctionComponent = (props): JSX.Element => {
+interface IProfileProps {
+    isExternalUserProfile?: boolean;
+    userData?: IUserData;
+}
+
+export const Profile: NavigationFunctionComponent<IProfileProps> = (props): JSX.Element => {
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
 
     return (
         <View style={styles.container}>
-            <CustomHeader id={props.componentId} headerTitle="pages.profile" isProfile isDrawer/>
+            {props.isExternalUserProfile ?
+                <CustomHeader id={props.componentId} isStack/> :
+                <CustomHeader id={props.componentId} headerTitle="pages.profile" isProfile isDrawer/>
+            }
             <View style={styles.body}>
                 <View style={styles.avatarContainer}>
                     <Image source={ImageResources.avatar} style={styles.avatar}/>
-                    <Roboto.Title.Large text={"Георгий Васильков"} style={styles.name} color={colors.onSurface}/>
+                    <Roboto.Title.Large text={props.userData?.name || "Георгий Васильков"} style={styles.name}
+                                        color={colors.onSurface}/>
                 </View>
                 <View style={styles.data}>
                     <Roboto.Label.Medium text={"E-mail"} color={colors.onSurface}/>
-                    <Roboto.Body.Large text={"g.vasilkov@yandex.ru"} color={colors.onSurface}/>
+                    <Roboto.Body.Large text={props.userData?.email || "g.vasilkov@yandex.ru"} color={colors.onSurface}/>
                 </View>
                 <View style={styles.data}>
                     <Roboto.Label.Medium text={"Телефон"} color={colors.onSurface}/>
-                    <Roboto.Body.Large text={"+ 373 777 2 54 97"} color={colors.onSurface}/>
+                    <Roboto.Body.Large text={props.userData?.phone || "+ 373 777 2 54 97"} color={colors.onSurface}/>
                 </View>
             </View>
         </View>
