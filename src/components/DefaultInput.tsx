@@ -69,7 +69,7 @@ export function DefaultInput(
                 value={initValue}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
-                keyboardType={numberInput ? 'numeric' : 'default'}
+                keyboardType={numberInput ? 'phone-pad' : 'default'}
                 selectionColor={colors.main}
                 maxLength={maxLength}
             />

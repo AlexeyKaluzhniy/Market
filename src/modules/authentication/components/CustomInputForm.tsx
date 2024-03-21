@@ -2,7 +2,6 @@ import {View, StyleSheet, TouchableOpacity, Linking} from "react-native";
 import React, {useState} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {DefaultInput} from "~/components/DefaultInput";
-import {ThemeColors} from "~/core/theme/colors";
 import {IAuthComponentProps} from "~/infrastructure/dto/common/IAuthComponentProps";
 import {useTranslation} from "react-i18next";
 import PhoneIcon from "../../../../resources/icons/phone.svg";
@@ -14,7 +13,7 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {useThemeColors} from "~/core/theme/hooks";
 import {CustomCheckBox} from "~/common/components/CustomCheckBox";
 
 export function CustomInputForm(
@@ -29,7 +28,6 @@ export function CustomInputForm(
         onSubmit,
     }: IAuthComponentProps) {
     const {t} = useTranslation();
-    const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
     const [toggleCheckBox, setToggleCheckBox] = useState(false);
     const {
@@ -102,12 +100,12 @@ export function CustomInputForm(
                     <CustomCheckBox
                         isChecked={toggleCheckBox}
                         setChecked={(isChecked) => setToggleCheckBox(isChecked as boolean)}/>
-                    <Roboto.Body.Large color={colors.onSurface}>
+                    <Roboto.Body.Large color={colors.onSurface} style={styles.accept}>
                         {t("authentication.registrationUserData.toAcceptWith")}
                         <Roboto.Body.Large
                             labelKey="authentication.registrationUserData.rulesAndConditions"
                             onPress={openTermsAndConditions}
-                            style={styles.agreePrivacyTextColor}
+                            color={colors.main}
                         />
                     </Roboto.Body.Large>
                 </View>
@@ -119,29 +117,26 @@ export function CustomInputForm(
                     style={styles.forgotPasswordContainer}
                     onPress={() => handleForgotPassword(Pages.forgotPassword.name)}
                 >
-                    <Roboto.Label.Large labelKey="authentication.forgotPassword" style={styles.forgotPassword}/>
+                    <Roboto.Label.Large labelKey="authentication.forgotPassword" color={colors.main}/>
                 </TouchableOpacity>
             }
         </View>
     );
 }
 
-const stylesG = (colors: ThemeColors) => StyleSheet.create({
+const styles = StyleSheet.create({
     inputContainer: {
         marginHorizontal: CommonSizes.margin.largePlus,
     },
     agreePrivacy: {
         marginTop: CommonSizes.margin.extraLarge
     },
-    agreePrivacyTextColor: {
-        color: colors.main,
-    },
     forgotPasswordContainer: {
         marginTop: CommonSizes.margin.extraLargePlus,
         alignItems: 'center',
         paddingVertical: CommonSizes.margin.smallPlus
     },
-    forgotPassword: {
-        color: colors.main
-    },
+    accept: {
+        paddingRight: CommonSizes.padding.large * 2
+    }
 });

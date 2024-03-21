@@ -69,12 +69,10 @@ export function ToggleDraftButton({advertise, setAdvertise, values}: ITogglwDraf
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     dropdown: {
         width: CommonSizes.image.superLarge,
-        height: CommonSizes.image.superLarge
     },
     containerStyle: {
         width: 185,
         marginLeft: -145,
-        marginBottom: -CommonSizes.margin.extraSmallPlus,
         backgroundColor: colors.surfaceContainer,
         borderRadius: CommonSizes.borderRadius.extraSmall,
         elevation: 3,

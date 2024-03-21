@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {CustomInputForm} from "./CustomInputForm";
-import {Button, StyleSheet, View} from "react-native";
+import {Button, ScrollView, StyleSheet} from "react-native";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {useLazyGetSessionIdLoginQuery} from "~/core/store/auth/authQuery";
@@ -32,7 +32,7 @@ export const Login = () => {
     });
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             <CustomInputForm
                 submitButtonTitle="authentication.loginTab"
                 phoneField
@@ -42,13 +42,13 @@ export const Login = () => {
                 onSubmit={trigger}
             />
             <Button title="Войти" onPress={() => setCanLogin(true)}/>
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: CommonSizes.margin.superLargePlus,
-        ...CommonStyles.flex1
+        paddingTop: CommonSizes.margin.superLargePlus,
+        ...CommonStyles.flex1,
     }
 });

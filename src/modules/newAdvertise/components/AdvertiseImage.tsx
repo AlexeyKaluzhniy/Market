@@ -4,6 +4,7 @@ import {ImageOrVideo} from "react-native-image-crop-picker";
 import DeleteIcon from "../../../../resources/icons/delete_x.svg";
 import {Colors, LightThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
+import {windowHeight, windowWidth} from "~/core/theme/commonConsts";
 
 interface IImageProps {
     images: ImageOrVideo[];
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     image: {
-        width: 170,
-        height: 125,
+        width: windowWidth / 390 * 166.5,
+        height: windowHeight / 792 * 125,
         borderRadius: CommonSizes.borderRadius.extraSmall
     },
     imageContainer: {

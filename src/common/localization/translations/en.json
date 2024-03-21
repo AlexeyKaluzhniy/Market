@@ -255,11 +255,11 @@
     "new_advertise": {
       "title": "Title",
       "description": "Description",
-      "rub": "$",
-      "rub/h": "$/hour",
-      "rub/m": "$/month",
-      "rub/y": "$/year",
-      "rub/once": "$/once"
+      "rub": "rub.",
+      "rub/h": "rub./hour",
+      "rub/m": "rub./month",
+      "rub/y": "rub./year",
+      "rub/once": "rub./once"
     },
     "filter": {
       "from": "From",

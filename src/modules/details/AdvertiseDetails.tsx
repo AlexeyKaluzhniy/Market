@@ -1,5 +1,5 @@
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {ImageURISource, StyleSheet, View} from "react-native";
+import {ImageURISource, ScrollView, StyleSheet, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -65,24 +65,26 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                     isMyAd: props.isMyAd
                 })}
             />
-            <View style={styles.contentContainer}>
-                {props.item.images && <ImagesList images={props.item.images}/>}
-                <View style={[CommonStyles.rowCenter, styles.locationContainer]}>
-                    <Roboto.Body.Medium text={props.item.date} color={colors.onSurface}/>
-                    <Roboto.Body.Medium text={props.item.location} color={colors.onSurface}/>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.contentContainer}>
+                    {props.item.images && <ImagesList images={props.item.images}/>}
+                    <View style={[CommonStyles.rowCenter, styles.locationContainer]}>
+                        <Roboto.Body.Medium text={props.item.date} color={colors.onSurface}/>
+                        <Roboto.Body.Medium text={props.item.location} color={colors.onSurface}/>
+                    </View>
+                    <Roboto.Title.Large text={props.item.title} style={styles.text}/>
+                    <Roboto.Title.Large text={props.item.price} style={styles.text}/>
+                    <Roboto.Body.Small text={"Описание"} style={styles.text}/>
+                    <Roboto.Body.Medium text={props.item.description} style={styles.text}/>
                 </View>
-                <Roboto.Title.Large text={props.item.title} style={styles.text}/>
-                <Roboto.Title.Large text={props.item.price} style={styles.text}/>
-                <Roboto.Body.Small text={"Описание"} style={styles.text}/>
-                <Roboto.Body.Medium text={props.item.description} style={styles.text}/>
-            </View>
-            {!props.isMyAd && <Publisher navigateToUserProfile={() => handlePressRightButton(
-                Pages.profile.name,
-                {
-                    isExternalUserProfile: true,
-                    userData: userData
-                })}
-            />}
+                {!props.isMyAd && <Publisher navigateToUserProfile={() => handlePressRightButton(
+                    Pages.profile.name,
+                    {
+                        isExternalUserProfile: true,
+                        userData: userData
+                    })}
+                />}
+            </ScrollView>
         </View>
     );
 };

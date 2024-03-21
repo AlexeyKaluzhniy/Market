@@ -2,6 +2,7 @@ import {FlatList, Image, StyleSheet, View} from "react-native";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import React, {useMemo} from "react";
 import {ImageResources} from "~/common/ImageResources.g";
+import {windowWidth} from "~/core/theme/commonConsts";
 
 interface IImagesListProps {
     images: ImageResources[];
@@ -9,7 +10,7 @@ interface IImagesListProps {
 
 export function ImagesList({images}: IImagesListProps) {
     const imageStyle = useMemo(() => {
-        return images.length === 1 ? {width: '100%'} : {width: 294};
+        return images.length === 1 ? {width: '100%'} : {width: windowWidth / 390 * 294};
     }, [images.length]);
 
     const containerStyle = useMemo(() => {

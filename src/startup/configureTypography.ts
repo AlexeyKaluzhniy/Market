@@ -84,7 +84,7 @@ export const typographyStyles = {
             fontWeight: "500",
             fontSize: 14,
             lineHeight: 20,
-            letterSpacing: 0.1,
+            letterSpacing: 0.11,
             color: Colors.black,
         } as TextStyle,
         Medium: {
