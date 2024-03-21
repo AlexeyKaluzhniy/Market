@@ -40,7 +40,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         backgroundColor: colors.primaryContainer,
         position: 'absolute',
         padding: CommonSizes.padding.mediumPlus,
-        bottom: 16,
+        bottom: CommonSizes.margin.largePlus,
         right: CommonSizes.margin.largePlus + 1,
         borderRadius: CommonSizes.borderRadius.medium,
         elevation: 2,

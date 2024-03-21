@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {RootState} from "~/core/store/rootReducer";
 
 interface IFilterState {
     cities: string[];
@@ -33,3 +34,16 @@ export const {reducer: FilterReducer, actions} = createSlice({
         },
     }
 });
+
+
+export const selectCities = (state: RootState) => {
+    return state.filter.cities;
+};
+
+export const selectPriceFrom = (state: RootState) => {
+    return state.filter.priceFrom;
+};
+
+export const selectPriceTo = (state: RootState) => {
+    return state.filter.priceTo;
+};

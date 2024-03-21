@@ -3,7 +3,7 @@ import {CheckBoxButton} from "~/components/CheckBoxButton";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useAppSelector} from "~/core/store/store";
 import {useCallback} from "react";
-import {selectCities} from "~/core/store/filter/filterSelectors";
+import {selectCities} from "~/core/store/filter/filterSlice";
 
 export const ModalizeCitiesContainer = () => {
     const cities = ['Тирасполь', 'Бендеры', 'Дубоссары', 'Григориополь', 'Каменка', 'Рыбница', 'Слободзея', 'Днестровск'];

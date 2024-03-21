@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {ImageOrVideo} from "react-native-image-crop-picker";
+import {RootState} from "~/core/store/rootReducer";
 
 interface IDraftsState {
     id: string;
@@ -42,3 +43,7 @@ export const {reducer: DraftsReducer, actions} = createSlice({
         }
     }
 });
+
+export const selectDrafts = (state: RootState) => {
+    return state.drafts;
+};

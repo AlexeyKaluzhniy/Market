@@ -67,7 +67,7 @@ export const Drawer: NavigationFunctionComponent = (props) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.brandContainer}>
-                <BrandIcon height={45} width={45}/>
+                <BrandIcon height={CommonSizes.image.extraLargePlus} width={CommonSizes.image.extraLargePlus}/>
                 <Brand.Large labelKey="drawer.brandTitle" style={styles.brandTitle}/>
             </View>
             <MenuItem Icon={SettingsIcon} title="drawer.settings"

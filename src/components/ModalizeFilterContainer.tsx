@@ -10,10 +10,9 @@ import {NavigationFunctionComponent} from "react-native-navigation";
 import {ModalizeCitiesContainer} from "~/components/ModalizeCitiesContainer";
 import {ModalizeCitiesHeader} from "~/components/ModalizeCititesHeader";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
-import {actions} from "~/core/store/filter/filterSlice";
+import {actions, selectCities, selectPriceFrom, selectPriceTo} from "~/core/store/filter/filterSlice";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {showOverlay} from "~/navigation/helpers/showOverlay";
-import {selectCities, selectPriceFrom, selectPriceTo} from "~/core/store/filter/filterSelectors";
 
 export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
     const {t} = useTranslation();

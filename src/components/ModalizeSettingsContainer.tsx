@@ -7,13 +7,12 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {Selector} from "~/components/Selector";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {languages, languagesNames} from "~/common/localization/localization";
-import {SystemActionsAsync} from "~/core/store/system/systemSlice";
+import {selectAppLanguage, SystemActionsAsync} from "~/core/store/system/systemSlice";
 import {useCallback} from "react";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {LayoutRoot} from "react-native-navigation";
-import {selectAppLanguage} from "~/core/store/system/systemSelectors";
 
 export function ModalizeSettingsContainer(componentId: string) {
     const styles = useThemedStyles(stylesG);

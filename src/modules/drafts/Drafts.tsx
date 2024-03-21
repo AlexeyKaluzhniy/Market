@@ -12,7 +12,7 @@ import {Pages} from "~/navigation/pages";
 import {useTranslation} from "react-i18next";
 import {EmptyScreen} from "~/components/EmptyScreen";
 import {ImageResources} from "~/common/ImageResources.g";
-import {selectDrafts} from "~/core/store/drafts/draftsSelectors";
+import {selectDrafts} from "~/core/store/drafts/draftsSlice";
 
 export const Drafts: NavigationFunctionComponent = (props) => {
     const drafts = useAppSelector(selectDrafts);

@@ -35,11 +35,7 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
         });
     };
 
-    const textStyles = useMemo(() => {
-        return {
-            color: isDisabled ?  colors.onSurface : colors.main
-        };
-    }, [colors.main, colors.onSurface, isDisabled]);
+    const textStyles = useMemo(() => ({color: isDisabled ? colors.onSurface : colors.main}), [colors.main, colors.onSurface, isDisabled]);
 
     const handleSendCode = () => {
         setDisabled(true);

@@ -34,16 +34,16 @@ export function DefaultInput(
     };
 
     const activePlaceholderStyle: TextStyle = {
-        top: -10,
-        left: 12,
-        paddingHorizontal: 3,
+        top: -CommonSizes.margin.smallPlus,
+        left: CommonSizes.margin.medium,
+        paddingHorizontal: CommonSizes.padding.extraSmall,
         color: colors.main
     };
 
     const inactivePlaceholderStyle: TextStyle = {
-        top: 20,
-        left: Icon ? 55 : 20,
-        fontSize: 16,
+        top: CommonSizes.margin.extraLarge,
+        left: Icon ? 55 : CommonSizes.margin.extraLarge,
+        fontSize: CommonSizes.font.medium,
         zIndex: -1,
         color: colors.onSurface
     };
@@ -60,7 +60,8 @@ export function DefaultInput(
 
     return (
         <View style={[styles.inputContainer, isFocused ? styles.activeInput : styles.inactiveInput]}>
-            {Icon && <Icon width={25} height={25} style={styles.icon}/>}
+            {Icon &&
+                <Icon width={CommonSizes.image.largePlus} height={CommonSizes.image.largePlus} style={styles.icon}/>}
             <TextInput
                 onChangeText={text => updateValue(text)}
                 secureTextEntry={isVisible}

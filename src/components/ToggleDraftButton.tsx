@@ -68,8 +68,8 @@ export function ToggleDraftButton({advertise, setAdvertise, values}: ITogglwDraf
 
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     dropdown: {
-        width: 50,
-        height: 50,
+        width: CommonSizes.image.superLarge,
+        height: CommonSizes.image.superLarge
     },
     containerStyle: {
         width: 185,
@@ -80,9 +80,9 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         elevation: 3,
     },
     iconStyle: {
-        width: 50,
-        height: 50,
-        fontSize: 14,
+        width: CommonSizes.image.superLarge,
+        height: CommonSizes.image.superLarge,
+        fontSize: CommonSizes.font.small + 1,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'flex-end',
@@ -90,7 +90,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         marginLeft: CommonSizes.margin.smallPlus
     },
     textStyle: {
-        fontSize: 14,
+        fontSize: CommonSizes.font.small + 1,
         color: colors.onSurface,
         marginLeft: -CommonSizes.margin.extraSmallPlus
     }

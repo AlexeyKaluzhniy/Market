@@ -18,7 +18,7 @@ export function EmptyScreen({image, title, text}: IEmptyScreenProps) {
 
     return (
         <View style={styles.emptyContainer}>
-            <Image source={image} style={styles.heartImage}/>
+            <Image source={image} style={styles.image}/>
             <Roboto.Title.Large labelKey={title} style={styles.title}/>
             <Roboto.Body.Medium labelKey={text} style={styles.text}/>
         </View>
@@ -32,7 +32,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         alignItems: 'center',
         ...CommonStyles.flex1,
     },
-    heartImage: {
+    image: {
         marginTop: -CommonSizes.margin.superLarge,
         tintColor: colors.outlineVariant
     },

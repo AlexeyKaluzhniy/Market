@@ -9,7 +9,7 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {LayoutRoot} from "react-native-navigation";
 import {useAppSelector} from "~/core/store/store";
-import {selectAppTheme} from "~/core/store/system/systemSelectors";
+import {selectAppTheme} from "~/core/store/system/systemSlice";
 
 export const Login = () => {
     const [trigger, {data}] = useLazyGetSessionIdLoginQuery();

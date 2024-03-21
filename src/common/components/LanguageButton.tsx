@@ -2,10 +2,9 @@ import {StyleSheet, TouchableOpacity, View} from "react-native";
 import LanguageIcon from "../../../resources/icons/language.svg";
 import React from "react";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
-import {SystemActionsAsync} from "~/core/store/system/systemSlice";
+import {selectAppLanguage, SystemActionsAsync} from "~/core/store/system/systemSlice";
 import {languages} from "../localization/localization";
 import {useThemeColors} from "~/core/theme/hooks";
-import {selectAppLanguage} from "~/core/store/system/systemSelectors";
 
 export function LanguageButton() {
     const colors = useThemeColors();

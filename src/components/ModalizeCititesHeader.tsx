@@ -54,7 +54,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         color: colors.main
     },
     icon: {
-        width: 15,
-        height: 15
+        width: CommonSizes.image.mediumPlus,
+        height: CommonSizes.image.mediumPlus
     }
 });

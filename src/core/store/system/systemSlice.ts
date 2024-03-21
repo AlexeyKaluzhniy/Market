@@ -4,6 +4,7 @@ import {REHYDRATE} from "redux-persist/es/constants";
 import {RehydrateAppAction} from "../../../types";
 import {newState} from "../../../common/utils/newState";
 import {Languages, setLanguage} from "../../../common/localization/localization";
+import {RootState} from "~/core/store/rootReducer";
 
 function rehydrate(state: SystemState, rehydrateParams: RehydrateAppAction) {
     return newState(rehydrateParams.payload?.system || state, {isOnboardingVisited: rehydrateParams.payload != null});
@@ -46,3 +47,12 @@ export const {reducer: SystemReducer, actions: SystemActions} = createSlice({
         });
     },
 });
+
+export const selectAppTheme = (state: RootState) => {
+    return state.system.appTheme;
+};
+
+export const selectAppLanguage = (state: RootState) => {
+    return state.system.language;
+};
+

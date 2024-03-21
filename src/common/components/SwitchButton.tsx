@@ -3,13 +3,12 @@ import {DarkThemeColors, LightThemeColors, ThemeColors} from "~/core/theme/color
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemedStyles} from "~/core/theme/hooks";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
-import {SystemActions} from "~/core/store/system/systemSlice";
+import {selectAppTheme, SystemActions} from "~/core/store/system/systemSlice";
 import {setDefaultOptions} from "~/navigation/defaultOptions";
 import {useCallback, useState} from "react";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {navigation} from "~/services";
 import {LayoutRoot} from "react-native-navigation";
-import {selectAppTheme} from "~/core/store/system/systemSelectors";
 
 export function SwitchButton({componentId}: { componentId: string }) {
     const styles = useThemedStyles(stylesG);

@@ -25,15 +25,15 @@ export function CustomCheckBox({isChecked, setChecked}: ICheckBoxProps) {
             style={[styles.checkBoxContainer, checkBoxColor]}
             onPress={() => setChecked(!isChecked)}
         >
-            {isChecked && <ConfirmIcon width={12} height={12}/>}
+            {isChecked && <ConfirmIcon width={CommonSizes.image.smallPlus} height={CommonSizes.image.smallPlus}/>}
         </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     checkBoxContainer: {
-        width: 18,
-        height: 18,
+        width: CommonSizes.image.large,
+        height: CommonSizes.image.large,
         borderRadius: CommonSizes.borderRadius.extraSmall,
         marginRight: CommonSizes.margin.extraLarge,
         marginLeft: CommonSizes.margin.extraSmallPlus,
