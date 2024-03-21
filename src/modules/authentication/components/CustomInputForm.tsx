@@ -33,8 +33,12 @@ export function CustomInputForm(
     const {
         setValue,
         getValues,
-        handleSubmit
-    } = useForm({resolver: yupResolver(schema)});
+        handleSubmit,
+        formState: {isValid}
+    } = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onChange',
+    });
 
     const onButtonPress = handleSubmit(() => {
         const data = getValues();
@@ -110,7 +114,7 @@ export function CustomInputForm(
                     </Roboto.Body.Large>
                 </View>
             }
-            <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle}/>
+            <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle} disabled={!isValid}/>
             {
                 isLogin &&
                 <TouchableOpacity

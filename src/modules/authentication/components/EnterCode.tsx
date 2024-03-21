@@ -108,7 +108,7 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                         );
                     })}
                 </View>
-                <SubmitButton submitButtonTitle="authentication.confirm" onSubmit={onSubmit}/>
+                <SubmitButton submitButtonTitle="authentication.confirm" onSubmit={onSubmit} disabled={false}/>
                 <TouchableOpacity
                     style={styles.resendCode}
                     disabled={isDisabled}

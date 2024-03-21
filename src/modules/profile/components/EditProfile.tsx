@@ -45,12 +45,12 @@ export const EditProfile: NavigationFunctionComponent = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <DefaultInput name={"name"} placeholder={t("editProfile.name")} setValue={() => console.log(1)}/>
+                    <DefaultInput name={"name"} placeholder={t("editProfile.name")} setValue={() => null}/>
                     <DefaultInput name={"lastName"} placeholder={t("editProfile.surname")}
-                                  setValue={() => console.log(1)}/>
-                    <DefaultInput name={"email"} placeholder={t("editProfile.email")} setValue={() => console.log(1)}/>
+                                  setValue={() => null}/>
+                    <DefaultInput name={"email"} placeholder={t("editProfile.email")} setValue={() => null}/>
                     <DefaultInput name={"phone"} placeholder={t("authentication.phoneNumber")}
-                                  setValue={() => console.log(1)} numberInput/>
+                                  setValue={() => null} numberInput/>
                 </View>
             </View>
         </View>

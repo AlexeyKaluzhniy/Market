@@ -1,37 +1,42 @@
 import {StyleSheet, TouchableOpacity} from "react-native";
-import React from "react";
-import {ThemeColors} from "~/core/theme/colors";
+import React, {useMemo} from "react";
 import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {TFuncKeyApp} from "~/common/localization/localization";
-import {useThemedStyles} from "~/core/theme/hooks";
+import {useThemeColors} from "~/core/theme/hooks";
 
 interface IProps {
     submitButtonTitle: TFuncKeyApp;
     onSubmit: () => void;
+    disabled: boolean;
 }
 
-export function SubmitButton({submitButtonTitle, onSubmit}: IProps) {
-    const styles = useThemedStyles(stylesG);
+export function SubmitButton({submitButtonTitle, onSubmit, disabled}: IProps) {
+    const colors = useThemeColors();
 
-    return (<TouchableOpacity
-        style={styles.submitButtonActive}
-        onPress={onSubmit}
-        activeOpacity={0.7}
-    >
-        <Roboto.Label.Large style={styles.submitButtonText} labelKey={submitButtonTitle}/>
-    </TouchableOpacity>);
+    const buttonStyle = useMemo(() => ({backgroundColor: disabled ? colors.outline : colors.main}),
+        [colors.main, colors.outline, disabled]);
+
+    const textColor = useMemo(() => disabled ? colors.outlineVariant : colors.onPrimary,
+        [colors.onPrimary, colors.outlineVariant, disabled]);
+
+    return (
+        <TouchableOpacity
+            style={[styles.submitButton, buttonStyle]}
+            onPress={onSubmit}
+            activeOpacity={0.7}
+            disabled={disabled}
+        >
+            <Roboto.Label.Large color={textColor} labelKey={submitButtonTitle}/>
+        </TouchableOpacity>
+    );
 }
 
-const stylesG = (colors: ThemeColors) => StyleSheet.create({
-    submitButtonActive: {
+const styles = StyleSheet.create({
+    submitButton: {
         alignItems: 'center',
         paddingVertical: CommonSizes.padding.largePlus,
-        backgroundColor: colors.main,
         borderRadius: CommonSizes.borderRadius.extraLargePlus,
         marginTop: CommonSizes.margin.extraLarge,
-    },
-    submitButtonText: {
-        color: colors.onPrimary,
     },
 });
