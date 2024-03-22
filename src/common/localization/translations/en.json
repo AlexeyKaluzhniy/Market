@@ -287,6 +287,9 @@
       "delete": "Delete draft",
       "reset": "Clear",
       "untitled": "Untitled"
+    },
+    "errorNotifications": {
+      "incorrectPriceFilter": "The starting price must be less than the final price"
     }
   }
 }

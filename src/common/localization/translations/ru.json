@@ -287,6 +287,9 @@
       "delete": "Удалить черновик",
       "reset": "Очистить",
       "untitled": "Без названия"
+    },
+    "errorNotifications": {
+      "incorrectPriceFilter": "Начальная цена должна быть меньше чем конечная"
     }
   }
 }
