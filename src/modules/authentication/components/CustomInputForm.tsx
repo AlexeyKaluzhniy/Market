@@ -114,7 +114,7 @@ export function CustomInputForm(
                     </Roboto.Body.Large>
                 </View>
             }
-            <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle} disabled={!isValid}/>
+            <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle} disabled={!isValid || (!!isRegister && !toggleCheckBox)}/>
             {
                 isLogin &&
                 <TouchableOpacity
