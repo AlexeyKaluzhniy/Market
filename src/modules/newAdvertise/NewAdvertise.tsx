@@ -82,14 +82,16 @@ export const NewAdvertise: NavigationFunctionComponent<INewAdvertiseProps> = (pr
 
     const confirmEditingAd = () => {
         if (props.isMyAd) {
-            console.log("Confirm editing my advertise");
+            //todo add logic when backend will work
+            return;
         } else {
             dispatch(actions.updateDraft({...advertiseDetails, id: props.advertise.id}));
         }
     };
 
     const confirmPublishAd = () => {
-        console.log('Published');
+        //todo add logic when backend will work
+        return;
     };
 
     return (

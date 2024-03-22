@@ -26,7 +26,8 @@ export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => 
                     passwordField
                     repeatPasswordField
                     schema={schema}
-                    onSubmit={() => console.log('submit new password')}
+                    //todo add logic when backend will work
+                    onSubmit={() => null}
                 />
             </View>
         </View>

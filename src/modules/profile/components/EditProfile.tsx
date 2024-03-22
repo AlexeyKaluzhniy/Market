@@ -45,6 +45,7 @@ export const EditProfile: NavigationFunctionComponent = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View>
+                    {/*todo change setValue return null when backend will work*/}
                     <DefaultInput name={"name"} placeholder={t("editProfile.name")} setValue={() => null}/>
                     <DefaultInput name={"lastName"} placeholder={t("editProfile.surname")}
                                   setValue={() => null}/>
