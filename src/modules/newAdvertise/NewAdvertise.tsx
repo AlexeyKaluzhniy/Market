@@ -46,9 +46,13 @@ export const NewAdvertise: NavigationFunctionComponent<INewAdvertiseProps> = (pr
     const colors = useThemeColors();
     const [advertiseDetails, setAdvertiseDetails] = useState<IAdvertise>(props.advertise || emptyDraft);
 
-    const draftValues = [
+    const editDraftDropDownValues = [
         {value: t("drafts.reset")},
         {value: props.advertise ? t("drafts.delete") : t("drafts.save")}
+    ];
+
+    const editAdDropDownValues = [
+        {value: t("drafts.reset")}
     ];
 
     const cities = [
@@ -159,7 +163,7 @@ export const NewAdvertise: NavigationFunctionComponent<INewAdvertiseProps> = (pr
                         <ToggleDraftButton
                             advertise={advertiseDetails}
                             setAdvertise={setAdvertiseDetails}
-                            values={draftValues}/>
+                            values={props.isMyAd ? editAdDropDownValues : editDraftDropDownValues}/>
                     </SafeAreaView>
                 </View>
             </TouchableWithoutFeedback>

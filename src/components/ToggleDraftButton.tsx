@@ -56,6 +56,7 @@ export function ToggleDraftButton({advertise, setAdvertise, values}: ITogglwDraf
             containerStyle={styles.containerStyle}
             iconStyle={styles.iconStyle}
             itemTextStyle={styles.textStyle}
+            itemContainerStyle={styles.itemContainerStyle}
             activeColor={colors.surfaceContainer}
             data={values}
             labelField="value"
@@ -91,5 +92,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         fontSize: CommonSizes.font.small + 1,
         color: colors.onSurface,
         marginLeft: -CommonSizes.margin.extraSmallPlus
+    },
+    itemContainerStyle: {
+        marginVertical: -CommonSizes.margin.extraSmallPlus,
     }
 });
