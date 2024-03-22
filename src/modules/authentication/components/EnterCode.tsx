@@ -35,7 +35,12 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
         });
     };
 
-    const textStyles = useMemo(() => ({color: isDisabled ? colors.onSurface : colors.main}), [colors.main, colors.onSurface, isDisabled]);
+    const textStyles = useMemo(() => ({color: isDisabled ? colors.onSurface : colors.main}),
+        [colors.main, colors.onSurface, isDisabled]);
+
+    const inputStyle = useMemo(() => {
+        return (index: number) => isFocused[index] ? styles.activeInput : styles.inactiveInput;
+    }, [isFocused, styles.activeInput, styles.inactiveInput]);
 
     const handleSendCode = () => {
         setDisabled(true);
@@ -102,7 +107,7 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                                 onFocus={() => handleFocus(index, true)}
                                 onBlur={() => handleFocus(index, false)}
                                 onKeyPress={({nativeEvent}) => handleBackspaceInput(nativeEvent, index)}
-                                style={[styles.input, isFocused[index] ? styles.activeInput : styles.inactiveInput]}
+                                style={[styles.input, inputStyle(index)]}
                                 selectionColor={colors.main}
                             />
                         );
