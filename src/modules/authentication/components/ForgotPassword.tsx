@@ -1,5 +1,5 @@
 import {StyleSheet, View} from "react-native";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {CustomHeader} from "~/components/CustomHeader";
@@ -10,26 +10,35 @@ import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {ThemeColors} from "~/core/theme/colors";
 import {useThemedStyles} from "~/core/theme/hooks";
+import {useLazySendOtpCodeQuery} from "~/core/store/auth/authQuery";
 
 export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element => {
     const styles = useThemedStyles(stylesG);
+    const [phone, setPhone] = useState('');
+    const [sendOtpCode] = useLazySendOtpCodeQuery();
 
     const schema = object({
-        email: string().required().matches(/^\+373\d{8}$/),
+        phone: string().required().matches(/^\d{11}$/),
     });
 
-    const onSubmit = () => {
-        Navigation.push(Pages.auth.id, {
-            component: {
-                name: Pages.code.name,
-                options: {
-                    topBar: {
-                        visible: false
+    useEffect(() => {
+        if (phone) {
+            Navigation.push(Pages.auth.id, {
+                component: {
+                    name: Pages.code.name,
+                    options: {
+                        topBar: {
+                            visible: false
+                        },
                     },
-                },
-            }
-        });
-    };
+                    passProps: {
+                        phoneNumber: phone
+                    }
+                }
+            });
+        }
+    }, [phone]);
+
 
     return (
         <View style={CommonStyles.flex1}>
@@ -40,7 +49,7 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
                     submitButtonTitle='authentication.sendSms'
                     phoneField
                     schema={schema}
-                    onSubmit={onSubmit}
+                    onSubmit={setPhone}
                 />
             </View>
         </View>

@@ -44,7 +44,11 @@ export function CustomInputForm(
         const data = getValues();
         if (isRegister) {
             if (data.hasOwnProperty('repeatPassword')) {
-                onSubmit({email: getValues('email'), password: getValues('password')});
+                onSubmit({
+                    phone: getValues('phone'),
+                    password: getValues('password'),
+                    isConditionUsageAndConfidentialPoliticsAgree: toggleCheckBox
+                });
 
                 return;
             }
@@ -74,7 +78,7 @@ export function CustomInputForm(
             {phoneField &&
                 <DefaultInput
                     placeholder={t("authentication.phoneNumber")}
-                    name="email"
+                    name="phone"
                     passwordInput={false}
                     Icon={PhoneIcon}
                     setValue={setValue}
@@ -114,7 +118,8 @@ export function CustomInputForm(
                     </Roboto.Body.Large>
                 </View>
             }
-            <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle} disabled={!isValid || (!!isRegister && !toggleCheckBox)}/>
+            <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle}
+                          disabled={!isValid || (!!isRegister && !toggleCheckBox)}/>
             {
                 isLogin &&
                 <TouchableOpacity

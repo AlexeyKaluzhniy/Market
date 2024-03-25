@@ -1,4 +1,4 @@
-import React, {useMemo, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import {
     StyleSheet,
     Text,
@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
-import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
+import {Navigation, NavigationComponentProps, NavigationFunctionComponent} from "react-native-navigation";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {ThemeColors} from "~/core/theme/colors";
@@ -17,12 +17,21 @@ import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {isAndroid, isIos} from "~/core/theme/commonConsts";
+import {useLazyCheckOtpCodeQuery} from "~/core/store/auth/authQuery";
 
-export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
+interface IProps extends NavigationComponentProps {
+    phoneNumber: {
+        phone: string;
+    };
+}
+
+export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Element => {
+    const [checkOtp, {isSuccess}] = useLazyCheckOtpCodeQuery();
     const inputRefs = useRef<TextInput[]>([]);
     const [isDisabled, setDisabled] = useState(false);
     const [remainingTime, setRemainingTime] = useState(30);
     const [isFocused, setFocused] = useState<boolean[]>(Array(inputRefs.current.length).fill(false));
+    const [code, setCode] = useState<string[]>(['', '', '', '']);
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
 
@@ -35,8 +44,8 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
         });
     };
 
-    const textStyles = useMemo(() => ({color: isDisabled ? colors.onSurface : colors.main}),
-        [colors.main, colors.onSurface, isDisabled]);
+    const textStyles = useMemo(() => ({color: code.includes('') ? colors.onSurface : colors.main}),
+        [code, colors.main, colors.onSurface]);
 
     const inputStyle = useMemo(() => {
         return (index: number) => isFocused[index] ? styles.activeInput : styles.inactiveInput;
@@ -56,12 +65,19 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
         }, 1000);
     };
 
+    const onChangeInputText = (text: string, index: number) => {
+        const newCode = [...code];
+        newCode[index] = text;
+        setCode(newCode);
+    };
+
     const handleChangeCode = (index: number, text: string) => {
         if (text.length !== 0 && index !== 3) {
             inputRefs.current[index + 1].focus();
         } else if (text.length == 0 && index !== 0) {
             inputRefs.current[index - 1].focus();
         }
+        onChangeInputText(text, index);
     };
 
     const handleBackspaceInput = (nativeEvent: TextInputKeyPressEventData, index: number) => {
@@ -70,8 +86,8 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
         }
     };
 
-    const onSubmit = () => {
-        Navigation.push(Pages.auth.id, {
+    useEffect(() => {
+        isSuccess && Navigation.push(Pages.auth.id, {
             component: {
                 name: Pages.newPassword.name,
                 options: {
@@ -81,13 +97,25 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                 },
             }
         });
+    }, [isSuccess]);
+
+    const onSubmit = () => {
+        checkOtp({
+            phoneNumber: props.phoneNumber.phone,
+            otpCodeReason: 'ResetPassword',
+            otpProviderType: 'Sms',
+            otpCode: code.join('')
+        });
     };
 
     return (
         <View>
             <CustomHeader headerTitle="authentication.enterCode" id={props.componentId} isAuth isStack/>
             <View style={[styles.container, CommonStyles.marginContainer]}>
-                <Roboto.Body.Medium labelKey="authentication.enterCodeText" color={colors.onSurface}/>
+                <View style={CommonStyles.rowCenter}>
+                    <Roboto.Body.Medium labelKey="authentication.enterCodeText" color={colors.onSurface}/>
+                    <Roboto.Body.Medium text={props.phoneNumber.phone} color={colors.onSurface}/>
+                </View>
                 <View style={[CommonStyles.row, styles.inputContainer]}>
                     {[...new Array(4)].map((value, index) => {
                         return (
@@ -113,7 +141,8 @@ export const EnterCode: NavigationFunctionComponent = (props): JSX.Element => {
                         );
                     })}
                 </View>
-                <SubmitButton submitButtonTitle="authentication.confirm" onSubmit={onSubmit} disabled={false}/>
+                <SubmitButton submitButtonTitle="authentication.confirm" onSubmit={onSubmit}
+                              disabled={code.includes('')}/>
                 <TouchableOpacity
                     style={styles.resendCode}
                     disabled={isDisabled}

@@ -74,7 +74,7 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                     </View>
                     <Roboto.Title.Large text={props.item.title} style={styles.text}/>
                     <Roboto.Title.Large text={props.item.price} style={styles.text}/>
-                    <Roboto.Body.Small text={"Описание"} style={styles.text}/>
+                    <Roboto.Body.Small labelKey={"new_advertise.description"} style={styles.text}/>
                     <Roboto.Body.Medium text={props.item.description} style={styles.text}/>
                 </View>
                 {!props.isMyAd && <Publisher navigateToUserProfile={() => handlePressRightButton(

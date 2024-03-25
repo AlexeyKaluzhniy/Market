@@ -2,13 +2,14 @@ import {ObjectSchema} from "yup";
 import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface AuthSchema {
-    email: string;
+    phone: string;
     password: string;
     repeatPassword?: string;
+    isConditionUsageAndConfidentialPoliticsAgree?: boolean;
 }
 
 interface ForgotPasswordSchema {
-    email: string;
+    phone: string;
 }
 
 interface NewPasswordSchema {
