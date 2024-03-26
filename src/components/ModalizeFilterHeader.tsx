@@ -7,32 +7,28 @@ import {useThemedStyles} from "~/core/theme/hooks";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {useAppSelector} from "~/core/store/store";
 import {selectPriceFrom, selectPriceTo} from "~/core/store/filter/filterSlice";
-import {useState} from "react";
-import {ErrorNotification} from "~/components/ErrorNotification";
+import {showToast} from "~/services/navigationService/showToast";
+import {useTranslation} from "react-i18next";
 
 export const ModalizeFilterHeader: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
     const [priceFrom, priceTo] = useAppSelector(state => [selectPriceFrom(state), selectPriceTo(state)]);
-    const [showError, setShowError] = useState(false);
+    const {t} = useTranslation();
 
     const closeOverlay = () => {
-        if (Number(priceFrom) < Number(priceTo)) {
+        if (Number(priceFrom) <= Number(priceTo)) {
             Navigation.dismissAllOverlays();
         } else {
-            setShowError(true);
-            setTimeout(() => {
-                setShowError(false);
-            }, 3000);
+            showToast({text: t("errorNotifications.incorrectPriceFilter"), location: 'modal'});
         }
     };
 
     return (
         <View style={[CommonStyles.rowCenter, styles.container]}>
             <Roboto.Title.Large labelKey={"common.filters"} style={styles.text}/>
-            <TouchableOpacity onPress={closeOverlay} disabled={showError}>
+            <TouchableOpacity onPress={closeOverlay}>
                 <Roboto.Label.Large labelKey={"common.confirm"} style={styles.confirmText}/>
             </TouchableOpacity>
-            {showError && <ErrorNotification text={"errorNotifications.incorrectPriceFilter"}/>}
         </View>
     );
 };

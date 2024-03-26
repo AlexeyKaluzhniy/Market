@@ -24,6 +24,8 @@ interface IThemeColors {
     winline1: string;
     winline2: string;
     redShade: string;
+    errorContainer: string;
+    onErrorContainer: string;
     linealBg: { color: string; position: number; opacity: number }[];
     personalAreaHeader: { color: string; position: number; opacity: number }[];
     MVPFade: { color: string; position: number; opacity: number }[];
@@ -57,6 +59,8 @@ export const LightThemeColors: IThemeColors = {
     winline1: "#ff6a13",
     winline2: "#a0a5ac",
     redShade: "#f9eaea",
+    errorContainer: "#FFDAD6",
+    onErrorContainer: "#410002",
     linealBg: [
         {color: "#0d1116", position: 0, opacity: 0.2},
         {color: "#0d1116", position: 0.25, opacity: 0},
@@ -102,6 +106,8 @@ export const DarkThemeColors: IThemeColors = {
     winline1: "#ff6a13",
     winline2: "#5c6168",
     redShade: "#f9eaea00",
+    errorContainer: "#93000A",
+    onErrorContainer: "#FFDAD6",
     linealBg: [
         {color: "#0d1116", position: 0, opacity: 0.2},
         {color: "#0d1116", position: 0.25, opacity: 0},

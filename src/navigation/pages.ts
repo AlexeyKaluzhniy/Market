@@ -70,5 +70,9 @@ export const Pages = {
     drafts: {
         id: "DRAFTS_SCREEN",
         name: "DraftsScreen"
+    },
+    toast: {
+        id: "TOAST_SCREEN",
+        name: "ToastScreen"
     }
 };

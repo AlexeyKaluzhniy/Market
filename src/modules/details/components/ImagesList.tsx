@@ -26,7 +26,6 @@ export function ImagesList({images}: IImagesListProps) {
                     inactiveSlideScale={0.9}
                     inactiveSlideOpacity={1}
                 /> : <Image source={images[0]} style={styles.image}/>}
-
         </View>
     );
 }
