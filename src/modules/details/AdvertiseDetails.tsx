@@ -9,7 +9,7 @@ import {ThemeColors} from "~/core/theme/colors";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {Pages} from "~/navigation/pages";
 import {Publisher} from "~/modules/details/components/Publisher";
-import {ImagesList} from "~/modules/details/components/ImagesList";
+import {ImagesSlider} from "~/modules/details/components/ImagesSlider";
 
 interface IProps {
     item: {
@@ -67,7 +67,7 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
             />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.contentContainer}>
-                    {props.item.images && <ImagesList images={props.item.images}/>}
+                    {props.item.images && <ImagesSlider images={props.item.images}/>}
                     <View style={[CommonStyles.rowCenter, styles.locationContainer]}>
                         <Roboto.Body.Medium text={props.item.date} color={colors.onSurface}/>
                         <Roboto.Body.Medium text={props.item.location} color={colors.onSurface}/>
