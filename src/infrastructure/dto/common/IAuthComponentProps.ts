@@ -1,5 +1,6 @@
 import {ObjectSchema} from "yup";
 import {TFuncKeyApp} from "~/common/localization/localization";
+import {ILogin, IRegister} from "~/core/store/auth/authModels";
 
 interface AuthSchema {
     phoneNumber: string;
@@ -25,6 +26,5 @@ export interface IAuthComponentProps {
     repeatPasswordField?: boolean;
     isRegister?: boolean;
     schema: ObjectSchema<AuthSchema | ForgotPasswordSchema | NewPasswordSchema>;
-    //todo fix type
-    onSubmit: (arg: any) => void;
+    onSubmit: (arg: IRegister | ILogin | NewPasswordSchema | ForgotPasswordSchema) => void;
 }

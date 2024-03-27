@@ -11,14 +11,15 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {ThemeColors} from "~/core/theme/colors";
 import {useThemedStyles} from "~/core/theme/hooks";
 import {useLazySendOtpCodeQuery} from "~/core/store/auth/authQuery";
+import {ISendOtp} from "~/core/store/auth/authModels";
 
 export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element => {
     const styles = useThemedStyles(stylesG);
     const [phone, setPhone] = useState('');
-    const [sendOtpCode] = useLazySendOtpCodeQuery();
+    const [sendOtpCodeTrigger] = useLazySendOtpCodeQuery();
 
     const schema = object({
-        phone: string().required().matches(/^\d{11}$/),
+        phoneNumber: string().required().matches(/^\d{11}$/),
     });
 
     useEffect(() => {
@@ -39,6 +40,11 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
         }
     }, [phone]);
 
+    const handleSendOtpCode = (arg: ISendOtp) => {
+        console.log(arg);
+        setPhone(arg.phoneNumber);
+        sendOtpCodeTrigger({...arg, otpCodeReason: "ResetPassword"});
+    };
 
     return (
         <View style={CommonStyles.flex1}>
@@ -49,7 +55,7 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
                     submitButtonTitle='authentication.sendSms'
                     phoneField
                     schema={schema}
-                    onSubmit={setPhone}
+                    onSubmit={(arg) => handleSendOtpCode(arg as ISendOtp)}
                 />
             </View>
         </View>

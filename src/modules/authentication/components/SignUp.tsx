@@ -9,9 +9,10 @@ import {useLazyGetSessionIdRegisterQuery} from "~/core/store/auth/authQuery";
 import {LayoutRoot} from "react-native-navigation";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {windowHeight} from "~/core/theme/commonConsts";
+import {IRegister} from "~/core/store/auth/authModels";
 
 export const SignUp = () => {
-    const [trigger, {data}] = useLazyGetSessionIdRegisterQuery();
+    const [registerTrigger, {data}] = useLazyGetSessionIdRegisterQuery();
 
     //todo fix navigation types
     useEffect(() => {
@@ -21,10 +22,14 @@ export const SignUp = () => {
     }, [data]);
 
     const schema = object({
-        phone: string().required().matches(/^\d{11}$/),
+        phoneNumber: string().required().matches(/^\d{11}$/),
         password: string().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-=_+|{}\[\]:;"'<>?,./]).{8,20}$/).required(),
         repeatPassword: string().oneOf([ref("password")]).required()
     });
+
+    const handleRegister = (arg: IRegister) => {
+        registerTrigger(arg);
+    };
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -35,7 +40,7 @@ export const SignUp = () => {
                 repeatPasswordField
                 isRegister
                 schema={schema}
-                onSubmit={trigger}
+                onSubmit={(arg) => handleRegister(arg as IRegister)}
             />
         </ScrollView>
     );

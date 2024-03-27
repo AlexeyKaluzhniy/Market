@@ -52,11 +52,11 @@ export const authorizationApi = createApi({
             },
         }),
         checkOtpCode: builder.query<string, ICheckOtp>({
-            query({phoneNumber, otpCode, otpCodeReason, otpProviderType}) {
+            query({phoneNumber, otpCode, otpCodeReason}) {
                 const queryString = new URLSearchParams({
                     phone: phoneNumber,
                     otpCodeReason: otpCodeReason,
-                    otpProviderType: otpProviderType,
+                    otpProviderType: "Sms",
                     otpCode: otpCode
                 }).toString();
 

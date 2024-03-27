@@ -10,9 +10,10 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {LayoutRoot} from "react-native-navigation";
 import {useAppSelector} from "~/core/store/store";
 import {selectAppTheme} from "~/core/store/system/systemSlice";
+import {ILogin} from "~/core/store/auth/authModels";
 
 export const Login = () => {
-    const [trigger, {data}] = useLazyGetSessionIdLoginQuery();
+    const [loginTrigger, {data}] = useLazyGetSessionIdLoginQuery();
     const appTheme = useAppSelector(selectAppTheme);
     const [canLogin, setCanLogin] = useState(false);
 
@@ -31,6 +32,10 @@ export const Login = () => {
         password: string().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-=_+|{}\[\]:;"'<>?,./]).{8,20}$/).required(),
     });
 
+    const handleLogin = (arg: ILogin) => {
+        loginTrigger(arg);
+    };
+
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             <CustomInputForm
@@ -39,7 +44,7 @@ export const Login = () => {
                 passwordField
                 isLogin
                 schema={schema}
-                onSubmit={trigger}
+                onSubmit={(arg) => handleLogin(arg as ILogin)}
             />
             <Button title="Войти" onPress={() => setCanLogin(true)}/>
         </ScrollView>

@@ -45,7 +45,7 @@ export function CustomInputForm(
         if (isRegister) {
             if (data.hasOwnProperty('repeatPassword')) {
                 onSubmit({
-                    phoneNumber: getValues('phone'),
+                    phoneNumber: getValues('phoneNumber'),
                     password: getValues('password'),
                     isConditionUsageAndConfidentialPoliticsAgree: toggleCheckBox
                 });
@@ -78,7 +78,7 @@ export function CustomInputForm(
             {phoneField &&
                 <DefaultInput
                     placeholder={t("authentication.phoneNumber")}
-                    name="phone"
+                    name="phoneNumber"
                     passwordInput={false}
                     Icon={PhoneIcon}
                     setValue={setValue}

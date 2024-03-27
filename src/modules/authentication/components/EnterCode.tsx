@@ -20,13 +20,11 @@ import {isAndroid, isIos} from "~/core/theme/commonConsts";
 import {useLazyCheckOtpCodeQuery} from "~/core/store/auth/authQuery";
 
 interface IProps extends NavigationComponentProps {
-    phoneNumber: {
-        phone: string;
-    };
+    phoneNumber: string;
 }
 
 export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Element => {
-    const [checkOtp, {isSuccess}] = useLazyCheckOtpCodeQuery();
+    const [checkOtpTrigger, {isSuccess}] = useLazyCheckOtpCodeQuery();
     const inputRefs = useRef<TextInput[]>([]);
     const [isDisabled, setDisabled] = useState(false);
     const [remainingTime, setRemainingTime] = useState(30);
@@ -100,10 +98,9 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
     }, [isSuccess]);
 
     const onSubmit = () => {
-        checkOtp({
-            phoneNumber: props.phoneNumber.phone,
+        checkOtpTrigger({
+            phoneNumber: props.phoneNumber,
             otpCodeReason: 'ResetPassword',
-            otpProviderType: 'Sms',
             otpCode: code.join('')
         });
     };
@@ -114,7 +111,7 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
             <View style={[styles.container, CommonStyles.marginContainer]}>
                 <View style={CommonStyles.rowCenter}>
                     <Roboto.Body.Medium labelKey="authentication.enterCodeText" color={colors.onSurface}/>
-                    <Roboto.Body.Medium text={props.phoneNumber.phone} color={colors.onSurface}/>
+                    <Roboto.Body.Medium text={props.phoneNumber} color={colors.onSurface}/>
                 </View>
                 <View style={[CommonStyles.row, styles.inputContainer]}>
                     {[...new Array(4)].map((value, index) => {
