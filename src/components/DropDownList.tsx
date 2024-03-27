@@ -6,6 +6,7 @@ import DropDownListIcon from "../../resources/icons/drop_down.svg";
 import {Dropdown} from "react-native-element-dropdown";
 import {DropDownItem} from "~/components/DropDownItem";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {windowWidth} from "~/core/theme/commonConsts";
 
 interface IDropDownList {
     values: { value: string }[];
@@ -48,15 +49,15 @@ export function DropDownList({values, onRightSide, setDropDownValue, valueShow}:
 
 const stylesG = (colors: ThemeColors) => StyleSheet.create({
     container: {
-        width: 200,
-        maxHeight: 264,
+        width: windowWidth / 390 * 200,
+        height: 264,
         backgroundColor: colors.surfaceContainer,
         borderRadius: CommonSizes.borderRadius.extraSmall,
         elevation: 3,
         paddingVertical: CommonSizes.padding.extraSmallPlus,
     },
     selectedText: {
-        fontSize: 14,
+        fontSize: CommonSizes.font.smallPlus - 1,
         color: colors.onSurface
     },
     dropdown: {

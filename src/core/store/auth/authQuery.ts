@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {ICheckOtp, IRegister, ISendOtp} from "~/core/store/auth/authModels";
+import {ICheckOtp, ILogin, IRegister, ISendOtp} from "~/core/store/auth/authModels";
 
 export const authorizationApi = createApi({
     reducerPath: 'authorization',
@@ -9,7 +9,7 @@ export const authorizationApi = createApi({
             baseUrl: `https://mobile.prox3.dex-it.ru/profile/v1/`,
         }),
     endpoints: (builder) => ({
-        getSessionIdLogin: builder.query<string, { email: string; password: string }>({
+        getSessionIdLogin: builder.query<string, ILogin>({
             query: (args) => {
                 return {
                     url: 'Register/RegisterUser',

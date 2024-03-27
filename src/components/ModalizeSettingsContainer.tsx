@@ -59,7 +59,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         marginHorizontal: CommonSizes.padding.large,
     },
     outline: {
-        height: 1,
+        height: CommonSizes.borderWidth.extraThin,
         backgroundColor: colors.outline,
         marginVertical: CommonSizes.margin.extraLarge
     },

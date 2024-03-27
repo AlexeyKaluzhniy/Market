@@ -28,9 +28,9 @@ export function ProfileData({user}: IProfileDataProps) {
                     <Roboto.Body.Large text={user.email} color={colors.onSurface}/>
                 </View>
             }
-            {user?.phone &&
+            {user.phone &&
                 <View style={styles.data}>
-                    <Roboto.Label.Medium text={"Телефон"} color={colors.onSurface}/>
+                    <Roboto.Label.Medium labelKey={"authentication.phoneNumber"} color={colors.onSurface}/>
                     <Roboto.Body.Large text={user.phone} color={colors.onSurface}/>
                 </View>
             }

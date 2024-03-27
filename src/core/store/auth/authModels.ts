@@ -1,7 +1,12 @@
+export interface ILogin {
+    phoneNumber: string;
+    password: string;
+}
+
 export interface IRegister {
     phoneNumber: string;
     password: string;
-    isConditionUsageAndConfidentialPoliticsAgree: string;
+    isConditionUsageAndConfidentialPoliticsAgree: boolean;
 }
 
 export interface ISendOtp {

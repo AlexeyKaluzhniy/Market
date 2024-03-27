@@ -12,7 +12,7 @@ import {useThemeColors} from "~/core/theme/hooks";
 export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => {
     const colors = useThemeColors();
     const schema = object({
-        password: string().min(8).required(),
+        password: string().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-=_+|{}\[\]:;"'<>?,./]).{8,20}$/).required(),
         repeatPassword: string().oneOf([ref("password")]).required()
     });
 

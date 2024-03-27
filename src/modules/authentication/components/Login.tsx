@@ -27,7 +27,7 @@ export const Login = () => {
     }, [appTheme, data, canLogin]);
 
     const schema = object({
-        phone: string().required().matches(/^\d{11}$/),
+        phoneNumber: string().required().matches(/^\d{11}$/),
         password: string().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-=_+|{}\[\]:;"'<>?,./]).{8,20}$/).required(),
     });
 

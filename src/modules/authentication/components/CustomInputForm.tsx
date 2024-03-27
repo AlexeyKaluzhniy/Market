@@ -45,7 +45,7 @@ export function CustomInputForm(
         if (isRegister) {
             if (data.hasOwnProperty('repeatPassword')) {
                 onSubmit({
-                    phone: getValues('phone'),
+                    phoneNumber: getValues('phone'),
                     password: getValues('password'),
                     isConditionUsageAndConfidentialPoliticsAgree: toggleCheckBox
                 });

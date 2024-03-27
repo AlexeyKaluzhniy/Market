@@ -22,6 +22,7 @@ import {useAppDispatch} from "~/core/store/store";
 import {actions} from "~/core/store/drafts/draftsSlice";
 import {ThemeColors} from "~/core/theme/colors";
 import {emptyDraft} from "~/infrastructure/mocks/emptyDraft";
+import {windowHeight} from "~/core/theme/commonConsts";
 
 enum Cities {
     Tiraspol = 'Тирасполь',
@@ -182,8 +183,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     title: {
         marginTop: CommonSizes.margin.superLarge,
         marginBottom: CommonSizes.margin.medium,
-        fontSize: 28,
-        lineHeight: 36,
+        fontSize: CommonSizes.font.largePlus,
+        lineHeight: CommonSizes.lineHeight.largePlus,
         fontFamily: "Roboto",
         color: colors.onSurface
     },
@@ -192,12 +193,12 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         justifyContent: 'space-between'
     },
     description: {
-        maxHeight: 300,
+        maxHeight: windowHeight * 0.2,
         marginTop: CommonSizes.margin.large,
-        fontSize: 16,
-        lineHeight: 24,
+        fontSize: CommonSizes.font.medium,
+        lineHeight: CommonSizes.lineHeight.mediumPlus,
         fontFamily: "Roboto",
-        color: colors.onSurface
+        color: colors.onSurface,
     },
     price: {
         color: colors.onSurface,

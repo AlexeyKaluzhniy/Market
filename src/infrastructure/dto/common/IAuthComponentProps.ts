@@ -2,14 +2,14 @@ import {ObjectSchema} from "yup";
 import {TFuncKeyApp} from "~/common/localization/localization";
 
 interface AuthSchema {
-    phone: string;
+    phoneNumber: string;
     password: string;
     repeatPassword?: string;
     isConditionUsageAndConfidentialPoliticsAgree?: boolean;
 }
 
 interface ForgotPasswordSchema {
-    phone: string;
+    phoneNumber: string;
 }
 
 interface NewPasswordSchema {
@@ -25,5 +25,6 @@ export interface IAuthComponentProps {
     repeatPasswordField?: boolean;
     isRegister?: boolean;
     schema: ObjectSchema<AuthSchema | ForgotPasswordSchema | NewPasswordSchema>;
-    onSubmit: any;
+    //todo fix type
+    onSubmit: (arg: any) => void;
 }

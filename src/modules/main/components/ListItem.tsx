@@ -9,6 +9,7 @@ import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {ImageResources} from "~/common/ImageResources.g";
+import {windowHeight} from "~/core/theme/commonConsts";
 
 interface IListItemProps {
     item: {
@@ -85,7 +86,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     image: {
         alignSelf: 'center',
         width: '100%',
-        height: 176,
+        height: windowHeight * 0.24,
         borderTopLeftRadius: CommonSizes.borderRadius.medium - 1,
         borderTopRightRadius: CommonSizes.borderRadius.medium - 1,
     }
