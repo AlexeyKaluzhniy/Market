@@ -16,7 +16,7 @@ import {Pages} from "~/navigation/pages";
 import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
-import {isAndroid, isIos} from "~/core/theme/commonConsts";
+import {isAndroid, isIos, windowHeight, windowWidth} from "~/core/theme/commonConsts";
 import {useLazyCheckOtpCodeQuery} from "~/core/store/auth/authQuery";
 
 interface IProps extends NavigationComponentProps {
@@ -42,8 +42,8 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
         });
     };
 
-    const textStyles = useMemo(() => ({color: code.includes('') ? colors.onSurface : colors.main}),
-        [code, colors.main, colors.onSurface]);
+    const textStyles = useMemo(() => ({color: isDisabled ? colors.onSurface : colors.main}),
+        [isDisabled, colors.main, colors.onSurface]);
 
     const inputStyle = useMemo(() => {
         return (index: number) => isFocused[index] ? styles.activeInput : styles.inactiveInput;
@@ -143,7 +143,7 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
                 <TouchableOpacity
                     style={styles.resendCode}
                     disabled={isDisabled}
-                    onPress={!isDisabled ? handleSendCode : () => null}>
+                    onPress={handleSendCode}>
                     <Roboto.Label.Large
                         labelKey="authentication.resendCode"
                         style={textStyles}>
@@ -167,8 +167,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         paddingVertical: isIos ? CommonSizes.padding.large : CommonSizes.padding.smallPlus,
         borderColor: colors.outline,
         color: colors.onSurface,
-        height: 52,
-        width: 75
+        height: windowHeight / 844 * 58,
+        width: windowWidth / 390 * 80
     },
     inputContainer: {
         justifyContent: 'space-between',

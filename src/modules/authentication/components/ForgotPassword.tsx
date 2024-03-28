@@ -16,7 +16,7 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
     const styles = useThemedStyles(stylesG);
     const [sendOtpCodeTrigger] = useLazySendOtpCodeQuery();
     const schema = object({
-        phoneNumber: string().required().matches(/^\d{11}$/),
+        phoneNumber: string().required().matches(/^[78]\d{10}$/),
     });
 
     //todo handle navigation in useEffect when received success code sent

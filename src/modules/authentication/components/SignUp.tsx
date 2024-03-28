@@ -22,7 +22,7 @@ export const SignUp = () => {
     }, [data]);
 
     const schema = object({
-        phoneNumber: string().required().matches(/^\d{11}$/),
+        phoneNumber: string().required().matches(/^[78]\d{10}$/),
         password: string().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-=_+|{}\[\]:;"'<>?,./]).{8,20}$/).required(),
         repeatPassword: string().oneOf([ref("password")]).required()
     });

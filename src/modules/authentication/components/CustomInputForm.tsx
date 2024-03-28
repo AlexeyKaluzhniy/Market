@@ -15,6 +15,7 @@ import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors} from "~/core/theme/hooks";
 import {CustomCheckBox} from "~/common/components/CustomCheckBox";
+import {FormError} from "~/components/FormError";
 
 export function CustomInputForm(
     {
@@ -34,7 +35,7 @@ export function CustomInputForm(
         setValue,
         getValues,
         handleSubmit,
-        formState: {isValid}
+        formState: {isValid, errors}
     } = useForm({
         resolver: yupResolver(schema),
         mode: 'onChange',
@@ -76,32 +77,44 @@ export function CustomInputForm(
     return (
         <View style={[CommonStyles.flex1, styles.inputContainer]}>
             {phoneField &&
-                <DefaultInput
-                    placeholder={t("authentication.phoneNumber")}
-                    name="phoneNumber"
-                    passwordInput={false}
-                    Icon={PhoneIcon}
-                    setValue={setValue}
-                    numberInput
-                />
+                <>
+                    <DefaultInput
+                        placeholder={t("authentication.phoneNumber")}
+                        name="phoneNumber"
+                        passwordInput={false}
+                        Icon={PhoneIcon}
+                        setValue={setValue}
+                        numberInput
+                    />
+                    {errors.hasOwnProperty('phoneNumber') && getValues("phoneNumber") != '' &&
+                        <FormError text={"errors.invalidRussianNumber"}/>}
+                </>
             }
             {passwordField &&
-                <DefaultInput
-                    placeholder={t("authentication.password")}
-                    name="password"
-                    passwordInput={true}
-                    Icon={LockIcon}
-                    setValue={setValue}
-                />
+                <>
+                    <DefaultInput
+                        placeholder={t("authentication.password")}
+                        name="password"
+                        passwordInput={true}
+                        Icon={LockIcon}
+                        setValue={setValue}
+                    />
+                    {!isLogin && errors.hasOwnProperty('password') && getValues("password") != '' &&
+                        <FormError text={"errors.invalidPassword"}/>}
+                </>
             }
             {repeatPasswordField &&
-                <DefaultInput
-                    placeholder={t("authentication.repeatPassword")}
-                    name="repeatPassword"
-                    passwordInput={true}
-                    Icon={LockIcon}
-                    setValue={setValue}
-                />
+                <>
+                    <DefaultInput
+                        placeholder={t("authentication.repeatPassword")}
+                        name="repeatPassword"
+                        passwordInput={true}
+                        Icon={LockIcon}
+                        setValue={setValue}
+                    />
+                    {errors.hasOwnProperty('repeatPassword') && getValues("repeatPassword") != '' &&
+                        <FormError text={"errors.invalidRepeatPassword"}/>}
+                </>
             }
             {isRegister &&
                 <View style={[CommonStyles.row, styles.agreePrivacy]}>
@@ -120,8 +133,7 @@ export function CustomInputForm(
             }
             <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle}
                           disabled={!isValid || (!!isRegister && !toggleCheckBox)}/>
-            {
-                isLogin &&
+            {isLogin &&
                 <TouchableOpacity
                     style={styles.forgotPasswordContainer}
                     onPress={() => handleForgotPassword(Pages.forgotPassword.name)}
