@@ -7,6 +7,7 @@ import {ThemeColors} from "~/core/theme/colors";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {IUserData} from "~/infrastructure/dto/common/IUserData";
+import {windowWidth} from "~/core/theme/commonConsts";
 
 interface IProfileDataProps {
     user: IUserData;
@@ -57,8 +58,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         marginBottom: CommonSizes.margin.largePlus
     },
     avatar: {
-        width: 100,
-        height: 100
+        width: windowWidth / 390 * CommonSizes.margin.superLargePlus,
+        height: windowWidth / 390 * CommonSizes.margin.superLargePlus
     },
     name: {
         marginTop: CommonSizes.margin.medium

@@ -70,12 +70,12 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
     };
 
     const handleChangeCode = (index: number, text: string) => {
+        onChangeInputText(text, index);
         if (text.length !== 0 && index !== 3) {
             inputRefs.current[index + 1].focus();
         } else if (text.length == 0 && index !== 0) {
             inputRefs.current[index - 1].focus();
         }
-        onChangeInputText(text, index);
     };
 
     const handleBackspaceInput = (nativeEvent: TextInputKeyPressEventData, index: number) => {

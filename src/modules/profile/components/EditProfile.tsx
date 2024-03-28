@@ -11,6 +11,7 @@ import {useTranslation} from "react-i18next";
 import {useState} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {windowWidth} from "~/core/theme/commonConsts";
 
 const pickerOptions: Options = {
     height: 1000,
@@ -72,15 +73,15 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         marginBottom: CommonSizes.margin.largePlus
     },
     avatar: {
-        width: 100,
-        height: 100,
+        width: windowWidth / 390 * CommonSizes.margin.superLargePlus,
+        height: windowWidth / 390 * CommonSizes.margin.superLargePlus,
         borderRadius: CommonSizes.borderRadius.extraLargePlus * 2
     },
     editPhotoButton: {
         padding: CommonSizes.padding.smallPlus,
         backgroundColor: colors.main,
         borderRadius: CommonSizes.borderRadius.extraLarge,
-        marginTop: -35,
-        marginRight: -55
+        marginTop: -(CommonSizes.margin.extraLargePlus + 2),
+        marginRight: -(CommonSizes.margin.extraLarge * 2 + CommonSizes.margin.largePlus)
     }
 });

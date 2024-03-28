@@ -47,8 +47,8 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         shadowColor: Colors.black,
         shadowOpacity: 0.3,
         shadowOffset: {
-            height: 3,
-            width: 1
+            height: CommonSizes.margin.extraSmall,
+            width: CommonSizes.borderWidth.extraThin
         }
     }
 });

@@ -1,5 +1,4 @@
 import {StyleSheet, View} from "react-native";
-import React, {useEffect, useState} from "react";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {CustomHeader} from "~/components/CustomHeader";
@@ -15,34 +14,26 @@ import {ISendOtp} from "~/core/store/auth/authModels";
 
 export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element => {
     const styles = useThemedStyles(stylesG);
-    const [phone, setPhone] = useState('');
     const [sendOtpCodeTrigger] = useLazySendOtpCodeQuery();
-
     const schema = object({
         phoneNumber: string().required().matches(/^\d{11}$/),
     });
 
-    useEffect(() => {
-        if (phone) {
-            Navigation.push(Pages.auth.id, {
-                component: {
-                    name: Pages.code.name,
-                    options: {
-                        topBar: {
-                            visible: false
-                        },
-                    },
-                    passProps: {
-                        phoneNumber: phone
-                    }
-                }
-            });
-        }
-    }, [phone]);
-
+    //todo handle navigation in useEffect when received success code sent
     const handleSendOtpCode = (arg: ISendOtp) => {
-        console.log(arg);
-        setPhone(arg.phoneNumber);
+        Navigation.push(Pages.auth.id, {
+            component: {
+                name: Pages.code.name,
+                options: {
+                    topBar: {
+                        visible: false
+                    },
+                },
+                passProps: {
+                    phoneNumber: arg.phoneNumber
+                }
+            }
+        });
         sendOtpCodeTrigger({...arg, otpCodeReason: "ResetPassword"});
     };
 
