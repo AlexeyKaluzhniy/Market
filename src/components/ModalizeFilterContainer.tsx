@@ -14,7 +14,7 @@ import {actions, selectCities, selectPriceFrom, selectPriceTo} from "~/core/stor
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {showOverlay} from "~/navigation/helpers/showOverlay";
 
-export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
+export const ModalizeFilterContainer: NavigationFunctionComponent = () => {
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
@@ -31,11 +31,11 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
         dispatch(actions.resetCity(city));
     };
 
-    const setPriceFrom = (name: string, price: string) => {
+    const setPriceFrom = (price: string) => {
         dispatch(actions.setPriceFrom(price));
     };
 
-    const setPriceTo = (name: string, price: string) => {
+    const setPriceTo = (price: string) => {
         dispatch(actions.setPriceTo(price));
     };
 
@@ -63,14 +63,14 @@ export const ModalizeFilterContainer: NavigationFunctionComponent = (props) => {
                 <DefaultInput
                     placeholder={t("filter.from")}
                     name={'from'}
-                    setValue={setPriceFrom}
+                    setValue={(name, text) => setPriceFrom(text)}
                     maxLength={5}
                     numberInput
                     value={priceFrom}/>
                 <DefaultInput
                     placeholder={t("filter.to")}
                     name={'to'}
-                    setValue={setPriceTo}
+                    setValue={(name, text) => setPriceTo(text)}
                     maxLength={5}
                     numberInput
                     value={priceTo}/>

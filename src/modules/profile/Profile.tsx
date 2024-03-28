@@ -5,6 +5,7 @@ import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {IUserData} from "~/infrastructure/dto/common/IUserData";
 import {ProfileData} from "~/modules/profile/components/ProfileData";
+import {internalUser} from "~/infrastructure/mocks/users";
 
 interface IProfileProps {
     isExternalUserProfile?: boolean;
@@ -12,14 +13,6 @@ interface IProfileProps {
 }
 
 export const Profile: NavigationFunctionComponent<IProfileProps> = (props): JSX.Element => {
-    const internalUser = {
-        avatar: '',
-        name: 'Георгий Васильков',
-        registerDate: '',
-        email: 'g.vasilkov@yandex.ru',
-        phone: '+ 373 777 2 54 97',
-    };
-
     return (
         <View style={CommonStyles.flex1}>
             {props.isExternalUserProfile ?

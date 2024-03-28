@@ -1,7 +1,7 @@
 import {ImageResources} from "~/common/ImageResources.g";
 
 export interface IUserData {
-    avatar: ImageResources;
+    avatar?: ImageResources;
     name: string;
     registerDate: string;
     email: string;

@@ -8,6 +8,7 @@ import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {ThemeColors} from "~/core/theme/colors";
+import {externalUser} from "~/infrastructure/mocks/users";
 
 interface IPublisherProps {
     navigateToUserProfile: () => void;
@@ -25,17 +26,17 @@ export function Publisher({navigateToUserProfile}: IPublisherProps) {
                 <View style={CommonStyles.rowCenter}>
                     <Image source={ImageResources.avatar} style={styles.avatar}/>
                     <View style={styles.name}>
-                        <Roboto.Body.Large text={"Евлампия Романова"} color={colors.onSurface}/>
-                        <Roboto.Body.Small text={"на купи - и точка с декабря 2024"} color={colors.onSurface}/>
+                        <Roboto.Body.Large text={externalUser.name} color={colors.onSurface}/>
+                        <Roboto.Body.Small text={externalUser.registerDate} color={colors.onSurface}/>
                     </View>
                 </View>
                 <View style={styles.mailContainer}>
                     <MailIcon color={colors.outline}/>
-                    <Roboto.Body.Large text={"e.romanova@mail.ru"} style={styles.profileText}/>
+                    <Roboto.Body.Large text={externalUser.email} style={styles.profileText}/>
                 </View>
                 <View style={CommonStyles.rowCenter}>
                     <PhoneIcon/>
-                    <Roboto.Body.Large text={"+ 373 779 3 12 03"} style={[styles.profileText, styles.phoneText]}/>
+                    <Roboto.Body.Large text={externalUser.phone} style={[styles.profileText, styles.phoneText]}/>
                 </View>
             </TouchableOpacity>
         </>

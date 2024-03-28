@@ -29,7 +29,7 @@ export function DefaultInput(
     };
 
     const updateValue = (text: string) => {
-        setValue(name, text, {shouldValidate: true});
+        setValue(name, text);
         setInitValue(text);
     };
 

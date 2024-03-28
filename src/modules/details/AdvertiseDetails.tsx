@@ -1,5 +1,5 @@
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {ImageURISource, ScrollView, StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -10,32 +10,27 @@ import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {Pages} from "~/navigation/pages";
 import {Publisher} from "~/modules/details/components/Publisher";
 import {ImagesSlider} from "~/modules/details/components/ImagesSlider";
+import {externalUser} from "~/infrastructure/mocks/users";
+import {IUserData} from "~/infrastructure/dto/common/IUserData";
+import {IAdvertise} from "~/infrastructure/dto/common/IAdvertise";
 
 interface IProps {
-    item: {
-        id: string;
-        title: string;
-        description: string;
-        price: string;
-        location: string;
-        date: string;
-        images: ImageURISource[] | null;
-    };
+    item: IAdvertise;
     isMyAd: boolean;
+}
+
+interface IPassProps {
+    advertise?: IAdvertise;
+    isMyAd?: boolean;
+    isExternalUserProfile?: boolean;
+    userData?: IUserData;
 }
 
 export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => {
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
 
-    const userData = {
-        name: "Евлампия Романова",
-        registerDate: "на купи - и точка с декабря 2024",
-        email: "e.romanova@mail.ru",
-        phone: "+ 373 779 3 12 03"
-    };
-
-    const handlePressRightButton = (page: string, passProps: any) => {
+    const handlePressRightButton = (page: string, passProps: IPassProps) => {
         Navigation.push(Pages.tabs.id, {
             component: {
                 name: page,
@@ -70,7 +65,7 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                     {props.item.images && <ImagesSlider images={props.item.images}/>}
                     <View style={[CommonStyles.rowCenter, styles.locationContainer]}>
                         <Roboto.Body.Medium text={props.item.date} color={colors.onSurface}/>
-                        <Roboto.Body.Medium text={props.item.location} color={colors.onSurface}/>
+                        <Roboto.Body.Medium text={props.item.city} color={colors.onSurface}/>
                     </View>
                     <Roboto.Title.Large text={props.item.title} style={styles.text}/>
                     <Roboto.Title.Large text={props.item.price} style={styles.text}/>
@@ -81,7 +76,7 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                     Pages.profile.name,
                     {
                         isExternalUserProfile: true,
-                        userData: userData
+                        userData: externalUser
                     })}
                 />}
             </ScrollView>

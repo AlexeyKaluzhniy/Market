@@ -8,4 +8,5 @@ export interface IAdvertise {
     city: string;
     description: string;
     images: ImageOrVideo[];
+    date?: string;
 }

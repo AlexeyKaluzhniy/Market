@@ -74,6 +74,10 @@ export function CustomInputForm(
         await Linking.openURL('https://reactnative.dev/docs/linking');
     };
 
+    const setFormValue = (name: string, text: string) => {
+        setValue(name, text as never, {shouldValidate: true});
+    };
+
     return (
         <View style={[CommonStyles.flex1, styles.inputContainer]}>
             {phoneField &&
@@ -83,7 +87,7 @@ export function CustomInputForm(
                         name="phoneNumber"
                         passwordInput={false}
                         Icon={PhoneIcon}
-                        setValue={setValue}
+                        setValue={setFormValue}
                         numberInput
                     />
                     {errors.hasOwnProperty('phoneNumber') && getValues("phoneNumber") != '' &&
@@ -97,7 +101,7 @@ export function CustomInputForm(
                         name="password"
                         passwordInput={true}
                         Icon={LockIcon}
-                        setValue={setValue}
+                        setValue={setFormValue}
                     />
                     {!isLogin && errors.hasOwnProperty('password') && getValues("password") != '' &&
                         <FormError text={"errors.invalidPassword"}/>}
@@ -110,7 +114,7 @@ export function CustomInputForm(
                         name="repeatPassword"
                         passwordInput={true}
                         Icon={LockIcon}
-                        setValue={setValue}
+                        setValue={setFormValue}
                     />
                     {errors.hasOwnProperty('repeatPassword') && getValues("repeatPassword") != '' &&
                         <FormError text={"errors.invalidRepeatPassword"}/>}
