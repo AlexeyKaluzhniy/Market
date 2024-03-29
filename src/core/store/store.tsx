@@ -14,6 +14,7 @@ const persistConfig: PersistConfig<RootState> = {
     storage: AsyncStorage,
     version: 1,
     timeout: 1000,
+    blacklist: ["filter"]
 };
 
 const options: ReduxLoggerOptions = {
