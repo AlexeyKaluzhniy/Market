@@ -5,8 +5,9 @@ export const data = [
         id: '1',
         title: 'Продажа велосипеда',
         description: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-        price: '1200 руб.',
-        location: 'Тирасполь',
+        price: '100',
+        priceType: 'руб.',
+        location: 'Бендеры',
         date: 'сегодня в 13:04',
         images: [AdvertisesResources.bicycle]
     },
@@ -14,7 +15,8 @@ export const data = [
         id: '2',
         title: 'Продажа велосипеда',
         description: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-        price: '1200 руб.',
+        price: '1200',
+        priceType: 'руб.',
         location: 'Тирасполь',
         date: 'сегодня в 13:04',
         images: null
@@ -23,8 +25,9 @@ export const data = [
         id: '3',
         title: 'Продажа велосипеда',
         description: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-        price: '1200 руб.',
-        location: 'Тирасполь',
+        price: '2200',
+        priceType: 'руб.',
+        location: 'Рыбница',
         date: 'сегодня в 13:04',
         images: [AdvertisesResources.bicycle, AdvertisesResources.bicycle, AdvertisesResources.bicycle]
     },
@@ -32,7 +35,8 @@ export const data = [
         id: '4',
         title: 'Продажа велосипеда',
         description: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-        price: '1200 руб.',
+        price: '178',
+        priceType: 'руб.',
         location: 'Тирасполь',
         date: 'сегодня в 13:04',
         images: [AdvertisesResources.bicycle, AdvertisesResources.bicycle]

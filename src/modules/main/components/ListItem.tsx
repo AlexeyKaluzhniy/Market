@@ -17,6 +17,7 @@ interface IListItemProps {
         title: string;
         description: string;
         price: string;
+        priceType: string;
         location: string;
         date: string;
         images: ImageResources[] | null;
@@ -59,7 +60,10 @@ export function ListItem({item, isMyAd}: IListItemProps) {
                     <FavoriteButton/>
                 </View>
                 <Roboto.Body.Medium text={item.description} numberOfLines={2} color={colors.onSurface}/>
-                <Roboto.Title.Large text={item.price} style={styles.text}/>
+                <View style={CommonStyles.rowCenter}>
+                    <Roboto.Title.Large text={item.price} style={styles.text}/>
+                    <Roboto.Title.Large text={item.priceType} style={styles.text}/>
+                </View>
                 <Roboto.Body.Medium text={item.location} style={styles.text} color={colors.onSurface}/>
                 <Roboto.Body.Medium text={item.date} color={colors.onSurface}/>
             </View>
@@ -76,6 +80,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     },
     text: {
         marginTop: CommonSizes.margin.small,
+        marginRight:CommonSizes.margin.extraSmallPlus,
         color: colors.onSurface
     },
     header: {

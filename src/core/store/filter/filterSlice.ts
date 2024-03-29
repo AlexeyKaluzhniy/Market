@@ -5,12 +5,22 @@ interface IFilterState {
     cities: string[];
     priceFrom: string;
     priceTo: string;
+    filters: {
+        cities: string[];
+        priceFrom: string;
+        priceTo: string;
+    };
 }
 
 const initialState: IFilterState = {
     cities: [],
     priceFrom: '',
-    priceTo: ''
+    priceTo: '',
+    filters: {
+        cities: [],
+        priceFrom: '',
+        priceTo: ''
+    },
 };
 
 export const {reducer: FilterReducer, actions} = createSlice({
@@ -32,6 +42,9 @@ export const {reducer: FilterReducer, actions} = createSlice({
         setPriceTo: (state, action) => {
             return {...state, priceTo: action.payload};
         },
+        applyFilters: (state, action) => {
+            return {...state, filters: action.payload};
+        }
     }
 });
 
@@ -46,4 +59,8 @@ export const selectPriceFrom = (state: RootState) => {
 
 export const selectPriceTo = (state: RootState) => {
     return state.filter.priceTo;
+};
+
+export const selectFilters = (state: RootState) => {
+    return state.filter.filters;
 };

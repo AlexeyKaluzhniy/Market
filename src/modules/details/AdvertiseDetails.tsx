@@ -68,7 +68,10 @@ export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => 
                         <Roboto.Body.Medium text={props.item.city} color={colors.onSurface}/>
                     </View>
                     <Roboto.Title.Large text={props.item.title} style={styles.text}/>
-                    <Roboto.Title.Large text={props.item.price} style={styles.text}/>
+                    <View style={CommonStyles.rowCenter}>
+                        <Roboto.Title.Large text={props.item.price} style={styles.text}/>
+                        <Roboto.Title.Large text={props.item.priceType} style={styles.text}/>
+                    </View>
                     <Roboto.Body.Small labelKey={"new_advertise.description"} style={styles.text}/>
                     <Roboto.Body.Medium text={props.item.description} style={styles.text}/>
                 </View>
@@ -99,6 +102,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     },
     text: {
         marginTop: CommonSizes.margin.small,
+        marginRight: CommonSizes.margin.extraSmallPlus,
         color: colors.onSurface
     },
 });

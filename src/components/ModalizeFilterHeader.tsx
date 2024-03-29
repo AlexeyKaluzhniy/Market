@@ -5,18 +5,20 @@ import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemedStyles} from "~/core/theme/hooks";
 import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
-import {useAppSelector} from "~/core/store/store";
-import {selectPriceFrom, selectPriceTo} from "~/core/store/filter/filterSlice";
+import {useAppDispatch, useAppSelector} from "~/core/store/store";
+import {selectCities, selectPriceFrom, selectPriceTo, actions} from "~/core/store/filter/filterSlice";
 import {showToast} from "~/services/navigationService/showToast";
 import {useTranslation} from "react-i18next";
 
 export const ModalizeFilterHeader: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
-    const [priceFrom, priceTo] = useAppSelector(state => [selectPriceFrom(state), selectPriceTo(state)]);
+    const dispatch = useAppDispatch();
+    const [priceFrom, priceTo, cities] = useAppSelector(state => [selectPriceFrom(state), selectPriceTo(state), selectCities(state)]);
     const {t} = useTranslation();
 
     const closeOverlay = () => {
-        if (Number(priceFrom) <= Number(priceTo)) {
+        if (Number(priceFrom) <= Number(priceTo) || priceTo === '') {
+            dispatch(actions.applyFilters({cities, priceFrom, priceTo}));
             Navigation.dismissAllOverlays();
         } else {
             showToast({text: t("errorNotifications.incorrectPriceFilter"), location: 'modal'});
