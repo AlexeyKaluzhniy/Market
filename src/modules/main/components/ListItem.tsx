@@ -9,7 +9,7 @@ import {Navigation} from "react-native-navigation";
 import {Pages} from "~/navigation/pages";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {ImageResources} from "~/common/ImageResources.g";
-import {windowHeight} from "~/core/theme/commonConsts";
+import {windowWidth} from "~/core/theme/commonConsts";
 
 interface IListItemProps {
     item: {
@@ -80,7 +80,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     },
     text: {
         marginTop: CommonSizes.margin.small,
-        marginRight:CommonSizes.margin.extraSmallPlus,
+        marginRight: CommonSizes.margin.extraSmallPlus,
         color: colors.onSurface
     },
     header: {
@@ -91,7 +91,7 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
     image: {
         alignSelf: 'center',
         width: '100%',
-        height: windowHeight * 0.24,
+        height: windowWidth / 390 * 176,
         borderTopLeftRadius: CommonSizes.borderRadius.medium - 1,
         borderTopRightRadius: CommonSizes.borderRadius.medium - 1,
     }

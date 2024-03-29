@@ -3,6 +3,7 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {ImageResources} from "~/common/ImageResources.g";
 import {windowWidth} from "~/core/theme/commonConsts";
 import Carousel from "react-native-snap-carousel";
+import {useCallback} from "react";
 
 interface IImagesListProps {
     images: ImageResources[];
@@ -16,9 +17,9 @@ export function ImagesSlider({images}: IImagesListProps) {
     const itemWidth = windowWidth / 390 * 294;
     const sliderWidth = windowWidth - CommonSizes.margin.largePlus * 2;
 
-    const renderItem = ({item}: IRenderItem) => {
+    const renderItem = useCallback(({item}: IRenderItem) => {
         return <Image source={item} style={styles.image}/>
-    };
+    }, []);
 
     return (
         <View style={styles.container}>

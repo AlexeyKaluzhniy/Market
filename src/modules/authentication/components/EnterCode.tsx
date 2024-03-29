@@ -16,7 +16,7 @@ import {Pages} from "~/navigation/pages";
 import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
-import {isAndroid, isIos, windowHeight, windowWidth} from "~/core/theme/commonConsts";
+import {windowWidth} from "~/core/theme/commonConsts";
 import {useLazyCheckOtpCodeQuery} from "~/core/store/auth/authQuery";
 
 interface IProps extends NavigationComponentProps {
@@ -163,11 +163,9 @@ const stylesG = (colors: ThemeColors) => StyleSheet.create({
         borderWidth: CommonSizes.borderWidth.extraThin,
         borderRadius: CommonSizes.borderRadius.largePlus,
         textAlign: 'center',
-        paddingHorizontal: isAndroid ? CommonSizes.padding.extraLargePlus : CommonSizes.padding.superLarge,
-        paddingVertical: isIos ? CommonSizes.padding.large : CommonSizes.padding.smallPlus,
         borderColor: colors.outline,
         color: colors.onSurface,
-        height: windowHeight / 844 * 58,
+        height: windowWidth / 390 * 56,
         width: windowWidth / 390 * 80
     },
     inputContainer: {

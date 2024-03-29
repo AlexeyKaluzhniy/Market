@@ -1,48 +1,42 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {ICheckOtp, ILogin, IRegister, ISendOtp} from "~/core/store/auth/authModels";
+import Config from "react-native-config";
 
 export const authorizationApi = createApi({
     reducerPath: 'authorization',
-    tagTypes: ["authorization"],
+    tagTypes: ["register", "registerSendOtp", "registerCheckOtp"],
     baseQuery: fetchBaseQuery(
         {
-            baseUrl: `https://mobile.prox3.dex-it.ru/profile/v1/`,
+            baseUrl: Config.REGISTER_URL,
+            headers: {
+                'Content-Type': 'application/json;odata.metadata=minimal;odata.streaming=true'
+            }
         }),
     endpoints: (builder) => ({
         getSessionIdLogin: builder.query<string, ILogin>({
             query: (args) => {
                 return {
-                    url: 'Register/RegisterUser',
+                    url: '/RegisterUser',
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf8',
-                    },
                     body: JSON.stringify(args)
                 };
             },
-            providesTags: ["authorization"],
         }),
         getSessionIdRegister: builder.query<string, IRegister>({
             query: (args) => {
                 return {
-                    url: 'Register/RegisterUser',
+                    url: '/RegisterUser',
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf8',
-                    },
-                    body: JSON.stringify({...args, otpCode: '0000', otpProviderType: 'Sms'})
+                    body: JSON.stringify({...args, phone: args.phoneNumber, otpCode: '0000', otpProviderType: 'Sms'})
                 };
             },
-            providesTags: ["authorization"],
+            providesTags: ["register"],
         }),
         sendOtpCode: builder.query<boolean, ISendOtp>({
             query(args) {
                 return {
-                    url: 'Register/SendOtpCode',
+                    url: '/SendOtpCode',
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf8',
-                    },
                     body: JSON.stringify({
                         phoneNumber: args.phoneNumber,
                         otpProviderType: 'Sms',
@@ -50,6 +44,7 @@ export const authorizationApi = createApi({
                     })
                 };
             },
+            providesTags: ["registerSendOtp"]
         }),
         checkOtpCode: builder.query<string, ICheckOtp>({
             query({phoneNumber, otpCode, otpCodeReason}) {
@@ -61,9 +56,10 @@ export const authorizationApi = createApi({
                 }).toString();
 
                 return {
-                    url: `Register/CheckOtpCode?${queryString}`
+                    url: `/CheckOtpCode?${queryString}`
                 };
-            }
+            },
+            providesTags: ["registerCheckOtp"]
         })
     })
 });

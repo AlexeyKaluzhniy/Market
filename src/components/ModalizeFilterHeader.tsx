@@ -13,7 +13,9 @@ import {useTranslation} from "react-i18next";
 export const ModalizeFilterHeader: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
     const dispatch = useAppDispatch();
-    const [priceFrom, priceTo, cities] = useAppSelector(state => [selectPriceFrom(state), selectPriceTo(state), selectCities(state)]);
+    const priceFrom = useAppSelector(selectPriceFrom);
+    const priceTo = useAppSelector(selectPriceTo);
+    const cities = useAppSelector(selectCities);
     const {t} = useTranslation();
 
     const closeOverlay = () => {

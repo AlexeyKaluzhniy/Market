@@ -2,7 +2,7 @@ import {AppEnvironment} from "./index";
 
 declare module "react-native-config" {
   interface EnvironmentVariables {
-    API_URL: string;
+    REGISTER_URL: string;
     ENVIRONMENT: AppEnvironment;
     IGNORE_NET_INFO: boolean;
   }

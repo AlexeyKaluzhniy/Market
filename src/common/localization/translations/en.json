@@ -71,7 +71,7 @@
       "turnOnMobileData": "Turn on mobile data or use Wi-Fi to access data.",
       "error": "Error",
       "validationError": "Validation error occurred",
-      "invalidRussianNumber": "Invalid Russian phone number",
+      "invalidRussianNumber": "Invalid phone number",
       "invalidPassword": "Must be minimum 8 characters, contains: numbers, both case letters, special characters",
       "invalidRepeatPassword": "Passwords must match"
     },
