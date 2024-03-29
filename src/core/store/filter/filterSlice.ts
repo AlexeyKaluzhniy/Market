@@ -5,6 +5,7 @@ interface IFilterState {
     cities: string[];
     priceFrom: string;
     priceTo: string;
+    searchStr: string;
     filters: {
         cities: string[];
         priceFrom: string;
@@ -16,6 +17,7 @@ const initialState: IFilterState = {
     cities: [],
     priceFrom: '',
     priceTo: '',
+    searchStr: '',
     filters: {
         cities: [],
         priceFrom: '',
@@ -44,6 +46,9 @@ export const {reducer: FilterReducer, actions} = createSlice({
         },
         applyFilters: (state, action) => {
             return {...state, filters: action.payload};
+        },
+        setSearchStr: (state, action) => {
+            return {...state, searchStr: action.payload};
         }
     }
 });
@@ -63,4 +68,8 @@ export const selectPriceTo = (state: RootState) => {
 
 export const selectFilters = (state: RootState) => {
     return state.filter.filters;
+};
+
+export const selectSearchStr = (state: RootState) => {
+  return state.filter.searchStr
 };

@@ -7,11 +7,18 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {FilterButton} from "~/components/FilterButton";
 import {useTranslation} from "react-i18next";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
+import {useAppDispatch} from "~/core/store/store";
+import {actions} from "~/core/store/filter/filterSlice";
 
 export function MainScreenHeader() {
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
+    const dispatch = useAppDispatch();
+
+    const setSearchText = (text: string) => {
+        dispatch(actions.setSearchStr(text));
+    };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -22,6 +29,7 @@ export function MainScreenHeader() {
                     style={styles.menu}
                     selectionColor={colors.main}
                     placeholderTextColor={colors.onSurface}
+                    onChangeText={setSearchText}
                 />
             </View>
             <FilterButton/>

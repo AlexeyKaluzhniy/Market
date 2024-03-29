@@ -3,19 +3,28 @@ import {ListItem} from "~/modules/main/components/ListItem";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {data} from "~/infrastructure/mocks/mockAdvertises";
 import {useAppSelector} from "~/core/store/store";
-import {selectFilters} from "~/core/store/filter/filterSlice";
+import {selectFilters, selectSearchStr} from "~/core/store/filter/filterSlice";
+import {EmptyScreen} from "~/components/EmptyScreen";
+import {ImageResources} from "~/common/ImageResources.g";
+import {useMemo} from "react";
+import {CommonStyles} from "~/core/theme/commonStyles";
 
 export function AllAdvertisesList() {
     const filters = useAppSelector(selectFilters);
+    const searchStr = useAppSelector(selectSearchStr);
     const isCitiesEmpty = filters.cities.length === 0;
+    const isSearchStrEmpty = searchStr.length === 0;
     const minPrice = filters.priceFrom !== '' ? filters.priceFrom : 0;
     const maxPrice = filters.priceTo !== '' ? filters.priceTo : Infinity;
     const filteredData = data.filter(ad => {
         const passesCityFilter = isCitiesEmpty || filters.cities.includes(ad.location);
         const passesPriceFilter = ad.price >= minPrice && ad.price <= maxPrice;
+        const passesSearch = isSearchStrEmpty || ad.title.toLowerCase().includes(searchStr.trim().toLowerCase());
 
-        return passesCityFilter && passesPriceFilter;
+        return passesCityFilter && passesPriceFilter && passesSearch;
     });
+
+    const containerStyle = useMemo(() => filteredData.length ? undefined : CommonStyles.flex1, [filteredData]);
 
     return (
         <FlatList
@@ -25,7 +34,11 @@ export function AllAdvertisesList() {
                 return <ListItem item={item}/>;
             }}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.content}
+            contentContainerStyle={[styles.content, containerStyle]}
+            ListEmptyComponent={() => <EmptyScreen
+                image={ImageResources.search}
+                title={"emptyScreen.allAdvertises.title"}
+                text={"emptyScreen.allAdvertises.text"}/>}
         />
     );
 }

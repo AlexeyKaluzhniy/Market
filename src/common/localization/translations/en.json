@@ -283,6 +283,10 @@
       "drafts": {
         "title": "Save the draft",
         "text": "You can continue working with the ad later"
+      },
+      "allAdvertises": {
+        "title": "Unfortunately nothing was found",
+        "text": "Try entering a different name or applying different filters"
       }
     },
     "drafts": {
