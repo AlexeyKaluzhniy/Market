@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from "react";
 import {CustomInputForm} from "./CustomInputForm";
 import {Button, ScrollView, StyleSheet} from "react-native";
 import {getBottomTabsLayout} from "~/navigation/roots";
@@ -8,33 +7,29 @@ import {object, string} from "yup";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {LayoutRoot} from "react-native-navigation";
-import {useAppSelector} from "~/core/store/store";
-import {selectAppTheme} from "~/core/store/system/systemSlice";
 import {ILogin} from "~/core/store/auth/authModels";
+import {showToast} from "~/services/navigationService/showToast";
+import {useCallback} from "react";
+import {useTranslation} from "react-i18next";
 
 export const Login = () => {
-    const [loginTrigger, {data}] = useLazyGetSessionIdLoginQuery();
-    const appTheme = useAppSelector(selectAppTheme);
-    const [canLogin, setCanLogin] = useState(false);
-
-    //todo fix navigation types
-    useEffect(() => {
-        // if (data) {
-        //     navigation.setRoot(getBottomTabsLayout(appTheme || 'dark') as unknown as LayoutRoot);
-        // }
-        if (canLogin) {
-            navigation.setRoot(getBottomTabsLayout() as unknown as LayoutRoot);
-        }
-    }, [appTheme, data, canLogin]);
+    const [loginTrigger, {isError, isSuccess}] = useLazyGetSessionIdLoginQuery();
+    const {t} = useTranslation();
 
     const schema = object({
         phoneNumber: string().required().matches(/^[78]\d{10}$/),
         password: string().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-=_+|{}\[\]:;"'<>?,./]).{8,20}$/).required(),
     });
 
-    const handleLogin = (arg: ILogin) => {
+    const handleLogin = useCallback((arg: ILogin) => {
         loginTrigger(arg);
-    };
+        if (isError) {
+            showToast({text: t("errorNotifications.userDoesntExists"), location: "top", textStyle: {fontSize: CommonSizes.font.smallPlus}});
+        }
+        if (isSuccess) {
+            navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot);
+        }
+    }, [isSuccess, isError]);
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -46,7 +41,7 @@ export const Login = () => {
                 schema={schema}
                 onSubmit={(arg) => handleLogin(arg as ILogin)}
             />
-            <Button title="Войти" onPress={() => setCanLogin(true)}/>
+            <Button title="Войти" onPress={() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)}/>
         </ScrollView>
     );
 };

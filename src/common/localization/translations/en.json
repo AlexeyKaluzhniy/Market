@@ -296,7 +296,9 @@
       "untitled": "Untitled"
     },
     "errorNotifications": {
-      "incorrectPriceFilter": "The starting price must be less than the final price"
+      "incorrectPriceFilter": "The starting price must be less than the final price",
+      "userAlreadyExists": "A user with this data already exists",
+      "userDoesntExists": "A user with this data doesn't exists"
     }
   }
 }

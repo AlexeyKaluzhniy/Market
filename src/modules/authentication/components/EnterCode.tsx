@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, {useCallback, useMemo, useRef, useState} from "react";
 import {
     StyleSheet,
     Text,
@@ -84,26 +84,25 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
         }
     };
 
-    useEffect(() => {
-        isSuccess && Navigation.push(Pages.auth.id, {
-            component: {
-                name: Pages.newPassword.name,
-                options: {
-                    topBar: {
-                        visible: false
-                    },
-                },
-            }
-        });
-    }, [isSuccess]);
-
-    const onSubmit = () => {
+    const onSubmit = useCallback(() => {
         checkOtpTrigger({
             phoneNumber: props.phoneNumber,
             otpCodeReason: 'ResetPassword',
             otpCode: code.join('')
         });
-    };
+        if (isSuccess) {
+            Navigation.push(Pages.auth.id, {
+                component: {
+                    name: Pages.newPassword.name,
+                    options: {
+                        topBar: {
+                            visible: false
+                        },
+                    },
+                }
+            });
+        }
+    }, [isSuccess]);
 
     return (
         <View>

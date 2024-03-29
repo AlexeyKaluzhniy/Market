@@ -296,7 +296,9 @@
       "untitled": "Без названия"
     },
     "errorNotifications": {
-      "incorrectPriceFilter": "Начальная цена должна быть меньше чем конечная"
+      "incorrectPriceFilter": "Начальная цена должна быть меньше чем конечная",
+      "userAlreadyExists": "Пользователь с такими данными уже существует",
+      "userDoesntExists": "Пользователя с такими данными не существует"
     }
   }
 }

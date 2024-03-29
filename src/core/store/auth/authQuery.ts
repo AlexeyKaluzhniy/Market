@@ -1,13 +1,13 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {ICheckOtp, ILogin, IRegister, ISendOtp} from "~/core/store/auth/authModels";
-import Config from "react-native-config";
+import AppConfig from "react-native-config";
 
 export const authorizationApi = createApi({
     reducerPath: 'authorization',
     tagTypes: ["register", "registerSendOtp", "registerCheckOtp"],
     baseQuery: fetchBaseQuery(
         {
-            baseUrl: Config.REGISTER_URL,
+            baseUrl: AppConfig.REGISTER_URL,
             headers: {
                 'Content-Type': 'application/json;odata.metadata=minimal;odata.streaming=true'
             }
@@ -54,6 +54,8 @@ export const authorizationApi = createApi({
                     otpProviderType: "Sms",
                     otpCode: otpCode
                 }).toString();
+
+                console.log(`/CheckOtpCode?${queryString}`);
 
                 return {
                     url: `/CheckOtpCode?${queryString}`

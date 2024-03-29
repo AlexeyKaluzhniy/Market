@@ -19,7 +19,7 @@ export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element 
         phoneNumber: string().required().matches(/^[78]\d{10}$/),
     });
 
-    //todo handle navigation in useEffect when received success code sent
+    //todo handle navigation when received success code sent
     const handleSendOtpCode = (arg: ISendOtp) => {
         Navigation.push(Pages.auth.id, {
             component: {
