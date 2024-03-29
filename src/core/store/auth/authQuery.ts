@@ -55,8 +55,6 @@ export const authorizationApi = createApi({
                     otpCode: otpCode
                 }).toString();
 
-                console.log(`/CheckOtpCode?${queryString}`);
-
                 return {
                     url: `/CheckOtpCode?${queryString}`
                 };

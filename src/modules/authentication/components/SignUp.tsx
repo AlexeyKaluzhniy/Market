@@ -14,7 +14,7 @@ import {useCallback} from "react";
 import {useTranslation} from "react-i18next";
 
 export const SignUp = () => {
-    const [registerTrigger, {isError, isSuccess}] = useLazyGetSessionIdRegisterQuery();
+    const [registerTrigger] = useLazyGetSessionIdRegisterQuery();
     const {t} = useTranslation();
 
     const schema = object({
@@ -23,23 +23,13 @@ export const SignUp = () => {
         repeatPassword: string().oneOf([ref("password")]).required()
     });
 
-    const handleRegister = useCallback(async (arg: IRegister) => {
-        await registerTrigger(arg).then(
-            () =>  {
-                if(isError) {
-                    showToast({
-                        text: t("errorNotifications.userAlreadyExists"),
-                        location: "top",
-                        textStyle: {fontSize: CommonSizes.font.smallPlus}
-                    });
-                }
-                if(isSuccess) {
-                    navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot);
-                }
-            }
-        )
-
-    }, [isSuccess, isError]);
+    const handleRegister = useCallback((arg: IRegister) => {
+        registerTrigger(arg).unwrap().then(() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)).catch(() => showToast({
+            text: t("errorNotifications.userAlreadyExists"),
+            location: "top",
+            textStyle: {fontSize: CommonSizes.font.smallPlus}
+        }));
+    }, []);
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>

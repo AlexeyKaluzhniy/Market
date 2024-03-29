@@ -13,7 +13,7 @@ import {useCallback} from "react";
 import {useTranslation} from "react-i18next";
 
 export const Login = () => {
-    const [loginTrigger, {isError, isSuccess}] = useLazyGetSessionIdLoginQuery();
+    const [loginTrigger] = useLazyGetSessionIdLoginQuery();
     const {t} = useTranslation();
 
     const schema = object({
@@ -22,14 +22,12 @@ export const Login = () => {
     });
 
     const handleLogin = useCallback((arg: ILogin) => {
-        loginTrigger(arg);
-        if (isError) {
-            showToast({text: t("errorNotifications.userDoesntExists"), location: "top", textStyle: {fontSize: CommonSizes.font.smallPlus}});
-        }
-        if (isSuccess) {
-            navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot);
-        }
-    }, [isSuccess, isError]);
+        loginTrigger(arg).unwrap().then(() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)).catch(() => showToast({
+            text: t("errorNotifications.userDoesntExists"),
+            location: "top",
+            textStyle: {fontSize: CommonSizes.font.smallPlus}
+        }));
+    }, []);
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>

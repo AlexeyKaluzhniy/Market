@@ -24,7 +24,7 @@ interface IProps extends NavigationComponentProps {
 }
 
 export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Element => {
-    const [checkOtpTrigger, {isSuccess}] = useLazyCheckOtpCodeQuery();
+    const [checkOtpTrigger] = useLazyCheckOtpCodeQuery();
     const inputRefs = useRef<TextInput[]>([]);
     const [isDisabled, setDisabled] = useState(false);
     const [remainingTime, setRemainingTime] = useState(30);
@@ -89,20 +89,17 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
             phoneNumber: props.phoneNumber,
             otpCodeReason: 'ResetPassword',
             otpCode: code.join('')
-        });
-        if (isSuccess) {
-            Navigation.push(Pages.auth.id, {
-                component: {
-                    name: Pages.newPassword.name,
-                    options: {
-                        topBar: {
-                            visible: false
-                        },
+        }).unwrap().then(() => Navigation.push(Pages.auth.id, {
+            component: {
+                name: Pages.newPassword.name,
+                options: {
+                    topBar: {
+                        visible: false
                     },
-                }
-            });
-        }
-    }, [isSuccess]);
+                },
+            }
+        }))
+    }, [code]);
 
     return (
         <View>
