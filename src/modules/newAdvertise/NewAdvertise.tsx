@@ -17,12 +17,12 @@ import {useTranslation} from "react-i18next";
 import {AdvertiseImage} from "~/modules/newAdvertise/components/AdvertiseImage";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {ToggleDraftButton} from "~/components/ToggleDraftButton";
-import {IAdvertise} from "~/infrastructure/dto/common/IAdvertise";
 import {useAppDispatch} from "~/core/store/store";
 import {actions} from "~/core/store/drafts/draftsSlice";
 import {ThemeColors} from "~/core/theme/colors";
 import {emptyDraft} from "~/infrastructure/mocks/emptyDraft";
 import {windowHeight} from "~/core/theme/commonConsts";
+import {Dto} from "~/infrastructure";
 
 enum Cities {
     Tiraspol = 'Тирасполь',
@@ -36,7 +36,7 @@ enum Cities {
 }
 
 interface INewAdvertiseProps {
-    advertise: IAdvertise;
+    advertise: Dto.Common.Advertise;
     isMyAd?: boolean;
 }
 
@@ -45,7 +45,7 @@ export const NewAdvertise: NavigationFunctionComponent<INewAdvertiseProps> = (pr
     const {t} = useTranslation();
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
-    const [advertiseDetails, setAdvertiseDetails] = useState<IAdvertise>(props.advertise || emptyDraft);
+    const [advertiseDetails, setAdvertiseDetails] = useState<Dto.Common.Advertise>(props.advertise || emptyDraft);
 
     const editDraftDropDownValues = [
         {value: t("drafts.reset")},

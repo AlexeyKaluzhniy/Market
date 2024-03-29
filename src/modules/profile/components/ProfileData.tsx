@@ -1,16 +1,15 @@
 import {Image, StyleSheet, View} from "react-native";
 import {ImageResources} from "~/common/ImageResources.g";
-import {Roboto} from "~/infrastructure";
+import {Dto, Roboto} from "~/infrastructure";
 import React from "react";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {ThemeColors} from "~/core/theme/colors";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {IUserData} from "~/infrastructure/dto/common/IUserData";
 import {windowWidth} from "~/core/theme/commonConsts";
 
 interface IProfileDataProps {
-    user: IUserData;
+    user: Dto.Common.UserData;
 }
 
 export function ProfileData({user}: IProfileDataProps) {

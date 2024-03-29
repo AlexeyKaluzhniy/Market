@@ -3,13 +3,13 @@ import {NavigationFunctionComponent} from "react-native-navigation";
 import React from "react";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
-import {IUserData} from "~/infrastructure/dto/common/IUserData";
 import {ProfileData} from "~/modules/profile/components/ProfileData";
 import {internalUser} from "~/infrastructure/mocks/users";
+import {Dto} from "~/infrastructure";
 
 interface IProfileProps {
     isExternalUserProfile?: boolean;
-    userData?: IUserData;
+    userData?: Dto.Common.UserData;
 }
 
 export const Profile: NavigationFunctionComponent<IProfileProps> = (props): JSX.Element => {

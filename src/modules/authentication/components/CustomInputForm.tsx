@@ -2,7 +2,7 @@ import {View, StyleSheet, TouchableOpacity, Linking} from "react-native";
 import React, {useState} from "react";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {DefaultInput} from "~/components/DefaultInput";
-import {IAuthComponentProps} from "~/infrastructure/dto/common/IAuthComponentProps";
+import {Dto} from "~/infrastructure";
 import {useTranslation} from "react-i18next";
 import PhoneIcon from "../../../../resources/icons/phone.svg";
 import LockIcon from "../../../../resources/icons/lock.svg";
@@ -27,7 +27,7 @@ export function CustomInputForm(
         isRegister,
         schema,
         onSubmit,
-    }: IAuthComponentProps) {
+    }: Dto.Common.AuthComponentProps) {
     const {t} = useTranslation();
     const colors = useThemeColors();
     const [toggleCheckBox, setToggleCheckBox] = useState(false);

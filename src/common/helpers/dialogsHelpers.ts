@@ -1,15 +1,8 @@
-import {isAndroid, isIos} from "~/core/theme/commonConsts";
-import {ActionSheetIOS, ActionSheetIOSOptions, Alert, AlertButton, AlertOptions} from "react-native";
+import {ActionSheetIOSOptions, Alert, AlertButton, AlertOptions} from "react-native";
 import ActionSheet from 'react-native-action-sheet';
 import {i18next} from "../localization/localization";
 
 export function showActionSheet(options: ActionSheetIOSOptions, onOptionSelected: (optionIndex: number) => void) {
-    //todo check if it's the same on both platforms
-    // if (isIos) {
-    //     ActionSheetIOS.showActionSheetWithOptions(options, onOptionSelected);
-    // } else if (isAndroid) {
-    //     ActionSheet.showActionSheetWithOptions(options, onOptionSelected);
-    // }
     ActionSheet.showActionSheetWithOptions(options, onOptionSelected);
 }
 

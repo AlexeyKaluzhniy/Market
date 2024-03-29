@@ -6,6 +6,11 @@ import {IReduxParams} from "./IReduxParams";
 import {IErrorData} from "./IErrorData";
 import {IValidationError} from "./IValidationError";
 import {IItemIdName} from "./IItemIdName";
+import {IAdvertise} from "./IAdvertise";
+import {IAuthComponentProps} from "./IAuthComponentProps";
+import {IUserData} from "./IUserData";
+import {IHeaderLeftButton} from "./IHeaderLeftButton";
+import {IPropsCustomInput} from "./IPropsCustomInput";
 
 export type IdNameDto = IIdName;
 export type PageFilter = IPageFilter;
@@ -16,3 +21,8 @@ export type ActionPayload<TRes, TParams = any> = {} & {payload: ReduxParams<TRes
 export type ErrorData = IErrorData;
 export type ItemIdNameDto = IItemIdName;
 export type ValidationError = IValidationError;
+export type Advertise = IAdvertise;
+export type AuthComponentProps = IAuthComponentProps;
+export type UserData = IUserData;
+export type HeaderLeftButton = IHeaderLeftButton;
+export type PropsCustomInput = IPropsCustomInput;

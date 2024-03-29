@@ -2,9 +2,8 @@ import {Image, StyleSheet, TextInput, TextStyle, TouchableOpacity, View} from "r
 import React, {useCallback, useState} from "react";
 import {ThemeColors} from "~/core/theme/colors";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {IPropsCustomInput} from "~/infrastructure/dto/common/IPropsCustomInput";
 import {ImageResources} from "~/common/ImageResources.g";
-import {Roboto} from "~/infrastructure";
+import {Dto, Roboto} from "~/infrastructure";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 
 export function DefaultInput(
@@ -17,7 +16,7 @@ export function DefaultInput(
         maxLength,
         numberInput,
         value
-    }: IPropsCustomInput) {
+    }: Dto.Common.PropsCustomInput) {
     const [initValue, setInitValue] = useState(value);
     const [isVisible, setVisible] = useState(passwordInput);
     const [isFocused, setFocused] = useState(false);

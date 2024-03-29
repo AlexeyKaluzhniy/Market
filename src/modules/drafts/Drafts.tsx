@@ -3,8 +3,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {useAppSelector} from "~/core/store/store";
-import {IAdvertise} from "~/infrastructure/dto/common/IAdvertise";
-import {Roboto} from "~/infrastructure";
+import {Dto, Roboto} from "~/infrastructure";
 import {ThemeColors} from "~/core/theme/colors";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {CommonSizes} from "~/core/theme/commonSizes";
@@ -20,7 +19,7 @@ export const Drafts: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
     const colors = useThemeColors();
 
-    const handleEditAdvertise = (draft: IAdvertise) => {
+    const handleEditAdvertise = (draft: Dto.Common.Advertise) => {
         Navigation.push(props.componentId, {
             component: {
                 name: Pages.newAdvertise.name,
@@ -41,7 +40,7 @@ export const Drafts: NavigationFunctionComponent = (props) => {
         });
     };
 
-    const renderItem = (item: IAdvertise) => {
+    const renderItem = (item: Dto.Common.Advertise) => {
         return (
             <TouchableOpacity
                 style={styles.itemContainer}

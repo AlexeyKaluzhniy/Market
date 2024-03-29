@@ -1,9 +1,8 @@
 import ArrowBackIcon from "../../resources/icons/arrow_back.svg";
 import {TouchableOpacity} from "react-native";
-import React from "react";
-import {IHeaderLeftButton} from "~/infrastructure/dto/common/IHeaderLeftButton";
+import {Dto} from "~/infrastructure";
 
-export function BackButton({onPress}: IHeaderLeftButton) {
+export function BackButton({onPress}: Dto.Common.HeaderLeftButton) {
     return (
         <TouchableOpacity onPress={onPress}>
             <ArrowBackIcon/>

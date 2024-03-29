@@ -3,7 +3,7 @@ import {ScrollView, StyleSheet, View} from "react-native";
 import {CustomHeader} from "~/components/CustomHeader";
 import React from "react";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {Roboto} from "~/infrastructure";
+import {Dto, Roboto} from "~/infrastructure";
 import {CommonStyles} from "~/core/theme/commonStyles";
 import {ThemeColors} from "~/core/theme/colors";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
@@ -11,19 +11,17 @@ import {Pages} from "~/navigation/pages";
 import {Publisher} from "~/modules/details/components/Publisher";
 import {ImagesSlider} from "~/modules/details/components/ImagesSlider";
 import {externalUser} from "~/infrastructure/mocks/users";
-import {IUserData} from "~/infrastructure/dto/common/IUserData";
-import {IAdvertise} from "~/infrastructure/dto/common/IAdvertise";
 
 interface IProps {
-    item: IAdvertise;
+    item: Dto.Common.Advertise;
     isMyAd: boolean;
 }
 
 interface IPassProps {
-    advertise?: IAdvertise;
+    advertise?: Dto.Common.Advertise;
     isMyAd?: boolean;
     isExternalUserProfile?: boolean;
-    userData?: IUserData;
+    userData?: Dto.Common.UserData;
 }
 
 export const AdvertiseDetails: NavigationFunctionComponent<IProps> = (props) => {
