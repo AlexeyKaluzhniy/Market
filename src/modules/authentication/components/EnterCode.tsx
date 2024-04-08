@@ -89,7 +89,7 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
             phoneNumber: props.phoneNumber,
             otpCodeReason: 'ResetPassword',
             otpCode: code.join('')
-        }).unwrap().then(() => Navigation.push(Pages.auth.id, {
+        }).unwrap().then(async () => Navigation.push(Pages.auth.id, {
             component: {
                 name: Pages.newPassword.name,
                 options: {
@@ -98,8 +98,8 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
                     },
                 },
             }
-        }))
-    }, [code]);
+        }));
+    }, [checkOtpTrigger, code, props.phoneNumber]);
 
     return (
         <View>

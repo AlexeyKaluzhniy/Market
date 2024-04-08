@@ -29,7 +29,7 @@ export const SignUp = () => {
             location: "top",
             textStyle: {fontSize: CommonSizes.font.smallPlus}
         }));
-    }, []);
+    }, [registerTrigger, t]);
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>

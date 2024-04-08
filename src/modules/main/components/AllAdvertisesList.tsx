@@ -18,7 +18,7 @@ export function AllAdvertisesList() {
     const maxPrice = filters.priceTo !== '' ? filters.priceTo : Infinity;
     const filteredData = data.filter(ad => {
         const passesCityFilter = isCitiesEmpty || filters.cities.includes(ad.location);
-        const passesPriceFilter = ad.price >= minPrice && ad.price <= maxPrice;
+        const passesPriceFilter = Number(ad.price) >= minPrice && Number(ad.price) <= maxPrice;
         const passesSearch = isSearchStrEmpty || ad.title.toLowerCase().includes(searchStr.trim().toLowerCase());
 
         return passesCityFilter && passesPriceFilter && passesSearch;
