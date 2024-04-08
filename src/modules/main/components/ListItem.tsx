@@ -16,8 +16,8 @@ interface IListItemProps {
         id: string;
         title: string;
         description: string;
-        price: string;
-        priceType: string;
+        price: string | undefined;
+        priceType: string | undefined;
         location: string;
         date: string;
         images: ImageResources[] | null;

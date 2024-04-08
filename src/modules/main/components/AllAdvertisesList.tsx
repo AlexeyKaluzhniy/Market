@@ -18,10 +18,11 @@ export function AllAdvertisesList() {
     const maxPrice = filters.priceTo !== '' ? filters.priceTo : Infinity;
     const filteredData = data.filter(ad => {
         const passesCityFilter = isCitiesEmpty || filters.cities.includes(ad.location);
-        const passesPriceFilter = Number(ad.price) >= minPrice && Number(ad.price) <= maxPrice;
+        const passesMinPriceFilter = (isNaN(Number(ad.price)) && minPrice == 0) || (Number(ad.price) >= minPrice);
+        const passesMaxPriceFilter = isNaN(Number(ad.price)) || Number(ad.price) <= Number(maxPrice);
         const passesSearch = isSearchStrEmpty || ad.title.toLowerCase().includes(searchStr.trim().toLowerCase());
 
-        return passesCityFilter && passesPriceFilter && passesSearch;
+        return passesCityFilter && passesMaxPriceFilter && passesMinPriceFilter && passesSearch;
     });
 
     const containerStyle = useMemo(() => filteredData.length ? undefined : CommonStyles.flex1, [filteredData]);

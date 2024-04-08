@@ -25,8 +25,8 @@ export const data = [
         id: '3',
         title: 'Продажа велосипеда',
         description: 'Почти новый горный велосипед, бренд XYZ, 2023 года выпуска. Использовался всего несколько месяцев',
-        price: '2200',
-        priceType: 'руб.',
+        price: 'Договорная',
+        priceType: undefined,
         location: 'Рыбница',
         date: 'сегодня в 13:04',
         images: [AdvertisesResources.bicycle, AdvertisesResources.bicycle, AdvertisesResources.bicycle]
