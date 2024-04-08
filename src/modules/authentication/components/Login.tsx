@@ -5,7 +5,6 @@ import {navigation} from "~/services";
 import {useLazyGetSessionIdLoginQuery} from "~/core/store/auth/authQuery";
 import {object, string} from "yup";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {CommonStyles} from "~/core/theme/commonStyles";
 import {LayoutRoot} from "react-native-navigation";
 import {ILogin} from "~/core/store/auth/authModels";
 import {useCallback} from "react";
@@ -23,7 +22,7 @@ export const Login = () => {
     }, []);
 
     return (
-        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={'handled'}>
             <CustomInputForm
                 submitButtonTitle="authentication.loginTab"
                 phoneField
@@ -40,6 +39,6 @@ export const Login = () => {
 const styles = StyleSheet.create({
     container: {
         paddingTop: CommonSizes.margin.superLargePlus,
-        ...CommonStyles.flex1,
+        paddingBottom: CommonSizes.padding.smallPlus,
     }
 });

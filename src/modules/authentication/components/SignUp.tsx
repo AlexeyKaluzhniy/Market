@@ -1,6 +1,5 @@
 import {CustomInputForm} from "./CustomInputForm";
 import {ScrollView, StyleSheet} from "react-native";
-import {CommonStyles} from "~/core/theme/commonStyles";
 import {navigation} from "~/services";
 import {getBottomTabsLayout} from "~/navigation/roots";
 import {object, ref, string} from "yup";
@@ -26,7 +25,7 @@ export const SignUp = () => {
     }, [registerTrigger]);
 
     return (
-        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={'handled'}>
             <CustomInputForm
                 submitButtonTitle="authentication.registerTab"
                 passwordField
@@ -42,7 +41,7 @@ export const SignUp = () => {
 
 const styles = StyleSheet.create({
     container: {
-        ...CommonStyles.flex1,
         paddingTop: CommonSizes.margin.superLargePlus / 4 - CommonSizes.padding.extraSmallPlus,
+        paddingBottom: CommonSizes.padding.smallPlus
     }
 });
