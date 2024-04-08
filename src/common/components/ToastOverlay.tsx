@@ -17,9 +17,10 @@ import {CommonStyles} from "~/core/theme/commonStyles";
 import {isIos, minWindowDimension} from "~/core/theme/commonConsts";
 import {Roboto} from "../../infrastructure";
 import {useThemedStyles} from "~/core/theme/hooks";
+import {TFuncKeyApp} from "~/common/localization/localization";
 
 export interface IToastNavProps {
-    text: string;
+    text: TFuncKeyApp;
     textStyle?: TextStyle;
     icon?: ImageURISource;
     iconStyle?: ImageStyle;
@@ -150,7 +151,7 @@ export const ToastOverlay: NavigationFunctionComponent<IToastNavProps> = (
                 ]}
             >
                 {renderIconOrLoading}
-                <Roboto.Label.Medium style={[styles.text, textStyle]} numberOfLines={3} text={text}/>
+                <Roboto.Label.Medium style={[styles.text, textStyle]} numberOfLines={3} labelKey={text}/>
             </Animated.View>
         );
     } else {

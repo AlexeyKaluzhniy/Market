@@ -9,13 +9,10 @@ import {LayoutRoot} from "react-native-navigation";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {windowHeight} from "~/core/theme/commonConsts";
 import {IRegister} from "~/core/store/auth/authModels";
-import {showToast} from "~/services/navigationService/showToast";
 import {useCallback} from "react";
-import {useTranslation} from "react-i18next";
 
 export const SignUp = () => {
     const [registerTrigger] = useLazyGetSessionIdRegisterQuery();
-    const {t} = useTranslation();
 
     const schema = object({
         phoneNumber: string().required().matches(/^[78]\d{10}$/),
@@ -24,12 +21,8 @@ export const SignUp = () => {
     });
 
     const handleRegister = useCallback((arg: IRegister) => {
-        registerTrigger(arg).unwrap().then(() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)).catch(() => showToast({
-            text: t("errorNotifications.userAlreadyExists"),
-            location: "top",
-            textStyle: {fontSize: CommonSizes.font.smallPlus}
-        }));
-    }, [registerTrigger, t]);
+        registerTrigger(arg).unwrap().then(() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)).catch(() => null);
+    }, []);
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>

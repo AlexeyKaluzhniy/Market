@@ -98,7 +98,7 @@ export const EnterCode: NavigationFunctionComponent<IProps> = (props): JSX.Eleme
                     },
                 },
             }
-        }));
+        })).catch(() => null);
     }, [checkOtpTrigger, code, props.phoneNumber]);
 
     return (

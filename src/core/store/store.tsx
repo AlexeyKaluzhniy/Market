@@ -8,6 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {setLanguage} from "~/common/localization/localization";
 import {createLogger, ReduxLoggerOptions} from "redux-logger";
 import {authorizationApi} from "./auth/authQuery";
+import {authErrorLogger} from "~/core/store/auth/authErrorLogger";
 
 const persistConfig: PersistConfig<RootState> = {
     key: "root",
@@ -33,7 +34,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
-        }).concat(logger).concat(authorizationApi.middleware)
+        }).concat(logger).concat(authorizationApi.middleware).concat(authErrorLogger)
 });
 
 export const persistor = persistStore(
@@ -55,7 +56,7 @@ export const reduxProvider = (Component: any) => (props: any) => {
         <Provider store={store}>
             <PersistGate
                 loading={null} persistor={persistor}
-                onBeforeLift={async () => setLanguage(store.getState().system.language) }
+                onBeforeLift={async () => setLanguage(store.getState().system.language)}
             >
                 <Component {...props} />
             </PersistGate>

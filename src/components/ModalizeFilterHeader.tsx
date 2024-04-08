@@ -8,7 +8,6 @@ import {Navigation, NavigationFunctionComponent} from "react-native-navigation";
 import {useAppDispatch, useAppSelector} from "~/core/store/store";
 import {selectCities, selectPriceFrom, selectPriceTo, actions} from "~/core/store/filter/filterSlice";
 import {showToast} from "~/services/navigationService/showToast";
-import {useTranslation} from "react-i18next";
 
 export const ModalizeFilterHeader: NavigationFunctionComponent = (props) => {
     const styles = useThemedStyles(stylesG);
@@ -16,14 +15,13 @@ export const ModalizeFilterHeader: NavigationFunctionComponent = (props) => {
     const priceFrom = useAppSelector(selectPriceFrom);
     const priceTo = useAppSelector(selectPriceTo);
     const cities = useAppSelector(selectCities);
-    const {t} = useTranslation();
 
     const closeOverlay = () => {
         if (Number(priceFrom) <= Number(priceTo) || priceTo === '') {
             dispatch(actions.applyFilters({cities, priceFrom, priceTo}));
             Navigation.dismissAllOverlays();
         } else {
-            showToast({text: t("errorNotifications.incorrectPriceFilter"), location: 'modal'});
+            showToast({text: "errors.incorrectPriceFilter", location: 'modal'});
         }
     };
 

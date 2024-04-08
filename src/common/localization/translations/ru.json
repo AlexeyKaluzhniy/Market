@@ -73,7 +73,11 @@
       "validationError": "Проверка данных завершена с ошибкой",
       "invalidRussianNumber": "Неверный номер телефона",
       "invalidPassword": "Должен быть минимум 8 символов, содержать: цифры, буквы обоих регистров, спецсимволы",
-      "invalidRepeatPassword": "Пароли должны совпадать"
+      "invalidRepeatPassword": "Пароли должны совпадать",
+      "incorrectPriceFilter": "Начальная цена должна быть меньше чем конечная",
+      "UserAlreadyExistException": "Пользователь с такими данными уже существует",
+      "UserDoesntExistException": "Пользователя с такими данными не существует",
+      "OtpCodeNotFoundException": "Неверный код"
     },
     "onboarding": {
       "welcomeToApp": "Здравствуй",
@@ -294,11 +298,6 @@
       "delete": "Удалить черновик",
       "reset": "Очистить",
       "untitled": "Без названия"
-    },
-    "errorNotifications": {
-      "incorrectPriceFilter": "Начальная цена должна быть меньше чем конечная",
-      "userAlreadyExists": "Пользователь с такими данными уже существует",
-      "userDoesntExists": "Пользователя с такими данными не существует"
     }
   }
 }
