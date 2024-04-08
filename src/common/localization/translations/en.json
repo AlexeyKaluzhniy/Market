@@ -191,8 +191,15 @@
     },
     "validation": {
       "required": "This field is required",
-      "phoneFormat": "Phone must contain 11 digits",
-      "passwordFormat": "Password must be at least 8 characters long, consist of Latin characters, contain lowercase and uppercase letters and numbers",
+      "phoneFormat": "11-digit phone number",
+      "passwordFormat": {
+        "passwordMustContain": "Password must contain:",
+        "minimumCharacters": "Minimum 8 symbols",
+        "containsDigit": "Digit",
+        "containsLetters": "Letters of both cases",
+        "containsSymbol": "Special character"
+      },
+      "passwordMatch": "Passwords match",
       "nameFormat": "Must be between 1 and 50 characters long",
       "emailFormat": "The entered value should match a@a.aa format",
       "loginFormat": "Invalid username format",

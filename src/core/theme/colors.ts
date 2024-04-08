@@ -10,6 +10,7 @@ interface IThemeColors {
     surfaceContainer: string;
     surfaceContainerHighest: string;
     onPrimary: string;
+    primaryFixed: string;
     primaryContainer: string;
     onPrimaryContainer: string;
     outlineVariant: string;
@@ -44,6 +45,7 @@ export const LightThemeColors: IThemeColors = {
     surfaceDim: "#E4D6DB",
     surfaceContainer: "#F9EAEF",
     onPrimary: "#FFFFFF",
+    primaryFixed: "#FFD8EC",
     primaryContainer: "#FFD8EC",
     onPrimaryContainer: "#37072A",
     outlineVariant: "#D3C2C9",
@@ -92,6 +94,7 @@ export const DarkThemeColors: IThemeColors = {
     surfaceContainer: "#3B3236",
     surfaceContainerHighest: "#3B3236",
     onPrimary: "#501E40",
+    primaryFixed: "#FFD8EC",
     primaryContainer: "#6A3457",
     onPrimaryContainer: "#FFD8EC",
     outlineVariant: "#4F4449",

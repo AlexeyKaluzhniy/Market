@@ -7,7 +7,6 @@ import {object, ref, string} from "yup";
 import {useLazyGetSessionIdRegisterQuery} from "~/core/store/auth/authQuery";
 import {LayoutRoot} from "react-native-navigation";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {windowHeight} from "~/core/theme/commonConsts";
 import {IRegister} from "~/core/store/auth/authModels";
 import {useCallback} from "react";
 
@@ -21,8 +20,10 @@ export const SignUp = () => {
     });
 
     const handleRegister = useCallback((arg: IRegister) => {
-        registerTrigger(arg).unwrap().then(() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot)).catch(() => null);
-    }, []);
+        registerTrigger(arg).unwrap()
+            .then(() => navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot))
+            .catch(() => null);
+    }, [registerTrigger]);
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -42,6 +43,6 @@ export const SignUp = () => {
 const styles = StyleSheet.create({
     container: {
         ...CommonStyles.flex1,
-        paddingTop: windowHeight <= 720 ? CommonSizes.margin.superLargePlus / 2 : CommonSizes.margin.superLargePlus
+        paddingTop: CommonSizes.margin.superLargePlus / 4 - CommonSizes.padding.extraSmallPlus,
     }
 });

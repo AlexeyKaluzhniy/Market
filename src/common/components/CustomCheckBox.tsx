@@ -3,6 +3,7 @@ import ConfirmIcon from "../../../resources/icons/confirmSmall.svg";
 import {useThemeColors} from "~/core/theme/hooks";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useMemo} from "react";
+import {Colors} from "~/core/theme/colors";
 
 interface ICheckBoxProps {
     isChecked: boolean;
@@ -25,7 +26,7 @@ export function CustomCheckBox({isChecked, setChecked}: ICheckBoxProps) {
             style={[styles.checkBoxContainer, checkBoxColor]}
             onPress={() => setChecked(!isChecked)}
         >
-            {isChecked && <ConfirmIcon width={CommonSizes.image.smallPlus} height={CommonSizes.image.smallPlus}/>}
+            {isChecked && <ConfirmIcon color={Colors.white} width={CommonSizes.image.smallPlus} height={CommonSizes.image.smallPlus}/>}
         </TouchableOpacity>
     );
 }
