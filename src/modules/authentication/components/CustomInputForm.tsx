@@ -15,7 +15,7 @@ import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors} from "~/core/theme/hooks";
 import {CustomCheckBox} from "~/common/components/CustomCheckBox";
-import {CheckMarkValidation} from "~/modules/authentication/components/CheckMarkValidation";
+import {ValidationBlock} from "~/modules/authentication/components/ValidationBlock";
 
 export function CustomInputForm(
     {
@@ -78,13 +78,6 @@ export function CustomInputForm(
         setValue(name, text as never, {shouldValidate: true});
     };
 
-    const password: string = getValues("password");
-    const hasMinimumLength = password ? password.length >= 8 : false;
-    const containsDigit = /\d/.test(password);
-    const containsLowercaseLetter = /[a-z]/.test(password);
-    const containsUppercaseLetter = /[A-Z]/.test(password);
-    const containsSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
-
     return (
         <View style={[CommonStyles.flex1, styles.inputContainer]}>
             {phoneField &&
@@ -136,36 +129,17 @@ export function CustomInputForm(
                     </Roboto.Body.Large>
                 </View>
             }
-            <View style={styles.validationContainer}>
-                {phoneField && <CheckMarkValidation
-                    text={"validation.phoneFormat"}
-                    isValid={!errors.hasOwnProperty('phoneNumber') && getValues("phoneNumber") != undefined}/>}
-                {passwordField && !isLogin && <>
-                    <Roboto.Label.Large
-                        labelKey={"validation.passwordFormat.passwordMustContain"}
-                        color={colors.onSurface}
-                        style={{marginBottom: CommonSizes.margin.extraSmallPlus}}
-                    />
-                    <CheckMarkValidation
-                        text={"validation.passwordFormat.minimumCharacters"}
-                        isValid={hasMinimumLength}
-                    />
-                    <CheckMarkValidation
-                        text={"validation.passwordFormat.containsDigit"}
-                        isValid={containsDigit}/>
-                    <CheckMarkValidation
-                        text={"validation.passwordFormat.containsLetters"}
-                        isValid={containsLowercaseLetter && containsUppercaseLetter}/>
-                    <CheckMarkValidation
-                        text={"validation.passwordFormat.containsSymbol"}
-                        isValid={containsSpecialCharacter}/>
-                </>}
-                {repeatPasswordField &&
-                    <CheckMarkValidation
-                        text={"validation.passwordMatch"}
-                        isValid={!errors.hasOwnProperty('repeatPassword') && getValues("repeatPassword") != undefined}/>
-                }
-            </View>
+            <ValidationBlock
+                password={getValues("password")}
+                repeatPassword={getValues("repeatPassword")}
+                phoneNumber={getValues("phoneNumber")}
+                isLogin={isLogin}
+                repeatPasswordField={repeatPasswordField}
+                passwordField={passwordField}
+                phoneField={phoneField}
+                hasErrorPhone={errors.hasOwnProperty("phoneNumber")}
+                hasErrorRepeatPassword={errors.hasOwnProperty("repeatPassword")}
+            />
             <SubmitButton onSubmit={onButtonPress} submitButtonTitle={submitButtonTitle}
                           disabled={!isValid || (!!isRegister && !toggleCheckBox)}/>
             {isLogin &&
@@ -194,8 +168,5 @@ const styles = StyleSheet.create({
     },
     accept: {
         paddingRight: CommonSizes.padding.large * 2
-    },
-    validationContainer: {
-        marginTop: CommonSizes.margin.largePlus
     }
 });

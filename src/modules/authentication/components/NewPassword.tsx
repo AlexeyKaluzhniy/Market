@@ -1,5 +1,5 @@
 import {NavigationFunctionComponent} from "react-native-navigation";
-import {StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import React from "react";
 import {CustomHeader} from "~/components/CustomHeader";
 import {CustomInputForm} from "./CustomInputForm";
@@ -19,7 +19,7 @@ export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => 
     return (
         <View style={CommonStyles.flex1}>
             <CustomHeader headerTitle="authentication.newPassword" id={props.componentId} isStack isAuth/>
-            <View style={[CommonStyles.flex1, CommonStyles.marginContainer]}>
+            <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
                 <Roboto.Label.Large style={styles.textMargin} labelKey="authentication.savePassword" color={colors.onSurface}/>
                 <CustomInputForm
                     submitButtonTitle="authentication.savePassword"
@@ -29,12 +29,16 @@ export const NewPassword: NavigationFunctionComponent = (props): JSX.Element => 
                     //todo add logic when backend will work
                     onSubmit={() => null}
                 />
-            </View>
+            </ScrollView>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    scrollContainer: {
+        paddingTop: CommonSizes.margin.superLargePlus,
+        paddingBottom: CommonSizes.padding.smallPlus
+    },
     textMargin: {
         marginLeft: CommonSizes.margin.largePlus
     }

@@ -8,11 +8,11 @@ import {CommonSizes} from "~/core/theme/commonSizes";
 import {useMemo} from "react";
 
 interface IPropsCheckMarkValidation {
-    text: TFuncKeyApp;
+    labelKeyTitle: TFuncKeyApp;
     isValid: boolean;
 }
 
-export function CheckMarkValidation({text, isValid}: IPropsCheckMarkValidation) {
+export function CheckMarkValidation({labelKeyTitle, isValid}: IPropsCheckMarkValidation) {
     const colors = useThemeColors();
 
     const checkColor = useMemo(() => {
@@ -30,7 +30,7 @@ export function CheckMarkValidation({text, isValid}: IPropsCheckMarkValidation) 
             <View style={[styles.iconContainer, iconContainerStyle]}>
                 <CheckMarkIcon color={checkColor} style={styles.icon}/>
             </View>
-            <Roboto.Label.Large labelKey={text} color={checkColor}/>
+            <Roboto.Label.Large labelKey={labelKeyTitle} color={checkColor}/>
         </View>
     );
 }
