@@ -3,8 +3,8 @@ import {SystemReducer} from "./system/systemSlice";
 import {authorizationApi} from "~/core/store/api/auth/authQuery";
 import {FilterReducer} from "./filter/filterSlice";
 import {DraftsReducer} from "~/core/store/drafts/draftsSlice";
-import {AuthReducer} from "~/core/store/authentication/authSlice";
 import {advertisementApi} from "~/core/store/api/ad/adQuery";
+import {AuthReducer} from "~/core/store/authentication/authenticationSlice";
 
 export const rootReducer = combineReducers({
     system: SystemReducer,

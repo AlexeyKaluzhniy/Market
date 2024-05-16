@@ -3,6 +3,12 @@ export interface ILogin {
     password: string;
 }
 
+export interface IAuthToken {
+    refreshToken: string;
+}
+
+export type IAuthParams = ILogin | IAuthToken;
+
 export interface IRegister extends ILogin {
     isConditionUsageAndConfidentialPoliticsAgree: boolean;
 }

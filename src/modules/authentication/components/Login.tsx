@@ -10,12 +10,10 @@ import {LayoutRoot} from "react-native-navigation";
 import {ILogin} from "~/core/store/api/auth/authModels";
 import {useCallback} from "react";
 import {useAppDispatch} from "~/core/store/store";
-import {AuthActions} from "~/core/store/authentication/authSlice";
-import {useLazyGetAdsQuery} from "~/core/store/api/ad/adQuery";
+import {AuthActions} from "~/core/store/authentication/authenticationSlice";
 
 export const Login = () => {
     const [loginTrigger] = useLoginMutation();
-    const [advertiseTrigger] = useLazyGetAdsQuery();
     const dispatch = useAppDispatch();
 
     const schema = object({
@@ -25,11 +23,10 @@ export const Login = () => {
 
     const handleLogin = useCallback((arg: ILogin) => {
         loginTrigger(arg).unwrap().then((res) => {
-            dispatch(AuthActions.saveToken({accessToken: res.access_token, refreshToken: res.refresh_token}));
-            advertiseTrigger();
+            dispatch(AuthActions.saveToken(res.accessToken));
             navigation.setRoot(getBottomTabsLayout as unknown as LayoutRoot);
         }).catch(() => null);
-    }, [advertiseTrigger, dispatch, loginTrigger]);
+    }, [dispatch, loginTrigger]);
 
     return (
         <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={'handled'}>

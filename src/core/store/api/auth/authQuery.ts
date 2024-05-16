@@ -1,7 +1,20 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {ICheckOtp, ILogin, ILoginResponse, IRegister, ISendOtp} from "~/core/store/api/auth/authModels";
+import {
+    IAuthParams,
+    ICheckOtp, ILoginResponse,
+    IRegister,
+    ISendOtp
+} from "~/core/store/api/auth/authModels";
 // eslint-disable-next-line no-restricted-imports
 import Config from "react-native-config";
+import {setSecureItem} from "~/core/securedStorage/securedStorage";
+import {provideLoginRequestBody} from "~/core/store/api/helpers/provideLoginRequestBody";
+import {authTokenTransformer, IAuthData} from "~/core/store/api/helpers/authTokenTransformer";
+
+export const enum EnumAuthGrantTypes {
+    password = "password",
+    refresh_token = "refresh_token",
+}
 
 export const authorizationApi = createApi({
     reducerPath: 'authorization',
@@ -14,25 +27,24 @@ export const authorizationApi = createApi({
             }
         }),
     endpoints: (builder) => ({
-        login: builder.mutation<ILoginResponse, ILogin>({
+        login: builder.mutation<IAuthData, IAuthParams>({
             query: (args) => {
-                const queryString = new URLSearchParams({
-                    client_id: "ad.client",
-                    client_secret: "C86F0AED-7DDC-432A-B3A4-868C2FCA5604",
-                    grant_type: "password",
-                    scope: "offline_access openid profile ad-api",
-                    username: args.phoneNumber,
-                    password: args.password
-                });
-
                 return {
                     url: 'identity/connect/token',
                     method: 'POST',
-                    body: queryString,
+                    body: provideLoginRequestBody(args),
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 };
+            },
+            transformResponse: authTokenTransformer
+        }),
+        loginFn: builder.mutation<ILoginResponse, ILoginResponse>({
+            queryFn: async (data) => {
+                await setSecureItem("refreshToken", data.refresh_token);
+
+                return {data};
             },
         }),
         getSessionIdRegister: builder.query<string, IRegister>({
@@ -73,7 +85,14 @@ export const authorizationApi = createApi({
                 };
             },
             providesTags: ["registerCheckOtp"]
-        })
+        }),
+        logout: builder.mutation<null, void>({
+            queryFn: async () => {
+                await setSecureItem("refreshToken", undefined);
+
+                return {data: null};
+            },
+        }),
     })
 });
 
