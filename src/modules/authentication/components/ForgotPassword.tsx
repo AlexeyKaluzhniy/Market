@@ -9,8 +9,8 @@ import {Roboto} from "~/infrastructure";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {ThemeColors} from "~/core/theme/colors";
 import {useThemedStyles} from "~/core/theme/hooks";
-import {useLazySendOtpCodeQuery} from "~/core/store/auth/authQuery";
-import {ISendOtp} from "~/core/store/auth/authModels";
+import {useLazySendOtpCodeQuery} from "~/core/store/api/auth/authQuery";
+import {ISendOtp} from "~/core/store/api/auth/authModels";
 
 export const ForgotPassword: NavigationFunctionComponent = (props): JSX.Element => {
     const styles = useThemedStyles(stylesG);

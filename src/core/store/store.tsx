@@ -7,8 +7,9 @@ import {PersistGate} from "redux-persist/integration/react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {setLanguage} from "~/common/localization/localization";
 import {createLogger, ReduxLoggerOptions} from "redux-logger";
-import {authorizationApi} from "./auth/authQuery";
-import {authErrorLogger} from "~/core/store/auth/authErrorLogger";
+import {authorizationApi} from "~/core/store/api/auth/authQuery";
+import {authErrorLogger} from "~/core/store/api/auth/authErrorLogger";
+import {advertisementApi} from "~/core/store/api/ad/adQuery";
 
 const persistConfig: PersistConfig<RootState> = {
     key: "root",
@@ -34,7 +35,11 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
-        }).concat(logger).concat(authorizationApi.middleware).concat(authErrorLogger)
+        })
+            .concat(logger)
+            .concat(authorizationApi.middleware)
+            .concat(authErrorLogger)
+            .concat(advertisementApi.middleware)
 });
 
 export const persistor = persistStore(

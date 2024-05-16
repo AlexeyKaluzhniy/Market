@@ -15,3 +15,11 @@ export interface ISendOtp {
 export interface ICheckOtp extends ISendOtp {
     otpCode: string;
 }
+
+export interface ILoginResponse {
+    access_token: string;
+    expires_in: number;
+    token_type: string;
+    refresh_token: string;
+    scope: string;
+}

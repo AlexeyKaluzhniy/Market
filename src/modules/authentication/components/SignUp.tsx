@@ -2,11 +2,12 @@ import {CustomInputForm} from "./CustomInputForm";
 import {ScrollView, StyleSheet} from "react-native";
 import {navigation} from "~/services";
 import {getBottomTabsLayout} from "~/navigation/roots";
+// eslint-disable-next-line id-blacklist
 import {object, ref, string} from "yup";
-import {useLazyGetSessionIdRegisterQuery} from "~/core/store/auth/authQuery";
+import {useLazyGetSessionIdRegisterQuery} from "~/core/store/api/auth/authQuery";
 import {LayoutRoot} from "react-native-navigation";
 import {CommonSizes} from "~/core/theme/commonSizes";
-import {IRegister} from "~/core/store/auth/authModels";
+import {IRegister} from "~/core/store/api/auth/authModels";
 import {useCallback} from "react";
 
 export const SignUp = () => {

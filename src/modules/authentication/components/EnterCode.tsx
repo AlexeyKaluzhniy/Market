@@ -17,7 +17,7 @@ import {Roboto} from "~/infrastructure/typography";
 import {CommonSizes} from "~/core/theme/commonSizes";
 import {useThemeColors, useThemedStyles} from "~/core/theme/hooks";
 import {windowWidth} from "~/core/theme/commonConsts";
-import {useLazyCheckOtpCodeQuery} from "~/core/store/auth/authQuery";
+import {useLazyCheckOtpCodeQuery} from "~/core/store/api/auth/authQuery";
 
 interface IProps extends NavigationComponentProps {
     phoneNumber: string;

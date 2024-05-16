@@ -1,6 +1,6 @@
 import {ObjectSchema} from "yup";
 import {TFuncKeyApp} from "~/common/localization/localization";
-import {ILogin, IRegister} from "~/core/store/auth/authModels";
+import {ILogin, IRegister} from "~/core/store/api/auth/authModels";
 
 interface AuthSchema {
     phoneNumber: string;

@@ -1,31 +1,44 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {ICheckOtp, ILogin, IRegister, ISendOtp} from "~/core/store/auth/authModels";
-import AppConfig from "react-native-config";
+import {ICheckOtp, ILogin, ILoginResponse, IRegister, ISendOtp} from "~/core/store/api/auth/authModels";
+// eslint-disable-next-line no-restricted-imports
+import Config from "react-native-config";
 
 export const authorizationApi = createApi({
     reducerPath: 'authorization',
     tagTypes: ["register", "registerSendOtp", "registerCheckOtp"],
     baseQuery: fetchBaseQuery(
         {
-            baseUrl: AppConfig.REGISTER_URL,
+            baseUrl: Config.API_URL,
             headers: {
                 'Content-Type': 'application/json;odata.metadata=minimal;odata.streaming=true'
             }
         }),
     endpoints: (builder) => ({
-        getSessionIdLogin: builder.query<string, ILogin>({
+        login: builder.mutation<ILoginResponse, ILogin>({
             query: (args) => {
+                const queryString = new URLSearchParams({
+                    client_id: "ad.client",
+                    client_secret: "C86F0AED-7DDC-432A-B3A4-868C2FCA5604",
+                    grant_type: "password",
+                    scope: "offline_access openid profile ad-api",
+                    username: args.phoneNumber,
+                    password: args.password
+                });
+
                 return {
-                    url: '/RegisterUser',
+                    url: 'identity/connect/token',
                     method: 'POST',
-                    body: JSON.stringify(args)
+                    body: queryString,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
                 };
             },
         }),
         getSessionIdRegister: builder.query<string, IRegister>({
             query: (args) => {
                 return {
-                    url: '/RegisterUser',
+                    url: 'profile/v1/Register/RegisterUser',
                     method: 'POST',
                     body: JSON.stringify({...args, phone: args.phoneNumber, otpCode: '0000', otpProviderType: 'Sms'})
                 };
@@ -35,7 +48,7 @@ export const authorizationApi = createApi({
         sendOtpCode: builder.query<boolean, ISendOtp>({
             query(args) {
                 return {
-                    url: '/SendOtpCode',
+                    url: 'profile/v1/Register/SendOtpCode',
                     method: 'POST',
                     body: JSON.stringify({
                         phoneNumber: args.phoneNumber,
@@ -56,7 +69,7 @@ export const authorizationApi = createApi({
                 }).toString();
 
                 return {
-                    url: `/CheckOtpCode?${queryString}`
+                    url: `profile/v1/Register/CheckOtpCode?${queryString}`
                 };
             },
             providesTags: ["registerCheckOtp"]
@@ -65,7 +78,7 @@ export const authorizationApi = createApi({
 });
 
 export const {
-    useLazyGetSessionIdLoginQuery,
+    useLoginMutation,
     useLazyGetSessionIdRegisterQuery,
     useLazySendOtpCodeQuery,
     useLazyCheckOtpCodeQuery
